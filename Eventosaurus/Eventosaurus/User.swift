@@ -23,7 +23,8 @@ class User {
     let email: String
     let dateOfBirth: String
     var password: String
-    var userID : Int = 0
+    var userID : Int
+    static var idIncrement : Int =  1000
     
     //var isOrganizer: Bool
     
@@ -38,7 +39,8 @@ class User {
         self.dateOfBirth = dateOfBirth
         self.password = password
         
-        userID += 1
+        userID = User.idIncrement
+        User.idIncrement+=1
             }
     
     func login(username: String? = nil , email: String? = nil , password : String) -> Bool {
