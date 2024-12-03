@@ -23,8 +23,13 @@ class User {
     let email: String
     let dateOfBirth: String
     var password: String
+    var userID : Int = 0
     
     //var isOrganizer: Bool
+    
+    
+    
+    ///Constructor is used in registration
     
     init(username: String, fullName: String, email: String, dateOfBirth: String, password: String) {
         self.username = username
@@ -32,12 +37,27 @@ class User {
         self.email = email
         self.dateOfBirth = dateOfBirth
         self.password = password
+        
+        userID += 1
             }
     
-    func login(){
+    func login(username: String? = nil , email: String? = nil , password : String) -> Bool {
+        
+        
+        guard username != nil || email != nil else {
+            print("Error")
+            return false
+        }
+        
+        if((self.username == username || self.email == email) && self.password == password){
+            print("lOGIN SUCCESS")
+            return true
+        }else{
+            print("Access Denied")
+            return false
+        }
         
     }
-    
     func joinEvent(){}
     
     func withdrawFromEvent(){

@@ -14,6 +14,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    let newUser =  User(username: "mrfjm", fullName: "Manaf Mohamed", email: "mrfjm2@gmail.com", dateOfBirth: "17/03/2004", password: "password")
+    
+    //newUser.login(username: "mrfjm", password: "password")
 
 }
 
