@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F96B9432CFEDE480031EF80 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96B9422CFEDE480031EF80 /* CalendarCell.swift */; };
 		3FA385AB2CFDEF1000F645CE /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA385AA2CFDEF1000F645CE /* Calendar.storyboard */; };
 		C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B12F2CFC996700C073C2 /* AppDelegate.swift */; };
 		C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1312CFC996700C073C2 /* SceneDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F96B9422CFEDE480031EF80 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		3FA385AA2CFDEF1000F645CE /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		C395B12C2CFC996700C073C2 /* Eventosaurus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventosaurus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C395B12F2CFC996700C073C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				C395B13A2CFC996900C073C2 /* LaunchScreen.storyboard */,
 				C395B13D2CFC996900C073C2 /* Info.plist */,
 				3FA385AA2CFDEF1000F645CE /* Calendar.storyboard */,
+				3F96B9422CFEDE480031EF80 /* CalendarCell.swift */,
 			);
 			path = Eventosaurus;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */,
 				C395B16A2CFCB02300C073C2 /* System.swift in Sources */,
 				C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */,
+				3F96B9432CFEDE480031EF80 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
