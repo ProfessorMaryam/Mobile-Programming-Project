@@ -11,6 +11,8 @@ class Admin{
     
     static let shared = Admin(id: "0", name: "Admin", email: "EventosaurausAdmin@Example.com")
     
+    
+
     private var id : String
     private var name: String
     private var email: String
@@ -26,7 +28,11 @@ class Admin{
         
     }
     
-    func banUser(){
+    func banUserFromEvent(){
+        
+    }
+    
+    func banUserFromSystem(){
         
     }
     
