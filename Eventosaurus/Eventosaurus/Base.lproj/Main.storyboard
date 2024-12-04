@@ -94,6 +94,15 @@
                                     <color key="baseForegroundColor" red="0.23990869522094727" green="0.076750300824642181" blue="0.36543652415275574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1G-jd-x0O">
+                                <rect key="frame" x="105" y="751" width="183" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="go to join event page"/>
+                                <connections>
+                                    <segue destination="1tV-iz-jQP" kind="presentation" modalPresentationStyle="fullScreen" id="l1u-Eg-5XH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -106,6 +115,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1066.4122137404579" y="3.5211267605633805"/>
+        </scene>
+        <!--joinEventPageViewController-->
+        <scene sceneID="iZe-zN-YVu">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="joinEventPageViewController" storyboardName="joinEventPage" referencedIdentifier="joinEventPageViewController" id="1tV-iz-jQP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WIV-9Z-rKu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1066" y="431"/>
         </scene>
         <!--Register-->
         <scene sceneID="X4R-fQ-Dxh">
