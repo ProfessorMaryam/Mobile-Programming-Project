@@ -14,13 +14,21 @@ class ViewController: UIViewController {
    // @IBOutlet weak var loginButton: UIButton!
     @IBOutlet var customView: UIView!
     
- 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-     
-    
+    @IBAction func unwindToStartup(unwindSegue: UIStoryboardSegue){
         
     }
+
+    @IBAction func goBack(_ sender: Any) {
+    }
+//    @IBAction func returnToLogIn(_ sender: Any) {
+//        self.navigationController?.popViewController(animated: true)
+//
+//    }
+//    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
 
 //    override func viewDidLayoutSubviews(){
 //        super.viewDidLayoutSubviews()
@@ -29,8 +37,8 @@ class ViewController: UIViewController {
 //    }
 //    
     //
-//    let newUser =  User(username: "mrfjm", fullName: "Manaf Mohamed", email: "mrfjm2@gmail.com", dateOfBirth: "17/03/2004", password: "password")
-//    
+//    let newUser =  User(username: "mrfjm", fullName: "Manaf Mohamed", email: "mrfjm2@gmail.com", dateOfBirth: "17-03-2004", password: "password")
+//
 //    //newUser.login(username: "mrfjm", password: "password")
 //    
 //    
