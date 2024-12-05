@@ -100,7 +100,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="go to join event page"/>
                                 <connections>
-                                    <segue destination="1tV-iz-jQP" kind="presentation" modalPresentationStyle="fullScreen" id="l1u-Eg-5XH"/>
+                                    <segue destination="4xf-fb-q99" kind="push" id="P21-bO-hnh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -116,13 +116,15 @@
             </objects>
             <point key="canvasLocation" x="1066.4122137404579" y="3.5211267605633805"/>
         </scene>
-        <!--joinEventPageViewController-->
-        <scene sceneID="iZe-zN-YVu">
+        <!--joinEventPage-->
+        <scene sceneID="72k-wx-fst">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="joinEventPageViewController" storyboardName="joinEventPage" referencedIdentifier="joinEventPageViewController" id="1tV-iz-jQP" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WIV-9Z-rKu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="joinEventPage" id="4xf-fb-q99" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="byq-Wi-fwj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vhu-rm-hYS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066" y="431"/>
+            <point key="canvasLocation" x="1107" y="412"/>
         </scene>
         <!--Register-->
         <scene sceneID="X4R-fQ-Dxh">
