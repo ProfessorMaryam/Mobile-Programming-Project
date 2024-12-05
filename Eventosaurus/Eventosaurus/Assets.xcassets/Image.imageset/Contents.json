@@ -9,21 +9,13 @@
       "scale" : "2x"
     },
     {
-      "filename" : "Screenshot 2024-12-03 at 4.23.34 PM.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
-      "scale" : "1x"
-    },
-    {
+      "filename" : "IMG_0126.png",
       "idiom" : "iphone",
       "scale" : "2x"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "3x"
     }
   ],
   "info" : {
