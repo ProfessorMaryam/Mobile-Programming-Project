@@ -60,7 +60,7 @@
         <!--Calendar-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="ViewCalendar" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="CalendarCell" customModule="Eventosaurus" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,6 +76,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrowshape.right.fill" catalog="system" title=""/>
                                 <connections>
+                                    <action selector="nextMonth:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NRY-di-qsA"/>
                                     <action selector="nextMonth:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="abZ-fM-gyX"/>
                                 </connections>
                             </button>
@@ -139,7 +140,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QU2-oc-Sjq" customClass="CalendarCell" customModule="Eventosaurus" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calCell" id="QU2-oc-Sjq" customClass="CalendarCell" customModule="Eventosaurus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ikg-Zq-kjC">
@@ -147,7 +148,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzP-uy-zmE">
-                                                    <rect key="frame" x="60.666666666666664" y="54" width="7.6666666666666643" height="20.666666666666657"/>
+                                                    <rect key="frame" x="58" y="54" width="7.6666666666666643" height="20.666666666666657"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -160,7 +161,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="CollectionView" destination="Ikg-Zq-kjC" id="rti-8M-j3a"/>
-                                            <outlet property="dayOfMonth" destination="KzP-uy-zmE" id="5cA-T1-uHD"/>
+                                            <outlet property="dayOfMonth" destination="KzP-uy-zmE" id="Wuq-dc-3TF"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -171,6 +172,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="arrowshape.left.fill" catalog="system" title=""/>
                                 <connections>
                                     <action selector="previousMonth:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="UMd-yc-luo"/>
+                                    <action selector="previousMonth:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pc4-aD-mpb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -208,6 +210,10 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Calendar" id="Iar-hL-asS"/>
+                    <connections>
+                        <outlet property="collectionView" destination="fqW-Ne-NUc" id="mlg-Uo-xJ6"/>
+                        <outlet property="monthLabel" destination="Tn0-Nv-9fr" id="e8y-F9-ERR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

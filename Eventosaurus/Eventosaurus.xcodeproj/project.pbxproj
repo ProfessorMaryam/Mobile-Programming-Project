@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0F597C2D018605008A2A43 /* ViewCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F597B2D018605008A2A43 /* ViewCalendar.swift */; };
+		3F0F597E2D01994B008A2A43 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F597D2D01994B008A2A43 /* CalendarHelper.swift */; };
 		3FA385AB2CFDEF1000F645CE /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA385AA2CFDEF1000F645CE /* Calendar.storyboard */; };
 		C304BBCC2D00724000B37583 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C304BBCB2D00724000B37583 /* CalendarCell.swift */; };
 		C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B12F2CFC996700C073C2 /* AppDelegate.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F0F597B2D018605008A2A43 /* ViewCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCalendar.swift; sourceTree = "<group>"; };
+		3F0F597D2D01994B008A2A43 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		3FA385AA2CFDEF1000F645CE /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		C304BBCB2D00724000B37583 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		C395B12C2CFC996700C073C2 /* Eventosaurus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventosaurus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +134,8 @@
 				C395B13D2CFC996900C073C2 /* Info.plist */,
 				3FA385AA2CFDEF1000F645CE /* Calendar.storyboard */,
 				C304BBCB2D00724000B37583 /* CalendarCell.swift */,
+				3F0F597B2D018605008A2A43 /* ViewCalendar.swift */,
+				3F0F597D2D01994B008A2A43 /* CalendarHelper.swift */,
 			);
 			path = Eventosaurus;
 			sourceTree = "<group>";
@@ -283,6 +289,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F0F597C2D018605008A2A43 /* ViewCalendar.swift in Sources */,
+				3F0F597E2D01994B008A2A43 /* CalendarHelper.swift in Sources */,
 				C395B1682CFCA9E700C073C2 /* Event.swift in Sources */,
 				C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,
