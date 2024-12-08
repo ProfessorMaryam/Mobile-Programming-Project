@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,10 +28,10 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0B-I2-xkY" userLabel="customView">
-                                <rect key="frame" x="0.0" y="181.33333333333331" width="393" height="670.66666666666674"/>
+                                <rect key="frame" x="0.0" y="182" width="393" height="670"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="a0B-I2-xkY" secondAttribute="height" multiplier="395:674" id="OX1-D9-0Sn"/>
+                                    <constraint firstAttribute="width" secondItem="a0B-I2-xkY" secondAttribute="height" multiplier="393:670" id="Ruq-65-9W1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -44,9 +44,9 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="a0B-I2-xkY" secondAttribute="bottom" id="DAx-IB-IVw"/>
-                            <constraint firstAttribute="trailing" secondItem="a0B-I2-xkY" secondAttribute="trailing" id="Ja3-fA-S82"/>
-                            <constraint firstItem="a0B-I2-xkY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="jB5-pV-5GD"/>
+                            <constraint firstAttribute="bottom" secondItem="a0B-I2-xkY" secondAttribute="bottom" id="6Ks-jD-dWn"/>
+                            <constraint firstItem="a0B-I2-xkY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Yo6-PJ-IoZ"/>
+                            <constraint firstItem="a0B-I2-xkY" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="smX-0f-7eO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Interests" largeTitleDisplayMode="always" id="4AS-NX-SeC"/>

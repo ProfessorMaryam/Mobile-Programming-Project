@@ -9,6 +9,7 @@ import UIKit
 
 
 
+
 class ViewController: UIViewController {
     
    // @IBOutlet weak var loginButton: UIButton!
@@ -18,8 +19,8 @@ class ViewController: UIViewController {
         
     }
 
-    @IBAction func goBack(_ sender: Any) {
-    }
+//    @IBAction func goBack(_ sender: Any) {
+//    }
 //    @IBAction func returnToLogIn(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: true)
 //

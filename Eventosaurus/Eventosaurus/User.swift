@@ -43,23 +43,23 @@ class User {
         User.idIncrement+=1
             }
     
-    func login(username: String? = nil , email: String? = nil , password : String) -> Bool {
-        
-        
-        guard username != nil || email != nil else {
-            print("Error")
-            return false
-        }
-        
-        if((self.username == username || self.email == email) && self.password == password){
-            print("lOGIN SUCCESS")
-            return true
-        }else{
-            print("Access Denied")
-            return false
-        }
-        
-    }
+//    func login(username: String? = nil , email: String? = nil , password : String) -> Bool {
+//        
+//        
+//        guard username != nil || email != nil else {
+//            print("Error")
+//            return false
+//        }
+//        
+//        if((self.username == username || self.email == email) && self.password == password){
+//            print("lOGIN SUCCESS")
+//            return true
+//        }else{
+//            print("Access Denied")
+//            return false
+//        }
+//        
+//    }
     func joinEvent(){
         // add user to the list of the event attendees
     }

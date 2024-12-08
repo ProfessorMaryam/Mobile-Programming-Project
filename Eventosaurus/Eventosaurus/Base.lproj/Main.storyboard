@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gCB-x0-6Rf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gCB-x0-6Rf">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="1jR-PW-JR9">
-                                <rect key="frame" x="-8" y="-8" width="418" height="867"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-Lg-Q6P">
                                 <rect key="frame" x="77" y="261" width="239" height="216"/>
@@ -121,7 +121,7 @@
         <!--Register-->
         <scene sceneID="X4R-fQ-Dxh">
             <objects>
-                <viewController id="YZZ-GS-yiG" sceneMemberID="viewController">
+                <viewController id="YZZ-GS-yiG" customClass="Register" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kNY-sa-HYk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,7 +236,8 @@
                                             <color key="baseBackgroundColor" red="0.41983866689999999" green="0.12453217060000001" blue="0.61969172949999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="gC5-zx-fZf" kind="push" id="hDe-5s-F3X"/>
+                                            <action selector="didTapSignUp:" destination="YZZ-GS-yiG" eventType="touchUpInside" id="CAC-FC-bpL"/>
+                                            <segue destination="gC5-zx-fZf" kind="push" identifier="toInterests" id="8Nv-1c-mKF"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jB0-Ui-KIs">
@@ -268,6 +269,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Register" largeTitleDisplayMode="always" id="8xt-67-OA6"/>
+                    <connections>
+                        <outlet property="confirmPassReqLabel" destination="jB0-Ui-KIs" id="Xyn-JY-9Hb"/>
+                        <outlet property="confirmPasswordTxtField" destination="Iwh-6K-zEG" id="35X-v2-wWS"/>
+                        <outlet property="dateTxtField" destination="mMi-oO-NZz" id="zdF-KR-DQJ"/>
+                        <outlet property="dobReqLabel" destination="mzV-Wt-zu6" id="gYs-5i-ml2"/>
+                        <outlet property="emailReqLabel" destination="hS9-60-iOx" id="tzF-fQ-dOW"/>
+                        <outlet property="emailTxtField" destination="vhH-nk-g1E" id="FCg-yp-EHg"/>
+                        <outlet property="fnReqLabel" destination="Rsj-0u-3Eb" id="r3S-aX-AKv"/>
+                        <outlet property="fullnameTxtField" destination="L6I-8O-bdM" id="bDb-bg-qhy"/>
+                        <outlet property="passwordTxtfield" destination="63m-uw-KKZ" id="gch-lu-2Mk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8g-T9-eas" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -286,7 +298,7 @@
         <!--Log in-->
         <scene sceneID="CuE-EN-T7f">
             <objects>
-                <viewController id="Qgn-FE-iaj" sceneMemberID="viewController">
+                <viewController id="Qgn-FE-iaj" customClass="LoginPage" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="46v-A1-dHl">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -353,6 +365,9 @@
                                             </attributedString>
                                             <color key="baseBackgroundColor" red="0.41983866689999999" green="0.12453217060000001" blue="0.61969172949999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="loginButtonTapped:" destination="Qgn-FE-iaj" eventType="touchUpInside" id="bqc-sq-qrf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxa-sz-jqs">
                                         <rect key="frame" x="62" y="509" width="271" height="35"/>
@@ -400,6 +415,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Log in" largeTitleDisplayMode="always" id="Z4i-VR-npm"/>
+                    <connections>
+                        <outlet property="emailReqLabel" destination="DRV-gF-npl" id="cdf-l7-8xb"/>
+                        <outlet property="emailTxtField" destination="mPC-Qb-80C" id="1Fa-VX-FMT"/>
+                        <outlet property="passwordReqLabel" destination="8Ym-oo-RZz" id="l3G-uZ-Fwt"/>
+                        <outlet property="passwordTxtField" destination="wim-4G-BwB" id="BUI-Df-EM8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ehy-pU-4Vc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -432,7 +453,7 @@
         <!--Forgot Password-->
         <scene sceneID="Gly-4h-Zy9">
             <objects>
-                <viewController id="V6M-l0-scj" sceneMemberID="viewController">
+                <viewController id="V6M-l0-scj" customClass="ForgotPassword" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EPI-xm-bhR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,7 +473,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VPs-ku-m8H">
-                                        <rect key="frame" x="91" y="381.33333333333337" width="261" height="34"/>
+                                        <rect key="frame" x="90" y="398" width="261" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -465,13 +486,13 @@
                                         <imageReference key="image" image="envelope" catalog="system" symbolScale="medium" renderingMode="template"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HiY-jy-IKf">
-                                        <rect key="frame" x="42" y="401.33333333333337" width="35" height="34"/>
+                                        <rect key="frame" x="41" y="418" width="35" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="0.2367596126" green="0.084942979939999996" blue="0.58185453190000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <imageReference key="image" image="key" catalog="system" symbolScale="medium" renderingMode="template"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NpV-hy-iMH">
-                                        <rect key="frame" x="91" y="423" width="261" height="34"/>
+                                        <rect key="frame" x="90" y="440" width="261" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -493,6 +514,7 @@
                                             <color key="baseBackgroundColor" red="0.41983866689999999" green="0.12453217060000001" blue="0.61969172949999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
+                                            <action selector="changePassTapped:" destination="V6M-l0-scj" eventType="touchUpInside" id="phh-A2-sbe"/>
                                             <segue destination="YwJ-zd-x98" kind="unwind" unwindAction="unwindToStartupWithUnwindSegue:" id="xP4-H0-lcp"/>
                                         </connections>
                                     </button>
@@ -500,6 +522,20 @@
                                         <rect key="frame" x="78" y="78" width="248" height="212"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqL-L6-5D2">
+                                        <rect key="frame" x="91" y="362" width="58" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erm-A5-dv3">
+                                        <rect key="frame" x="90" y="482" width="58" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -526,6 +562,13 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </navigationItem>
+                    <connections>
+                        <outlet property="confirmPasswordTxtField" destination="NpV-hy-iMH" id="Xxf-LX-coy"/>
+                        <outlet property="emailReqLabel" destination="wqL-L6-5D2" id="kMh-fu-d4u"/>
+                        <outlet property="emailTxtField" destination="OtS-QO-Vqa" id="fW0-Sl-Sqv"/>
+                        <outlet property="passwordReqLabel" destination="erm-A5-dv3" id="mWx-kl-nOh"/>
+                        <outlet property="passwordTxtField" destination="VPs-ku-m8H" id="Wlj-Pi-b2p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhF-NZ-hYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="YwJ-zd-x98" userLabel="Exit" sceneMemberID="exit"/>
@@ -545,10 +588,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
