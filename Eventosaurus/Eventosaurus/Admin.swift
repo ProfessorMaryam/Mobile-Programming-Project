@@ -24,16 +24,16 @@ class Admin{
         self.email = email
     }
                               
-    func createUser(){
-        
-    }
+//    func createUser(){
+//        
+//    }
     
     func banUserFromEvent(){
-        
+        //access user that is registered to an event and remove them from it, then in this function send a notification to the user
     }
     
     func banUserFromSystem(){
-        
+        //Delete user
     }
     
     func addEvent(){

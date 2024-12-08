@@ -60,10 +60,12 @@ class User {
         }
         
     }
-    func joinEvent(){}
+    func joinEvent(){
+        // add user to the list of the event attendees
+    }
     
     func withdrawFromEvent(){
-        
+        // remove self from the list of event attendees
     }
     
     func likeEvent(){
