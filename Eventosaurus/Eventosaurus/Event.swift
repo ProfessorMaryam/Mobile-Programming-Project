@@ -23,7 +23,7 @@ class Event {
     init(status: EventStatus, name: String, description: String, date: String, organizers: String, maximumAttendees: Int) {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-mm-yyyy"  // Customize the expected date format (e.g., "yyyy-MM-dd")
+        dateFormatter.dateFormat = "dd-MM-yyyy"  // Customize the expected date format (e.g., "yyyy-MM-dd")
         
         if let parsedDate = dateFormatter.date(from: date) {
             self.date = parsedDate  // Successfully parsed date

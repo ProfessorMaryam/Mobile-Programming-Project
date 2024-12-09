@@ -1,10 +1,10 @@
-////
-////  Organizer.swift
-////  Eventosaurus
-////
-////  Created by BP-36-201-14 on 01/12/2024.
-////
-//
+//////////
+//////////  Organizer.swift
+//////////  Eventosaurus
+//////////
+//////////  Created by BP-36-201-14 on 01/12/2024.
+//////////
+////////
 //import Foundation
 //
 //class Organizer : User{
@@ -14,8 +14,9 @@
 //    
 //    init(contactNumber: String) {
 //        
-////        super.init(username: <#T##String#>, fullName: <#T##String#>, email: <#T##String#>, dateOfBirth: <#T##String#>, password: <#T##String#>)
-////        self.contactNumber = contactNumber
+//       super.init(username: <#T##String#>, fullName: <#T##String#>, email: <#T##String#>, dateOfBirth: <#T##String#>, password: <#T##String#>)
+//            .base()
+//      self.contactNumber = contactNumber
 //    }
 //
 //    
