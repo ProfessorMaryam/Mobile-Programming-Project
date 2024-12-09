@@ -17,8 +17,8 @@ enum UserRole {
 
 
 
-class User {
-    var username: String
+class User : Codable{
+   // var username: String
     let fullName: String
     let email: String
     let dateOfBirth: String
@@ -32,8 +32,8 @@ class User {
     
     ///Constructor is used in registration
     
-    init(username: String, fullName: String, email: String, dateOfBirth: String, password: String) {
-        self.username = username
+    init(fullName: String, email: String, dateOfBirth: String, password: String) {
+//        self.username = username
         self.fullName = fullName
         self.email = email
         self.dateOfBirth = dateOfBirth
@@ -43,23 +43,7 @@ class User {
         User.idIncrement+=1
             }
     
-//    func login(username: String? = nil , email: String? = nil , password : String) -> Bool {
-//        
-//        
-//        guard username != nil || email != nil else {
-//            print("Error")
-//            return false
-//        }
-//        
-//        if((self.username == username || self.email == email) && self.password == password){
-//            print("lOGIN SUCCESS")
-//            return true
-//        }else{
-//            print("Access Denied")
-//            return false
-//        }
-//        
-//    }
+
     func joinEvent(){
         // add user to the list of the event attendees
     }

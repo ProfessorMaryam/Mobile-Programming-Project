@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import Firebase
 
 class Register: UIViewController {
     
     
     ///These are the outlets for the labels. they are initially hidden until the user skips the
     ///input fir one of the text fields. only then they are made visible to let them know that input is required
-
+    
     @IBOutlet weak var fnReqLabel: UILabel!
     
     @IBOutlet weak var emailReqLabel: UILabel!
@@ -37,7 +39,7 @@ class Register: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         fnReqLabel.isHidden = true
         emailReqLabel.isHidden = true
         dobReqLabel.isHidden = true
@@ -47,6 +49,51 @@ class Register: UIViewController {
     
     @IBAction func didTapSignUp(_ sender: Any) {
         // Check for empty fields and show corresponding labels
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toInterests" {
+            
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        var v = true
+        if identifier == "toInterests" {
+            // Add your condition to abort the segue
+            v = isValid()
+            if v {
+                // Proceed with the segue (navigate to the next view controller)
+                print("All fields are filled and passwords match. Proceeding to next page...")
+                
+//                let fullName = fullnameTxtField.text
+//                let email = emailTxtField.text
+//                let dateOfBirth = dateTxtField.text
+//                let password = passwordTxtfield.text
+                
+                let newUser = User(fullName: fullnameTxtField.text!, email: emailTxtField.text ?? "", dateOfBirth:dateTxtField.text ?? "", password: passwordTxtfield.text ?? "")
+                
+               // Firestore.firestore().collection("users").addDocument(data: Firestore.Encoder.encode(newUser))
+                
+                
+            } else {
+                // If fields are not filled correctly, stay on the current page and show an alert
+                print("Please fill in all the required fields or check password confirmation.")
+                
+                // Show an alert to inform the user
+                let alertController = UIAlertController(title: "Invalid Input", message: "Please fill in all the required fields and make sure the passwords match.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            }
+            
+        }
+        
+        return v
+    }
+    
+    
+    func isValid () -> Bool{
         var isValid = true
         
         // Check Full Name
@@ -87,26 +134,13 @@ class Register: UIViewController {
         }
         
         // If all fields are valid, proceed to the next screen
-        if isValid {
-            // Proceed with the segue (navigate to the next view controller)
-            self.performSegue(withIdentifier: "toInterests", sender: self)
-            print("All fields are filled and passwords match. Proceeding to next page...")
-        } else {
-            // If fields are not filled correctly, stay on the current page and show an alert
-            print("Please fill in all the required fields or check password confirmation.")
-            
-            // Show an alert to inform the user
-            let alertController = UIAlertController(title: "Invalid Input", message: "Please fill in all the required fields and make sure the passwords match.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }
+        return isValid
     }
-
-
-
-
-
-
     
-
+    
+    
+    
+    
+    
+    
 }
