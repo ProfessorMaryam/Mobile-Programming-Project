@@ -35,9 +35,17 @@ class HomePageViewController: UIViewController {
 
 class FilterSearchViewController: UIViewController {
     
+    @IBOutlet weak var haButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+    }
+    
+    @IBAction func HAButton(_ sender: UIButton) {
     }
     
 }
+
+
