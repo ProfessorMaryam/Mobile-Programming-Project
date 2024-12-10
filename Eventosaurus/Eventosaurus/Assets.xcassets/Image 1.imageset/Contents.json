@@ -1,10 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "interface.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "checkbox.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
