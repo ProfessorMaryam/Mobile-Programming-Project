@@ -17,14 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="1jR-PW-JR9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="1jR-PW-JR9">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-Lg-Q6P">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-Lg-Q6P">
                                 <rect key="frame" x="77" y="261" width="239" height="216"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="IYh-mQ-mO5"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ith-wz-P6p">
                                 <rect key="frame" x="55" y="562" width="283" height="59"/>
@@ -102,12 +101,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="1jR-PW-JR9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PAI-2u-SkS"/>
-                            <constraint firstAttribute="bottom" secondItem="1jR-PW-JR9" secondAttribute="bottom" id="RJf-oG-SgF"/>
-                            <constraint firstAttribute="trailing" secondItem="1jR-PW-JR9" secondAttribute="trailing" id="UQ9-oL-ynY"/>
-                            <constraint firstItem="1jR-PW-JR9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="u1k-IH-sEj"/>
-                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.cornerToRound" value="YES"/>
                         </userDefinedRuntimeAttributes>
@@ -240,9 +233,8 @@
                                             <segue destination="gC5-zx-fZf" kind="push" identifier="toInterests" id="8Zt-24-rnH"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jB0-Ui-KIs">
-                                        <rect key="frame" x="90" y="364" width="58" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Required" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jB0-Ui-KIs">
+                                        <rect key="frame" x="90" y="384" width="283" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -251,6 +243,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jr1-FZ-UQD" secondAttribute="height" multiplier="393:668" id="4UG-rs-cwY"/>
+                                    <constraint firstAttribute="trailing" secondItem="jB0-Ui-KIs" secondAttribute="trailing" constant="121" id="BpG-iS-KNO"/>
+                                    <constraint firstItem="jB0-Ui-KIs" firstAttribute="leading" secondItem="Jr1-FZ-UQD" secondAttribute="leading" constant="90" id="DEi-2G-1Jx"/>
+                                    <constraint firstAttribute="trailing" secondItem="jB0-Ui-KIs" secondAttribute="trailing" constant="20" id="GIK-Hn-QDh"/>
+                                    <constraint firstAttribute="trailing" secondItem="jB0-Ui-KIs" secondAttribute="trailing" constant="20" id="p7u-Xt-AdM"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -431,14 +427,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gCB-x0-6Rf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" largeTitles="YES" id="0nA-Bo-YzK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" largeTitles="YES" id="0nA-Bo-YzK">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <color key="textShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.99316412210464478" green="0.99316412210464478" blue="0.99316412210464478" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -588,10 +584,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

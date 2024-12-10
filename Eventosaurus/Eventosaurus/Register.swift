@@ -252,7 +252,7 @@ class Register: UIViewController {
         // Check if Password and Confirm Password match
         if let password = passwordTxtfield.text, let confirmPassword = confirmPasswordTxtField.text, password != confirmPassword {
             confirmPassReqLabel.isHidden = false
-            confirmPassReqLabel.text = "Passwords do not match!"
+            confirmPassReqLabel.text = "Passwords do not match"
             isValid = false
         }
         
