@@ -439,7 +439,7 @@
         <!--Filter Search-->
         <scene sceneID="zZs-s9-nhS">
             <objects>
-                <viewController storyboardIdentifier="FilterSearchViewController" id="KLT-ee-JYW" userLabel="Filter Search" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FilterSearchViewController" id="KLT-ee-JYW" userLabel="Filter Search" customClass="FilterSearchViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2lt-vJ-bCW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -476,6 +476,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="ENTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="Q91-qM-J8t"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQh-sx-UE6">
                                         <rect key="frame" x="344" y="433" width="36" height="29"/>
@@ -488,6 +491,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="CLTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="kl7-3r-55T"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8m-FB-oxI">
                                         <rect key="frame" x="344" y="301" width="36" height="29"/>
@@ -500,6 +506,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="MSTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="qOS-Y0-fXA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruT-f4-h2q">
                                         <rect key="frame" x="171" y="299" width="36" height="29"/>
@@ -512,6 +521,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="CMTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="pVS-In-NRn"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Art" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVh-ER-wIM">
                                         <rect key="frame" x="29" y="264" width="22" height="20"/>
@@ -531,6 +543,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="ARTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="mKB-oO-J1k"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65z-kK-nCb">
                                         <rect key="frame" x="344" y="260" width="36" height="29"/>
@@ -543,6 +558,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="LRTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="2eE-ws-gLJ"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="__________________" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRz-6p-OrO">
                                         <rect key="frame" x="28" y="487" width="349" height="46"/>
@@ -583,6 +601,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="EDTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="i5x-ON-0NW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0is-bN-DXQ">
                                         <rect key="frame" x="171" y="433" width="36" height="29"/>
@@ -595,6 +616,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="NRTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="cvX-Zz-Sbf"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16l-vI-2CD">
                                         <rect key="frame" x="243" y="305" width="44" height="20"/>
@@ -621,6 +645,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="WETapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="Dm1-UV-MLL"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Literature " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LY-Rt-Pgt">
                                         <rect key="frame" x="243" y="264" width="75" height="20"/>
@@ -647,6 +674,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="SRTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="YDZ-VS-3RJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HvL-85-0Ij">
                                         <rect key="frame" x="344" y="608" width="36" height="29"/>
@@ -659,6 +689,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="MOTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="Mip-3z-NFN"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Entertainment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62l-ie-5fy">
                                         <rect key="frame" x="29" y="224" width="103" height="20"/>
@@ -678,6 +711,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="FDTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="3t5-km-gRR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqI-Dp-Bah">
                                         <rect key="frame" x="171" y="482" width="36" height="29"/>
@@ -690,6 +726,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="MQTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="vPY-FZ-cBx"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Southern" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-mn-ZiG">
                                         <rect key="frame" x="243" y="487" width="67" height="20"/>
@@ -730,6 +769,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="FNTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="KYU-5s-woD"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hew-bj-Pei">
                                         <rect key="frame" x="29" y="146" width="48" height="20"/>
@@ -749,20 +791,22 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="SPTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="Dxg-T3-39g"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKp-7f-kNo" userLabel="HAButton">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKp-7f-kNo">
                                         <rect key="frame" x="171" y="101" width="36" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="HAButton"/>
                                         <color key="tintColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="square" catalog="system" backgroundImage="square.fill"/>
+                                        <state key="normal" image="square" catalog="system"/>
                                         <state key="selected" image="square.fill" catalog="system">
-                                            <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
                                         <connections>
-                                            <action selector="HAButton:" destination="S1S-DT-iVQ" eventType="touchUpInside" id="axX-5K-v77"/>
+                                            <action selector="HATapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="VP8-A1-MQx"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Health Awareness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ds2-PN-fCq">
@@ -790,6 +834,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="SLTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="5Ia-IU-3Hm"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Social" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrS-gA-mMh">
                                         <rect key="frame" x="243" y="184" width="44" height="20"/>
@@ -816,6 +863,9 @@
                                             <color key="titleColor" red="0.36680978539999998" green="0.2432083488" blue="0.49826967719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="PHTapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="a1w-1s-dJ2"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photography" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NkX-M9-awk">
                                         <rect key="frame" x="243" y="106" width="93" height="20"/>
@@ -865,9 +915,28 @@
                             <constraint firstItem="Id3-3c-p95" firstAttribute="trailing" secondItem="tdY-Kd-rCs" secondAttribute="trailing" constant="327" id="yNd-Ig-Z3r"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ARButton" destination="lKz-H5-owB" id="06F-Wh-PnZ"/>
+                        <outlet property="CLButton" destination="bQh-sx-UE6" id="67O-ms-bvE"/>
+                        <outlet property="CMButton" destination="ruT-f4-h2q" id="Pex-GW-o98"/>
+                        <outlet property="EDButton" destination="Ste-pN-OjM" id="XkA-xS-kUv"/>
+                        <outlet property="ENButton" destination="ybV-O9-lPA" id="DIJ-7c-pKw"/>
+                        <outlet property="FDButton" destination="M5E-NQ-JVO" id="x2S-MO-jwR"/>
+                        <outlet property="FNButton" destination="YxC-tV-OtA" id="Pmf-nE-byP"/>
+                        <outlet property="HAbutton" destination="XKp-7f-kNo" id="128-zg-1v4"/>
+                        <outlet property="LTButton" destination="65z-kK-nCb" id="MKj-ba-eks"/>
+                        <outlet property="MOButton" destination="HvL-85-0Ij" id="mB2-PJ-59u"/>
+                        <outlet property="MQButton" destination="tqI-Dp-Bah" id="Rtt-eS-rtq"/>
+                        <outlet property="MSButton" destination="n8m-FB-oxI" id="uhS-rk-3tv"/>
+                        <outlet property="NRButton" destination="0is-bN-DXQ" id="Ut8-BA-l6y"/>
+                        <outlet property="PHButton" destination="hxI-sF-wNa" id="EUr-bE-Lmu"/>
+                        <outlet property="SLButton" destination="83Z-5o-aai" id="FXP-GT-yfd"/>
+                        <outlet property="SPButton" destination="I8u-BG-nWf" id="4jl-Xd-vBR"/>
+                        <outlet property="SRButton" destination="biU-0h-bln" id="BLW-dE-dXN"/>
+                        <outlet property="WEButton" destination="lAu-7C-HEF" id="PSu-Wv-YaB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTX-i3-Oc9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="S1S-DT-iVQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5405.3435114503818" y="12.67605633802817"/>
         </scene>
@@ -1327,7 +1396,7 @@ Aminatour1@evento.saurus.bh</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="8Mm-fn-Hlm"/>
-        <segue reference="H3s-rf-fl5"/>
+        <segue reference="WfW-zp-FCv"/>
         <segue reference="Hnw-Gl-E06"/>
         <segue reference="ENW-tN-Hni"/>
     </inferredMetricsTieBreakers>
