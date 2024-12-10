@@ -205,7 +205,8 @@ class Register: UIViewController {
                 email: emailTxtField.text ?? "",
                 dateOfBirth: dateTxtField.text ?? "",
                 password: passwordTxtfield.text ?? "",
-                isOrganizer: false
+                isOrganizer: false,
+                isAdmin: false
             )
             
             registerUser(newUser)
@@ -258,6 +259,8 @@ class Register: UIViewController {
         
         return isValid
     }
+    
+    
 
     // Register user with Firebase Authentication
     func registerUser(_ newUser: User) {

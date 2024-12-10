@@ -83,7 +83,7 @@
                                     <color key="baseForegroundColor" red="0.23990869522094727" green="0.076750300824642181" blue="0.36543652415275574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="pBu-UE-E9v" kind="push" id="LLA-ab-NV3"/>
+                                    <segue destination="yzt-Ye-Rt4" kind="push" id="55w-hT-aXj"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFz-F2-meW">
@@ -162,14 +162,14 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ss" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iwh-6K-zEG">
                                         <rect key="frame" x="90" y="322" width="261" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="password"/>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b4a-4D-9q9">
                                         <rect key="frame" x="41" y="78" width="35" height="34"/>
@@ -236,8 +236,9 @@
                                             <segue destination="gC5-zx-fZf" kind="push" identifier="toInterests" id="8Zt-24-rnH"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Required" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jB0-Ui-KIs">
-                                        <rect key="frame" x="90" y="384" width="283" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jB0-Ui-KIs">
+                                        <rect key="frame" x="90" y="364" width="283" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -246,10 +247,6 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jr1-FZ-UQD" secondAttribute="height" multiplier="393:668" id="4UG-rs-cwY"/>
-                                    <constraint firstAttribute="trailing" secondItem="jB0-Ui-KIs" secondAttribute="trailing" constant="121" id="BpG-iS-KNO"/>
-                                    <constraint firstItem="jB0-Ui-KIs" firstAttribute="leading" secondItem="Jr1-FZ-UQD" secondAttribute="leading" constant="90" id="DEi-2G-1Jx"/>
-                                    <constraint firstAttribute="trailing" secondItem="jB0-Ui-KIs" secondAttribute="trailing" constant="20" id="GIK-Hn-QDh"/>
-                                    <constraint firstAttribute="trailing" secondItem="jB0-Ui-KIs" secondAttribute="trailing" constant="20" id="p7u-Xt-AdM"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -294,15 +291,15 @@
             </objects>
             <point key="canvasLocation" x="2594" y="177"/>
         </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="g51-9Q-Jek">
+        <!--BecomeOrg-->
+        <scene sceneID="GS8-Ov-4Hw">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="OrgRequest" id="pBu-UE-E9v" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="KfC-3h-dxW"/>
+                <viewControllerPlaceholder storyboardName="BecomeOrg" id="yzt-Ye-Rt4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="oze-e3-qCP"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="edS-UT-ybx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vAA-b9-7Zi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="460" y="486"/>
+            <point key="canvasLocation" x="353" y="621"/>
         </scene>
         <!--Log in-->
         <scene sceneID="CuE-EN-T7f">
@@ -597,10 +594,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

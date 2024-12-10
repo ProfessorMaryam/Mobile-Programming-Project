@@ -58,7 +58,6 @@
         <!--Navigation Controller-->
         <scene sceneID="BN8-va-k6g">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PWE-rZ-qSc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fzS-e5-GfX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Aov-bo-v1m">
@@ -78,6 +77,7 @@
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Fto-9O-ZeZ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PWE-rZ-qSc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="29.770992366412212" y="-1.4084507042253522"/>
         </scene>
