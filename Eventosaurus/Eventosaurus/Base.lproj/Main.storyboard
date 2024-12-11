@@ -19,13 +19,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-TV-xsc">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dl2-PK-re3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dl2-PK-re3">
                                 <rect key="frame" x="159" y="422" width="75" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
-                                    <segue destination="Cw1-8a-RWy" kind="presentation" id="dao-xj-SrG"/>
+                                    <segue destination="Cw1-8a-RWy" kind="presentation" modalPresentationStyle="fullScreen" id="dao-xj-SrG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -34,8 +33,12 @@
                         <constraints>
                             <constraint firstItem="nuf-TV-xsc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0d3-Zg-Joo"/>
                             <constraint firstAttribute="bottom" secondItem="nuf-TV-xsc" secondAttribute="bottom" id="8HU-UM-fLM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dl2-PK-re3" secondAttribute="trailing" constant="159" id="8U6-od-C90"/>
                             <constraint firstItem="nuf-TV-xsc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="AeC-pt-1tv"/>
+                            <constraint firstItem="dl2-PK-re3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="159" id="e4Y-zt-Bis"/>
                             <constraint firstItem="nuf-TV-xsc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hnd-2l-SbM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dl2-PK-re3" secondAttribute="bottom" constant="357" id="std-Oe-TyQ"/>
+                            <constraint firstItem="dl2-PK-re3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="363" id="tBJ-kW-HAI"/>
                         </constraints>
                     </view>
                 </viewController>
