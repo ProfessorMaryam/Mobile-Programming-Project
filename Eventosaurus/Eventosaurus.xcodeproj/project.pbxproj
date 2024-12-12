@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5737BDFF2D01D84100B40D01 /* Interests.storyboard */; };
+		C31190C12D0AD4B70034F32C /* AdminPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31190C02D0AD4B70034F32C /* AdminPage.swift */; };
 		C326037B2D0872DB008BD790 /* BecomeOrg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C326037A2D0872DB008BD790 /* BecomeOrg.storyboard */; };
 		C326037D2D0875F4008BD790 /* TermsAndConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C326037C2D0875F4008BD790 /* TermsAndConditions.swift */; };
 		C326037F2D0891A3008BD790 /* AdminPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C326037E2D0891A3008BD790 /* AdminPage.storyboard */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		5737BDFF2D01D84100B40D01 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
+		C31190C02D0AD4B70034F32C /* AdminPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPage.swift; sourceTree = "<group>"; };
 		C326037A2D0872DB008BD790 /* BecomeOrg.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BecomeOrg.storyboard; sourceTree = "<group>"; };
 		C326037C2D0875F4008BD790 /* TermsAndConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditions.swift; sourceTree = "<group>"; };
 		C326037E2D0891A3008BD790 /* AdminPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdminPage.storyboard; sourceTree = "<group>"; };
@@ -152,8 +154,9 @@
 				5737BDFF2D01D84100B40D01 /* Interests.storyboard */,
 				C3EBFD8D2D05EFF400B4D000 /* ForgotPassword.swift */,
 				C395B13A2CFC996900C073C2 /* LaunchScreen.storyboard */,
-				C326037E2D0891A3008BD790 /* AdminPage.storyboard */,
 				C326037A2D0872DB008BD790 /* BecomeOrg.storyboard */,
+				C326037E2D0891A3008BD790 /* AdminPage.storyboard */,
+				C31190C02D0AD4B70034F32C /* AdminPage.swift */,
 				C326037C2D0875F4008BD790 /* TermsAndConditions.swift */,
 				C395B1382CFC996900C073C2 /* Assets.xcassets */,
 				C395B13D2CFC996900C073C2 /* Info.plist */,
@@ -328,6 +331,7 @@
 				C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
+				C31190C12D0AD4B70034F32C /* AdminPage.swift in Sources */,
 				C3EBFD892D05DB6700B4D000 /* Register.swift in Sources */,
 				C3EBFD8C2D05EDBD00B4D000 /* LoginPage.swift in Sources */,
 				C395B1602CFCA7A800C073C2 /* User.swift in Sources */,
