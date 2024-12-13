@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E0255462D074AF600CC929B /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0255452D074AF600CC929B /* ProfilePage.swift */; };
 		7E3B5E6A2D0736B2005167A2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B5E692D0736B2005167A2 /* Profile.storyboard */; };
+		7EA1B9AE2D0C3B46009A24F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */; };
+		7EA1B9B02D0C3DC8009A24F3 /* OrganizerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */; };
+		7EA1B9B22D0C3DE9009A24F3 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */; };
 		C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B12F2CFC996700C073C2 /* AppDelegate.swift */; };
 		C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1312CFC996700C073C2 /* SceneDelegate.swift */; };
 		C395B1342CFC996700C073C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1332CFC996700C073C2 /* ViewController.swift */; };
@@ -44,8 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7E0255452D074AF600CC929B /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		7E3B5E692D0736B2005167A2 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizerProfile.storyboard; sourceTree = "<group>"; };
+		7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
 		C395B12C2CFC996700C073C2 /* Eventosaurus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventosaurus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C395B12F2CFC996700C073C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C395B1312CFC996700C073C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,8 +129,10 @@
 				C395B1672CFCA9E700C073C2 /* Event.swift */,
 				C395B1692CFCB02300C073C2 /* System.swift */,
 				C395B1352CFC996700C073C2 /* Main.storyboard */,
+				7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */,
+				7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */,
 				7E3B5E692D0736B2005167A2 /* Profile.storyboard */,
-				7E0255452D074AF600CC929B /* ProfilePage.swift */,
+				7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */,
 				C395B1382CFC996900C073C2 /* Assets.xcassets */,
 				C395B13A2CFC996900C073C2 /* LaunchScreen.storyboard */,
 				C395B13D2CFC996900C073C2 /* Info.plist */,
@@ -259,6 +265,7 @@
 				C395B1392CFC996900C073C2 /* Assets.xcassets in Resources */,
 				7E3B5E6A2D0736B2005167A2 /* Profile.storyboard in Resources */,
 				C395B1372CFC996700C073C2 /* Main.storyboard in Resources */,
+				7EA1B9B02D0C3DC8009A24F3 /* OrganizerProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,11 +292,12 @@
 			files = (
 				C395B1682CFCA9E700C073C2 /* Event.swift in Sources */,
 				C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */,
-				7E0255462D074AF600CC929B /* ProfilePage.swift in Sources */,
+				7EA1B9AE2D0C3B46009A24F3 /* ProfileViewController.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
 				C395B1602CFCA7A800C073C2 /* User.swift in Sources */,
 				C395B1342CFC996700C073C2 /* ViewController.swift in Sources */,
+				7EA1B9B22D0C3DE9009A24F3 /* OrganizerProfileViewController.swift in Sources */,
 				C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */,
 				C395B16A2CFCB02300C073C2 /* System.swift in Sources */,
 				C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */,

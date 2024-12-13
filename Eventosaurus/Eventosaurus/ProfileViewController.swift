@@ -1,13 +1,13 @@
 //
-//  ProfilePage.swift
+//  ProfileViewController.swift
 //  Eventosaurus
 //
-//  Created by Manaf Mohamed on 09/12/2024.
+//  Created by Manaf Mohamed on 13/12/2024.
 //
 
 import UIKit
 
-class ProfilePage: UIViewController {
+class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

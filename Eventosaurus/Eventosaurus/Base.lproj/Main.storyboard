@@ -22,9 +22,17 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dl2-PK-re3">
                                 <rect key="frame" x="159" y="422" width="75" height="39"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Profile"/>
                                 <connections>
                                     <segue destination="Cw1-8a-RWy" kind="presentation" modalPresentationStyle="fullScreen" id="dao-xj-SrG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpl-um-E8P">
+                                <rect key="frame" x="121" y="542" width="152" height="39"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Organizer Profile"/>
+                                <connections>
+                                    <segue destination="R10-VK-XE4" kind="presentation" modalPresentationStyle="fullScreen" id="I2l-hY-sRd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -35,10 +43,13 @@
                             <constraint firstAttribute="bottom" secondItem="nuf-TV-xsc" secondAttribute="bottom" id="8HU-UM-fLM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dl2-PK-re3" secondAttribute="trailing" constant="159" id="8U6-od-C90"/>
                             <constraint firstItem="nuf-TV-xsc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="AeC-pt-1tv"/>
+                            <constraint firstItem="kpl-um-E8P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="121" id="LVZ-E9-wSt"/>
                             <constraint firstItem="dl2-PK-re3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="159" id="e4Y-zt-Bis"/>
+                            <constraint firstItem="kpl-um-E8P" firstAttribute="top" secondItem="dl2-PK-re3" secondAttribute="bottom" constant="81" id="hbd-2F-7vG"/>
                             <constraint firstItem="nuf-TV-xsc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hnd-2l-SbM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dl2-PK-re3" secondAttribute="bottom" constant="357" id="std-Oe-TyQ"/>
                             <constraint firstItem="dl2-PK-re3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="363" id="tBJ-kW-HAI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kpl-um-E8P" secondAttribute="trailing" constant="120" id="vvq-EZ-C41"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -46,13 +57,21 @@
             </objects>
             <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
         </scene>
-        <!--Profile-->
+        <!--ProfileViewController-->
         <scene sceneID="qgz-8S-KGq">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ProfilePage" storyboardName="Profile" id="Cw1-8a-RWy" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="Profile" storyboardName="Profile" referencedIdentifier="ProfileViewController" id="Cw1-8a-RWy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AxU-jr-Ufw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="861" y="54"/>
+            <point key="canvasLocation" x="849" y="-59"/>
+        </scene>
+        <!--OrganizerProfileViewController-->
+        <scene sceneID="Mmc-P2-KCc">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="OrganizerProfile" storyboardName="OrganizerProfile" referencedIdentifier="OrganizerProfileViewController" id="R10-VK-XE4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jnr-Bm-BF5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="728" y="85"/>
         </scene>
     </scenes>
     <resources>
