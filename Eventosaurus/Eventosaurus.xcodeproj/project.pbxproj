@@ -26,6 +26,8 @@
 		C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1652CFCA83900C073C2 /* Organizer.swift */; };
 		C395B1682CFCA9E700C073C2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1672CFCA9E700C073C2 /* Event.swift */; };
 		C395B16A2CFCB02300C073C2 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1692CFCB02300C073C2 /* System.swift */; };
+		D007F1832D0D9A9000561942 /* notificationPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D007F1822D0D9A9000561942 /* notificationPage.storyboard */; };
+		D007F1852D0D9CF700561942 /* notificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D007F1842D0D9CF700561942 /* notificationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		C395B1652CFCA83900C073C2 /* Organizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer.swift; sourceTree = "<group>"; };
 		C395B1672CFCA9E700C073C2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		C395B1692CFCB02300C073C2 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		D007F1822D0D9A9000561942 /* notificationPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = notificationPage.storyboard; sourceTree = "<group>"; };
+		D007F1842D0D9CF700561942 /* notificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 				C304BBCB2D00724000B37583 /* CalendarCell.swift */,
 				3F0F597B2D018605008A2A43 /* ViewCalendar.swift */,
 				3F0F597D2D01994B008A2A43 /* CalendarHelper.swift */,
+				D007F1822D0D9A9000561942 /* notificationPage.storyboard */,
+				D007F1842D0D9CF700561942 /* notificationViewController.swift */,
 			);
 			path = Eventosaurus;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 				C395B13C2CFC996900C073C2 /* LaunchScreen.storyboard in Resources */,
 				C395B1392CFC996900C073C2 /* Assets.xcassets in Resources */,
 				C395B1372CFC996700C073C2 /* Main.storyboard in Resources */,
+				D007F1832D0D9A9000561942 /* notificationPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +301,7 @@
 				C395B1682CFCA9E700C073C2 /* Event.swift in Sources */,
 				C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,
+				D007F1852D0D9CF700561942 /* notificationViewController.swift in Sources */,
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
 				C395B1602CFCA7A800C073C2 /* User.swift in Sources */,
 				C395B1342CFC996700C073C2 /* ViewController.swift in Sources */,

@@ -9,11 +9,10 @@ import UIKit
 
 class ViewCalendar: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var monthLabel: UILabel!
     
-    var selectDate = Date()
+    var selectedDate = Date()
     var totalSquares = [String]()
     
     override func viewDidLoad() {
@@ -37,8 +36,8 @@ class ViewCalendar: UIViewController, UICollectionViewDelegate, UICollectionView
     func setMonthView () {
         totalSquares.removeAll()
         
-        let daysInMonth = CalendarHelper().daysInMonth(date: selectDate)
-        let firstDayOfMonth = CalendarHelper().firstOfMonth(date: selectDate)
+        let daysInMonth = CalendarHelper().daysInMonth(date: selectedDate)
+        let firstDayOfMonth = CalendarHelper().firstOfMonth(date: selectedDate)
         let startingSpaces = CalendarHelper().weekDay(date: firstDayOfMonth)
         
         var count: Int = 1
@@ -70,14 +69,14 @@ class ViewCalendar: UIViewController, UICollectionViewDelegate, UICollectionView
         return cell
     }
     
-    @IBAction func previousMonth(_ sender: Any) {
+    @IBAction func nextMonth(_ sender: Any) {
         selectedDate = CalendarHelper().minusMonth(date: selectedDate)
-        setMonthView()
+                setMonthView()
     }
     
-    @IBAction func nextMonth(_ sender: Any) {
+    @IBAction func previousMonth(_ sender: Any) {
         selectedDate = CalendarHelper().plusMonth(date: selectedDate)
-        setMonthView()
+                setMonthView()
     }
     
     override open var shouldAutorotate: Bool {
