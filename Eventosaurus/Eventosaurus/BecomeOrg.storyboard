@@ -153,10 +153,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="R44-0W-vTr">
-                                <rect key="frame" x="0.0" y="0.0" width="398.33333333333331" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdk-0C-Pza">
-                                <rect key="frame" x="0.0" y="157.66666666666669" width="398.33333333333331" height="694.33333333333326"/>
+                                <rect key="frame" x="0.0" y="167" width="393" height="685"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-su-6dr">
                                         <rect key="frame" x="37" y="58" width="324.33333333333331" height="34"/>
@@ -165,19 +165,19 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vUb-fT-zrM">
-                                        <rect key="frame" x="37" y="129.00000000000003" width="324.33333333333331" height="34"/>
+                                        <rect key="frame" x="37" y="129" width="324.33333333333331" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why do you want to become an organizer?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUo-KY-7Yr">
-                                        <rect key="frame" x="37" y="190.00000000000003" width="324.33333333333331" height="21"/>
+                                        <rect key="frame" x="37" y="190" width="324.33333333333331" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZU2-Vv-jWd">
-                                        <rect key="frame" x="37" y="461.33333333333337" width="324.33333333333331" height="99"/>
+                                        <rect key="frame" x="37" y="452" width="324.33333333333331" height="99"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -190,13 +190,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down your qualifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayn-14-VZV">
-                                        <rect key="frame" x="37" y="423" width="230" height="30.333333333333314"/>
+                                        <rect key="frame" x="37" y="423" width="230" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppe-eL-T67">
-                                        <rect key="frame" x="163.66666666666666" y="585.33333333333337" width="71" height="43"/>
+                                        <rect key="frame" x="163.66666666666666" y="576" width="71" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="Wg4-6C-A7L"/>
                                         </constraints>
@@ -254,7 +254,6 @@
                                     <constraint firstItem="f4X-su-6dr" firstAttribute="leading" secondItem="ayn-14-VZV" secondAttribute="leading" id="bFZ-iP-2Ks"/>
                                     <constraint firstItem="f4X-su-6dr" firstAttribute="trailing" secondItem="ZU2-Vv-jWd" secondAttribute="trailing" id="cJY-rH-0kL"/>
                                     <constraint firstItem="f4X-su-6dr" firstAttribute="leading" secondItem="qUo-KY-7Yr" secondAttribute="leading" id="dK2-rX-fhK"/>
-                                    <constraint firstItem="Wmv-R4-nJo" firstAttribute="centerX" secondItem="fdk-0C-Pza" secondAttribute="centerX" id="e13-mX-ut6"/>
                                     <constraint firstItem="Wmv-R4-nJo" firstAttribute="centerX" secondItem="f4X-su-6dr" secondAttribute="centerX" id="eGL-fb-exW"/>
                                     <constraint firstItem="vUb-fT-zrM" firstAttribute="top" secondItem="f4X-su-6dr" secondAttribute="bottom" constant="37" id="i6a-Db-RkF"/>
                                     <constraint firstAttribute="bottom" secondItem="ayn-14-VZV" secondAttribute="bottom" constant="241" id="nwz-t3-aTu"/>
