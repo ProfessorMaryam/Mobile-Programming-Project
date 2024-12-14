@@ -46,3 +46,15 @@ class ViewController: UIViewController {
 
 }
 
+
+
+
+class RegisterPageViewController: UIViewController{
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+        
+}

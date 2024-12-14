@@ -156,7 +156,7 @@
         <!--Register-->
         <scene sceneID="X4R-fQ-Dxh">
             <objects>
-                <viewController id="YZZ-GS-yiG" sceneMemberID="viewController">
+                <viewController id="YZZ-GS-yiG" customClass="RegisterPageViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kNY-sa-HYk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
