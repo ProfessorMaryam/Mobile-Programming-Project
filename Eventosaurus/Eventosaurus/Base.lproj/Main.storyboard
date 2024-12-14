@@ -15,6 +15,26 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJb-jO-P9g">
+                                <rect key="frame" x="150" y="407" width="93" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Calendar"/>
+                                <connections>
+                                    <segue destination="dwn-RM-O9W" kind="show" id="JIY-9I-krT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrt-hQ-jcB">
+                                <rect key="frame" x="140" y="518" width="112" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Notification"/>
+                                <connections>
+                                    <segue destination="8r0-hp-DM2" kind="show" id="Spe-zt-EJM"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -22,6 +42,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="4"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="9G3-ib-3Vj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Calendar" id="dwn-RM-O9W" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eGo-TJ-y4B"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F6T-4c-3ZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="-20"/>
+        </scene>
+        <!--notification-->
+        <scene sceneID="xsx-g4-LB2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="notification" id="8r0-hp-DM2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eIz-TL-Sq1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqg-hA-Mhx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="767" y="51"/>
         </scene>
     </scenes>
     <resources>
