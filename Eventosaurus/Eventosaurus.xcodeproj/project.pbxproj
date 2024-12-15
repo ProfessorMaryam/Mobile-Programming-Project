@@ -50,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5737BDFF2D01D84100B40D01 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		C3466CA72D080A5E0082AAC1 /* EditEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditEvent.storyboard; sourceTree = "<group>"; };
 		C3466CAB2D0814010082AAC1 /* EditEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
 		C3466CAD2D0817A90082AAC1 /* CreateEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
@@ -138,7 +137,6 @@
 				C395B1672CFCA9E700C073C2 /* Event.swift */,
 				C395B1692CFCB02300C073C2 /* System.swift */,
 				C395B1352CFC996700C073C2 /* Main.storyboard */,
-				5737BDFF2D01D84100B40D01 /* Interests.storyboard */,
 				C395B1382CFC996900C073C2 /* Assets.xcassets */,
 				C395B13A2CFC996900C073C2 /* LaunchScreen.storyboard */,
 				C395B13D2CFC996900C073C2 /* Info.plist */,
