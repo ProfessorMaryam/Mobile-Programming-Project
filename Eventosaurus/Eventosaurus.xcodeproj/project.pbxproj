@@ -28,6 +28,7 @@
 		D0D2F5C22D0DAC3200E7A5A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D2F5C12D0DAC3200E7A5A9 /* ViewController.swift */; };
 		D0D2F5C32D0DAC3200E7A5A9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D2F5BF2D0DAC3200E7A5A9 /* CalendarCell.swift */; };
 		D0D2F5C42D0DAC3200E7A5A9 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D2F5C02D0DAC3200E7A5A9 /* CalendarHelper.swift */; };
+		D0FB788B2D0EE66300195989 /* notificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FB788A2D0EE66300195989 /* notificationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		D0D2F5BF2D0DAC3200E7A5A9 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		D0D2F5C02D0DAC3200E7A5A9 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		D0D2F5C12D0DAC3200E7A5A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0FB788A2D0EE66300195989 /* notificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				D09FA9732D0DC061005B020D /* calendarViewController.swift */,
 				D09FA9752D0DC346005B020D /* notification.storyboard */,
 				D09FA9772D0DC3DF005B020D /* NotificationViewController.swift */,
+				D0FB788A2D0EE66300195989 /* notificationTableViewCell.swift */,
 			);
 			path = Eventosaurus;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				C395B16A2CFCB02300C073C2 /* System.swift in Sources */,
 				D0D2F5C22D0DAC3200E7A5A9 /* ViewController.swift in Sources */,
 				D09FA9782D0DC3DF005B020D /* NotificationViewController.swift in Sources */,
+				D0FB788B2D0EE66300195989 /* notificationTableViewCell.swift in Sources */,
 				D0D2F5C32D0DAC3200E7A5A9 /* CalendarCell.swift in Sources */,
 				D0D2F5C42D0DAC3200E7A5A9 /* CalendarHelper.swift in Sources */,
 				C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */,

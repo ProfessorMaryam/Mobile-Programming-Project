@@ -56,12 +56,12 @@
         <!--notification-->
         <scene sceneID="xsx-g4-LB2">
             <objects>
-                <viewControllerPlaceholder storyboardName="notification" id="8r0-hp-DM2" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="notif" storyboardName="notification" id="8r0-hp-DM2" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="eIz-TL-Sq1"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uqg-hA-Mhx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="51"/>
+            <point key="canvasLocation" x="815" y="206"/>
         </scene>
     </scenes>
     <resources>
