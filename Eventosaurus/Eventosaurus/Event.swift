@@ -1,10 +1,9 @@
 import Foundation
-
-
+import FirebaseFirestore
 
 class Event {
     
-    enum EventStatus {
+    enum EventStatus: String {
         case upcoming
         case ongoing
         case cancelled
@@ -16,11 +15,12 @@ class Event {
     var status: EventStatus
     var description: String
     var date: Date
-    var organizers: String
+    var organizer1: String
+    var organizer2: String
     var maximumAttendees: Int
     
     // Updated initializer that accepts a date string
-    init(status: EventStatus, name: String, description: String, date: String, organizers: String, maximumAttendees: Int) {
+    init(status: EventStatus, name: String, description: String, date: String, organizer1 : String, organizer2: String ,  maximumAttendees: Int) {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"  // Customize the expected date format (e.g., "yyyy-MM-dd")
@@ -36,8 +36,31 @@ class Event {
         self.eventName = name
         self.status = status
         self.description = description
-        self.organizers = organizers
+        self.organizer1 = organizer1
+        self.organizer2 = organizer2
         self.maximumAttendees = maximumAttendees
+    }
+    
+    // convert the Event object into a dictionary for Firestore
+    func toDictionary() -> [String: Any] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"  // Use the same format as the initializer
+        
+        // Convert the event status to a string
+        let statusString = status.rawValue
+        
+        // Create a dictionary
+        let eventDict: [String: Any] = [
+            "Event Name": eventName,
+            "Status": statusString,
+            "Description": description,
+            "Date": dateFormatter.string(from: date),
+            "Organizer1": organizer1,
+            "Organizer2" : organizer2,
+            "Maximum attendees": maximumAttendees
+        ]
+        
+        return eventDict
     }
     
     // Method to add a user to the event

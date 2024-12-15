@@ -1,13 +1,13 @@
 //
-//  InterestsDisplayPage.swift
+//  RequestsViewController.swift
 //  Eventosaurus
 //
-//  Created by BP-36-201-15 on 14/12/2024.
+//  Created by BP-36-201-24 on 15/12/2024.
 //
 
 import UIKit
 
-class InterestsDisplayPage: UIViewController {
+class RequestsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +15,7 @@ class InterestsDisplayPage: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+
 
 
 }
