@@ -269,7 +269,6 @@
         <!--Navigation Controller-->
         <scene sceneID="uon-MQ-RLd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7PQ-mM-dqX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="ProfileViewController" automaticallyAdjustsScrollViewInsets="NO" id="itB-yj-U55" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HSV-AL-AqD">
@@ -281,12 +280,13 @@
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="5Dd-pC-zuJ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7PQ-mM-dqX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="64.885496183206101" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5Dd-pC-zuJ"/>
+        <segue reference="emt-eD-IcJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Background" width="301.66665649414062" height="706.66668701171875"/>
