@@ -15,16 +15,28 @@ import UIKit
 
 
 class HomePageViewController: UIViewController {
-    
+    @IBOutlet weak var CollectionEventView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CollectionEventView.dataSource = self
+        CollectionEventView.delegate = self
+        CollectionEventView.collectionViewLayout = UICollectionViewFlowLayout()
         
     }
     
 }
 
-
+extension HomePageViewController: UICollectionViewDataSource{
+    func CollectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return eventies.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventSearchCollectionViewCell", for: IndexPath) as! EventSearchCollectionViewCell
+        cell.setup(with: eventies[indexPath.row])
+        return cell
+    }
+}
 
 
 
@@ -74,9 +86,9 @@ class EventHomeViewController: UIViewController {
     }
     
 }
+
+
     
-
-
 
 
 

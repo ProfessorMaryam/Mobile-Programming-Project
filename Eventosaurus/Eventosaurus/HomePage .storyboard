@@ -143,6 +143,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="list.bullet" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="bold"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="tgS-Qa-nI5" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="k69-l0-SPF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AzE-Pk-5Vk"/>
@@ -215,26 +218,26 @@
                                             <segue destination="KLT-ee-JYW" kind="presentation" modalPresentationStyle="fullScreen" id="7mm-w0-ae2"/>
                                         </connections>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jZL-bu-SwR">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bYZ-Uw-Fkm" customClass="CollectionEventView">
                                         <rect key="frame" x="0.0" y="147" width="393" height="608"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="b1k-Eb-RF2">
-                                            <size key="itemSize" width="352" height="607"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wct-S0-rG6">
+                                            <size key="itemSize" width="369" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bAP-Nt-IP3">
-                                                <rect key="frame" x="20.666666666666668" y="0.0" width="352" height="607"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventSearchCollectionViewCell" id="E0S-Y1-Jkg" customClass="EventSearchCollectionViewCell" customModule="Eventosaurus" customModuleProvider="target">
+                                                <rect key="frame" x="12" y="0.0" width="369" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jqx-JM-s0D">
-                                                    <rect key="frame" x="0.0" y="0.0" width="352" height="607"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VLg-bF-MRM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="369" height="128"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fUF-6V-qg1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="352" height="138"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kU2-CZ-tnW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="370" height="133"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -245,7 +248,10 @@
                                                         </imageView>
                                                     </subviews>
                                                 </collectionViewCellContentView>
-                                                <size key="customSize" width="352" height="607"/>
+                                                <size key="customSize" width="369" height="128"/>
+                                                <connections>
+                                                    <outlet property="EventImage" destination="kU2-CZ-tnW" id="WCg-Gr-rpY"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
@@ -1460,9 +1466,9 @@ Aminatour1@evento.saurus.bh</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Xfv-jd-qyN"/>
-        <segue reference="ot9-7m-xg2"/>
+        <segue reference="8Mm-fn-Hlm"/>
         <segue reference="7mm-w0-ae2"/>
-        <segue reference="WfW-zp-FCv"/>
+        <segue reference="k69-l0-SPF"/>
         <segue reference="ona-u7-5V5"/>
         <segue reference="9Pd-oF-jgB"/>
     </inferredMetricsTieBreakers>

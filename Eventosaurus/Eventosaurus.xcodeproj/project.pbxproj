@@ -24,6 +24,7 @@
 		C395B16A2CFCB02300C073C2 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1692CFCB02300C073C2 /* System.swift */; };
 		C3C4E3702D008B950039DAD6 /* HomePage .storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C4E36F2D008B950039DAD6 /* HomePage .storyboard */; };
 		C3C4E3722D008BC40039DAD6 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C4E3712D008BC40039DAD6 /* HomePageViewController.swift */; };
+		C3DB4DF62D0F1F590036261C /* EventSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB4DF52D0F1F590036261C /* EventSearchCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		C395B1692CFCB02300C073C2 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		C3C4E36F2D008B950039DAD6 /* HomePage .storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "HomePage .storyboard"; sourceTree = "<group>"; };
 		C3C4E3712D008BC40039DAD6 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		C3DB4DF52D0F1F590036261C /* EventSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				C395B13D2CFC996900C073C2 /* Info.plist */,
 				C3C4E36F2D008B950039DAD6 /* HomePage .storyboard */,
 				C3C4E3712D008BC40039DAD6 /* HomePageViewController.swift */,
+				C3DB4DF52D0F1F590036261C /* EventSearchCollectionViewCell.swift */,
 			);
 			path = Eventosaurus;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */,
 				C395B16A2CFCB02300C073C2 /* System.swift in Sources */,
 				C3C4E3722D008BC40039DAD6 /* HomePageViewController.swift in Sources */,
+				C3DB4DF62D0F1F590036261C /* EventSearchCollectionViewCell.swift in Sources */,
 				C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
