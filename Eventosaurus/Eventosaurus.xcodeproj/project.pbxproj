@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5737BDFF2D01D84100B40D01 /* Interests.storyboard */; };
+		C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */; };
+		C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313441E2D0D797B00B17BF4 /* AdminTVC.swift */; };
+		C31344212D0D797B00B17BF4 /* AdminTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C313441F2D0D797B00B17BF4 /* AdminTVC.xib */; };
+		C326037B2D0872DB008BD790 /* BecomeOrg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C326037A2D0872DB008BD790 /* BecomeOrg.storyboard */; };
+		C326037D2D0875F4008BD790 /* TermsAndConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C326037C2D0875F4008BD790 /* TermsAndConditions.swift */; };
+		C326037F2D0891A3008BD790 /* AdminPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C326037E2D0891A3008BD790 /* AdminPage.storyboard */; };
 		C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B12F2CFC996700C073C2 /* AppDelegate.swift */; };
 		C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1312CFC996700C073C2 /* SceneDelegate.swift */; };
 		C395B1342CFC996700C073C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1332CFC996700C073C2 /* ViewController.swift */; };
@@ -22,7 +28,9 @@
 		C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1632CFCA80D00C073C2 /* Admin.swift */; };
 		C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1652CFCA83900C073C2 /* Organizer.swift */; };
 		C395B1682CFCA9E700C073C2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1672CFCA9E700C073C2 /* Event.swift */; };
-		C395B16A2CFCB02300C073C2 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1692CFCB02300C073C2 /* System.swift */; };
+		C3E287382D0DA60500CBF459 /* UsersDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E287372D0DA60500CBF459 /* UsersDisplayController.swift */; };
+		C3E2873A2D0DA71700CBF459 /* EventsDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E287392D0DA71700CBF459 /* EventsDisplayController.swift */; };
+		C3E2873C2D0DA84600CBF459 /* InterestsDisplayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E2873B2D0DA84600CBF459 /* InterestsDisplayPage.swift */; };
 		C3EBFD7C2D05C7E900B4D000 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3EBFD7B2D05C7E900B4D000 /* GoogleService-Info.plist */; };
 		C3EBFD852D05CD1200B4D000 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = C3EBFD842D05CD1200B4D000 /* FirebaseAppCheck */; };
 		C3EBFD872D05CD1200B4D000 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C3EBFD862D05CD1200B4D000 /* FirebaseAppDistribution-Beta */; };
@@ -54,6 +62,12 @@
 
 /* Begin PBXFileReference section */
 		5737BDFF2D01D84100B40D01 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
+		C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPageTableViewController.swift; sourceTree = "<group>"; };
+		C313441E2D0D797B00B17BF4 /* AdminTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTVC.swift; sourceTree = "<group>"; };
+		C313441F2D0D797B00B17BF4 /* AdminTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminTVC.xib; sourceTree = "<group>"; };
+		C326037A2D0872DB008BD790 /* BecomeOrg.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BecomeOrg.storyboard; sourceTree = "<group>"; };
+		C326037C2D0875F4008BD790 /* TermsAndConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditions.swift; sourceTree = "<group>"; };
+		C326037E2D0891A3008BD790 /* AdminPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdminPage.storyboard; sourceTree = "<group>"; };
 		C395B12C2CFC996700C073C2 /* Eventosaurus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventosaurus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C395B12F2CFC996700C073C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C395B1312CFC996700C073C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +86,9 @@
 		C395B1632CFCA80D00C073C2 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
 		C395B1652CFCA83900C073C2 /* Organizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer.swift; sourceTree = "<group>"; };
 		C395B1672CFCA9E700C073C2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		C395B1692CFCB02300C073C2 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		C3E287372D0DA60500CBF459 /* UsersDisplayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDisplayController.swift; sourceTree = "<group>"; };
+		C3E287392D0DA71700CBF459 /* EventsDisplayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDisplayController.swift; sourceTree = "<group>"; };
+		C3E2873B2D0DA84600CBF459 /* InterestsDisplayPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsDisplayPage.swift; sourceTree = "<group>"; };
 		C3EBFD7B2D05C7E900B4D000 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C3EBFD882D05DB6700B4D000 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		C3EBFD8A2D05EDB900B4D000 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
@@ -142,14 +158,22 @@
 				C395B1612CFCA7EE00C073C2 /* Attendee.swift */,
 				C395B1632CFCA80D00C073C2 /* Admin.swift */,
 				C395B1672CFCA9E700C073C2 /* Event.swift */,
-				C395B1692CFCB02300C073C2 /* System.swift */,
 				C395B1352CFC996700C073C2 /* Main.storyboard */,
 				C3EBFD882D05DB6700B4D000 /* Register.swift */,
 				C3EBFD8A2D05EDB900B4D000 /* LoginPage.swift */,
+				C3E287372D0DA60500CBF459 /* UsersDisplayController.swift */,
 				5737BDFF2D01D84100B40D01 /* Interests.storyboard */,
 				C3EBFD8D2D05EFF400B4D000 /* ForgotPassword.swift */,
-				C395B1382CFC996900C073C2 /* Assets.xcassets */,
 				C395B13A2CFC996900C073C2 /* LaunchScreen.storyboard */,
+				C326037A2D0872DB008BD790 /* BecomeOrg.storyboard */,
+				C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */,
+				C326037E2D0891A3008BD790 /* AdminPage.storyboard */,
+				C326037C2D0875F4008BD790 /* TermsAndConditions.swift */,
+				C3E2873B2D0DA84600CBF459 /* InterestsDisplayPage.swift */,
+				C313441E2D0D797B00B17BF4 /* AdminTVC.swift */,
+				C313441F2D0D797B00B17BF4 /* AdminTVC.xib */,
+				C395B1382CFC996900C073C2 /* Assets.xcassets */,
+				C3E287392D0DA71700CBF459 /* EventsDisplayController.swift */,
 				C395B13D2CFC996900C073C2 /* Info.plist */,
 			);
 			path = Eventosaurus;
@@ -290,8 +314,11 @@
 				C3EBFD7C2D05C7E900B4D000 /* GoogleService-Info.plist in Resources */,
 				C395B13C2CFC996900C073C2 /* LaunchScreen.storyboard in Resources */,
 				C395B1392CFC996900C073C2 /* Assets.xcassets in Resources */,
+				C31344212D0D797B00B17BF4 /* AdminTVC.xib in Resources */,
 				5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */,
+				C326037B2D0872DB008BD790 /* BecomeOrg.storyboard in Resources */,
 				C395B1372CFC996700C073C2 /* Main.storyboard in Resources */,
+				C326037F2D0891A3008BD790 /* AdminPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,15 +344,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C395B1682CFCA9E700C073C2 /* Event.swift in Sources */,
+				C3E287382D0DA60500CBF459 /* UsersDisplayController.swift in Sources */,
 				C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
 				C3EBFD892D05DB6700B4D000 /* Register.swift in Sources */,
+				C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */,
+				C3E2873A2D0DA71700CBF459 /* EventsDisplayController.swift in Sources */,
+				C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */,
 				C3EBFD8C2D05EDBD00B4D000 /* LoginPage.swift in Sources */,
 				C395B1602CFCA7A800C073C2 /* User.swift in Sources */,
 				C395B1342CFC996700C073C2 /* ViewController.swift in Sources */,
 				C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */,
-				C395B16A2CFCB02300C073C2 /* System.swift in Sources */,
+				C3E2873C2D0DA84600CBF459 /* InterestsDisplayPage.swift in Sources */,
+				C326037D2D0875F4008BD790 /* TermsAndConditions.swift in Sources */,
 				C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */,
 				C3EBFD8F2D05F01400B4D000 /* ForgotPassword.swift in Sources */,
 			);

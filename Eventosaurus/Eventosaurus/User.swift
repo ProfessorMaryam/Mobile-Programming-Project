@@ -25,12 +25,12 @@ class User : Codable{
     var userID : String
     static var idIncrement : Int =  1000
     var isOrganizer: Bool
-    
+    var isAdmin : Bool
     
     
     ///Constructor is used in registration
     
-    init(fullName: String, email: String, dateOfBirth: String, password: String, isOrganizer : Bool) {
+    init(fullName: String, email: String, dateOfBirth: String, password: String, isOrganizer : Bool, isAdmin : Bool) {
           
           self.fullName = fullName
         self.email = email
@@ -51,6 +51,7 @@ class User : Codable{
 //          }
           //self.userID = User.idIncrement
          // User.idIncrement += 1
+        self.isAdmin = isAdmin
         
       }
     
@@ -62,7 +63,8 @@ class User : Codable{
                 "Email": email,
                 "Date Of Birth": dateOfBirth,
                 "Password": password,
-                "Is Organizer": isOrganizer
+                "Is Organizer": isOrganizer,
+                "Is Admin" : isAdmin
             ]
         }
     

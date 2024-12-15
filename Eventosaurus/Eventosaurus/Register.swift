@@ -205,7 +205,8 @@ class Register: UIViewController {
                 email: emailTxtField.text ?? "",
                 dateOfBirth: dateTxtField.text ?? "",
                 password: passwordTxtfield.text ?? "",
-                isOrganizer: false
+                isOrganizer: false,
+                isAdmin: false
             )
             
             registerUser(newUser)
@@ -252,12 +253,14 @@ class Register: UIViewController {
         // Check if Password and Confirm Password match
         if let password = passwordTxtfield.text, let confirmPassword = confirmPasswordTxtField.text, password != confirmPassword {
             confirmPassReqLabel.isHidden = false
-            confirmPassReqLabel.text = "Passwords do not match!"
+            confirmPassReqLabel.text = "Passwords do not match"
             isValid = false
         }
         
         return isValid
     }
+    
+    
 
     // Register user with Firebase Authentication
     func registerUser(_ newUser: User) {
@@ -289,7 +292,7 @@ class Register: UIViewController {
         let userDict = newUser.toDictionary()
         
         Firestore.firestore().collection("Users").document(newUser.userID).setData(userDict) { error in
-            if let error = error {
+            if error != nil {
                 self.showAlert(title: "Error", message: "Failed to save user data to Firestore.")
                 return
             }
