@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Calendar View Controller-->
+        <!--Calendar-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CalendarViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
@@ -150,7 +150,7 @@
                             <constraint firstItem="Lxz-mE-fK1" firstAttribute="height" secondItem="nST-AR-Lhg" secondAttribute="height" id="xYZ-89-FIU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="u8m-pk-RQ8"/>
+                    <navigationItem key="navigationItem" title="Calendar" largeTitleDisplayMode="always" id="u8m-pk-RQ8"/>
                     <connections>
                         <outlet property="collectionView" destination="Xxl-GX-PPb" id="gG8-qq-UG0"/>
                         <outlet property="monthLabel" destination="nST-AR-Lhg" id="2XU-bv-iDZ"/>
