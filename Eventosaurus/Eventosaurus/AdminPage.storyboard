@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Admin Dashboard-->
+        <!--Dashboard-->
         <scene sceneID="UeV-lF-YKA">
             <objects>
                 <viewController storyboardIdentifier="adminPage" id="sAn-dh-Q6k" customClass="AdminPageTableViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,7 +55,7 @@
                             <constraint firstItem="q9n-Aj-Fbh" firstAttribute="top" secondItem="0Dy-uF-hFB" secondAttribute="top" constant="5" id="xjr-Ra-DCH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Admin Dashboard" largeTitleDisplayMode="always" id="MPp-p1-SCe"/>
+                    <navigationItem key="navigationItem" title="Dashboard" largeTitleDisplayMode="always" id="MPp-p1-SCe"/>
                     <connections>
                         <outlet property="tableView" destination="hS0-Th-cy2" id="phK-1X-9ee"/>
                     </connections>
@@ -77,7 +77,30 @@
                             </imageView>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fX1-cV-Zne">
                                 <rect key="frame" x="0.0" y="59" width="430" height="873"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FJK-jL-y1y">
+                                        <rect key="frame" x="10" y="100" width="410" height="773"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Sa3-tr-TU3">
+                                        <rect key="frame" x="0.0" y="44" width="430" height="44"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="TeZ-zc-Xg4" id="Iri-Px-VTF"/>
+                                        </connections>
+                                    </searchBar>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Sa3-tr-TU3" secondAttribute="trailing" id="1V5-Y7-2Ph"/>
+                                    <constraint firstItem="FJK-jL-y1y" firstAttribute="leading" secondItem="fX1-cV-Zne" secondAttribute="leading" constant="10" id="D2d-nl-RDe"/>
+                                    <constraint firstItem="FJK-jL-y1y" firstAttribute="top" secondItem="fX1-cV-Zne" secondAttribute="top" constant="100" id="FYv-oB-8ZW"/>
+                                    <constraint firstItem="Sa3-tr-TU3" firstAttribute="top" secondItem="fX1-cV-Zne" secondAttribute="top" constant="44" id="ZLV-Vq-aL2"/>
+                                    <constraint firstAttribute="trailing" secondItem="FJK-jL-y1y" secondAttribute="trailing" constant="10" id="hqP-I1-cr9"/>
+                                    <constraint firstItem="FJK-jL-y1y" firstAttribute="top" secondItem="Sa3-tr-TU3" secondAttribute="bottom" constant="12" id="lxC-3E-SWK"/>
+                                    <constraint firstItem="Sa3-tr-TU3" firstAttribute="leading" secondItem="fX1-cV-Zne" secondAttribute="leading" id="pvk-D6-CAO"/>
+                                    <constraint firstAttribute="bottom" secondItem="FJK-jL-y1y" secondAttribute="bottom" id="tVn-NV-VtL"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="40"/>
@@ -99,6 +122,10 @@
                             <constraint firstItem="Iyj-0X-3FZ" firstAttribute="leading" secondItem="o8M-Yj-TSi" secondAttribute="leading" id="vPa-yS-B21"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="UserSearch" destination="Sa3-tr-TU3" id="E73-Zi-Cga"/>
+                        <outlet property="userTableView" destination="FJK-jL-y1y" id="d8v-KE-Bd9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epV-8p-oVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -250,6 +277,7 @@
             <point key="canvasLocation" x="2562.5954198473282" y="-9.8591549295774659"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="Background" width="301.66665649414062" height="706.66668701171875"/>
         <systemColor name="systemBackgroundColor">
