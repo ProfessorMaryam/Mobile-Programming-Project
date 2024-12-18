@@ -240,9 +240,6 @@
                                             </attributedString>
                                             <color key="baseBackgroundColor" red="0.41983866689999999" green="0.12453217060000001" blue="0.61969172949999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="gC5-zx-fZf" kind="push" id="hDe-5s-F3X"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jB0-Ui-KIs">
                                         <rect key="frame" x="90" y="364" width="58" height="17"/>
@@ -269,16 +266,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8g-T9-eas" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1933.5877862595419" y="3.5211267605633805"/>
-        </scene>
-        <!--Interests-->
-        <scene sceneID="lmS-Mz-URI">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="interests" storyboardName="Interests" id="gC5-zx-fZf" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Pe6-w3-rph"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oSk-wh-HP4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2594" y="177"/>
         </scene>
         <!--Log in-->
         <scene sceneID="CuE-EN-T7f">
@@ -419,10 +406,10 @@
             </objects>
             <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
         </scene>
-        <!--EditEventViewController-->
+        <!--EditEvent-->
         <scene sceneID="cCT-qZ-Q4a">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="EditEvent" storyboardName="EditEventViewController" referencedIdentifier="EditEventViewController" id="q8q-Jm-Tqa" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="EditEvent" id="q8q-Jm-Tqa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EpW-no-s42" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="686" y="338"/>
