@@ -117,4 +117,47 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
         // Reload the table view with the filtered data
         userTableView.reloadData()
     }
+
+    // MARK: - UITableViewDelegate Methods
+
+    // This method handles the swipe-to-delete action
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Get the user to delete
+            let userToDelete = filteredUsersList[indexPath.row]
+
+            // Find the document in Firestore that corresponds to this user
+            let db = Firestore.firestore()
+            
+            // Assuming you have a unique identifier for the user (like email or user ID)
+            // Here I'm assuming the user's email is unique and using it to delete from Firestore.
+            // Update the query if you have a different unique identifier like userID
+            db.collection("Users").whereField("Email", isEqualTo: userToDelete.email).getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Error fetching user for deletion: \(error.localizedDescription)")
+                    return
+                }
+                
+                // Ensure we find the user in Firestore and delete
+                if let document = snapshot?.documents.first {
+                    document.reference.delete { error in
+                        if let error = error {
+                            print("Error deleting user: \(error.localizedDescription)")
+                        } else {
+                            print("User deleted successfully")
+                            
+                            // After deletion, remove the user from the local list and reload the table
+                            self.usersList.removeAll { $0.email == userToDelete.email }
+                            self.filteredUsersList.removeAll { $0.email == userToDelete.email }
+                            
+                            // Reload table view
+                            DispatchQueue.main.async {
+                                tableView.deleteRows(at: [indexPath], with: .fade)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

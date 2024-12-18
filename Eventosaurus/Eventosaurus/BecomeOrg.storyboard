@@ -23,14 +23,14 @@
                                 <rect key="frame" x="0.0" y="155" width="393" height="697"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="WWB-gd-9Mg">
-                                        <rect key="frame" x="20" y="69" width="353" height="76"/>
+                                        <rect key="frame" x="20" y="64" width="353" height="81"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <string key="text">Our goal in EventoSaurus is to build a great planet for all the humans to enjoy. Our Administrators are committed to their role of providing users with flexibility, especial features and better experience on and off the feild.</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ML7-Ft-NbT">
-                                        <rect key="frame" x="20" y="187" width="353" height="382"/>
+                                        <rect key="frame" x="20" y="187" width="353" height="385"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <string key="text">Organizers are the creators of our distributed events, based on the users' interests. In order to define an individual as an official organizer in Eventosaurus, there are guide lights and rules to follow and promise to commit with. Those include:
 
@@ -112,12 +112,12 @@
                                     <constraint firstItem="ML7-Ft-NbT" firstAttribute="top" secondItem="6TM-9f-FKO" secondAttribute="bottom" constant="10" id="8Vo-Zg-pXN"/>
                                     <constraint firstAttribute="trailing" secondItem="TCs-rP-M7Q" secondAttribute="trailing" constant="30" id="BGY-P8-XiK"/>
                                     <constraint firstItem="WWB-gd-9Mg" firstAttribute="leading" secondItem="uqs-8r-O2o" secondAttribute="leading" constant="20" id="ER2-Cd-Hdd"/>
-                                    <constraint firstItem="Rd1-aE-XcS" firstAttribute="top" secondItem="ML7-Ft-NbT" secondAttribute="bottom" constant="23" id="ISc-BZ-Iv6"/>
+                                    <constraint firstItem="Rd1-aE-XcS" firstAttribute="top" secondItem="ML7-Ft-NbT" secondAttribute="bottom" constant="20" id="ISc-BZ-Iv6"/>
                                     <constraint firstItem="ML7-Ft-NbT" firstAttribute="leading" secondItem="uqs-8r-O2o" secondAttribute="leading" constant="20" id="J81-Am-Ftz"/>
                                     <constraint firstItem="6TM-9f-FKO" firstAttribute="top" secondItem="WWB-gd-9Mg" secondAttribute="bottom" constant="8" symbolic="YES" id="Lb1-0b-sod"/>
                                     <constraint firstItem="TCs-rP-M7Q" firstAttribute="top" secondItem="Rd1-aE-XcS" secondAttribute="bottom" constant="11" id="N7S-UI-GmW"/>
                                     <constraint firstAttribute="trailing" secondItem="ML7-Ft-NbT" secondAttribute="trailing" constant="20" id="SOk-xj-e61"/>
-                                    <constraint firstItem="WWB-gd-9Mg" firstAttribute="top" secondItem="s2Z-p7-oer" secondAttribute="bottom" constant="20" id="Sf2-aO-ozL"/>
+                                    <constraint firstItem="WWB-gd-9Mg" firstAttribute="top" secondItem="s2Z-p7-oer" secondAttribute="bottom" constant="15" id="Sf2-aO-ozL"/>
                                     <constraint firstItem="s2Z-p7-oer" firstAttribute="leading" secondItem="uqs-8r-O2o" secondAttribute="leading" constant="20" id="WjM-Db-1Mx"/>
                                     <constraint firstItem="nxy-y8-2oF" firstAttribute="leading" secondItem="uqs-8r-O2o" secondAttribute="leading" constant="-142" id="inb-bb-MWt"/>
                                     <constraint firstItem="6TM-9f-FKO" firstAttribute="top" secondItem="uqs-8r-O2o" secondAttribute="top" constant="153" id="p56-I8-IVR"/>
@@ -163,7 +163,7 @@
         <!--Request Form-->
         <scene sceneID="bVx-GV-baO">
             <objects>
-                <viewController id="kCt-t3-4f6" sceneMemberID="viewController">
+                <viewController id="kCt-t3-4f6" customClass="RequestForm" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y6X-yo-n1T">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,25 +175,25 @@
                                 <rect key="frame" x="0.0" y="155" width="393" height="697"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-su-6dr">
-                                        <rect key="frame" x="35" y="85" width="323" height="34"/>
+                                        <rect key="frame" x="30" y="85" width="328" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vUb-fT-zrM">
-                                        <rect key="frame" x="35" y="139" width="323" height="34"/>
+                                        <rect key="frame" x="30" y="139" width="333" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why do you want to become an organizer?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUo-KY-7Yr">
-                                        <rect key="frame" x="35" y="193" width="323" height="21"/>
+                                        <rect key="frame" x="30" y="193" width="333" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZU2-Vv-jWd">
-                                        <rect key="frame" x="35" y="452" width="323" height="99"/>
+                                        <rect key="frame" x="30" y="452" width="333" height="99"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -206,13 +206,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down your qualifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayn-14-VZV">
-                                        <rect key="frame" x="37" y="423" width="230" height="21"/>
+                                        <rect key="frame" x="30" y="423" width="230" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppe-eL-T67">
-                                        <rect key="frame" x="70" y="576" width="249" height="43"/>
+                                        <rect key="frame" x="69.666666666666671" y="576" width="249.66666666666663" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="4sC-ua-mvC"/>
                                         </constraints>
@@ -230,11 +230,12 @@
                                             <color key="baseBackgroundColor" red="0.45695394277572632" green="0.09061441570520401" blue="0.64342409372329712" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
+                                            <action selector="submitForm:" destination="kCt-t3-4f6" eventType="touchUpInside" id="kwf-S5-7wP"/>
                                             <segue destination="laf-sE-hxe" kind="unwind" unwindAction="unwindToStartupWithUnwindSegue:" id="HfQ-hJ-E25"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wmv-R4-nJo">
-                                        <rect key="frame" x="35" y="219" width="323" height="196"/>
+                                        <rect key="frame" x="30" y="219" width="333" height="196"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="196" id="dPJ-5Q-OWl"/>
@@ -257,19 +258,20 @@
                                     <constraint firstItem="ayn-14-VZV" firstAttribute="top" secondItem="Wmv-R4-nJo" secondAttribute="bottom" constant="8" id="5Ca-Mm-Ldn"/>
                                     <constraint firstAttribute="trailing" secondItem="f4X-su-6dr" secondAttribute="trailing" constant="35" id="6Us-5Z-rcq"/>
                                     <constraint firstItem="Wmv-R4-nJo" firstAttribute="top" secondItem="qUo-KY-7Yr" secondAttribute="bottom" constant="5" id="CyE-lj-c64"/>
+                                    <constraint firstItem="ZU2-Vv-jWd" firstAttribute="leading" secondItem="fdk-0C-Pza" secondAttribute="leading" constant="30" id="JEl-qO-ZKF"/>
                                     <constraint firstItem="Ppe-eL-T67" firstAttribute="top" secondItem="fdk-0C-Pza" secondAttribute="top" constant="576" id="Jke-1l-ESd"/>
-                                    <constraint firstItem="vUb-fT-zrM" firstAttribute="leading" secondItem="fdk-0C-Pza" secondAttribute="leading" constant="35" id="O7E-ro-M3R"/>
+                                    <constraint firstItem="qUo-KY-7Yr" firstAttribute="leading" secondItem="fdk-0C-Pza" secondAttribute="leading" constant="30" id="Lc2-vr-sOk"/>
                                     <constraint firstItem="Ppe-eL-T67" firstAttribute="top" secondItem="ZU2-Vv-jWd" secondAttribute="bottom" constant="25" id="Q0M-5u-leG"/>
+                                    <constraint firstItem="f4X-su-6dr" firstAttribute="leading" secondItem="fdk-0C-Pza" secondAttribute="leading" constant="30" id="Wyb-4H-Loi"/>
                                     <constraint firstItem="qUo-KY-7Yr" firstAttribute="leading" secondItem="vUb-fT-zrM" secondAttribute="leading" id="Z7E-xP-BiW"/>
-                                    <constraint firstItem="f4X-su-6dr" firstAttribute="leading" secondItem="fdk-0C-Pza" secondAttribute="leading" constant="35" id="bOf-UY-3eJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="vUb-fT-zrM" secondAttribute="trailing" constant="35" id="egb-tH-UYi"/>
+                                    <constraint firstItem="vUb-fT-zrM" firstAttribute="leading" secondItem="fdk-0C-Pza" secondAttribute="leading" constant="30" id="gEM-zP-jjG"/>
+                                    <constraint firstItem="ayn-14-VZV" firstAttribute="leading" secondItem="fdk-0C-Pza" secondAttribute="leading" constant="30" id="gwi-Xh-VTI"/>
                                     <constraint firstItem="ZU2-Vv-jWd" firstAttribute="centerX" secondItem="fdk-0C-Pza" secondAttribute="centerX" id="hJI-wl-vL8"/>
                                     <constraint firstItem="vUb-fT-zrM" firstAttribute="top" secondItem="f4X-su-6dr" secondAttribute="bottom" constant="20" id="hgt-Xd-dr6"/>
                                     <constraint firstItem="Ppe-eL-T67" firstAttribute="width" secondItem="ZU2-Vv-jWd" secondAttribute="width" multiplier="0.0744235" constant="225" id="ir6-ct-IDS"/>
                                     <constraint firstItem="Wmv-R4-nJo" firstAttribute="leading" secondItem="qUo-KY-7Yr" secondAttribute="leading" id="jO2-Rm-F8X"/>
                                     <constraint firstItem="ZU2-Vv-jWd" firstAttribute="top" secondItem="ayn-14-VZV" secondAttribute="bottom" constant="8" id="jv5-e3-IBq"/>
                                     <constraint firstItem="qUo-KY-7Yr" firstAttribute="trailing" secondItem="vUb-fT-zrM" secondAttribute="trailing" id="q5P-xn-T4k"/>
-                                    <constraint firstItem="ayn-14-VZV" firstAttribute="leading" secondItem="fdk-0C-Pza" secondAttribute="leading" constant="37" id="rcD-L9-PgC"/>
                                     <constraint firstItem="qUo-KY-7Yr" firstAttribute="top" secondItem="vUb-fT-zrM" secondAttribute="bottom" constant="20" id="umT-pr-txM"/>
                                     <constraint firstItem="ayn-14-VZV" firstAttribute="top" secondItem="fdk-0C-Pza" secondAttribute="top" constant="423" id="uyN-1T-n1F"/>
                                     <constraint firstItem="Wmv-R4-nJo" firstAttribute="trailing" secondItem="qUo-KY-7Yr" secondAttribute="trailing" id="zZG-uD-LtS"/>
@@ -298,6 +300,12 @@
                     <navigationItem key="navigationItem" title="Request Form" id="Y3z-Vz-Ucu">
                         <barButtonItem key="backBarButtonItem" title="Terms &amp; Conditions" id="cCh-iY-gw1"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="EmailTextField" destination="vUb-fT-zrM" id="UUE-o1-Zwp"/>
+                        <outlet property="FullNameTextField" destination="f4X-su-6dr" id="wG9-C8-6KZ"/>
+                        <outlet property="WDYWTBOTextField" destination="Wmv-R4-nJo" id="C4B-iI-9oi"/>
+                        <outlet property="qualificationsTextField" destination="ZU2-Vv-jWd" id="poe-QY-pFy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tE-ah-7F3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="laf-sE-hxe" userLabel="Exit" sceneMemberID="exit"/>

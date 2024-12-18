@@ -144,7 +144,19 @@
                             </imageView>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypx-Vv-Z37">
                                 <rect key="frame" x="0.0" y="64" width="430" height="868"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KXB-Db-qj0">
+                                        <rect key="frame" x="0.0" y="30" width="430" height="838"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="KXB-Db-qj0" secondAttribute="trailing" id="jT0-cN-r2i"/>
+                                    <constraint firstAttribute="bottom" secondItem="KXB-Db-qj0" secondAttribute="bottom" id="nat-Xl-jlh"/>
+                                    <constraint firstItem="KXB-Db-qj0" firstAttribute="leading" secondItem="Ypx-Vv-Z37" secondAttribute="leading" id="sYr-50-r9i"/>
+                                    <constraint firstItem="KXB-Db-qj0" firstAttribute="top" secondItem="Ypx-Vv-Z37" secondAttribute="top" constant="30" id="y5h-d8-UmT"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="40"/>
@@ -166,6 +178,9 @@
                             <constraint firstItem="sAl-Kb-W9o" firstAttribute="top" secondItem="2W3-dR-ybP" secondAttribute="top" id="nCM-2m-gAQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="KXB-Db-qj0" id="gqa-hi-b4R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAa-qp-lpY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
