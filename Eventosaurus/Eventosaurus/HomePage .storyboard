@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="2864.8854961832062" y="11.971830985915494"/>
         </scene>
-        <!--View Controller-->
+        <!--Event Search View Controller-->
         <scene sceneID="Hew-CP-JXi">
             <objects>
-                <viewController storyboardIdentifier="EventSearch" id="GwK-9W-DbL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventSearch" id="GwK-9W-DbL" customClass="EventSearchViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yR2-po-2dK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,26 +218,26 @@
                                             <segue destination="KLT-ee-JYW" kind="presentation" modalPresentationStyle="fullScreen" id="7mm-w0-ae2"/>
                                         </connections>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bYZ-Uw-Fkm" customClass="CollectionEventView">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bYZ-Uw-Fkm" customClass="collectioniView" customModule="Eventosaurus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="147" width="393" height="608"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wct-S0-rG6">
-                                            <size key="itemSize" width="369" height="128"/>
+                                            <size key="itemSize" width="379" height="100"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventSearchCollectionViewCell" id="E0S-Y1-Jkg" customClass="EventSearchCollectionViewCell" customModule="Eventosaurus" customModuleProvider="target">
-                                                <rect key="frame" x="12" y="0.0" width="369" height="128"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EveCollectionViewCell" id="E0S-Y1-Jkg" customClass="EveCollectionViewCell" customModule="Eventosaurus" customModuleProvider="target">
+                                                <rect key="frame" x="7" y="0.0" width="379" height="100"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VLg-bF-MRM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="369" height="128"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="379" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kU2-CZ-tnW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="370" height="133"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kU2-CZ-tnW" customClass="eveImageView" customModule="Eventosaurus" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="154" height="84"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -246,11 +246,19 @@
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Labelggggggggggg" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzj-e3-na5" customClass="titleLabel" customModule="Eventosaurus" customModuleProvider="target">
+                                                            <rect key="frame" x="162" y="8" width="209" height="68"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </collectionViewCellContentView>
-                                                <size key="customSize" width="369" height="128"/>
+                                                <size key="customSize" width="379" height="100"/>
                                                 <connections>
-                                                    <outlet property="EventImage" destination="kU2-CZ-tnW" id="WCg-Gr-rpY"/>
+                                                    <outlet property="eveImageView" destination="kU2-CZ-tnW" id="DSh-7p-FDB"/>
+                                                    <outlet property="titleLabel" destination="kzj-e3-na5" id="Iwb-W8-IoG"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -287,6 +295,9 @@
                             <constraint firstAttribute="bottom" secondItem="bg1-2G-Ut3" secondAttribute="bottom" id="nbh-LL-rPe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectioniView" destination="bYZ-Uw-Fkm" id="Sn7-Bd-RQv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSA-QJ-E7l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1168,10 +1179,10 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
             </objects>
             <point key="canvasLocation" x="2005" y="-780"/>
         </scene>
-        <!--View Controller-->
+        <!--Organizer Search View Controller-->
         <scene sceneID="K1v-DK-Ub1">
             <objects>
-                <viewController storyboardIdentifier="OrganizersSearch" id="ax8-YR-T48" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrganizersSearch" id="ax8-YR-T48" customClass="OrganizerSearchViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qJf-0M-Kfu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1227,6 +1238,51 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                             <segue destination="KLT-ee-JYW" kind="presentation" modalPresentationStyle="fullScreen" id="fJc-TU-1qv"/>
                                         </connections>
                                     </button>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qAE-tJ-OoX">
+                                        <rect key="frame" x="0.0" y="147" width="393" height="608"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fK5-2a-4De">
+                                            <size key="itemSize" width="378" height="99"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OrgCollectionViewCell" id="7Pp-Nc-jog" customClass="OrgCollectionViewCell" customModule="Eventosaurus" customModuleProvider="target">
+                                                <rect key="frame" x="7" y="0.0" width="379" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AcR-wN-nnO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="379" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uNk-KC-GR3">
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="50"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNg-xU-2xc">
+                                                            <rect key="frame" x="116" y="0.0" width="255" height="92"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="379" height="100"/>
+                                                <connections>
+                                                    <outlet property="orgImageView" destination="uNk-KC-GR3" id="d5a-zS-svp"/>
+                                                    <outlet property="titleLabel" destination="DNg-xU-2xc" id="AEW-SW-sEZ"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -1259,6 +1315,9 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                             <constraint firstItem="6w3-xc-rFf" firstAttribute="leading" secondItem="ff5-ob-2lZ" secondAttribute="leading" id="pRb-Xm-Vfw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectioneView" destination="qAE-tJ-OoX" id="DDM-J7-ZcT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCe-n9-LKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1467,10 +1526,10 @@ Aminatour1@evento.saurus.bh</string>
     <inferredMetricsTieBreakers>
         <segue reference="Xfv-jd-qyN"/>
         <segue reference="8Mm-fn-Hlm"/>
-        <segue reference="7mm-w0-ae2"/>
+        <segue reference="fJc-TU-1qv"/>
         <segue reference="k69-l0-SPF"/>
-        <segue reference="ona-u7-5V5"/>
-        <segue reference="9Pd-oF-jgB"/>
+        <segue reference="UPm-DE-OTP"/>
+        <segue reference="RZl-8h-KH2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
@@ -1495,10 +1554,10 @@ Aminatour1@evento.saurus.bh</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

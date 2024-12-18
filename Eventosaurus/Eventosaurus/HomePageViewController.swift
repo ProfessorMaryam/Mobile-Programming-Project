@@ -15,29 +15,11 @@ import UIKit
 
 
 class HomePageViewController: UIViewController {
-    @IBOutlet weak var CollectionEventView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CollectionEventView.dataSource = self
-        CollectionEventView.delegate = self
-        CollectionEventView.collectionViewLayout = UICollectionViewFlowLayout()
-        
-    }
-    
-}
-
-extension HomePageViewController: UICollectionViewDataSource{
-    func CollectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventies.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventSearchCollectionViewCell", for: IndexPath) as! EventSearchCollectionViewCell
-        cell.setup(with: eventies[indexPath.row])
-        return cell
     }
 }
-
 
 
 
@@ -61,19 +43,6 @@ Eventi(title: "Damn Damn Damn Damn", image: #imageLiteral(resourceName: "damn.jp
 ]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 class EventHomeViewController: UIViewController {
     
     @IBOutlet weak var collectionoView: UICollectionView!
@@ -86,10 +55,6 @@ class EventHomeViewController: UIViewController {
     }
     
 }
-
-
-    
-
 
 
 extension EventHomeViewController: UICollectionViewDataSource {
@@ -105,18 +70,11 @@ extension EventHomeViewController: UICollectionViewDataSource {
 }
 
 
-
-
-
-
 extension EventHomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 352, height: 150)
     }
 }
-
-
-
 
 
 extension EventHomeViewController: UICollectionViewDelegate {
@@ -125,13 +83,6 @@ extension EventHomeViewController: UICollectionViewDelegate {
         print(eventies[indexPath.row].title)
     }
 }
-
-
-
-
-
-
-
 
 
 class EventCollectionViewCell: UICollectionViewCell {
@@ -144,7 +95,153 @@ class EventCollectionViewCell: UICollectionViewCell {
         eventImageView.image = eventi.image
         titleLabel.text = eventi.title
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+class EventSearchViewController: UIViewController {
+    
+    
+    @IBOutlet weak var collectioniView: UICollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectioniView.dataSource = self
+        collectioniView.delegate = self
+        collectioniView.collectionViewLayout = UICollectionViewFlowLayout()
+    }
+    
+}
+
+
+extension EventSearchViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return eventies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EveCollectionViewCell", for: indexPath) as! EveCollectionViewCell
+        cell.setup(with: eventies[indexPath.row])
+        return cell
+    }
+}
+
+
+extension EventSearchViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 379, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0
+            )
+        }
+}
+
+
+extension EventSearchViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(eventies[indexPath.row].title)
+    }
+    
+}
+
+
+class EveCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var eveImageView: UIImageView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    func setup(with eventi: Eventi) {
+        eveImageView.image = eventi.image
+        titleLabel.text = eventi.title
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+class OrganizerSearchViewController: UIViewController {
+    
+    
+    
+    @IBOutlet weak var collectioneView: UICollectionView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectioneView.dataSource = self
+        collectioneView.delegate = self
+        collectioneView.collectionViewLayout = UICollectionViewFlowLayout()
+    }
+    
+}
+
+extension OrganizerSearchViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return eventies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrgCollectionViewCell", for: indexPath) as! OrgCollectionViewCell
+        cell.setup(with: eventies[indexPath.row])
+        return cell
+    }
+}
+
+extension OrganizerSearchViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 379, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0
+            )
+        }
+}
+
+extension OrganizerSearchViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(eventies[indexPath.row].title)
+    }
+    
+}
+
+class OrgCollectionViewCell: UICollectionViewCell{
+    
+    
+    @IBOutlet weak var orgImageView: UIImageView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    func setup(with eventi: Eventi) {
+        orgImageView.image = eventi.image
+        titleLabel.text = eventi.title
+    }
+    
+}
+
 
 
 
