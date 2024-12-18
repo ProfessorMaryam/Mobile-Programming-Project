@@ -21,7 +21,7 @@ class EventsDisplayController: UIViewController, UITableViewDataSource, UITableV
         
         // Register the custom nib for the table view cell
         let nib = UINib(nibName: "EventsDisplayTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "Cell")
+        tableView.register(nib, forCellReuseIdentifier: "EventCell")
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,7 +30,7 @@ class EventsDisplayController: UIViewController, UITableViewDataSource, UITableV
         fetchEventDataFromFireStore()
     }
 
-    
+    // MARK: - Search Functionality
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // Filter the events list based on the search text
         if searchText.isEmpty {
@@ -50,6 +50,7 @@ class EventsDisplayController: UIViewController, UITableViewDataSource, UITableV
         tableView.reloadData()
     }
     
+    // MARK: - Fetch Data from Firestore
     func fetchEventDataFromFireStore() {
         let db = Firestore.firestore()
         
@@ -62,59 +63,73 @@ class EventsDisplayController: UIViewController, UITableViewDataSource, UITableV
             // Clear the existing event list before adding new data
             self.eventsList.removeAll()
             
+            // Use a dispatch group to handle multiple Firestore requests
+            let dispatchGroup = DispatchGroup()
+
             // Iterate through each document in the snapshot (each event)
             for document in snapshot!.documents {
-                // Extract the event name from the document
                 guard let eventName = document.get("Event Name") as? String else {
                     print("Missing event name for document: \(document.documentID)")
                     continue
                 }
                 
-                // Extract the Organizer1 reference (which points to a document in the Users collection)
                 guard let organizerReference = document.get("Organizer1") as? DocumentReference else {
                     print("Missing organizer reference for event \(eventName)")
                     continue
                 }
                 
+                // Enter the dispatch group before making the network request
+                dispatchGroup.enter()
+                
                 // Fetch the organizer's data from the Users collection
                 organizerReference.getDocument { userSnapshot, error in
                     if let error = error {
                         print("Error fetching organizer: \(error.localizedDescription)")
+                        dispatchGroup.leave() // Leave the group if an error occurs
                         return
                     }
                     
-                    // Extract the organizer's full name from the user document
                     guard let organizerName = userSnapshot?.get("Full Name") as? String else {
                         print("Organizer name not found for event: \(eventName)")
+                        dispatchGroup.leave()
                         return
                     }
                     
                     // Add the event data (event name and organizer's name) to the eventsList
                     self.eventsList.append((eventName: eventName, organizer1: organizerName))
                     
-                    // Update the filtered events and reload the table view on the main thread
-                    DispatchQueue.main.async {
-                        self.filteredEvents = self.eventsList
-                        self.tableView.reloadData()
-                    }
+                    // Leave the dispatch group after the request is complete
+                    dispatchGroup.leave()
                 }
+            }
+            
+            // When all network requests are done, update the filtered events and reload the table view
+            dispatchGroup.notify(queue: .main) {
+                self.filteredEvents = self.eventsList
+                self.tableView.reloadData()
             }
         }
     }
 
-    
     // MARK: - Table View DataSource and Delegate Methods
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredEvents.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90 // Height for each cell
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        // Dequeue the custom cell and cast it to EventsDisplayTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventsDisplayTableViewCell
+        
+        // Configure the cell with data
         let event = filteredEvents[indexPath.row]
         
-        cell.textLabel?.text = event.eventName
-        cell.detailTextLabel?.text = event.organizer1
+        // Set the labels in the custom cell
+        cell.Eventname.text = event.eventName
+        cell.organizerName.text = event.organizer1
         
         return cell
     }
