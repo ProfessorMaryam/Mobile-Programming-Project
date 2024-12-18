@@ -238,11 +238,7 @@ class Register: UIViewController {
             isValid = false
         }
         
-        // Check Date of Birth
-        if dateTxtField.text?.isEmpty ?? true {
-            dobReqLabel.isHidden = false
-            isValid = false
-        }
+      
         
         // Check Password
         if let password = passwordTxtfield.text, password.isEmpty {

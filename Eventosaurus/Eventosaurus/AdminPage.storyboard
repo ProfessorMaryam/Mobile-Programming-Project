@@ -78,10 +78,6 @@
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fX1-cV-Zne">
                                 <rect key="frame" x="0.0" y="59" width="430" height="873"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FJK-jL-y1y">
-                                        <rect key="frame" x="10" y="100" width="410" height="773"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </tableView>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Sa3-tr-TU3">
                                         <rect key="frame" x="0.0" y="44" width="430" height="44"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -89,6 +85,10 @@
                                             <outlet property="delegate" destination="TeZ-zc-Xg4" id="Iri-Px-VTF"/>
                                         </connections>
                                     </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FJK-jL-y1y">
+                                        <rect key="frame" x="10" y="100" width="410" height="773"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -224,7 +224,29 @@
                             </imageView>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUZ-NN-mzd">
                                 <rect key="frame" x="0.0" y="64" width="430" height="868"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kHx-Ru-qB8">
+                                        <rect key="frame" x="0.0" y="44" width="430" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="xD4-us-iak" id="38N-dJ-hWF"/>
+                                        </connections>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="k9l-Rb-eaY">
+                                        <rect key="frame" x="10" y="112" width="410" height="756"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="kHx-Ru-qB8" secondAttribute="trailing" id="DcL-fL-GTW"/>
+                                    <constraint firstItem="kHx-Ru-qB8" firstAttribute="leading" secondItem="KUZ-NN-mzd" secondAttribute="leading" id="JOS-Xw-nYv"/>
+                                    <constraint firstItem="kHx-Ru-qB8" firstAttribute="top" secondItem="KUZ-NN-mzd" secondAttribute="top" constant="44" id="cBS-QF-jHc"/>
+                                    <constraint firstAttribute="trailing" secondItem="k9l-Rb-eaY" secondAttribute="trailing" constant="10" id="muu-xe-eZd"/>
+                                    <constraint firstItem="k9l-Rb-eaY" firstAttribute="leading" secondItem="KUZ-NN-mzd" secondAttribute="leading" constant="10" id="nU2-0C-IWd"/>
+                                    <constraint firstAttribute="bottom" secondItem="k9l-Rb-eaY" secondAttribute="bottom" id="pSa-7v-ZFz"/>
+                                    <constraint firstItem="k9l-Rb-eaY" firstAttribute="top" secondItem="kHx-Ru-qB8" secondAttribute="bottom" constant="12" id="saL-SC-AKd"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="40"/>
@@ -247,10 +269,14 @@
                             <constraint firstItem="8Pd-tS-FL6" firstAttribute="leading" secondItem="fnS-37-l3V" secondAttribute="leading" id="pCf-jO-kYr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="eventsSearch" destination="kHx-Ru-qB8" id="gUW-Af-OLj"/>
+                        <outlet property="tableView" destination="k9l-Rb-eaY" id="QGd-do-htk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NjL-lx-87Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5447" y="224"/>
+            <point key="canvasLocation" x="5444.6511627906975" y="223.39055793991417"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eVG-La-Phg">

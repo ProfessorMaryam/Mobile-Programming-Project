@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5737BDFF2D01D84100B40D01 /* Interests.storyboard */; };
+		57A5F0462D12B74800252873 /* EventsDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */; };
+		57A5F0472D12B74800252873 /* EventsDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */; };
 		C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */; };
 		C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313441E2D0D797B00B17BF4 /* AdminTVC.swift */; };
 		C31344212D0D797B00B17BF4 /* AdminTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C313441F2D0D797B00B17BF4 /* AdminTVC.xib */; };
@@ -65,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		5737BDFF2D01D84100B40D01 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
+		57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDisplayTableViewCell.swift; sourceTree = "<group>"; };
+		57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsDisplayTableViewCell.xib; sourceTree = "<group>"; };
 		C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPageTableViewController.swift; sourceTree = "<group>"; };
 		C313441E2D0D797B00B17BF4 /* AdminTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTVC.swift; sourceTree = "<group>"; };
 		C313441F2D0D797B00B17BF4 /* AdminTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminTVC.xib; sourceTree = "<group>"; };
@@ -181,8 +185,10 @@
 				C3E287372D0DA60500CBF459 /* UsersDisplayController.swift */,
 				DAB6A43E2D118647002FEC6D /* DisplayUsersTableViewCell.swift */,
 				DAB6A43F2D118647002FEC6D /* DisplayUsersTableViewCell.xib */,
-				C395B1382CFC996900C073C2 /* Assets.xcassets */,
 				C3E287392D0DA71700CBF459 /* EventsDisplayController.swift */,
+				C395B1382CFC996900C073C2 /* Assets.xcassets */,
+				57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */,
+				57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */,
 				C395B13D2CFC996900C073C2 /* Info.plist */,
 			);
 			path = Eventosaurus;
@@ -327,6 +333,7 @@
 				C31344212D0D797B00B17BF4 /* AdminTVC.xib in Resources */,
 				5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */,
 				C326037B2D0872DB008BD790 /* BecomeOrg.storyboard in Resources */,
+				57A5F0472D12B74800252873 /* EventsDisplayTableViewCell.xib in Resources */,
 				C395B1372CFC996700C073C2 /* Main.storyboard in Resources */,
 				C326037F2D0891A3008BD790 /* AdminPage.storyboard in Resources */,
 			);
@@ -355,6 +362,7 @@
 			files = (
 				C395B1682CFCA9E700C073C2 /* Event.swift in Sources */,
 				C3E287382D0DA60500CBF459 /* UsersDisplayController.swift in Sources */,
+				57A5F0462D12B74800252873 /* EventsDisplayTableViewCell.swift in Sources */,
 				C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */,
 				DAB6A4402D118647002FEC6D /* DisplayUsersTableViewCell.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,

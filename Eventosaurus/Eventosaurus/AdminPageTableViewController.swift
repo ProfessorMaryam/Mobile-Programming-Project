@@ -33,7 +33,7 @@ class AdminPageTableViewController: UIViewController, UITableViewDataSource, UIT
     // TableView Functions
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110 // Height for each cell
+        return 90 // Height for each cell
     }
 
     // TableView functions
