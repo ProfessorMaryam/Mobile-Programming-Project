@@ -177,7 +177,7 @@ import Firebase
 import FirebaseAuth
 
 class Register: UIViewController {
-    
+
     @IBOutlet weak var fnReqLabel: UILabel!
     @IBOutlet weak var emailReqLabel: UILabel!
     @IBOutlet weak var dobReqLabel: UILabel!
@@ -185,6 +185,8 @@ class Register: UIViewController {
     
     @IBOutlet weak var fullnameTxtField: UITextField!
     @IBOutlet weak var emailTxtField: UITextField!
+    
+    @IBOutlet weak var DatePicker: UIDatePicker!
     @IBOutlet weak var dateTxtField: UITextField!
     @IBOutlet weak var passwordTxtfield: UITextField!
     @IBOutlet weak var confirmPasswordTxtField: UITextField!
@@ -200,10 +202,14 @@ class Register: UIViewController {
 
     @IBAction func didTapSignUp(_ sender: Any) {
         if isValid() {
+            // Get the selected date from the UIDatePicker
+            let selectedDate = DatePicker.date
+            
+            // Create newUser with the correct date format (Date object)
             let newUser = User(
                 fullName: fullnameTxtField.text!,
                 email: emailTxtField.text ?? "",
-                dateOfBirth: dateTxtField.text ?? "",
+                dateOfBirth: selectedDate, // Pass Date object instead of string
                 password: passwordTxtfield.text ?? "",
                 isOrganizer: false,
                 isAdmin: false
@@ -233,7 +239,7 @@ class Register: UIViewController {
         }
         
         // Check Date of Birth
-        if let dateOfBirth = dateTxtField.text, dateOfBirth.isEmpty {
+        if dateTxtField.text?.isEmpty ?? true {
             dobReqLabel.isHidden = false
             isValid = false
         }
@@ -260,8 +266,6 @@ class Register: UIViewController {
         return isValid
     }
     
-    
-
     // Register user with Firebase Authentication
     func registerUser(_ newUser: User) {
         guard let password = passwordTxtfield.text, password.count >= 6 else {
