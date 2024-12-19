@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fzS-e5-GfX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -16,23 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Z2q-po-ws5">
-                                <rect key="frame" x="-11" y="-10" width="413" height="870"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Z2q-po-ws5">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick the events of your interest." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zb9-8U-wde">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick the events of your interest." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zb9-8U-wde">
                                 <rect key="frame" x="16" y="149" width="240" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0B-I2-xkY" userLabel="customView">
-                                <rect key="frame" x="0.0" y="182" width="393" height="670"/>
+                                <rect key="frame" x="0.0" y="175" width="393" height="677"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="a0B-I2-xkY" secondAttribute="height" multiplier="393:670" id="Ruq-65-9W1"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="40"/>
@@ -44,9 +39,16 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="a0B-I2-xkY" secondAttribute="bottom" id="6Ks-jD-dWn"/>
-                            <constraint firstItem="a0B-I2-xkY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Yo6-PJ-IoZ"/>
-                            <constraint firstItem="a0B-I2-xkY" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="smX-0f-7eO"/>
+                            <constraint firstItem="a0B-I2-xkY" firstAttribute="top" secondItem="zb9-8U-wde" secondAttribute="bottom" constant="5" id="2qf-7u-lMd"/>
+                            <constraint firstItem="zb9-8U-wde" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="6hg-Jo-4HJ"/>
+                            <constraint firstItem="Z2q-po-ws5" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Bmj-vE-XDL"/>
+                            <constraint firstItem="zb9-8U-wde" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="-6" id="GZI-E9-yhZ"/>
+                            <constraint firstItem="a0B-I2-xkY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="J0g-Ux-oCu"/>
+                            <constraint firstAttribute="trailing" secondItem="Z2q-po-ws5" secondAttribute="trailing" id="MZP-CL-Zfa"/>
+                            <constraint firstAttribute="bottom" secondItem="Z2q-po-ws5" secondAttribute="bottom" id="fkv-aI-kC0"/>
+                            <constraint firstItem="a0B-I2-xkY" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="wHh-GI-kUA"/>
+                            <constraint firstItem="Z2q-po-ws5" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="x0t-gM-8YM"/>
+                            <constraint firstAttribute="bottom" secondItem="a0B-I2-xkY" secondAttribute="bottom" id="yTX-lX-H27"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Interests" largeTitleDisplayMode="always" id="4AS-NX-SeC"/>

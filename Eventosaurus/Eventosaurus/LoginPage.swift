@@ -1,82 +1,21 @@
-////
-////  LoginPage.swift
-////  EventosaurusUITests
-////
-////  Created by BP-36-201-23 on 08/12/2024.
-////
-//
-//import UIKit
-//
-//class LoginPage: UIViewController {
-//
-//    @IBOutlet weak var emailReqLabel: UILabel!
-//    
-//    @IBOutlet weak var passwordReqLabel: UILabel!
-//    
-//    
-//    @IBOutlet weak var emailTxtField: UITextField!
-//    
-//    
-//    @IBOutlet weak var passwordTxtField: UITextField!
-//    
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        emailReqLabel.isHidden = true
-//        passwordReqLabel.isHidden = true
-//
-//    }
-//    
-//    
-//    @IBAction func loginButtonTapped(_ sender: Any) {
-//        // Assume the form is valid initially
-//        var isValid = true
-//        
-//        // Check if email is empty
-//        if let email = emailTxtField.text, email.isEmpty {
-//            emailReqLabel.isHidden = false // Show the required label
-//            isValid = false
-//        }
-//        
-//        // Check if password is empty
-//        if let password = passwordTxtField.text, password.isEmpty {
-//            passwordReqLabel.isHidden = false // Show the required label
-//            isValid = false
-//        }
-//        
-//        // If the form is valid, proceed to the next screen
-//        if isValid {
-//            // Perform segue to the next screen (for example, "toHomePage")
-//          //  self.performSegue(withIdentifier: "toHomePage", sender: self)
-//            print("Login successful. Proceeding to next page...")
-//        } else {
-//            // If validation fails, show an alert
-//            let alertController = UIAlertController(title: "Invalid Input", message: "Please enter both email and password.", preferredStyle: .alert)
-//            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//            self.present(alertController, animated: true, completion: nil)
-//        }
-//    }
-//
-//    
-//
-//}
-
-
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class LoginPage: UIViewController {
-
+    
+    // Declaring label and text field outlets
     @IBOutlet weak var emailReqLabel: UILabel!
     @IBOutlet weak var passwordReqLabel: UILabel!
-    
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var passwordTxtField: UITextField!
-
+    
+    let db = Firestore.firestore()  // Firestore reference
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Keeping labels hidden on load because they are responsible to show the user where their error is
         emailReqLabel.isHidden = true
         passwordReqLabel.isHidden = true
     }
@@ -122,9 +61,44 @@ class LoginPage: UIViewController {
                         self.showAlert(title: "Login Error", message: error.localizedDescription)
                     }
                 } else {
-                    // If login is successful, proceed to the next screen
-                    print("Login successful. Proceeding to next page...")
-                    self.performSegue(withIdentifier: "toHomePage", sender: self)
+                    // After successful login, check Firestore for the "Is Admin" field
+                    guard let user = authResult?.user else {
+                        return
+                    }
+                    
+                    // Query Firestore to get the "Is Admin" field and password
+                    let usersRef = self.db.collection("Users")
+                    usersRef.whereField("Email", isEqualTo: user.email ?? "").getDocuments { snapshot, error in
+                        if let error = error {
+                            self.showAlert(title: "Error", message: error.localizedDescription)
+                            return
+                        }
+                        
+                        // Check if the document exists and if the "Is Admin" field is true
+                        if let document = snapshot?.documents.first {
+                            let isAdmin = document.get("Is Admin") as? Bool ?? false
+                            let storedPassword = document.get("Password") as? String ?? ""
+                            
+                            if isAdmin {
+                                // Check if the entered password matches the one stored in Firestore
+                                if password == storedPassword {
+                                    // If the user is an admin and the password matches, perform the segue
+                                    print("Admin login successful. Proceeding to Admin page...")
+                                    self.performSegue(withIdentifier: "toAdminPage", sender: self)
+                                } else {
+                                    // Password mismatch error
+                                    self.showAlert(title: "Login Error", message: "Incorrect password. Please try again.")
+                                }
+                            } else {
+                                // If not an admin, proceed to the regular user home page
+                                print("Login successful. Proceeding to user home page...")
+                                self.performSegue(withIdentifier: "toHomePage", sender: self)
+                            }
+                        } else {
+                            // No user found in Firestore, handle error
+                            self.showAlert(title: "Error", message: "User not found in the system.")
+                        }
+                    }
                 }
             }
         } else {
