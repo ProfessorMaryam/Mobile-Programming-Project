@@ -26,7 +26,7 @@ class RequestForm: UIViewController {
             showAlert(message: "Please fill out all fields.")
             return
         }
-
+        
         // Check if the email exists in the "Users" collection and if the user is an organizer
         checkEmailExistsAndOrganizer(email: email) { exists, isOrganizer in
             if exists {
@@ -44,31 +44,26 @@ class RequestForm: UIViewController {
         }
     }
     
-    // Function to check if the email exists in the Users collection and if the user is an organizer
+    // Updated simplified function to check email existence and organizer status
     func checkEmailExistsAndOrganizer(email: String, completion: @escaping (Bool, Bool) -> Void) {
         let usersRef = db.collection("Users")
         
-        // Query the "Users" collection for the given email (Field is 'Email' in Firestore)
+        // Query the "Users" collection for the given email
         usersRef.whereField("Email", isEqualTo: email).getDocuments { snapshot, error in
             if let error = error {
                 print("Error checking email: \(error.localizedDescription)")
                 completion(false, false)
+                return
+            }
+            
+            // If a document with the email is found
+            if let document = snapshot?.documents.first {
+                let isOrganizer = document.get("Is Organizer") as? Bool ?? false
+                // Return true if user exists, and whether they are an organizer
+                completion(true, isOrganizer)
             } else {
-                // If the snapshot is not empty, the email exists
-                if let snapshot = snapshot, !snapshot.isEmpty {
-                    // If the user is found, check the 'Is Organizer' field
-                    if let document = snapshot.documents.first,
-                       let isOrganizer = document.get("Is Organizer") as? Bool, isOrganizer {
-                        // User is an organizer
-                        completion(true, true)
-                    } else {
-                        // User exists, but not an organizer
-                        completion(true, false)
-                    }
-                } else {
-                    // Email does not exist in the Users collection
-                    completion(false, false)
-                }
+                // If no document is found with the email
+                completion(false, false)
             }
         }
     }
@@ -77,11 +72,10 @@ class RequestForm: UIViewController {
     func saveRequestData(email: String, fullName: String, qualifications: String, WDYWTBO: String) {
         // Create a dictionary with the form data
         let requestData: [String: Any] = [
-            "qualifications": qualifications,
-            "WDYWTBO": WDYWTBO,
-            "email": email,
-            "fullName": fullName,
-            "timestamp": FieldValue.serverTimestamp() // Automatically adds the current timestamp
+            "Qualifications": qualifications,
+            "Message": WDYWTBO,
+            "Email": email,
+            "Full Name": fullName
         ]
         
         // Save the data to Firestore in the "Requests" collection

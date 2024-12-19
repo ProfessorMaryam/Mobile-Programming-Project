@@ -31,6 +31,9 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
             if let error = error {
                 print("Error getting documents: \(error.localizedDescription)")
             } else {
+                // Debugging: Print the number of documents fetched
+                print("Documents count: \(snapshot?.documents.count ?? 0)")
+                
                 // Clear the existing names in case the data is reloaded
                 self.notifs.removeAll()
                 
@@ -42,6 +45,9 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                 }
                 
+                // Debugging: Print the fetched names
+                print("Fetched names: \(self.notifs)")
+                
                 // Reload the table view after fetching data
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -49,6 +55,7 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
+
 
     // MARK: - UITableViewDataSource methods
 
