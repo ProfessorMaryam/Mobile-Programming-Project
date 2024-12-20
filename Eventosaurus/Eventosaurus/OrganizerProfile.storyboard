@@ -141,7 +141,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="kv0-yj-NhQ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dino profile" translatesAutoresizingMaskIntoConstraints="NO" id="kv0-yj-NhQ">
                                 <rect key="frame" x="96" y="187" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -198,7 +198,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="5a0-je-5CG">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dino profile" translatesAutoresizingMaskIntoConstraints="NO" id="5a0-je-5CG">
                                         <rect key="frame" x="19" y="86" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -290,12 +290,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1Xj-a6-duA"/>
+        <segue reference="apP-fL-G1B"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Background" width="301.66665649414062" height="706.66668701171875"/>
+        <image name="dino profile" width="168" height="165"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="profile" width="1280" height="1280"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
