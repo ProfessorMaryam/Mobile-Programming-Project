@@ -37,6 +37,15 @@
                                     <segue destination="6Tc-Qy-AiF" kind="presentation" modalPresentationStyle="fullScreen" id="QUW-bh-7c5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVS-BV-SFM">
+                                <rect key="frame" x="159" y="741" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <segue destination="OHk-WJ-ttn" kind="presentation" modalPresentationStyle="fullScreen" id="eWP-Ig-H8L"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,7 +114,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="352" height="138"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bAh-SQ-ddr">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bAh-SQ-ddr" customClass="eventImageView" customModule="Eventosaurus" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="352" height="138"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <userDefinedRuntimeAttributes>
@@ -115,7 +124,7 @@
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kba-MN-ZYx">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kba-MN-ZYx" customClass="titleLabel" customModule="Eventosaurus" customModuleProvider="target">
                                                             <rect key="frame" x="7" y="-10" width="350" height="73"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
@@ -159,6 +168,33 @@
             </objects>
             <point key="canvasLocation" x="2864.8854961832062" y="11.971830985915494"/>
         </scene>
+        <!--Display Name View Controller-->
+        <scene sceneID="oKx-pV-JvT">
+            <objects>
+                <viewController id="OHk-WJ-ttn" customClass="DisplayNameViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IiL-vI-QuF">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qC-ut-g1J" customClass="EventNameLabel" customModule="Eventosaurus" customModuleProvider="target">
+                                <rect key="frame" x="95" y="385" width="202" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="I4s-Hu-FVv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="EventNameL" destination="3qC-ut-g1J" id="5Za-Uh-nZH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MC3-NS-qRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2003.8167938931297" y="686.61971830985919"/>
+        </scene>
         <!--Event Search View Controller-->
         <scene sceneID="Hew-CP-JXi">
             <objects>
@@ -174,7 +210,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bg1-2G-Ut3">
                                 <rect key="frame" x="0.0" y="97" width="393" height="755"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c8O-1q-CGI">
+                                    <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c8O-1q-CGI" customClass="searchBar" customModule="Eventosaurus" customModuleProvider="target">
                                         <rect key="frame" x="32" y="31" width="329" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -205,17 +241,6 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="ax8-YR-T48" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="Xfv-jd-qyN"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wc8-Zg-dA0">
-                                        <rect key="frame" x="310" y="40" width="51" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system">
-                                            <color key="baseForegroundColor" red="0.51767653229999999" green="0.51749837399999998" blue="0.53335392479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="KLT-ee-JYW" kind="presentation" modalPresentationStyle="fullScreen" id="7mm-w0-ae2"/>
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bYZ-Uw-Fkm" customClass="collectioniView" customModule="Eventosaurus" customModuleProvider="target">
@@ -286,6 +311,17 @@
                                     <segue destination="6Tc-Qy-AiF" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="9Pd-oF-jgB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wc8-Zg-dA0">
+                                <rect key="frame" x="318" y="54" width="51" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="KLT-ee-JYW" kind="presentation" modalPresentationStyle="fullScreen" id="7mm-w0-ae2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sYo-Xr-pcT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -297,6 +333,7 @@
                     </view>
                     <connections>
                         <outlet property="collectioniView" destination="bYZ-Uw-Fkm" id="Sn7-Bd-RQv"/>
+                        <outlet property="searchBar" destination="c8O-1q-CGI" id="03d-zh-Cbm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSA-QJ-E7l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1227,17 +1264,6 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                             <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DI-WL-Tiy">
-                                        <rect key="frame" x="310" y="40" width="51" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system">
-                                            <color key="baseForegroundColor" red="0.51767653229999999" green="0.51749837399999998" blue="0.53335392479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="KLT-ee-JYW" kind="presentation" modalPresentationStyle="fullScreen" id="fJc-TU-1qv"/>
-                                        </connections>
-                                    </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qAE-tJ-OoX">
                                         <rect key="frame" x="0.0" y="147" width="393" height="608"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1304,6 +1330,17 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="6Tc-Qy-AiF" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="RZl-8h-KH2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DI-WL-Tiy">
+                                <rect key="frame" x="316" y="54" width="51" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="KLT-ee-JYW" kind="presentation" modalPresentationStyle="fullScreen" id="fJc-TU-1qv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1526,10 +1563,10 @@ Aminatour1@evento.saurus.bh</string>
     <inferredMetricsTieBreakers>
         <segue reference="Xfv-jd-qyN"/>
         <segue reference="8Mm-fn-Hlm"/>
-        <segue reference="fJc-TU-1qv"/>
+        <segue reference="7mm-w0-ae2"/>
         <segue reference="k69-l0-SPF"/>
         <segue reference="UPm-DE-OTP"/>
-        <segue reference="RZl-8h-KH2"/>
+        <segue reference="9Pd-oF-jgB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
@@ -1554,10 +1591,10 @@ Aminatour1@evento.saurus.bh</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

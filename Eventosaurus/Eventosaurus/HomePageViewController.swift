@@ -30,74 +30,170 @@ class HomePageViewController: UIViewController {
 
 
 
+class DisplayNameViewController: UIViewController {
+    
+    
+    @IBOutlet weak var EventNameL: UILabel!
+    
+    let db = Firestore.firestore()
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            // Fetch a random event name from Firestore
+            fetchRandomEvent()
+        }
+        
+        func fetchRandomEvent() {
+            // Reference to the "events" collection in Firestore
+            db.collection("Events").getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Error fetching events: \(error)")
+                    return
+                }
+                
+                // Check if we have documents in the snapshot
+                guard let documents = snapshot?.documents, documents.count > 0 else {
+                    print("No events found.")
+                    return
+                }
+                
+                // Randomly pick an event from the documents
+                let randomIndex = Int.random(in: 0..<documents.count)
+                let randomEvent = documents[randomIndex]
+                
+                // Extract the event name from the document data
+                if let eventName = randomEvent.data()["Event Name"] as? String {
+                    // Set the event name on the label
+                    self.EventNameL.text = eventName
+                } else {
+                    print("Event Name not found in the document.")
+                }
+            }
+        }
+    }
 
 
-struct Eventi {
-    let title: String
-    let image: UIImage
-}
 
-let eventies: [Eventi] = [
-Eventi(title: "Damn", image:#imageLiteral(resourceName: "damn.jpeg")),
-Eventi(title: "Damn Damn", image: #imageLiteral(resourceName: "damn.jpeg")),
-Eventi(title: "Damn Damn Damn", image: #imageLiteral(resourceName: "damn.jpeg")),
-Eventi(title: "Damn Damn Damn Damn", image: #imageLiteral(resourceName: "damn.jpeg"))
-]
+
+
+
+
+
+
+
+
+
+
 
 
 class EventHomeViewController: UIViewController {
     
     @IBOutlet weak var collectionoView: UICollectionView!
     
+    // Define properties to store event data
+    let db = Firestore.firestore()
+        
+        var eventNames: [String] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionoView.dataSource = self
-        collectionoView.delegate = self
-        collectionoView.collectionViewLayout = UICollectionViewFlowLayout()
+                collectionoView.delegate = self
+                collectionoView.collectionViewLayout = UICollectionViewFlowLayout()
+        
+        fetchEvents()
     }
+  
     
-}
+    func fetchEvents() {
+           db.collection("Events").getDocuments { (snapshot, error) in
+               if let error = error {
+                   print("Error fetching events: \(error)")
+                   return
+               }
+               
+               // Check if we have any documents
+               guard let documents = snapshot?.documents, documents.count > 0 else {
+                   print("No events found.")
+                   return
+               }
+               
+               // Clear previous data
+               self.eventNames.removeAll()
+               
+               
+               // Map documents to event data arrays
+               documents.forEach { document in
+                   let data = document.data()
+                   let eventName = data["Event Name"] as? String ?? "Unnamed Event"
+                   
 
+                   // Add data to arrays
+                   self.eventNames.append(eventName)
+                  
+               }
+               
+               // Reload collection view after fetching events
+               self.collectionoView.reloadData()
+           }
+       }
+   }
+    
+    // Clear previous event data
+    
 
+// MARK: - UICollectionView DataSource
 extension EventHomeViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventies.count
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCollectionViewCell", for: indexPath) as! EventCollectionViewCell
-        cell.setup(with: eventies[indexPath.row])
-        return cell
-    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return eventNames.count // Return the count of events
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCollectionViewCell", for: indexPath) as! EventCollectionViewCell
+            
+            // Get event data from arrays
+            let eventName = eventNames[indexPath.row]
+            
+            // Populate the cell with event data
+            cell.setup(with: eventName)
+            
+            return cell
+        }
 }
 
-
+// MARK: - UICollectionView DelegateFlowLayout
 extension EventHomeViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 352, height: 150)
     }
 }
 
-
+// MARK: - UICollectionView Delegate
 extension EventHomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(eventies[indexPath.row].title)
-    }
+            print("Event selected: \(eventNames[indexPath.row])")
+        }
 }
 
-
+// MARK: - EventCollectionViewCell
 class EventCollectionViewCell: UICollectionViewCell {
-   
-    @IBOutlet weak var eventImageView: UIImageView!
     
+    @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    func setup(with eventi: Eventi) {
-        eventImageView.image = eventi.image
-        titleLabel.text = eventi.title
-    }
-    
+    func setup(with eventName: String) {
+            // Set the image (you can replace "damn.jpeg" with your own default image name)
+            eventImageView.image = UIImage(named: "damn.jpeg")
+            
+            // Set the event name in the label
+        titleLabel.text = eventName
+            
+            // If you want to display description or date, you can add those as well
+            // For example: print(description) or titleLabel.text = "\(eventName) - \(description)"
+        }
 }
 
 
@@ -109,33 +205,101 @@ class EventCollectionViewCell: UICollectionViewCell {
 
 
 
-
-class EventSearchViewController: UIViewController {
+class EventSearchViewController: UIViewController, UISearchBarDelegate {
     
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectioniView: UICollectionView!
+    let db = Firestore.firestore()
+        
+        var eventNames: [String] = []
+    var filteredEventNames: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectioniView.dataSource = self
         collectioniView.delegate = self
         collectioniView.collectionViewLayout = UICollectionViewFlowLayout()
+        searchBar.delegate = self
+        fetchEvents()
+    }
+  
+    
+    func fetchEvents() {
+           db.collection("Events").getDocuments { (snapshot, error) in
+               if let error = error {
+                   print("Error fetching events: \(error)")
+                   return
+               }
+               
+               // Check if we have any documents
+               guard let documents = snapshot?.documents, documents.count > 0 else {
+                   print("No events found.")
+                   return
+               }
+               
+               // Clear previous data
+               self.eventNames.removeAll()
+               self.filteredEventNames.removeAll()
+               
+               // Map documents to event data arrays
+               documents.forEach { document in
+                   let data = document.data()
+                   let eventName = data["Event Name"] as? String ?? "Unnamed Event"
+                   
+
+                   // Add data to arrays
+                   self.eventNames.append(eventName)
+                   self.filteredEventNames.append(eventName)
+               }
+               
+               // Reload collection view after fetching events
+               self.collectioniView.reloadData()
+           }
+       }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // If the search text is empty, show all events
+        if searchText.isEmpty {
+            filteredEventNames = eventNames
+        } else {
+            // Filter events based on the search text
+            filteredEventNames = eventNames.filter { eventName in
+                return eventName.lowercased().contains(searchText.lowercased())
+            }
+        }
+        
+        // Reload the collection view to reflect the filtered results
+        collectioniView.reloadData()
+    }
+        
+        // Optionally handle the search bar cancel button
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            searchBar.text = ""
+            filteredEventNames = eventNames // Reset the filtered events
+            collectioniView.reloadData()
+        }
     }
     
-}
+   
 
 
 extension EventSearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventies.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EveCollectionViewCell", for: indexPath) as! EveCollectionViewCell
-        cell.setup(with: eventies[indexPath.row])
-        return cell
-    }
+        return filteredEventNames.count // Return the count of events
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EveCollectionViewCell", for: indexPath) as! EveCollectionViewCell
+            
+            // Get event data from arrays
+            let eventName = filteredEventNames[indexPath.row]
+            // Populate the cell with event data
+            cell.setup(with: eventName)
+            
+            return cell
+        }
 }
 
 
@@ -155,8 +319,8 @@ extension EventSearchViewController: UICollectionViewDelegateFlowLayout {
 extension EventSearchViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(eventies[indexPath.row].title)
-    }
+            print("Event selected: \(filteredEventNames[indexPath.row])")
+        }
     
 }
 
@@ -167,11 +331,20 @@ class EveCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    func setup(with eventi: Eventi) {
-        eveImageView.image = eventi.image
-        titleLabel.text = eventi.title
-    }
+    func setup(with eventName: String) {
+            // Set the image (you can replace "damn.jpeg" with your own default image name)
+            eveImageView.image = UIImage(named: "damn.jpeg")
+            
+            // Set the event name in the label
+        titleLabel.text = eventName
+            
+            // If you want to display description or date, you can add those as well
+            // For example: print(description) or titleLabel.text = "\(eventName) - \(description)"
+        }
+    
 }
+
+
 
 
 
@@ -189,24 +362,59 @@ class OrganizerSearchViewController: UIViewController {
     
     
     @IBOutlet weak var collectioneView: UICollectionView!
+    var upcomingEvents: [Event] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectioneView.dataSource = self
         collectioneView.delegate = self
         collectioneView.collectionViewLayout = UICollectionViewFlowLayout()
+        
+        fetchUpcomingEvents()
     }
     
+    func fetchUpcomingEvents() {
+        let db = Firestore.firestore()
+        db.collection("Event").getDocuments { snapshot, error in
+            if let error = error {
+                print("Error fetching events: \(error)")
+                return
+            }
+            
+            guard let documents = snapshot?.documents else { return }
+            self.upcomingEvents = documents.compactMap { doc -> Event? in
+                let data = doc.data()
+                guard
+                    let eventName = data["Event Name"] as? String,
+                    let status = data["Status"] as? String,
+                    let description = data["Description"] as? String,
+                    let timestamp = data["Date"] as? Timestamp,
+                    let organizer1 = data["Organizer1"] as? String,
+                    let organizer2 = data["Organizer2"] as? String,
+                    let maxAttendees = data["Maximum Attendees"] as? Int
+                else {
+                    return nil
+                }
+                let date = timestamp.dateValue()
+                return Event(status: status, name: eventName, description: description, date: date, organizer1: organizer1, organizer2: organizer2, maximumAttendees: maxAttendees)
+            }
+            
+            DispatchQueue.main.async {
+                self.collectioneView.reloadData()
+            }
+        }
+    }
 }
 
 extension OrganizerSearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventies.count
+        return upcomingEvents.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrgCollectionViewCell", for: indexPath) as! OrgCollectionViewCell
-        cell.setup(with: eventies[indexPath.row])
+        cell.setup(with: upcomingEvents[indexPath.row])
         return cell
     }
 }
@@ -226,7 +434,7 @@ extension OrganizerSearchViewController: UICollectionViewDelegateFlowLayout {
 extension OrganizerSearchViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(eventies[indexPath.row].title)
+        print(upcomingEvents[indexPath.row].eventName)
     }
     
 }
@@ -237,9 +445,10 @@ class OrgCollectionViewCell: UICollectionViewCell{
     @IBOutlet weak var orgImageView: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
-    func setup(with eventi: Eventi) {
-        orgImageView.image = eventi.image
-        titleLabel.text = eventi.title
+    
+    func setup(with event: Event) {
+        orgImageView.image = #imageLiteral(resourceName: "damn.jpeg")
+        titleLabel.text = event.eventName
     }
     
 }

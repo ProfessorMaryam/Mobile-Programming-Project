@@ -1,70 +1,46 @@
 import Foundation
-
-
+import FirebaseFirestore
 
 class Event {
     
-    enum EventStatus {
-        case upcoming
-        case ongoing
-        case cancelled
-        case completed
-    }
-    
+    // Event properties
     var eventName: String
-    var users: [User] = []
-    var status: EventStatus
+    var status: String
     var description: String
     var date: Date
-    var organizers: String
+    var organizer1: String
+    var organizer2: String
     var maximumAttendees: Int
     
-    // Updated initializer that accepts a date string
-    init(status: EventStatus, name: String, description: String, date: String, organizers: String, maximumAttendees: Int) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-mm-yyyy"  // Customize the expected date format (e.g., "yyyy-MM-dd")
-        
-        if let parsedDate = dateFormatter.date(from: date) {
-            self.date = parsedDate  // Successfully parsed date
-        } else {
-            // Handle invalid date format by setting the current date or another fallback
-            self.date = Date()
-            print("Invalid date format, using current date instead.")
-        }
-        
+    // Initializer
+    init(status: String, name: String, description: String, date: Date, organizer1: String, organizer2: String, maximumAttendees: Int) {
         self.eventName = name
         self.status = status
         self.description = description
-        self.organizers = organizers
+        self.organizer1 = organizer1
+        self.organizer2 = organizer2
         self.maximumAttendees = maximumAttendees
+        self.date = date
     }
     
-    // Method to add a user to the event
-    func addUser(user: User) {
-        users.append(user)
-        print("\(user.fullName) added to the event.")
+    // Convert the Event object into a dictionary for Firestore
+    func toDictionary() -> [String: Any] {
+        // Create a dictionary with the event's data
+        let eventDict: [String: Any] = [
+            "Event Name": eventName,
+            "Status": status,  // Using String for status
+            "Description": description,
+            "Date": Timestamp(date: date),  // Firestore Timestamp
+            "Organizer1": organizer1,
+            "Organizer2": organizer2,
+            "Maximum attendees": maximumAttendees
+        ]
+        
+        return eventDict
     }
     
-    // Method to remove a user from the event by name
-    func removeUser(user: User) {
-        if let index = users.firstIndex(where: { $0.email == user.email }) {
-            users.remove(at: index)
-            print("\(user.fullName) removed from the event.")
-        } else {
-            print("User \(user.fullName) not found in the event.")
-        }
-    }
-    
-    // Method to display all users in the event
-    func displayUsers() {
-        if users.isEmpty {
-            print("No users in the event.")
-        } else {
-            print("Users in the event:")
-            for user in users {
-                print("\(user.fullName) - \(user.email)")
-            }
-        }
+    // Optional: Check if the event is full (based on maximum attendees)
+    func isEventFull(currentAttendees: Int) -> Bool {
+        return currentAttendees >= maximumAttendees
     }
 }
