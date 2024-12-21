@@ -34,6 +34,7 @@ class Register: UIViewController {
     }
 
     @IBAction func didTapSignUp(_ sender: Any) {
+        // Validate the input fields first
         if isValid() {
             // Get the selected date from the UIDatePicker
             let selectedDate = DatePicker.date
@@ -48,7 +49,17 @@ class Register: UIViewController {
                 isAdmin: false
             )
             
-            registerUser(newUser)
+            // Check if email already exists
+            checkIfEmailExists(newUser.email) { emailExists in
+                if emailExists {
+                    // Show an error message if the email already exists
+                    self.emailReqLabel.isHidden = false
+                    self.emailReqLabel.text = "Email already exists"
+                } else {
+                    // Proceed to register the user if email doesn't exist
+                    self.registerUser(newUser)
+                }
+            }
         } else {
             print("Please fill in all the required fields or check password confirmation.")
             showAlert(title: "Invalid Input", message: "Please fill in all the required fields and make sure the passwords match.")
@@ -69,9 +80,11 @@ class Register: UIViewController {
         if let email = emailTxtField.text, email.isEmpty {
             emailReqLabel.isHidden = false
             isValid = false
+        } else if let email = emailTxtField.text, !isValidEmail(email) {
+            emailReqLabel.isHidden = false
+            emailReqLabel.text = "Invalid email format"
+            isValid = false
         }
-        
-      
         
         // Check Password
         if let password = passwordTxtfield.text, password.isEmpty {
@@ -93,6 +106,34 @@ class Register: UIViewController {
         }
         
         return isValid
+    }
+
+    // Validate email format using a regex
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailTest.evaluate(with: email)
+    }
+    
+    // Function to check if the email already exists in Firestore
+    func checkIfEmailExists(_ email: String, completion: @escaping (Bool) -> Void) {
+        let usersRef = Firestore.firestore().collection("Users")
+        
+        // Query Firestore for the email
+        usersRef.whereField("Email", isEqualTo: email).getDocuments { snapshot, error in
+            if let error = error {
+                print("Error checking email in Firestore: \(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            // If any documents are found, it means the email already exists
+            if let snapshot = snapshot, snapshot.count > 0 {
+                completion(true) // Email exists
+            } else {
+                completion(false) // Email does not exist
+            }
+        }
     }
     
     // Register user with Firebase Authentication

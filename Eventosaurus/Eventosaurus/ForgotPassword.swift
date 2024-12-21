@@ -87,7 +87,7 @@ class ForgotPassword: UIViewController {
     // Function to update the user's password field in Firestore (User collection)
     func updatePasswordInFirestore(email: String, newPassword: String, firestoreDocument: DocumentSnapshot) {
         // Reference to the "Users" collection
-        let usersRef = db.collection("Users")
+       // let usersRef = db.collection("Users")
         
         // Update password field in Firestore
         firestoreDocument.reference.updateData(["Password": newPassword]) { error in
