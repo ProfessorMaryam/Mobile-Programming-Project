@@ -1,5 +1,5 @@
 //
-//  UserViewOrgViewController.swift
+//  UserViewOrgNavController.swift
 //  Eventosaurus
 //
 //  Created by Manaf Mohamed on 22/12/2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserViewOrgViewController: UIViewController {
+class UserViewOrgNavController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

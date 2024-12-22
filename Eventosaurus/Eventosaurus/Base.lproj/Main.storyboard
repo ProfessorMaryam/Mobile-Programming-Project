@@ -20,36 +20,32 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dl2-PK-re3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dl2-PK-re3">
                                 <rect key="frame" x="159" y="154" width="75" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Profile"/>
                                 <connections>
                                     <segue destination="Cw1-8a-RWy" kind="presentation" modalPresentationStyle="fullScreen" id="dao-xj-SrG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpl-um-E8P">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpl-um-E8P">
                                 <rect key="frame" x="120" y="240" width="152" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Organizer Profile"/>
                                 <connections>
                                     <segue destination="R10-VK-XE4" kind="presentation" modalPresentationStyle="fullScreen" id="I2l-hY-sRd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqY-ol-O9o">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqY-ol-O9o">
                                 <rect key="frame" x="130" y="334" width="134" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Org View User"/>
                                 <connections>
                                     <segue destination="NgV-Jz-xq0" kind="presentation" id="Fpf-fl-kJI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkl-Mg-E0r">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkl-Mg-E0r">
                                 <rect key="frame" x="130" y="417" width="134" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="User View Org"/>
                                 <connections>
@@ -59,6 +55,24 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dl2-PK-re3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="159" id="145-4p-N1T"/>
+                            <constraint firstItem="bqY-ol-O9o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="4At-I1-Mvz"/>
+                            <constraint firstItem="kkl-Mg-E0r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="Agr-IA-ERr"/>
+                            <constraint firstItem="kpl-um-E8P" firstAttribute="top" secondItem="dl2-PK-re3" secondAttribute="bottom" constant="47" id="BcV-2B-Odw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kkl-Mg-E0r" secondAttribute="trailing" constant="129" id="Guy-oK-B9J"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kkl-Mg-E0r" secondAttribute="bottom" constant="362" id="elI-ta-C8b"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kpl-um-E8P" secondAttribute="trailing" constant="121" id="jNd-s6-Jut"/>
+                            <constraint firstItem="dl2-PK-re3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="95" id="joQ-dh-vgv"/>
+                            <constraint firstItem="bqY-ol-O9o" firstAttribute="top" secondItem="kpl-um-E8P" secondAttribute="bottom" constant="55" id="mJf-fe-MwI"/>
+                            <constraint firstItem="kpl-um-E8P" firstAttribute="top" secondItem="dl2-PK-re3" secondAttribute="bottom" constant="47" id="nNF-Zc-UF1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dl2-PK-re3" secondAttribute="trailing" constant="159" id="nhI-4d-0gL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bqY-ol-O9o" secondAttribute="trailing" constant="129" id="qPG-bl-ddj"/>
+                            <constraint firstItem="kkl-Mg-E0r" firstAttribute="top" secondItem="bqY-ol-O9o" secondAttribute="bottom" constant="44" id="qfx-QH-egv"/>
+                            <constraint firstItem="kpl-um-E8P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="rSm-me-5dy"/>
+                            <constraint firstItem="bqY-ol-O9o" firstAttribute="top" secondItem="kpl-um-E8P" secondAttribute="bottom" constant="55" id="wCK-fC-8bn"/>
+                            <constraint firstItem="kkl-Mg-E0r" firstAttribute="top" secondItem="bqY-ol-O9o" secondAttribute="bottom" constant="44" id="yGj-vR-eHn"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -89,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="871" y="-96"/>
         </scene>
-        <!--UserViewOrgViewController-->
+        <!--UserViewOrg-->
         <scene sceneID="y4s-ZD-ljX">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserViewOrg" referencedIdentifier="UserViewOrgViewController" id="ewZ-NU-9JZ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="UserViewOrg" storyboardName="UserViewOrg" id="ewZ-NU-9JZ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Th0-s6-aOi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="905" y="-64"/>

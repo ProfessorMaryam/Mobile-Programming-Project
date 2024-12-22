@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		7E3B5E6A2D0736B2005167A2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B5E692D0736B2005167A2 /* Profile.storyboard */; };
+		7E3E692E2D18355300085F4E /* UserViewOrgNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3E692D2D18355300085F4E /* UserViewOrgNavController.swift */; };
+		7E3E69302D18388200085F4E /* UserViewOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3E692F2D18388200085F4E /* UserViewOrgViewController.swift */; };
 		7E4885CD2D0EEA8400EFA875 /* OrgViewUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4885CC2D0EEA8400EFA875 /* OrgViewUser.storyboard */; };
 		7E4885CF2D0EEAA200EFA875 /* OrgViewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4885CE2D0EEAA200EFA875 /* OrgViewUserViewController.swift */; };
 		7E4885D12D0EEEEC00EFA875 /* UserViewOrg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4885D02D0EEEEC00EFA875 /* UserViewOrg.storyboard */; };
-		7E4885D32D0EEF0A00EFA875 /* UserViewOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4885D22D0EEF0A00EFA875 /* UserViewOrgViewController.swift */; };
 		7EA1B9AE2D0C3B46009A24F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */; };
 		7EA1B9B02D0C3DC8009A24F3 /* OrganizerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */; };
 		7EA1B9B22D0C3DE9009A24F3 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */; };
@@ -51,10 +52,11 @@
 
 /* Begin PBXFileReference section */
 		7E3B5E692D0736B2005167A2 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		7E3E692D2D18355300085F4E /* UserViewOrgNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewOrgNavController.swift; sourceTree = "<group>"; };
+		7E3E692F2D18388200085F4E /* UserViewOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewOrgViewController.swift; sourceTree = "<group>"; };
 		7E4885CC2D0EEA8400EFA875 /* OrgViewUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrgViewUser.storyboard; sourceTree = "<group>"; };
 		7E4885CE2D0EEAA200EFA875 /* OrgViewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgViewUserViewController.swift; sourceTree = "<group>"; };
 		7E4885D02D0EEEEC00EFA875 /* UserViewOrg.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserViewOrg.storyboard; sourceTree = "<group>"; };
-		7E4885D22D0EEF0A00EFA875 /* UserViewOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewOrgViewController.swift; sourceTree = "<group>"; };
 		7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizerProfile.storyboard; sourceTree = "<group>"; };
 		7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
@@ -139,7 +141,8 @@
 				C395B1352CFC996700C073C2 /* Main.storyboard */,
 				7E4885CC2D0EEA8400EFA875 /* OrgViewUser.storyboard */,
 				7E4885D02D0EEEEC00EFA875 /* UserViewOrg.storyboard */,
-				7E4885D22D0EEF0A00EFA875 /* UserViewOrgViewController.swift */,
+				7E3E692F2D18388200085F4E /* UserViewOrgViewController.swift */,
+				7E3E692D2D18355300085F4E /* UserViewOrgNavController.swift */,
 				7E4885CE2D0EEAA200EFA875 /* OrgViewUserViewController.swift */,
 				7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */,
 				7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */,
@@ -307,10 +310,11 @@
 				C395B1682CFCA9E700C073C2 /* Event.swift in Sources */,
 				C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */,
 				7EA1B9AE2D0C3B46009A24F3 /* ProfileViewController.swift in Sources */,
-				7E4885D32D0EEF0A00EFA875 /* UserViewOrgViewController.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
+				7E3E692E2D18355300085F4E /* UserViewOrgNavController.swift in Sources */,
 				C395B1602CFCA7A800C073C2 /* User.swift in Sources */,
+				7E3E69302D18388200085F4E /* UserViewOrgViewController.swift in Sources */,
 				C395B1342CFC996700C073C2 /* ViewController.swift in Sources */,
 				7EA1B9B22D0C3DE9009A24F3 /* OrganizerProfileViewController.swift in Sources */,
 				C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */,
