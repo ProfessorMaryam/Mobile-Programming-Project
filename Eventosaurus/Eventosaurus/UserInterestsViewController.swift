@@ -16,7 +16,8 @@ class UserInterestsViewController: UIViewController, UICollectionViewDataSource,
     var picturesAndLabels: [(String, String)] = []  // This will hold the category name and system icon name.
     var db = Firestore.firestore()  // Firestore database reference
     var selectedIndexPaths: Set<IndexPath> = []  // Set to track selected indexPaths
-
+    var selectedCategories: [String] = []  // Array to store selected category names
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -132,6 +133,9 @@ class UserInterestsViewController: UIViewController, UICollectionViewDataSource,
         // Track the selected cell
         selectedIndexPaths.insert(indexPath)
         
+        // Add category name to selectedCategories array
+        selectedCategories.append(picturesAndLabels[indexPath.row].0)
+        
         // Enable the next button only if 4 cells are selected
         if selectedIndexPaths.count == 4 {
             nextButton.isEnabled = true
@@ -155,9 +159,68 @@ class UserInterestsViewController: UIViewController, UICollectionViewDataSource,
         // Remove the deselected cell from the selected set
         selectedIndexPaths.remove(indexPath)
         
+        // Remove the category name from the selectedCategories array
+        selectedCategories.removeAll { $0 == picturesAndLabels[indexPath.row].0 }
+        
         // Disable the next button if fewer than 4 cells are selected
         if selectedIndexPaths.count < 4 {
             nextButton.isEnabled = false
+        }
+    }
+    
+    // MARK: - Button Action
+    
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
+        // Ensure that we have 4 categories selected
+        guard selectedCategories.count == 4 else {
+            return
+        }
+        
+        // Fetch the "Users" collection and update the user's interests
+        let userId = "currentUserId"  // Replace with the actual user ID (probably from Firebase Auth)
+        
+        // Fetch the "Categories" collection to get references to the categories
+        var categoryReferences: [DocumentReference] = []
+        
+        // Loop through the selected categories and fetch the reference for each category
+        for categoryName in selectedCategories {
+            db.collection("Categories")
+                .whereField("Category Name", isEqualTo: categoryName)
+                .getDocuments { (snapshot, error) in
+                    if let error = error {
+                        print("Error fetching category reference: \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    if let document = snapshot?.documents.first {
+                        // Add the reference to the category
+                        categoryReferences.append(document.reference)
+                    }
+                    
+                    // Once all categories are fetched, update the user's interests
+                    if categoryReferences.count == 4 {
+                        self.updateUserInterests(userId: userId, categoryReferences: categoryReferences)
+                    }
+                }
+        }
+    }
+    
+    // Update the user's interests in Firestore
+    func updateUserInterests(userId: String, categoryReferences: [DocumentReference]) {
+        let userRef = db.collection("Users").document(userId)
+        
+        // Set the interests fields to the category references
+        userRef.updateData([
+            "Interest1": categoryReferences[0],
+            "Interest2": categoryReferences[1],
+            "Interest3": categoryReferences[2],
+            "Interest4": categoryReferences[3]
+        ]) { error in
+            if let error = error {
+                print("Error updating user interests: \(error.localizedDescription)")
+            } else {
+                print("User interests updated successfully!")
+            }
         }
     }
 }
