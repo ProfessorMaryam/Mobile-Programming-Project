@@ -1,10 +1,8 @@
 import UIKit
-import FirebaseAuth
 import FirebaseFirestore
 
 class LoginPage: UIViewController {
     
-    // Declaring label and text field outlets
     @IBOutlet weak var emailReqLabel: UILabel!
     @IBOutlet weak var passwordReqLabel: UILabel!
     @IBOutlet weak var emailTxtField: UITextField!
@@ -14,103 +12,117 @@ class LoginPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Keeping labels hidden on load because they are responsible to show the user where their error is
         emailReqLabel.isHidden = true
         passwordReqLabel.isHidden = true
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        // Assume the form is valid initially
         var isValid = true
+        emailReqLabel.isHidden = true
+        passwordReqLabel.isHidden = true
         
-        // Check if email is empty
+        // Validate email
         if let email = emailTxtField.text, email.isEmpty {
-            emailReqLabel.isHidden = false // Show the required label
+            emailReqLabel.isHidden = false
+            emailReqLabel.text = "Email is required."
+            isValid = false
+        } else if let email = emailTxtField.text, !isValidEmail(email) {
+            emailReqLabel.isHidden = false
+            emailReqLabel.text = "Invalid email format."
             isValid = false
         }
         
-        // Check if password is empty
+        // Validate password
         if let password = passwordTxtField.text, password.isEmpty {
-            passwordReqLabel.isHidden = false // Show the required label
+            passwordReqLabel.isHidden = false
+            passwordReqLabel.text = "Password is required."
             isValid = false
         }
         
-        // If the form is valid, proceed to authenticate the user
         if isValid {
-            // Get email and password from text fields
             guard let email = emailTxtField.text, let password = passwordTxtField.text else {
                 return
             }
             
-            // Firebase Authentication: Sign in the user
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            // Query Firestore to check if the email exists
+            let usersRef = self.db.collection("Users")
+            usersRef.whereField("Email", isEqualTo: email).getDocuments { snapshot, error in
                 if let error = error {
-                    // If there's an error (e.g., wrong credentials), show an alert
-                    let errorCode = (error as NSError).code
+                    self.showAlert(title: "Error", message: "Error accessing user data: \(error.localizedDescription)")
+                    return
+                }
+                
+                if let document = snapshot?.documents.first {
+                    let storedPassword = document.get("Password") as? String ?? ""
                     
-                    // Handle specific error codes
-                    if errorCode == AuthErrorCode.userNotFound.rawValue {
-                        // Show alert if the user doesn't exist
-                        self.showAlert(title: "Login Error", message: "Account does not exist. Please sign up.")
-                    } else if errorCode == AuthErrorCode.wrongPassword.rawValue {
-                        // Show alert if the password is incorrect
-                        self.showAlert(title: "Login Error", message: "Incorrect password. Please try again.")
+                    if password == storedPassword {
+                        let isAdmin = document.get("Is Admin") as? Bool ?? false
+                        
+                        if isAdmin {
+                            // Admin login successful, instantiate AdminPage from the "Admin Page" storyboard
+                            self.navigateToAdminPage()
+                        } else {
+//                            // Handle non-admin user login if necessary
+                            
+                            
+                            
+                            
+//                            self.showAlert(title: "Login Error", message: "You do not have admin access.")
+                            
+                            
+                            
+                            
+                            
+                            
+                        }
                     } else {
-                        // General error handling
-                        self.showAlert(title: "Login Error", message: error.localizedDescription)
+                        self.showAlert(title: "Login Error", message: "Incorrect password. Please try again.")
                     }
                 } else {
-                    // After successful login, check Firestore for the "Is Admin" field
-                    guard let user = authResult?.user else {
-                        return
-                    }
-                    
-                    // Query Firestore to get the "Is Admin" field and password
-                    let usersRef = self.db.collection("Users")
-                    usersRef.whereField("Email", isEqualTo: user.email ?? "").getDocuments { snapshot, error in
-                        if let error = error {
-                            self.showAlert(title: "Error", message: error.localizedDescription)
-                            return
-                        }
-                        
-                        // Check if the document exists and if the "Is Admin" field is true
-                        if let document = snapshot?.documents.first {
-                            let isAdmin = document.get("Is Admin") as? Bool ?? false
-                            let storedPassword = document.get("Password") as? String ?? ""
-                            
-                            if isAdmin {
-                                // Check if the entered password matches the one stored in Firestore
-                                if password == storedPassword {
-                                    // If the user is an admin and the password matches, perform the segue
-                                    print("Admin login successful. Proceeding to Admin page...")
-                                    self.performSegue(withIdentifier: "toAdminPage", sender: self)
-                                } else {
-                                    // Password mismatch error
-                                    self.showAlert(title: "Login Error", message: "Incorrect password. Please try again.")
-                                }
-                            } else {
-                                // If not an admin, proceed to the regular user home page
-                                print("Login successful. Proceeding to user home page...")
-                                self.performSegue(withIdentifier: "toHomePage", sender: self)
-                            }
-                        } else {
-                            // No user found in Firestore, handle error
-                            self.showAlert(title: "Error", message: "User not found in the system.")
-                        }
-                    }
+                    self.showAlert(title: "Login Error", message: "Account does not exist. Please sign up.")
                 }
             }
         } else {
-            // If validation fails, show an alert
             self.showAlert(title: "Invalid Input", message: "Please enter both email and password.")
         }
     }
-
+    
+    // Function to validate email format using regex
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailTest.evaluate(with: email)
+    }
+    
     // Function to show custom alert
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    // Function to navigate to the AdminPage view controller in another storyboard
+    func navigateToAdminPage() {
+        // Load the "Admin Page" storyboard
+        let adminStoryboard = UIStoryboard(name: "AdminPage", bundle: nil)
+        
+        // Instantiate the AdminPage view controller using its Storyboard ID
+        if let adminVC = adminStoryboard.instantiateViewController(withIdentifier: "adminPage") as? AdminPageTableViewController {
+            
+            // Check if the current view controller is inside a navigation controller
+            if let navigationController = self.navigationController {
+                // Push the AdminPage view controller
+                navigationController.pushViewController(adminVC, animated: true)
+                
+                // Remove the back button from the navigation bar (so the user can't go back to login page)
+                adminVC.navigationItem.hidesBackButton = true
+            } else {
+                // If not inside a navigation controller, present the AdminPage modally
+                self.present(adminVC, animated: true, completion: nil)
+            }
+        } else {
+            self.showAlert(title: "Error", message: "Unable to load the Admin Page.")
+        }
+    }
+
 }
