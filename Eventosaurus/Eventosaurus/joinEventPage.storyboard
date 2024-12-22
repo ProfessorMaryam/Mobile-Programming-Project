@@ -202,6 +202,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Pay">
                                             <color key="baseBackgroundColor" red="0.6615204026" green="0.49980388780000001" blue="0.80078417850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="payBtn:" destination="uvt-v5-rBZ" eventType="touchUpInside" id="D1i-vU-2uz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -267,6 +270,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqD-YS-tbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="uvt-v5-rBZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2029.7709923664122" y="593.66197183098598"/>
         </scene>

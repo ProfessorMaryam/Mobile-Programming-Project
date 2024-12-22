@@ -101,10 +101,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2m-xB-KR2">
-                                <rect key="frame" x="125" y="744" width="143" height="35"/>
+                                <rect key="frame" x="122" y="744" width="150" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Edit Event page"/>
+                                <buttonConfiguration key="configuration" style="plain" title="LeaveEventPage"/>
                                 <connections>
                                     <segue destination="q8q-Jm-Tqa" kind="presentation" id="rGZ-gI-XMg"/>
                                 </connections>
@@ -406,10 +406,10 @@
             </objects>
             <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
         </scene>
-        <!--EditEvent-->
+        <!--LeaveEventPage-->
         <scene sceneID="cCT-qZ-Q4a">
             <objects>
-                <viewControllerPlaceholder storyboardName="EditEvent" id="q8q-Jm-Tqa" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="LeaveEvent" storyboardName="LeaveEventPage" id="q8q-Jm-Tqa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EpW-no-s42" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="686" y="338"/>
