@@ -175,29 +175,9 @@
                     <view key="view" contentMode="scaleToFill" id="IiL-vI-QuF">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qC-ut-g1J" customClass="EventNameLabel" customModule="Eventosaurus" customModuleProvider="target">
-                                <rect key="frame" x="95" y="385" width="202" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dP-Fl-B3O" customClass="CategoryName" customModule="Eventosaurus" customModuleProvider="target">
-                                <rect key="frame" x="95" y="432" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="I4s-Hu-FVv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <outlet property="CategoryName" destination="5dP-Fl-B3O" id="Jng-DZ-Oe7"/>
-                        <outlet property="EventNameL" destination="3qC-ut-g1J" id="5Za-Uh-nZH"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MC3-NS-qRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1549,7 +1529,7 @@ Aminatour1@evento.saurus.bh</string>
     <inferredMetricsTieBreakers>
         <segue reference="8Mm-fn-Hlm"/>
         <segue reference="k69-l0-SPF"/>
-        <segue reference="UPm-DE-OTP"/>
+        <segue reference="ona-u7-5V5"/>
         <segue reference="RZl-8h-KH2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
