@@ -327,6 +327,7 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="filterShow:" destination="GwK-9W-DbL" eventType="touchUpInside" id="M5G-1n-VpQ"/>
                                     <segue destination="KLT-ee-JYW" kind="presentation" modalPresentationStyle="fullScreen" id="7mm-w0-ae2"/>
                                 </connections>
                             </button>
@@ -341,6 +342,7 @@
                     </view>
                     <connections>
                         <outlet property="collectioniView" destination="bYZ-Uw-Fkm" id="Sn7-Bd-RQv"/>
+                        <outlet property="filterButton" destination="wc8-Zg-dA0" id="ulp-1Y-wnm"/>
                         <outlet property="searchBar" destination="c8O-1q-CGI" id="03d-zh-Cbm"/>
                     </connections>
                 </viewController>
@@ -884,7 +886,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsD-M8-nhs">
-                                        <rect key="frame" x="145" y="681" width="102" height="34"/>
+                                        <rect key="frame" x="244" y="675" width="102" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.67127574570000004" green="0.3552441999" blue="0.6640438635" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -910,7 +912,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="GwK-9W-DbL" kind="presentation" modalPresentationStyle="fullScreen" id="k1F-xq-aIS"/>
+                                            <action selector="doneClicked:" destination="KLT-ee-JYW" eventType="touchUpInside" id="f4A-ab-NtQ"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Art &amp; Literature " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LY-Rt-Pgt">
@@ -947,6 +949,36 @@
                                         </state>
                                         <connections>
                                             <action selector="HATapped:" destination="KLT-ee-JYW" eventType="touchUpInside" id="VP8-A1-MQx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3w-nq-bpt">
+                                        <rect key="frame" x="43" y="675" width="102" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.67127574570000004" green="0.3552441999" blue="0.6640438635" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" subtitle="">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Reset">
+                                                    <attributes>
+                                                        <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="20" name="Helvetica"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseForegroundColor" systemColor="tertiarySystemFillColor"/>
+                                            <color key="baseBackgroundColor" red="0.65471193047733078" green="0.54580998891428001" blue="0.65789702444365528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="resetClicked:" destination="KLT-ee-JYW" eventType="touchUpInside" id="ZQ0-sc-ahz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1000,6 +1032,8 @@
                         <outlet property="SPButton" destination="I8u-BG-nWf" id="4jl-Xd-vBR"/>
                         <outlet property="SRButton" destination="biU-0h-bln" id="BLW-dE-dXN"/>
                         <outlet property="WEButton" destination="lAu-7C-HEF" id="PSu-Wv-YaB"/>
+                        <outlet property="doneButton" destination="JsD-M8-nhs" id="daA-iA-bbz"/>
+                        <outlet property="resetButton" destination="h3w-nq-bpt" id="yiL-Tz-gJW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTX-i3-Oc9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1294,17 +1328,6 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                     <segue destination="6Tc-Qy-AiF" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="RZl-8h-KH2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DI-WL-Tiy">
-                                <rect key="frame" x="316" y="54" width="51" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system">
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="KLT-ee-JYW" kind="presentation" modalPresentationStyle="fullScreen" id="fJc-TU-1qv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ff5-ob-2lZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1525,9 +1548,8 @@ Aminatour1@evento.saurus.bh</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="8Mm-fn-Hlm"/>
-        <segue reference="fJc-TU-1qv"/>
         <segue reference="k69-l0-SPF"/>
-        <segue reference="Hnw-Gl-E06"/>
+        <segue reference="UPm-DE-OTP"/>
         <segue reference="RZl-8h-KH2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
