@@ -1,14 +1,6 @@
-////
-////  Register.swift
-////  Eventosaurus
-////
-////  Created by BP-36-201-23 on 08/12/2024.
-////
-
 import UIKit
 import FirebaseFirestore
 import Firebase
-import FirebaseAuth
 
 class Register: UIViewController {
 
@@ -19,7 +11,6 @@ class Register: UIViewController {
     
     @IBOutlet weak var fullnameTxtField: UITextField!
     @IBOutlet weak var emailTxtField: UITextField!
-    
     @IBOutlet weak var DatePicker: UIDatePicker!
     @IBOutlet weak var passwordTxtfield: UITextField!
     @IBOutlet weak var confirmPasswordTxtField: UITextField!
@@ -27,6 +18,7 @@ class Register: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Hiding validation labels initially
         fnReqLabel.isHidden = true
         emailReqLabel.isHidden = true
         dobReqLabel.isHidden = true
@@ -34,52 +26,65 @@ class Register: UIViewController {
     }
 
     @IBAction func didTapSignUp(_ sender: Any) {
+        // Step 1: Validate all input fields first
         if isValid() {
-            // Get the selected date from the UIDatePicker
+            // Step 2: If validation is successful, get the selected date from the UIDatePicker
             let selectedDate = DatePicker.date
             
-            // Create newUser with the correct date format (Date object)
+            // Create new user with all the details (password is stored directly)
             let newUser = User(
                 fullName: fullnameTxtField.text!,
                 email: emailTxtField.text ?? "",
-                dateOfBirth: selectedDate, // Pass Date object instead of string
+                dateOfBirth: selectedDate,
                 password: passwordTxtfield.text ?? "",
                 isOrganizer: false,
                 isAdmin: false
             )
             
-            registerUser(newUser)
+            // Step 3: Check if the email already exists in Firestore
+            checkIfEmailExists(newUser.email) { emailExists in
+                if emailExists {
+                    // Step 4: If email exists, show error message and don't perform segue
+                    self.emailReqLabel.isHidden = false
+                    self.emailReqLabel.text = "Email already exists. Please try another."
+                } else {
+                    // Step 5: If email doesn't exist, store user in Firestore and navigate to the Interests screen
+                    self.storeUserInFirestore(newUser)
+                }
+            }
         } else {
-            print("Please fill in all the required fields or check password confirmation.")
+            // Step 6: Show error message if input validation failed
             showAlert(title: "Invalid Input", message: "Please fill in all the required fields and make sure the passwords match.")
         }
     }
 
-    // Check if the fields are valid
+    // Function to validate all input fields
     func isValid() -> Bool {
         var isValid = true
         
-        // Check Full Name
+        // Validate Full Name
         if let fullName = fullnameTxtField.text, fullName.isEmpty {
             fnReqLabel.isHidden = false
             isValid = false
         }
         
-        // Check Email
+        // Validate Email
         if let email = emailTxtField.text, email.isEmpty {
             emailReqLabel.isHidden = false
             isValid = false
+        } else if let email = emailTxtField.text, !isValidEmail(email) {
+            emailReqLabel.isHidden = false
+            emailReqLabel.text = "Invalid email format"
+            isValid = false
         }
         
-      
-        
-        // Check Password
+        // Validate Password
         if let password = passwordTxtfield.text, password.isEmpty {
             confirmPassReqLabel.isHidden = false
             isValid = false
         }
         
-        // Check Confirm Password
+        // Validate Confirm Password
         if let confirmPassword = confirmPasswordTxtField.text, confirmPassword.isEmpty {
             confirmPassReqLabel.isHidden = false
             isValid = false
@@ -94,66 +99,74 @@ class Register: UIViewController {
         
         return isValid
     }
-    
-    // Register user with Firebase Authentication
-    func registerUser(_ newUser: User) {
-        guard let password = passwordTxtfield.text, password.count >= 6 else {
-            // Display custom alert for password too short
-            showAlert(title: "Password Error", message: "Password must be at least 6 characters.")
-            return
-        }
 
-        Auth.auth().createUser(withEmail: newUser.email, password: newUser.password) { authResult, error in
-            if let error = error {
-                // Handle Firebase errors here (other than password issues)
-                self.handleFirebaseError(error)
-                return
-            }
-            
-            guard let authResult = authResult else {
-                self.showAlert(title: "Error", message: "Failed to create account.")
-                return
-            }
-            
-            newUser.userID = authResult.user.uid
-            self.storeUserInFirestore(newUser)
-        }
+    // Validate email format using regex
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailTest.evaluate(with: email)
     }
 
-    // Store user data in Firestore
+    // Function to check if the email already exists in Firestore
+    func checkIfEmailExists(_ email: String, completion: @escaping (Bool) -> Void) {
+        Firestore.firestore().collection("Users")
+            .whereField("Email", isEqualTo: email)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    completion(false)
+                } else {
+                    // If documents exist, it means the email already exists
+                    completion(snapshot?.documents.isEmpty == false)
+                }
+            }
+    }
+
+    // Function to store user data in Firestore
     func storeUserInFirestore(_ newUser: User) {
         let userDict = newUser.toDictionary()
         
-        Firestore.firestore().collection("Users").document(newUser.userID).setData(userDict) { error in
-            if error != nil {
-                self.showAlert(title: "Error", message: "Failed to save user data to Firestore.")
+        Firestore.firestore().collection("Users").document().setData(userDict) { error in
+            if let error = error {
+                self.showAlert(title: "Error", message: "Failed to save user data to Firestore. \(error.localizedDescription)")
                 return
             }
             
-            // Successfully stored user in Firestore, proceed to next screen
+            // Successfully stored user in Firestore, proceed to the next screen
             print("User successfully added to Firestore!")
-            self.performSegue(withIdentifier: "toInterests", sender: self)
+            self.navigateToUserInterests()  // Navigate to the UserInterests screen
         }
     }
 
-    // Handle Firebase specific errors
-    func handleFirebaseError(_ error: Error) {
-        let nsError = error as NSError
-        if nsError.code == AuthErrorCode.emailAlreadyInUse.rawValue {
-            showAlert(title: "Registration Error", message: "The email is already in use. Please try a different email.")
-        } else if nsError.code == AuthErrorCode.invalidEmail.rawValue {
-            showAlert(title: "Invalid Email", message: "The email address is not valid.")
-        } else if nsError.code == AuthErrorCode.networkError.rawValue {
-            showAlert(title: "Network Error", message: "Please check your network connection.")
-        } else {
-            showAlert(title: "Error", message: error.localizedDescription)
-        }
-    }
-    
     // Display a custom alert
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
+    }
+
+    // Function to navigate to the UserInterests view controller in another storyboard
+    func navigateToUserInterests() {
+        // Load the "Interests" storyboard
+        let interestsStoryboard = UIStoryboard(name: "Interests", bundle: nil)
+        
+        // Instantiate the UserInterests view controller using its Storyboard ID
+        if let userInterestsVC = interestsStoryboard.instantiateViewController(withIdentifier: "UserInterests") as? UserInterestsViewController {
+            
+            // Check if the current view controller is inside a navigation controller
+            if let navigationController = self.navigationController {
+                // Push the UserInterests view controller
+                navigationController.pushViewController(userInterestsVC, animated: true)
+                
+                // Remove the back button from the navigation bar (so the user can't go back to register page)
+                userInterestsVC.navigationItem.hidesBackButton = true
+            } else {
+                // If not inside a navigation controller, present the UserInterests view controller modally
+                self.present(userInterestsVC, animated: true, completion: nil)
+            }
+        } else {
+            // If unable to instantiate the UserInterests view controller, show an error
+            self.showAlert(title: "Error", message: "Unable to load the User Interests page.")
+        }
     }
 }

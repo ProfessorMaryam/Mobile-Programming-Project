@@ -9,6 +9,10 @@ import UIKit
 
 class DisplayRequestsTVCTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var AcceptButton: UIButton!
+    @IBOutlet weak var displayEmail: UILabel!
+    @IBOutlet weak var qualifications: UILabel!
+    @IBOutlet weak var displayMessage: UILabel!
     @IBOutlet weak var DisplayName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
