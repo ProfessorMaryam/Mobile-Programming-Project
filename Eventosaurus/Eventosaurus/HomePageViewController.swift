@@ -18,7 +18,30 @@ class HomePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    
+        
     }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+class WriteFeedbackViewController: UIViewController {
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     
     
 }
@@ -36,71 +59,150 @@ class DisplayNameViewController: UIViewController {
     
     @IBOutlet weak var EventNameL: UILabel!
     
+    
     let db = Firestore.firestore()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Fetch a random event name from Firestore
+        showFeedbackAlert()
+        fetchRandomEvent()
+    }
+    
+    @IBAction func buttonShow(_ sender: UIButton) {
+        showFeedbackAlert()
+    }
+    
+    func showFeedbackAlert() {
+        // Create the alert controller
+        let alertController = UIAlertController(title: "How did you find today's event?", message: nil, preferredStyle: .alert)
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            // Fetch a random event name from Firestore
-            fetchRandomEvent()
+        // Add a custom star rating view
+        let starRatingView = UIStackView()
+        starRatingView.axis = .horizontal
+        starRatingView.distribution = .fillEqually
+        starRatingView.spacing = 5
+        
+        for _ in 0..<5 {
+            let starButton = UIButton(type: .system)
+            starButton.setTitle("★", for: .normal)
+            starButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+            starButton.tintColor = .lightGray
+            starButton.addTarget(self, action: #selector(starTapped(_:)), for: .touchUpInside)
+            starRatingView.addArrangedSubview(starButton)
         }
         
-    func fetchRandomEvent() {
-            // Reference to the "events" collection in Firestore
-            db.collection("Events").getDocuments { (snapshot, error) in
-                if let error = error {
-                    print("Error fetching events: \(error)")
-                    return
-                }
-
-                // Check if we have documents in the snapshot
-                guard let documents = snapshot?.documents, documents.count > 0 else {
-                    print("No events found.")
-                    return
-                }
-
-                // Randomly pick an event from the documents
-                let randomIndex = Int.random(in: 0..<documents.count)
-                let randomEvent = documents[randomIndex]
-
-                // Extract the event name from the document data
-                if let eventName = randomEvent.data()["Event Name"] as? String {
-                    // Set the event name on the label
-                    self.EventNameL.text = eventName
-                } else {
-                    print("Event Name not found in the document.")
-                    return
-                }
-
-                // Extract the category reference
-                if let categoryRef = randomEvent.data()["Category"] as? DocumentReference {
-                    // Fetch the category document using the reference
-                    categoryRef.getDocument { (categorySnapshot, error) in
-                        if let error = error {
-                            print("Error fetching category: \(error)")
-                            return
-                        }
-
-                        // Check if the category document exists
-                        if let categorySnapshot = categorySnapshot, categorySnapshot.exists {
-                            // Extract the category name from the category document
-                            if let categoryName = categorySnapshot.data()?["Category Name"] as? String {
-                                // Set the category name on the label
-                                self.CategoryName.text = categoryName
-                            } else {
-                                print("Category Name not found in the document.")
-                            }
-                        } else {
-                            print("Category document does not exist.")
-                        }
-                    }
-                } else {
-                    print("Category reference not found in the event document.")
+        // Convert starRatingView to UIViewController to add to the alert
+        let hostingController = UIViewController()
+        hostingController.view = starRatingView
+        hostingController.preferredContentSize = CGSize(width: 200, height: 50)
+        
+        alertController.setValue(hostingController, forKey: "contentViewController")
+        
+        // Add "Feedback" button
+        let feedbackAction = UIAlertAction(title: "Feedback", style: .default) { _ in
+            print("Feedback button tapped")
+            self.navigateToFeedbackPage()
+        }
+        alertController.addAction(feedbackAction)
+        
+        // Add "Cancel" and "Confirm" actions
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
+            print("Confirm button tapped")
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        
+        // Present the alert
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func starTapped(_ sender: UIButton) {
+        // Handle star tap logic, e.g., change the tint color for selected stars
+        guard let stackView = sender.superview as? UIStackView else { return }
+        
+        for star in stackView.arrangedSubviews {
+            if let button = star as? UIButton {
+                button.tintColor = .lightGray
+            }
+        }
+        
+        // Highlight stars up to the tapped one
+        if let index = stackView.arrangedSubviews.firstIndex(of: sender) {
+            for i in 0...index {
+                if let button = stackView.arrangedSubviews[i] as? UIButton {
+                    button.tintColor = .systemYellow
                 }
             }
         }
     }
-
-
+    func fetchRandomEvent() {
+        // Reference to the "events" collection in Firestore
+        db.collection("Events").getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Error fetching events: \(error)")
+                return
+            }
+            
+            // Check if we have documents in the snapshot
+            guard let documents = snapshot?.documents, documents.count > 0 else {
+                print("No events found.")
+                return
+            }
+            
+            // Randomly pick an event from the documents
+            let randomIndex = Int.random(in: 0..<documents.count)
+            let randomEvent = documents[randomIndex]
+            
+            // Extract the event name from the document data
+            if let eventName = randomEvent.data()["Event Name"] as? String {
+                // Set the event name on the label
+                self.EventNameL.text = eventName
+            } else {
+                print("Event Name not found in the document.")
+                return
+            }
+            
+            // Extract the category reference
+            if let categoryRef = randomEvent.data()["Category"] as? DocumentReference {
+                // Fetch the category document using the reference
+                categoryRef.getDocument { (categorySnapshot, error) in
+                    if let error = error {
+                        print("Error fetching category: \(error)")
+                        return
+                    }
+                    
+                    // Check if the category document exists
+                    if let categorySnapshot = categorySnapshot, categorySnapshot.exists {
+                        // Extract the category name from the category document
+                        if let categoryName = categorySnapshot.data()?["Category Name"] as? String {
+                            // Set the category name on the label
+                            self.CategoryName.text = categoryName
+                        } else {
+                            print("Category Name not found in the document.")
+                        }
+                    } else {
+                        print("Category document does not exist.")
+                    }
+                }
+            } else {
+                print("Category reference not found in the event document.")
+            }
+        }
+    }
+    func navigateToFeedbackPage() {
+        // Navigate to the feedback page
+        let storyboard = UIStoryboard(name: "WriteFeedbackViewController", bundle: nil) // Replace "Main" with your actual storyboard name
+        if let feedbackVC = storyboard.instantiateViewController(withIdentifier: "WriteFeedbackViewController") as? WriteFeedbackViewController {
+            feedbackVC.modalPresentationStyle = .fullScreen // Optional: Set presentation style
+            present(feedbackVC, animated: true, completion: nil)
+        } else {
+            print("WriteFeedbackViewController not found in storyboard")
+        }
+    }}
+    
+    
 
 
 
@@ -129,7 +231,9 @@ class EventHomeViewController: UIViewController {
         collectionoView.delegate = self
         collectionoView.collectionViewLayout = UICollectionViewFlowLayout()
         
+        
         fetchEvents()
+        
     }
     
     func fetchEvents() {
@@ -195,7 +299,9 @@ class EventHomeViewController: UIViewController {
             }
         }
     }
-}
+    
+    }
+
     
 
 
