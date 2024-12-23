@@ -153,6 +153,9 @@ class Register: UIViewController {
         // Instantiate the UserInterests view controller using its Storyboard ID
         if let userInterestsVC = interestsStoryboard.instantiateViewController(withIdentifier: "UserInterests") as? UserInterestsViewController {
             
+            // Pass the email to the UserInterests view controller
+            userInterestsVC.userEmail = emailTxtField.text
+
             // Check if the current view controller is inside a navigation controller
             if let navigationController = self.navigationController {
                 // Push the UserInterests view controller

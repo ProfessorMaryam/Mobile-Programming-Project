@@ -80,7 +80,7 @@
                                     <color key="baseForegroundColor" red="0.23990869522094727" green="0.076750300824642181" blue="0.36543652415275574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="yzt-Ye-Rt4" kind="presentation" modalPresentationStyle="automatic" id="DQI-Xf-CnQ"/>
+                                    <segue destination="yzt-Ye-Rt4" kind="presentation" modalPresentationStyle="fullScreen" id="DQI-Xf-CnQ"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image 1" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-Lg-Q6P">
