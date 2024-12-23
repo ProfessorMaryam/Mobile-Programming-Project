@@ -128,7 +128,7 @@ class Register: UIViewController {
             }
     }
 
-    // thsi function stores the user in firestore
+    // this function stores the user in firestore
     func storeUserInFirestore(_ newUser: User) {
         let userDict = newUser.toDictionary() //using dictionary
         
@@ -159,7 +159,7 @@ class Register: UIViewController {
         // Instantiate the UserInterests view controller using its Storyboard ID
         if let userInterestsVC = interestsStoryboard.instantiateViewController(withIdentifier: "UserInterests") as? UserInterestsViewController {
             
-            // Pass the email to the UserInterests view controller to use it to store the
+            // Pass the email from this view controller to the UserInterests view controller to use it to store the interests as references to the documentss corresponding to them in the Categories collection
             userInterestsVC.userEmail = emailTxtField.text
 
             // Check if the current view controller is inside a navigation controller
@@ -167,7 +167,7 @@ class Register: UIViewController {
                 // Push the UserInterests view controller
                 navigationController.pushViewController(userInterestsVC, animated: true)
                 
-                // Remove the back button from the navigation bar (so the user can't go back to register page)
+                // Remove the back button from the navigation bar so the user cannot go back to register page
                 userInterestsVC.navigationItem.hidesBackButton = true
             } else {
                 // If not inside a navigation controller, present the UserInterests view controller modally

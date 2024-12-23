@@ -561,7 +561,6 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="changePassTapped:" destination="V6M-l0-scj" eventType="touchUpInside" id="phh-A2-sbe"/>
-                                            <segue destination="YwJ-zd-x98" kind="unwind" unwindAction="unwindToStartupWithUnwindSegue:" id="vha-vC-0U4"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NpV-hy-iMH">
@@ -628,7 +627,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhF-NZ-hYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="YwJ-zd-x98" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2062.3255813953488" y="804.72103004291853"/>
         </scene>

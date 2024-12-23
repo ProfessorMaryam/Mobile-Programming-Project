@@ -4,6 +4,8 @@ import FirebaseFirestore
 
 class ForgotPassword: UIViewController {
 
+    
+    //Text fields outlets and their corresponding labels
     @IBOutlet weak var emailReqLabel: UILabel!
     @IBOutlet weak var passwordReqLabel: UILabel!
     @IBOutlet weak var emailTxtField: UITextField!
@@ -14,12 +16,14 @@ class ForgotPassword: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //hidden initially
         emailReqLabel.isHidden = true
         passwordReqLabel.isHidden = true
     }
     
     @IBAction func changePassTapped(_ sender: Any) {
-        var isValid = true
+        var isValid = true // initially true
         
         // Check if email is empty
         if let email = emailTxtField.text, email.isEmpty {
@@ -54,7 +58,7 @@ class ForgotPassword: UIViewController {
         if isValid {
             guard let email = emailTxtField.text else { return }
 
-            // First, check if the email exists in Firestore "Users" collection
+            // First, check if the email exists in Firestore Users collection
             let usersRef = db.collection("Users")
             usersRef.whereField("Email", isEqualTo: email).getDocuments { (snapshot, error) in
                 if let error = error {
@@ -84,11 +88,8 @@ class ForgotPassword: UIViewController {
         }
     }
 
-    // Function to update the user's password field in Firestore (User collection)
+    // Function to update the user's password field in Firestore (in the User collection)
     func updatePasswordInFirestore(email: String, newPassword: String, firestoreDocument: DocumentSnapshot) {
-        // Reference to the "Users" collection
-       // let usersRef = db.collection("Users")
-        
         // Update password field in Firestore
         firestoreDocument.reference.updateData(["Password": newPassword]) { error in
             if let error = error {
@@ -106,8 +107,10 @@ class ForgotPassword: UIViewController {
     func showSuccessAlert() {
         let alertController = UIAlertController(title: "Success", message: "Your password has been updated successfully.", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.performSegue(withIdentifier: "toHomePage", sender: self)
+            // Perform unwind segue to go back to the Startup view controller
+            self.performSegue(withIdentifier: "unwindToStartup", sender: self)
         }))
         self.present(alertController, animated: true, completion: nil)
     }
+
 }
