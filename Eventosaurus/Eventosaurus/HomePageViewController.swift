@@ -76,36 +76,39 @@ class DisplayNameViewController: UIViewController {
     func showFeedbackAlert() {
         // Create the alert controller
         let alertController = UIAlertController(title: "How did you find today's event?", message: nil, preferredStyle: .alert)
-        
+
         // Add a custom star rating view
         let starRatingView = UIStackView()
         starRatingView.axis = .horizontal
         starRatingView.distribution = .fillEqually
         starRatingView.spacing = 5
-        
-        for _ in 0..<5 {
+
+        // Create the 5 star buttons
+        for index in 0..<5 {
             let starButton = UIButton(type: .system)
             starButton.setTitle("★", for: .normal)
             starButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
             starButton.tintColor = .lightGray
+            starButton.tag = index + 1 // Assign tag to identify which star was tapped
             starButton.addTarget(self, action: #selector(starTapped(_:)), for: .touchUpInside)
             starRatingView.addArrangedSubview(starButton)
         }
-        
-        // Convert starRatingView to UIViewController to add to the alert
+
+        // Convert starRatingView to a UIViewController to add it to the alert
         let hostingController = UIViewController()
         hostingController.view = starRatingView
         hostingController.preferredContentSize = CGSize(width: 200, height: 50)
         
+        // Set the content view of the alert to be the star rating view
         alertController.setValue(hostingController, forKey: "contentViewController")
-        
+
         // Add "Feedback" button
         let feedbackAction = UIAlertAction(title: "Feedback", style: .default) { _ in
             print("Feedback button tapped")
             self.navigateToFeedbackPage()
         }
         alertController.addAction(feedbackAction)
-        
+
         // Add "Cancel" and "Confirm" actions
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
@@ -113,11 +116,10 @@ class DisplayNameViewController: UIViewController {
         }
         alertController.addAction(cancelAction)
         alertController.addAction(confirmAction)
-        
+
         // Present the alert
         present(alertController, animated: true, completion: nil)
     }
-    
     @objc func starTapped(_ sender: UIButton) {
         // Handle star tap logic, e.g., change the tint color for selected stars
         guard let stackView = sender.superview as? UIStackView else { return }
@@ -192,16 +194,29 @@ class DisplayNameViewController: UIViewController {
         }
     }
     func navigateToFeedbackPage() {
-        // Navigate to the feedback page
-        let storyboard = UIStoryboard(name: "WriteFeedbackViewController", bundle: nil) // Replace "Main" with your actual storyboard name
+        // Ensure that the storyboard name is correct
+        let storyboardName = "HomePage "  // Ensure this matches the name of your storyboard
+
+        // Create an instance of the storyboard
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+
+        // Attempt to instantiate WriteFeedbackViewController from the storyboard using the storyboard ID
         if let feedbackVC = storyboard.instantiateViewController(withIdentifier: "WriteFeedbackViewController") as? WriteFeedbackViewController {
-            feedbackVC.modalPresentationStyle = .fullScreen // Optional: Set presentation style
-            present(feedbackVC, animated: true, completion: nil)
+            
+            // Set modal presentation style
+            feedbackVC.modalPresentationStyle = .fullScreen
+            
+            // Present the feedback view controller
+            self.present(feedbackVC, animated: true, completion: nil)
         } else {
-            print("WriteFeedbackViewController not found in storyboard")
+            // Debugging message if the view controller cannot be found
+            print("Could not instantiate WriteFeedbackViewController from the storyboard.")
         }
-    }}
-    
+    }
+
+
+    }
+
     
 
 

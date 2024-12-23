@@ -212,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MC3-NS-qRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2003.8167938931297" y="686.61971830985919"/>
+            <point key="canvasLocation" x="2056" y="839"/>
         </scene>
         <!--Write Feedback View Controller-->
         <scene sceneID="A9g-2l-heF">
@@ -321,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jyv-7O-U4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2815" y="671"/>
+            <point key="canvasLocation" x="3031" y="839"/>
         </scene>
         <!--Event Search View Controller-->
         <scene sceneID="Hew-CP-JXi">
@@ -1667,10 +1667,10 @@ Aminatour1@evento.saurus.bh</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ot9-7m-xg2"/>
+        <segue reference="8Mm-fn-Hlm"/>
         <segue reference="k69-l0-SPF"/>
         <segue reference="ona-u7-5V5"/>
-        <segue reference="RZl-8h-KH2"/>
+        <segue reference="QUW-bh-7c5"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
