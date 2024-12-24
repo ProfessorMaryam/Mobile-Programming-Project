@@ -443,24 +443,41 @@ class EventCollectionViewCell: UICollectionViewCell {
 ///
 ///class FilterDataManager {
 
-class FilterDataManager {
-    static let shared = FilterDataManager()  // Singleton instance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class EventSearchViewController: UIViewController, UISearchBarDelegate {
     
-    // Store event data
-    var eventNames: [String] = []
-    var eventCategories: [String] = []
-    var eventLocations: [String] = []
+    @IBOutlet weak var filterButton: UIButton!
     
-    // Store selected filters
-    var selectedCategories: [String] = []
-    var selectedLocations: [String] = []
-    
-    // Store the filtered events
-    var filteredEventNames: [String] = []
-    
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var collectioniView: UICollectionView!
     let db = Firestore.firestore()
+        
+    var eventNames: [String] = []
+       var filteredEventNames: [String] = []
+       var eventCategories: [String] = []
+       
+       override func viewDidLoad() {
+           super.viewDidLoad()
+           collectioniView.dataSource = self
+           collectioniView.delegate = self
+           collectioniView.collectionViewLayout = UICollectionViewFlowLayout()
+           searchBar.delegate = self
+           fetchEvents()
+       }
     
-    // Fetch events from Firestore and filter based on the selected categories and locations
     func fetchEvents() {
         db.collection("Events").getDocuments { (snapshot, error) in
             if let error = error {
@@ -477,19 +494,19 @@ class FilterDataManager {
             // Clear previous data
             self.eventNames.removeAll()
             self.eventCategories.removeAll()
-            self.eventLocations.removeAll()
             
             // Map documents to event data arrays
             documents.forEach { document in
                 let data = document.data()
+                
+                // Debugging: Log the data to check the fields
+                print("Fetched document data: \(data)")
+                
                 let eventName = data["Event Name"] as? String ?? "Unnamed Event"
-                let location = (data["Description"] as? String)?
-                    .split(separator: " ")
-                    .first.map { String($0) } ?? "Unknown Location"
-
                 
                 // Fetch the Category document reference
                 if let categoryRef = data["Category"] as? DocumentReference {
+                    // Fetch the category document using the reference
                     categoryRef.getDocument { (categorySnapshot, error) in
                         if let error = error {
                             print("Error fetching category: \(error)")
@@ -500,108 +517,32 @@ class FilterDataManager {
                         if let categorySnapshot = categorySnapshot, categorySnapshot.exists {
                             // Extract the category name from the category document
                             if let categoryName = categorySnapshot.data()?["Category Name"] as? String {
-                                // Add the data to arrays
+                                // Debugging: Log the event name and category
+                                print("Event Name: \(eventName), Category Name: \(categoryName)")
+                                
+                                // Add data to arrays
                                 self.eventNames.append(eventName)
                                 self.eventCategories.append(categoryName)
-                                self.eventLocations.append(location)
                                 
-                                // After fetching all events, apply the current filters
-                                self.applyFilters()
+                                // Reload collection view after fetching events (inside the completion handler)
+                                self.collectioniView.reloadData()
                             }
                         }
                     }
                 } else {
-                    // If there's no valid category reference, fall back to default category
+                    // If there is no valid category reference, fall back to default category
                     let defaultCategory = "General"
                     self.eventNames.append(eventName)
                     self.eventCategories.append(defaultCategory)
-                    self.eventLocations.append(location)
                     
-                    // Apply filters immediately after adding the event data
-                    self.applyFilters()
+                    // Reload collection view after fetching events (inside the completion handler)
+                    self.collectioniView.reloadData()
                 }
             }
         }
     }
     
-    func applyFilters() {
-           // If no categories are selected, show all events
-           if selectedCategories.isEmpty {
-               filteredEventNames = eventNames
-           } else {
-               filteredEventNames = []
-               for (index, eventName) in eventNames.enumerated() {
-                   let category = eventCategories[index]
-                   let location = eventLocations[index]
-                   if selectedCategories.contains(category) && (selectedLocations.isEmpty || selectedLocations.contains(location)) {
-                       filteredEventNames.append(eventName)
-                   }
-               }
-           }
-       }
-       
-       // Reset the filters
-       func resetFilters() {
-           selectedCategories.removeAll()
-           selectedLocations.removeAll()
-           applyFilters()
-       }
-   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSearchViewControllerDelegate {
     
-    @IBOutlet weak var filterButton: UIButton!
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var collectioniView: UICollectionView!
-    let db = Firestore.firestore()
-        
-        var eventNames: [String] = []
-        var filteredEventNames: [String] = []
-        var eventCategories: [String] = []
-        var selectedCategories: [String] = []
-        var selectedLocations: [String] = []
-    
-    override func viewDidLoad() {
-            super.viewDidLoad()
-            collectioniView.dataSource = self
-            collectioniView.delegate = self
-            collectioniView.collectionViewLayout = UICollectionViewFlowLayout()
-            searchBar.delegate = self
-            FilterDataManager.shared.fetchEvents()
-                    
-                    // Reload the collection view after fetching and filtering events
-                    collectioniView.reloadData()
-                }
-        
-        @IBAction func filterShow(_ sender: Any) {
-            
-            let filterVC = FilterSearchViewController()
-                    filterVC.delegate = self  // Set the delegate
-               
-        }
-
-    func didUpdateFilters(selectedCategories: [String], selectedLocations: [String]) {
-           FilterDataManager.shared.selectedCategories = selectedCategories
-                  FilterDataManager.shared.selectedLocations = selectedLocations
-                  
-                  // Reapply filters and update the collection view
-                  FilterDataManager.shared.applyFilters()
-                  collectioniView.reloadData()
-       }
 
 
        
@@ -609,13 +550,15 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
            // If the search text is empty, show all events
            if searchText.isEmpty {
-                      FilterDataManager.shared.filteredEventNames = FilterDataManager.shared.eventNames
+                      filteredEventNames = eventNames
                   } else {
-                      FilterDataManager.shared.filteredEventNames = FilterDataManager.shared.eventNames.filter {
-                          return $0.lowercased().contains(searchText.lowercased())
+                      // Filter events based on the search text
+                      filteredEventNames = eventNames.filter { eventName in
+                          return eventName.lowercased().contains(searchText.lowercased())
                       }
                   }
                   
+                  // Reload the collection view to reflect the filtered results
                   collectioniView.reloadData()
               }
        
@@ -634,14 +577,23 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
    extension EventSearchViewController: UICollectionViewDataSource {
        
        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-               return FilterDataManager.shared.filteredEventNames.count
-           }
-           
+                  return filteredEventNames.count  // Return the count of events
+              }
+              
            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EveCollectionViewCell", for: indexPath) as! EveCollectionViewCell
-               let eventName = FilterDataManager.shared.filteredEventNames[indexPath.row]
-               cell.setup(with: eventName, category: FilterDataManager.shared.eventCategories[indexPath.row])
-               return cell
+                   
+                   let eventName = filteredEventNames[indexPath.row]
+                   let eventCategory = eventCategories[indexPath.row] // Get the category for this event
+                  
+               
+                   // Debugging: Log to check the values being passed to the cell
+                   print("Event Name in cell: \(eventName), Event Category in cell: \(eventCategory)")
+                   
+                   // Populate the cell with event data
+                   cell.setup(with: eventName, category: eventCategory)
+                   
+                   return cell
            }
    }
 
@@ -675,38 +627,38 @@ class EveCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     func setup(with eventName: String, category: String) {
-               titleLabel.text = eventName
-               setImageForCategory(category)
-           }
-           
-           private func setImageForCategory(_ category: String) {
-               print("Setting image for category: \(category)") // Debug log
-               
-               switch category {
-               case "Music":
-                   eveImageView.image = UIImage(named: "Music.png")
-               case "Sports":
-                   eveImageView.image = UIImage(named: "Sports.png")
-               case "Entertainment":
-                   eveImageView.image = UIImage(named: "Entertaintment.png")
-               case "Comedy":
-                   eveImageView.image = UIImage(named: "Comedy.png")
-               case "Health Wellness":
-                   eveImageView.image = UIImage(named: "Health.png")
-               case "Social":
-                   eveImageView.image = UIImage(named: "Social.png")
-               case "Art & Literature":
-                   eveImageView.image = UIImage(named: "Art.png")
-               case "Education":
-                   eveImageView.image = UIImage(named: "Education.png")
-               case "Food":
-                   eveImageView.image = UIImage(named: "Food.png")
-               case "Fashion":
-                   eveImageView.image = UIImage(named: "Fashion.png")
-               default:
-                   eveImageView.image = UIImage(named: "Social.png")
-               }
-           }
+            titleLabel.text = eventName
+            setImageForCategory(category)
+        }
+        
+        private func setImageForCategory(_ category: String) {
+            print("Setting image for category: \(category)") // Debug log
+            
+            switch category {
+            case "Music":
+                eveImageView.image = UIImage(named: "Music.png")
+            case "Sports":
+                eveImageView.image = UIImage(named: "Sports.png")
+            case "Entertainment":
+                eveImageView.image = UIImage(named: "Entertaintment.png")
+            case "Comedy":
+                eveImageView.image = UIImage(named: "Comedy.png")
+            case "Health Wellness":
+                eveImageView.image = UIImage(named: "Health.png")
+            case "Social":
+                eveImageView.image = UIImage(named: "Social.png")
+            case "Art & Literature":
+                eveImageView.image = UIImage(named: "Art.png")
+            case "Education":
+                eveImageView.image = UIImage(named: "Education.png")
+            case "Food":
+                eveImageView.image = UIImage(named: "Food.png")
+            case "Fashion":
+                eveImageView.image = UIImage(named: "Fashion.png")
+            default:
+                eveImageView.image = UIImage(named: "Social.png")
+            }
+        }
        }
 
 
@@ -952,30 +904,6 @@ class FilterSearchViewController: UIViewController {
     
     func updateButtonStates() {
             // Ensure FilterDataManager has the correct data
-            HAChecked = FilterDataManager.shared.selectedCategories.contains("Health Wellness")
-            
-            // Safe unwrapping of HAbutton
-            if let haButton = HAbutton {
-                haButton.setImage(UIImage(systemName: HAChecked ? "checkmark.square.fill" : "square"), for: .normal)
-            } else {
-                print("HAbutton is nil. Make sure it's connected in the storyboard.")
-            }
-            
-            // Similarly, update other button states based on FilterDataManager.shared.selectedCategories
-            // Update the rest of the buttons similarly
-            if let spButton = SPButton {
-                SPChecked = FilterDataManager.shared.selectedCategories.contains("Sports")
-                spButton.setImage(UIImage(systemName: SPChecked ? "checkmark.square.fill" : "square"), for: .normal)
-            } else {
-                print("SPButton is nil. Make sure it's connected in the storyboard.")
-            }
-
-            if let fnButton = FNButton {
-                FNChecked = FilterDataManager.shared.selectedCategories.contains("Food")
-                fnButton.setImage(UIImage(systemName: FNChecked ? "checkmark.square.fill" : "square"), for: .normal)
-            } else {
-                print("FNButton is nil. Make sure it's connected in the storyboard.")
-            }
             
             // Repeat for other buttons...
         }
@@ -991,13 +919,8 @@ class FilterSearchViewController: UIViewController {
     }
     
     @IBAction func doneClicked(_ sender: UIButton) {
-        FilterDataManager.shared.selectedCategories = FilterDataManager.shared.selectedCategories
-                       FilterDataManager.shared.selectedLocations = FilterDataManager.shared.selectedLocations
+        
                        
-                       // Notify the delegate (EventSearchViewController) that filters have been updated
-                       delegate?.didUpdateFilters(selectedCategories: FilterDataManager.shared.selectedCategories, selectedLocations: FilterDataManager.shared.selectedLocations)
-                       
-                       dismiss(animated: true, completion: nil)
     }
     
     
@@ -1021,9 +944,9 @@ class FilterSearchViewController: UIViewController {
         if sender == HAbutton {
                          HAChecked.toggle()
                          if HAChecked {
-                             FilterDataManager.shared.selectedCategories.append("Health Wellness")
+                            selectedCategories.append("Health Wellness")
                          } else {
-                             FilterDataManager.shared.selectedCategories.removeAll { $0 == "Health Wellness" }
+                            selectedCategories.removeAll { $0 == "Health Wellness" }
                          }
                      }
                      
