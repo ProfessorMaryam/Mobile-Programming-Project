@@ -170,7 +170,7 @@
                         <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="J5K-Go-Fqe">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="wBv-to-D0X" kind="presentation" id="2eV-BX-w6q"/>
+                                <segue destination="wBv-to-D0X" kind="presentation" modalPresentationStyle="fullScreen" id="2eV-BX-w6q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
