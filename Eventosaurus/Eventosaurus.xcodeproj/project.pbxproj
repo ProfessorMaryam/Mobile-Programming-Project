@@ -15,6 +15,7 @@
 		7E4885D12D0EEEEC00EFA875 /* UserViewOrg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4885D02D0EEEEC00EFA875 /* UserViewOrg.storyboard */; };
 		7E5288372D1ABD5D0081F7F4 /* OrgViewUserNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5288362D1ABD5D0081F7F4 /* OrgViewUserNavController.swift */; };
 		7E5288392D1ACD4C0081F7F4 /* OrganizerProfileNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5288382D1ACD4C0081F7F4 /* OrganizerProfileNavController.swift */; };
+		7E52883D2D1AE3850081F7F4 /* ProfileNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E52883C2D1AE3850081F7F4 /* ProfileNavController.swift */; };
 		7EA1B9AE2D0C3B46009A24F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */; };
 		7EA1B9B02D0C3DC8009A24F3 /* OrganizerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */; };
 		7EA1B9B22D0C3DE9009A24F3 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */; };
@@ -61,6 +62,7 @@
 		7E4885D02D0EEEEC00EFA875 /* UserViewOrg.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserViewOrg.storyboard; sourceTree = "<group>"; };
 		7E5288362D1ABD5D0081F7F4 /* OrgViewUserNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgViewUserNavController.swift; sourceTree = "<group>"; };
 		7E5288382D1ACD4C0081F7F4 /* OrganizerProfileNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerProfileNavController.swift; sourceTree = "<group>"; };
+		7E52883C2D1AE3850081F7F4 /* ProfileNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavController.swift; sourceTree = "<group>"; };
 		7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizerProfile.storyboard; sourceTree = "<group>"; };
 		7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				7E5288382D1ACD4C0081F7F4 /* OrganizerProfileNavController.swift */,
 				7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */,
 				7E3B5E692D0736B2005167A2 /* Profile.storyboard */,
+				7E52883C2D1AE3850081F7F4 /* ProfileNavController.swift */,
 				7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */,
 				C395B1382CFC996900C073C2 /* Assets.xcassets */,
 				C395B13A2CFC996900C073C2 /* LaunchScreen.storyboard */,
@@ -319,6 +322,7 @@
 				7EA1B9AE2D0C3B46009A24F3 /* ProfileViewController.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,
 				7E5288372D1ABD5D0081F7F4 /* OrgViewUserNavController.swift in Sources */,
+				7E52883D2D1AE3850081F7F4 /* ProfileNavController.swift in Sources */,
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
 				7E3E692E2D18355300085F4E /* UserViewOrgNavController.swift in Sources */,
 				C395B1602CFCA7A800C073C2 /* User.swift in Sources */,

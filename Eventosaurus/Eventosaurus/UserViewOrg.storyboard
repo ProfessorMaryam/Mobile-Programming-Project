@@ -45,7 +45,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEs-2g-pwZ">
-                                        <rect key="frame" x="160.33333333333334" y="108.99999999999999" width="72.666666666666657" height="38.333333333333329"/>
+                                        <rect key="frame" x="128" y="109" width="137" height="38"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Follow">
                                             <color key="baseBackgroundColor" red="0.76862752440000004" green="0.66274511810000003" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -116,6 +116,7 @@
                                     <constraint firstItem="hRp-pd-2tv" firstAttribute="bottom" secondItem="zLh-gS-IUi" secondAttribute="bottom" id="EGI-Zp-TQR"/>
                                     <constraint firstAttribute="trailing" secondItem="x3V-IT-ues" secondAttribute="trailing" constant="38" id="Iht-lH-7kI"/>
                                     <constraint firstItem="hRp-pd-2tv" firstAttribute="width" secondItem="f2A-mN-gYE" secondAttribute="width" multiplier="0.498674" id="JqC-qQ-gyG"/>
+                                    <constraint firstItem="zEs-2g-pwZ" firstAttribute="leading" secondItem="dwH-cR-oVP" secondAttribute="leading" constant="128" id="L3g-8g-E2r"/>
                                     <constraint firstItem="pte-bh-Jio" firstAttribute="centerY" secondItem="Igj-yp-Tfl" secondAttribute="centerY" id="LCB-uR-14k"/>
                                     <constraint firstItem="hRp-pd-2tv" firstAttribute="leading" secondItem="zLh-gS-IUi" secondAttribute="trailing" constant="8" symbolic="YES" id="Qbc-sT-9HD"/>
                                     <constraint firstItem="pte-bh-Jio" firstAttribute="top" secondItem="dwH-cR-oVP" secondAttribute="top" constant="82" id="Qyz-ky-eeB"/>
@@ -127,6 +128,7 @@
                                     <constraint firstItem="efi-iF-XZj" firstAttribute="leading" secondItem="Igj-yp-Tfl" secondAttribute="trailing" constant="64" id="dpw-Jp-BqZ"/>
                                     <constraint firstItem="pte-bh-Jio" firstAttribute="centerX" secondItem="x3V-IT-ues" secondAttribute="centerX" id="kZ3-hc-WTe"/>
                                     <constraint firstItem="pte-bh-Jio" firstAttribute="trailing" secondItem="dwH-cR-oVP" secondAttribute="trailingMargin" id="mKe-ba-VhW"/>
+                                    <constraint firstAttribute="trailing" secondItem="zEs-2g-pwZ" secondAttribute="trailing" constant="128" id="oJU-bs-Dxi"/>
                                     <constraint firstItem="f2A-mN-gYE" firstAttribute="top" secondItem="x3V-IT-ues" secondAttribute="bottom" constant="72" id="pAz-Yd-Sun"/>
                                     <constraint firstItem="zEs-2g-pwZ" firstAttribute="top" secondItem="efi-iF-XZj" secondAttribute="bottom" constant="8" symbolic="YES" id="qyR-c8-OM2"/>
                                     <constraint firstItem="pte-bh-Jio" firstAttribute="leading" secondItem="efi-iF-XZj" secondAttribute="trailing" constant="75.333333333333314" id="sTz-mb-sGR"/>
