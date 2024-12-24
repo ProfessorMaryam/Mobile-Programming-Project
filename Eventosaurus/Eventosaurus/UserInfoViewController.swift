@@ -32,37 +32,45 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         // If the email is passed (non-nil), fetch the user's data
         if let email = userEmail {
+            print("Email for fetching: \(email)") // Debug log
             fetchUserData(email: email)
+        } else {
+            print("Error: userEmail is nil.")
         }
     }
 
     // MARK: - Fetch user data from Firestore
     func fetchUserData(email: String) {
         let db = Firestore.firestore()
-        
+
         // Query Firestore for the document with the matching email
-        db.collection("Users").whereField("Email", isEqualTo: email).getDocuments { (snapshot, error) in
+        db.collection("Users").whereField("Email", isEqualTo: email.lowercased()).getDocuments { (snapshot, error) in
             if let error = error {
                 print("Error fetching user data: \(error.localizedDescription)")
                 return
             }
 
             guard let snapshot = snapshot, let document = snapshot.documents.first else {
-                print("User not found.")
+                print("User not found for email: \(email)")
                 return
             }
 
             // Extract the user's data from the document
-            if let fullName = document.get("Full Name") as? String,
-               let email = document.get("Email") as? String,
-               let dateOfBirth = document.get("Date of Birth") as? Timestamp {
-                
-                // Populate the UI with the fetched data
-                self.fullName.text = fullName
-                self.Email.text = email
-                
-                // Convert Firestore Timestamp to Date and set it in the UIDatePicker
-                self.dateOfBirth.date = dateOfBirth.dateValue()
+            let fullName = document.get("Full Name") as? String ?? "Unknown Name"
+            let email = document.get("Email") as? String ?? "No Email"
+            let dateOfBirthTimestamp = document.get("Date of Birth") as? Timestamp
+
+            self.fullName.text = fullName
+            self.Email.text = email
+
+            if let dateOfBirth = dateOfBirthTimestamp?.dateValue() {
+                self.dateOfBirth.date = dateOfBirth
+            } else {
+                print("Date of Birth not found for user \(email)")
+            }
+
+            if let status = document.get("Status") as? String, let index = self.statusOption.firstIndex(of: status) {
+                self.status.selectRow(index, inComponent: 0, animated: true)
             }
         }
     }

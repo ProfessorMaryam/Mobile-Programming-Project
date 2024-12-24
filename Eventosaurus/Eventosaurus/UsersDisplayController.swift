@@ -27,7 +27,7 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
     // Fetch users from Firestore and update the table view
     func fetchUserNamesFromFirestore() {
         let db = Firestore.firestore()
-        
+
         db.collection("Users").getDocuments { (snapshot, error) in
             if let error = error {
                 print("Error fetching user names: \(error.localizedDescription)")
@@ -40,13 +40,16 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
             
             for document in snapshot.documents {
                 if let fullName = document.get("Full Name") as? String,
-                   let email = document.get("Email") as? String {
+                   let email = document.get("Email") as? String,
+                   let isAdmin = document.get("Is Admin") as? Bool, !isAdmin {
                     fetchedUsers.append((fullName, email))
                 }
             }
 
             self.usersList = fetchedUsers
             self.filteredUsersList = fetchedUsers
+
+            print("Fetched Users: \(self.usersList)") // Debug log
 
             DispatchQueue.main.async {
                 self.userTableView.reloadData()
@@ -106,7 +109,8 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Get the selected user's email
         let selectedUser = filteredUsersList[indexPath.row]
-        
+        print("Selected email: \(selectedUser.email)") // Debug log
+
         // Pass the selected user's email to the next view controller
         navigateToUserInfoViewController(userEmail: selectedUser.email)
     }
@@ -114,16 +118,18 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
     // Navigate to UserInfoViewController with the selected user's email
     func navigateToUserInfoViewController(userEmail: String) {
         // Instantiate the UserInfoViewController from the storyboard
-        if let userInfoVC = self.storyboard?.instantiateViewController(withIdentifier: "UserInfoVC") as? UserInfoViewController {
-            
-            // Set the title of the navigation bar for the UserInfoViewController
-            userInfoVC.title = "User Information"
-            
-            // Pass the selected user's email to UserInfoViewController
-            userInfoVC.userEmail = userEmail  // <-- Pass email here
-            
-            // Push the view controller onto the navigation stack
-            self.navigationController?.pushViewController(userInfoVC, animated: true)
+        guard let userInfoVC = self.storyboard?.instantiateViewController(withIdentifier: "UserInfoVC") as? UserInfoViewController else {
+            print("Error: Could not instantiate UserInfoViewController.")
+            return
         }
+
+        // Set the title of the navigation bar for the UserInfoViewController
+        userInfoVC.title = "User Information"
+
+        // Pass the selected user's email to UserInfoViewController
+        userInfoVC.userEmail = userEmail  // <-- Pass email here
+
+        // Push the view controller onto the navigation stack
+        self.navigationController?.pushViewController(userInfoVC, animated: true)
     }
 }
