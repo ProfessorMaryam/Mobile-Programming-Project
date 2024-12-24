@@ -16,18 +16,13 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var dateOfBirth: UIDatePicker!
     @IBOutlet weak var Email: UITextField!
     @IBOutlet weak var fullName: UITextField!
-    
-    // Property to hold the passed email
+
+    // Define a property to hold the email passed from UsersDisplayController
     var userEmail: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        fullName.isEnabled = false
-//        dateOfBirth.isEnabled = false
-//        Email.isEnabled = false
-        
-
         // Set up the UIPickerView
         status.dataSource = self
         status.delegate = self
@@ -35,10 +30,10 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // Optional: Set the initial selection
         status.selectRow(0, inComponent: 0, animated: false)
         
-        // Fetch the user's data using the email passed from the previous controller
-//        if let email = userEmail {
-//            fetchUserData(email: email)
-//        }
+        // If the email is passed (non-nil), fetch the user's data
+        if let email = userEmail {
+            fetchUserData(email: email)
+        }
     }
 
     // MARK: - Fetch user data from Firestore
@@ -73,7 +68,6 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
 
     // MARK: - UIPickerViewDataSource Methods
-
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1  // Single column picker
     }
@@ -83,7 +77,6 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
 
     // MARK: - UIPickerViewDelegate Methods
-
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return statusOption[row]
     }

@@ -24,6 +24,7 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
         UserSearch.placeholder = "Search User"
     }
 
+    // Fetch users from Firestore and update the table view
     func fetchUserNamesFromFirestore() {
         let db = Firestore.firestore()
         
@@ -53,6 +54,7 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
 
+    // Table View DataSource and Delegate methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredUsersList.count
     }
@@ -102,13 +104,14 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: - UITableViewDelegate Methods
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Get the selected user
+        // Get the selected user's email
         let selectedUser = filteredUsersList[indexPath.row]
         
         // Pass the selected user's email to the next view controller
         navigateToUserInfoViewController(userEmail: selectedUser.email)
     }
 
+    // Navigate to UserInfoViewController with the selected user's email
     func navigateToUserInfoViewController(userEmail: String) {
         // Instantiate the UserInfoViewController from the storyboard
         if let userInfoVC = self.storyboard?.instantiateViewController(withIdentifier: "UserInfoVC") as? UserInfoViewController {
@@ -116,12 +119,11 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
             // Set the title of the navigation bar for the UserInfoViewController
             userInfoVC.title = "User Information"
             
-            // Optionally, pass the selected user's email to UserInfoViewController (if needed)
-            // userInfoVC.Email.text = userEmail
+            // Pass the selected user's email to UserInfoViewController
+            userInfoVC.userEmail = userEmail  // <-- Pass email here
             
             // Push the view controller onto the navigation stack
             self.navigationController?.pushViewController(userInfoVC, animated: true)
         }
     }
-
 }

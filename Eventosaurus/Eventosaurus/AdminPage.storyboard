@@ -179,7 +179,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLW-IY-O6u">
-                                        <rect key="frame" x="140" y="227" width="276" height="34"/>
+                                        <rect key="frame" x="140" y="227" width="276" height="34.333333333333314"/>
                                         <date key="date" timeIntervalSinceReferenceDate="756725561.41059506">
                                             <!--2024-12-24 09:32:41 +0000-->
                                         </date>
@@ -195,7 +195,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9GI-Ut-NSU">
-                                        <rect key="frame" x="96" y="285" width="320" height="216"/>
+                                        <rect key="frame" x="96" y="285.33333333333331" width="320" height="216"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJw-vR-TCn">
                                         <rect key="frame" x="90" y="531.33333333333337" width="250" height="37"/>
@@ -209,7 +209,7 @@
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
-                                            <color key="baseBackgroundColor" systemColor="systemPurpleColor"/>
+                                            <color key="baseBackgroundColor" red="0.40121406316757202" green="0.080976270139217377" blue="0.39257454872131348" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
@@ -519,9 +519,6 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
