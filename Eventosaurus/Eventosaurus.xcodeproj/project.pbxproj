@@ -13,6 +13,8 @@
 		7E4885CD2D0EEA8400EFA875 /* OrgViewUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4885CC2D0EEA8400EFA875 /* OrgViewUser.storyboard */; };
 		7E4885CF2D0EEAA200EFA875 /* OrgViewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4885CE2D0EEAA200EFA875 /* OrgViewUserViewController.swift */; };
 		7E4885D12D0EEEEC00EFA875 /* UserViewOrg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4885D02D0EEEEC00EFA875 /* UserViewOrg.storyboard */; };
+		7E5288372D1ABD5D0081F7F4 /* OrgViewUserNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5288362D1ABD5D0081F7F4 /* OrgViewUserNavController.swift */; };
+		7E5288392D1ACD4C0081F7F4 /* OrganizerProfileNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5288382D1ACD4C0081F7F4 /* OrganizerProfileNavController.swift */; };
 		7EA1B9AE2D0C3B46009A24F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */; };
 		7EA1B9B02D0C3DC8009A24F3 /* OrganizerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */; };
 		7EA1B9B22D0C3DE9009A24F3 /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */; };
@@ -57,6 +59,8 @@
 		7E4885CC2D0EEA8400EFA875 /* OrgViewUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrgViewUser.storyboard; sourceTree = "<group>"; };
 		7E4885CE2D0EEAA200EFA875 /* OrgViewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgViewUserViewController.swift; sourceTree = "<group>"; };
 		7E4885D02D0EEEEC00EFA875 /* UserViewOrg.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserViewOrg.storyboard; sourceTree = "<group>"; };
+		7E5288362D1ABD5D0081F7F4 /* OrgViewUserNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgViewUserNavController.swift; sourceTree = "<group>"; };
+		7E5288382D1ACD4C0081F7F4 /* OrganizerProfileNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerProfileNavController.swift; sourceTree = "<group>"; };
 		7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizerProfile.storyboard; sourceTree = "<group>"; };
 		7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
@@ -144,8 +148,10 @@
 				7E3E692F2D18388200085F4E /* UserViewOrgViewController.swift */,
 				7E3E692D2D18355300085F4E /* UserViewOrgNavController.swift */,
 				7E4885CE2D0EEAA200EFA875 /* OrgViewUserViewController.swift */,
-				7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */,
+				7E5288362D1ABD5D0081F7F4 /* OrgViewUserNavController.swift */,
 				7EA1B9B12D0C3DE9009A24F3 /* OrganizerProfileViewController.swift */,
+				7E5288382D1ACD4C0081F7F4 /* OrganizerProfileNavController.swift */,
+				7EA1B9AF2D0C3DC8009A24F3 /* OrganizerProfile.storyboard */,
 				7E3B5E692D0736B2005167A2 /* Profile.storyboard */,
 				7EA1B9AD2D0C3B46009A24F3 /* ProfileViewController.swift */,
 				C395B1382CFC996900C073C2 /* Assets.xcassets */,
@@ -308,9 +314,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C395B1682CFCA9E700C073C2 /* Event.swift in Sources */,
+				7E5288392D1ACD4C0081F7F4 /* OrganizerProfileNavController.swift in Sources */,
 				C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */,
 				7EA1B9AE2D0C3B46009A24F3 /* ProfileViewController.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,
+				7E5288372D1ABD5D0081F7F4 /* OrgViewUserNavController.swift in Sources */,
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
 				7E3E692E2D18355300085F4E /* UserViewOrgNavController.swift in Sources */,
 				C395B1602CFCA7A800C073C2 /* User.swift in Sources */,

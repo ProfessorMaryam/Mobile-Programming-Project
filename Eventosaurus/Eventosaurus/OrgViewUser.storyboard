@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KkF-0l-gAX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
@@ -11,7 +11,7 @@
         <!--Org View User View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="OrgViewUserViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="OrgViewUserViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrgViewUser" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="OrgViewUserViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,14 +19,15 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="fpH-Mr-v5F">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRO-Nr-1HA">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRO-Nr-1HA">
                                 <rect key="frame" x="0.0" y="329" width="393" height="523"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Description" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHp-rF-yzK">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHp-rF-yzK">
                                         <rect key="frame" x="8" y="108" width="377" height="144"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.90980386729999996" green="0.87450981139999995" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="144" id="h0O-es-vDc"/>
+                                        </constraints>
                                         <color key="textColor" red="0.44705885649999999" green="0.44313728810000003" blue="0.44313728810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -36,15 +37,24 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Manaf Mohamed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vW-he-qCg">
-                                        <rect key="frame" x="103" y="73" width="186" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manaf Mohamed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vW-he-qCg">
+                                        <rect key="frame" x="103.66666666666669" y="73" width="186" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="186" id="iwh-rx-Qyp"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <color key="textColor" red="0.44705885649999999" green="0.44313728810000003" blue="0.44313728810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5vW-he-qCg" firstAttribute="centerX" secondItem="uRO-Nr-1HA" secondAttribute="centerX" id="CSj-Ch-0Tw"/>
+                                    <constraint firstItem="5vW-he-qCg" firstAttribute="centerX" secondItem="fHp-rF-yzK" secondAttribute="centerX" id="G8b-Zm-S44"/>
+                                    <constraint firstItem="fHp-rF-yzK" firstAttribute="top" secondItem="5vW-he-qCg" secondAttribute="bottom" constant="8" symbolic="YES" id="NQL-Nu-s40"/>
+                                    <constraint firstItem="fHp-rF-yzK" firstAttribute="leading" secondItem="uRO-Nr-1HA" secondAttribute="leadingMargin" id="lE0-v8-dKY"/>
+                                    <constraint firstItem="fHp-rF-yzK" firstAttribute="width" secondItem="5vW-he-qCg" secondAttribute="height" multiplier="377:27" id="mbw-aU-u1t"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="40"/>
@@ -52,9 +62,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dino profile" translatesAutoresizingMaskIntoConstraints="NO" id="Rqz-hl-aXv">
-                                <rect key="frame" x="96" y="187" width="200" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dino profile" translatesAutoresizingMaskIntoConstraints="NO" id="Rqz-hl-aXv">
+                                <rect key="frame" x="96" y="187" width="201" height="200"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="100"/>
@@ -66,19 +75,26 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="fpH-Mr-v5F" secondAttribute="bottom" id="7Ss-iP-5fr"/>
+                            <constraint firstItem="uRO-Nr-1HA" firstAttribute="leading" secondItem="fpH-Mr-v5F" secondAttribute="leading" id="9ft-Iu-3bg"/>
+                            <constraint firstItem="uRO-Nr-1HA" firstAttribute="centerX" secondItem="Rqz-hl-aXv" secondAttribute="centerX" id="FcS-Hs-7c6"/>
                             <constraint firstItem="fpH-Mr-v5F" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Fgj-Zp-nnr"/>
+                            <constraint firstItem="uRO-Nr-1HA" firstAttribute="width" secondItem="fpH-Mr-v5F" secondAttribute="width" id="GRA-0Z-ah3"/>
+                            <constraint firstItem="5vW-he-qCg" firstAttribute="top" secondItem="Rqz-hl-aXv" secondAttribute="bottom" constant="15" id="J8u-7X-ULl"/>
                             <constraint firstItem="fpH-Mr-v5F" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="JSq-oc-3lc"/>
                             <constraint firstItem="fpH-Mr-v5F" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="UFs-Uf-OlT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Rqz-hl-aXv" secondAttribute="bottom" constant="431" id="UtN-2R-meC"/>
+                            <constraint firstItem="Rqz-hl-aXv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="84" id="ZvX-bx-YHl"/>
+                            <constraint firstItem="Rqz-hl-aXv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="96" id="ctL-MF-icW"/>
+                            <constraint firstItem="uRO-Nr-1HA" firstAttribute="bottom" secondItem="fpH-Mr-v5F" secondAttribute="bottom" id="vqV-2b-Mal"/>
+                            <constraint firstItem="uRO-Nr-1HA" firstAttribute="height" secondItem="fpH-Mr-v5F" secondAttribute="height" multiplier="0.61385" id="xMg-NG-HKw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3bw-aT-TJQ">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="t1U-6b-3fn">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VOk-3k-RpS">
-                                <rect key="frame" x="-37" y="-19" width="87" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" image="arrow.backward" catalog="system" id="x4Z-3P-Dcf">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="iDe-Xf-x4J" kind="presentation" modalPresentationStyle="fullScreen" id="e3z-wB-dGf"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -86,10 +102,18 @@
             </objects>
             <point key="canvasLocation" x="999.23664122137404" y="-2.1126760563380285"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main-->
+        <scene sceneID="zfT-6S-qvl">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="Main" id="iDe-Xf-x4J" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4UX-SX-DSQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1599" y="-125"/>
+        </scene>
+        <!--Org View User Nav Controller-->
         <scene sceneID="zLb-nD-EJx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KkF-0l-gAX" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KkF-0l-gAX" customClass="OrgViewUserNavController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c1p-tg-ksl">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -107,6 +131,7 @@
     </scenes>
     <resources>
         <image name="Background" width="301.66665649414062" height="706.66668701171875"/>
+        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="dino profile" width="168" height="165"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

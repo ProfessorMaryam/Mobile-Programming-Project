@@ -33,7 +33,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Organizer Profile"/>
                                 <connections>
-                                    <segue destination="R10-VK-XE4" kind="presentation" modalPresentationStyle="fullScreen" id="I2l-hY-sRd"/>
+                                    <segue destination="M5b-Wu-9yQ" kind="presentation" modalPresentationStyle="fullScreen" id="xkO-lK-mvW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqY-ol-O9o">
@@ -41,7 +41,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Org View User"/>
                                 <connections>
-                                    <segue destination="NgV-Jz-xq0" kind="presentation" id="Fpf-fl-kJI"/>
+                                    <segue destination="NgV-Jz-xq0" kind="presentation" modalPresentationStyle="fullScreen" id="Fpf-fl-kJI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkl-Mg-E0r">
@@ -87,19 +87,19 @@
             </objects>
             <point key="canvasLocation" x="788" y="-181"/>
         </scene>
-        <!--OrganizerProfileViewController-->
-        <scene sceneID="Mmc-P2-KCc">
+        <!--OrganizerProfile-->
+        <scene sceneID="m1d-fc-frt">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="OrganizerProfile" storyboardName="OrganizerProfile" referencedIdentifier="OrganizerProfileViewController" id="R10-VK-XE4" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jnr-Bm-BF5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="OrganizerProfile" storyboardName="OrganizerProfile" id="M5b-Wu-9yQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5YQ-nZ-CSY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="871" y="-144"/>
+            <point key="canvasLocation" x="818" y="-140"/>
         </scene>
-        <!--OrgViewUserViewController-->
+        <!--OrgViewUser-->
         <scene sceneID="DUV-cw-6yC">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="OrgViewUser" storyboardName="OrgViewUser" referencedIdentifier="OrgViewUserViewController" id="NgV-Jz-xq0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ciX-fa-K05" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="OrgViewUser" storyboardName="OrgViewUser" id="NgV-Jz-xq0" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="871" y="-96"/>
         </scene>
