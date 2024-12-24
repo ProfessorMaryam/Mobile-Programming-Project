@@ -108,9 +108,13 @@ class ForgotPassword: UIViewController {
         let alertController = UIAlertController(title: "Success", message: "Your password has been updated successfully.", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             // Perform unwind segue to go back to the Startup view controller
-            self.performSegue(withIdentifier: "unwindToStartup", sender: self)
+                self.emailTxtField.text = ""
+            self.passwordTxtField.text = ""
+            self.confirmPasswordTxtField.text = ""
         }))
         self.present(alertController, animated: true, completion: nil)
     }
 
 }
+
+

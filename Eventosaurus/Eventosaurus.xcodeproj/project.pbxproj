@@ -44,6 +44,7 @@
 		C3EBFD8F2D05F01400B4D000 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBFD8D2D05EFF400B4D000 /* ForgotPassword.swift */; };
 		CE807E782D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE807E762D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift */; };
 		CE807E792D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE807E772D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib */; };
+		CFF79CFB2D1AB53A002EFA39 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */; };
 		D5FDE8332D071D1300EB1819 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8322D071D1300EB1819 /* FirebaseAuth */; };
 		D5FDE8352D071D1300EB1819 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8342D071D1300EB1819 /* FirebaseCore */; };
 		D5FDE8372D071D1300EB1819 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8362D071D1300EB1819 /* FirebaseFirestore */; };
@@ -112,6 +113,7 @@
 		C3EBFD8D2D05EFF400B4D000 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		CE807E762D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDisplaysInterestsTableViewCell.swift; sourceTree = "<group>"; };
 		CE807E772D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminDisplaysInterestsTableViewCell.xib; sourceTree = "<group>"; };
+		CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		DA911F332D130E5900159376 /* RequestForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestForm.swift; sourceTree = "<group>"; };
 		DA911F352D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayRequestsTVCTableViewCell.swift; sourceTree = "<group>"; };
 		DA911F362D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayRequestsTVCTableViewCell.xib; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				C395B1352CFC996700C073C2 /* Main.storyboard */,
 				C3EBFD882D05DB6700B4D000 /* Register.swift */,
 				C3EBFD8A2D05EDB900B4D000 /* LoginPage.swift */,
+				CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */,
 				C3EBFD8D2D05EFF400B4D000 /* ForgotPassword.swift */,
 				5737BDFF2D01D84100B40D01 /* Interests.storyboard */,
 				571D0BBB2D16C00700DA7A27 /* InterestsCategoriesCollectionViewCell.swift */,
@@ -402,6 +405,7 @@
 				DA911F372D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift in Sources */,
 				571D0BBE2D16C15F00DA7A27 /* UserInterestsViewController.swift in Sources */,
 				C3E2873C2D0DA84600CBF459 /* InterestsDisplayPage.swift in Sources */,
+				CFF79CFB2D1AB53A002EFA39 /* UserInfoViewController.swift in Sources */,
 				CE807E782D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift in Sources */,
 				C326037D2D0875F4008BD790 /* TermsAndConditions.swift in Sources */,
 				C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */,
