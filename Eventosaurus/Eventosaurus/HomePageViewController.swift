@@ -457,7 +457,8 @@ class EventCollectionViewCell: UICollectionViewCell {
 
 
 
-class EventSearchViewController: UIViewController, UISearchBarDelegate {
+class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSearchViewControllerDelegate {
+    
     
     @IBOutlet weak var filterButton: UIButton!
     
@@ -468,6 +469,8 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate {
     var eventNames: [String] = []
        var filteredEventNames: [String] = []
        var eventCategories: [String] = []
+    var selectedCategories: [String] = []
+    var selectedLocations: [String] = []
        
        override func viewDidLoad() {
            super.viewDidLoad()
@@ -475,74 +478,96 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate {
            collectioniView.delegate = self
            collectioniView.collectionViewLayout = UICollectionViewFlowLayout()
            searchBar.delegate = self
+           didUpdateFilters(selectedCategories: selectedCategories, selectedLocations: selectedLocations)
+
            fetchEvents()
        }
     
+    @IBAction func filterShow(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "HomePage ", bundle: nil)
+                if let filterVC = storyboard.instantiateViewController(withIdentifier: "FilterSearchViewController") as? FilterSearchViewController {
+                    filterVC.savedSelectedCategories = selectedCategories
+                    filterVC.savedSelectedLocations = selectedLocations
+                    filterVC.delegate = self
+                    self.present(filterVC, animated: true, completion: nil)
+                }
+    }
+    
+    func didUpdateFilters(selectedCategories: [String], selectedLocations: [String]) {
+            // Update local variables with selected filters
+            self.selectedCategories = selectedCategories
+            self.selectedLocations = selectedLocations
+            
+            // Call method to update or fetch the filtered events
+            filterEvents()
+        }
+        
+        func filterEvents() {
+            filteredEventNames = eventNames.filter { eventName in
+                    // Example filter logic: check if event's category and location match selected values
+                    let matchesCategory = selectedCategories.isEmpty || selectedCategories.contains(eventName) // Replace with actual category checking logic
+                    let matchesLocation = selectedLocations.isEmpty || selectedLocations.contains(eventName) // Replace with actual location checking logic
+                    
+                    return matchesCategory && matchesLocation
+                }
+                
+                collectioniView.reloadData()
+        }
+        
+       
+    
     func fetchEvents() {
-        db.collection("Events").getDocuments { (snapshot, error) in
-            if let error = error {
-                print("Error fetching events: \(error)")
-                return
-            }
+            CategoryStore.shared.clearAllCategories() // Clear previous data
             
-            // Check if we have any documents
-            guard let documents = snapshot?.documents, documents.count > 0 else {
-                print("No events found.")
-                return
-            }
-            
-            // Clear previous data
-            self.eventNames.removeAll()
-            self.eventCategories.removeAll()
-            
-            // Map documents to event data arrays
-            documents.forEach { document in
-                let data = document.data()
+            db.collection("Events").getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Error fetching events: \(error)")
+                    return
+                }
                 
-                // Debugging: Log the data to check the fields
-                print("Fetched document data: \(data)")
+                guard let documents = snapshot?.documents, documents.count > 0 else {
+                    print("No events found.")
+                    return
+                }
                 
-                let eventName = data["Event Name"] as? String ?? "Unnamed Event"
+                self.eventNames.removeAll()
+                self.eventCategories.removeAll()
                 
-                // Fetch the Category document reference
-                if let categoryRef = data["Category"] as? DocumentReference {
-                    // Fetch the category document using the reference
-                    categoryRef.getDocument { (categorySnapshot, error) in
-                        if let error = error {
-                            print("Error fetching category: \(error)")
-                            return
-                        }
-                        
-                        // Check if the category document exists
-                        if let categorySnapshot = categorySnapshot, categorySnapshot.exists {
-                            // Extract the category name from the category document
-                            if let categoryName = categorySnapshot.data()?["Category Name"] as? String {
-                                // Debugging: Log the event name and category
-                                print("Event Name: \(eventName), Category Name: \(categoryName)")
-                                
-                                // Add data to arrays
+                documents.forEach { document in
+                    let data = document.data()
+                    let eventName = data["Event Name"] as? String ?? "Unnamed Event"
+                    
+                    if let categoryRef = data["Category"] as? DocumentReference {
+                        categoryRef.getDocument { (categorySnapshot, error) in
+                            if let error = error {
+                                print("Error fetching category: \(error)")
+                                return
+                            }
+                            
+                            if let categorySnapshot = categorySnapshot,
+                               let categoryName = categorySnapshot.data()?["Category Name"] as? String {
                                 self.eventNames.append(eventName)
                                 self.eventCategories.append(categoryName)
                                 
-                                // Reload collection view after fetching events (inside the completion handler)
+                                // Add event to the category store
+                                CategoryStore.shared.addEventToCategory(eventName: eventName, category: categoryName)
+                                
                                 self.collectioniView.reloadData()
                             }
                         }
+                    } else {
+                        let defaultCategory = "General"
+                        self.eventNames.append(eventName)
+                        self.eventCategories.append(defaultCategory)
+                        
+                        CategoryStore.shared.addEventToCategory(eventName: eventName, category: defaultCategory)
+                        
+                        self.collectioniView.reloadData()
                     }
-                } else {
-                    // If there is no valid category reference, fall back to default category
-                    let defaultCategory = "General"
-                    self.eventNames.append(eventName)
-                    self.eventCategories.append(defaultCategory)
-                    
-                    // Reload collection view after fetching events (inside the completion handler)
-                    self.collectioniView.reloadData()
                 }
             }
+        filterEvents()
         }
-    }
-    
-    
 
 
        
@@ -566,13 +591,12 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate {
            // Optionally handle the search bar cancel button
            func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
                searchBar.text = ""
-               filteredEventNames = eventNames // Reset the filtered events
+               filteredEventNames = eventNames
+                                                 // Reset the filtered events
                collectioniView.reloadData()
            }
        }
        
-      
-
 
    extension EventSearchViewController: UICollectionViewDataSource {
        
@@ -814,8 +838,74 @@ class ContactUsViewController: UIViewController {
 
 
 
+class CategoryStore {
+    static let shared = CategoryStore() // Singleton instance
+    
+    private init() {}
+    
+    var healthWellness: [String] = []
+    var sports: [String] = []
+    var fashion: [String] = []
+    var entertainment: [String] = []
+    var comedy: [String] = []
+    var education: [String] = []
+    var social: [String] = []
+    var food: [String] = []
+    var artLiterature: [String] = []
+    var music: [String] = []
+    
+    func addEventToCategory(eventName: String, category: String) {
+        switch category {
+        case "Health Wellness":
+            healthWellness.append(eventName)
+        case "Sports":
+            sports.append(eventName)
+        case "Fashion":
+            fashion.append(eventName)
+        case "Entertainment":
+            entertainment.append(eventName)
+        case "Comedy":
+            comedy.append(eventName)
+        case "Education":
+            education.append(eventName)
+        case "Social":
+            social.append(eventName)
+        case "Food":
+            food.append(eventName)
+        case "Art & Literature":
+            artLiterature.append(eventName)
+        case "Music":
+            music.append(eventName)
+        default:
+            print("Unknown category: \(category)")
+        }
+    }
+    
+    func clearAllCategories() {
+        healthWellness.removeAll()
+        sports.removeAll()
+        fashion.removeAll()
+        entertainment.removeAll()
+        comedy.removeAll()
+        education.removeAll()
+        social.removeAll()
+        food.removeAll()
+        artLiterature.removeAll()
+        music.removeAll()
+    }
+}
 
 
+
+
+
+
+
+
+
+
+
+// MARK: - Filter work
 protocol FilterSearchViewControllerDelegate: AnyObject {
     func didUpdateFilters(selectedCategories: [String], selectedLocations: [String])
 }
@@ -823,17 +913,13 @@ protocol FilterSearchViewControllerDelegate: AnyObject {
 class FilterSearchViewController: UIViewController {
     
     weak var delegate: FilterSearchViewControllerDelegate?
-        
-    var availableCategories: [String] = ["Music", "Sports", "Entertainment", "Comedy", "Health Wellness", "Social", "Art & Literature", "Education", "Food", "Fashion"]
-        var availableLocations: [String] = ["Southern", "Northern", "The Capital", "Muharraq"]
-        
+    
         var selectedCategories: [String] = []
         var selectedLocations: [String] = []
     
     @IBOutlet weak var resetButton: UIButton!
     
     @IBOutlet weak var doneButton: UIButton!
-    
     
     @IBOutlet weak var HAbutton: UIButton!
     var HAChecked = false
@@ -847,7 +933,6 @@ class FilterSearchViewController: UIViewController {
     @IBOutlet weak var ENButton: UIButton!
     var ENChecked = false
    
-    
     @IBOutlet weak var CMButton: UIButton!
     var CMChecked = false
     
@@ -856,7 +941,6 @@ class FilterSearchViewController: UIViewController {
     
     @IBOutlet weak var LTButton: UIButton!
     var LTChecked = false
-  
     
     @IBOutlet weak var EDButton: UIButton!
     var EDChecked = false
@@ -866,8 +950,6 @@ class FilterSearchViewController: UIViewController {
     
     @IBOutlet weak var FDButton: UIButton!
     var FDChecked = false
-    
-    
     
     @IBOutlet weak var NRButton: UIButton!
     var NRChecked = false
@@ -891,132 +973,197 @@ class FilterSearchViewController: UIViewController {
     var MOChecked = false
     
     
+    var savedSelectedCategories: [String] = []
+    var savedSelectedLocations: [String] = []
     
-    
-    
+    var buttonStates: [UIButton: Bool] = [:]
 
-    
+    let buttonToCategoryMap: [UIButton: String] = {
+            let HAbutton = UIButton()
+            let SPButton = UIButton()
+            // ... create other buttons ...
+
+            return [
+                HAbutton: "Health Wellness",
+                SPButton: "Sports",
+                // ... other button-category pairs ...
+            ]
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateButtonStates()
+        restoreSelectedFilters()
+        
     }
-    
-    func updateButtonStates() {
-            // Ensure FilterDataManager has the correct data
             
-            // Repeat for other buttons...
+    func restoreSelectedFilters() {
+            for (button, category) in buttonToCategoryMap {
+                updateButtonState(for: button, isSelected: selectedCategories.contains(category))
+            }
         }
 
-
-    
+        func updateButtonState(for button: UIButton, isSelected: Bool) {
+            let imageName = isSelected ? "checkmark.square.fill" : "square"
+            button.setImage(UIImage(systemName: imageName), for: .normal)
+        }
     
     @IBAction func resetClicked(_ sender: UIButton) {
         
         selectedCategories.removeAll()
-            selectedLocations.removeAll()
-            resetButtons()
+                selectedLocations.removeAll()
+                restoreSelectedFilters()
     }
     
     @IBAction func doneClicked(_ sender: UIButton) {
+                
+        delegate?.didUpdateFilters(selectedCategories: selectedCategories, selectedLocations: selectedLocations)
+                
+                // Dismiss the filter view
+                self.dismiss(animated: true, completion: nil)
+    }
+    
+    func toggleSelection(for button: UIButton, category: String) {
+            if selectedCategories.contains(category) {
+                selectedCategories.removeAll(where: { $0 == category })
+            } else {
+                selectedCategories.append(category)
+            }
+            updateButtonState(for: button, isSelected: selectedCategories.contains(category))
+        }
+    
+    func getCategory(for button: UIButton) -> String {
+            switch button {
+            case HAbutton: return "Health Wellness"
+            case SPButton: return "Sports"
+            case FNButton: return "Fashion"
+            case ENButton: return "Entertainment"
+            case CMButton: return "Comedy"
+            case MSButton: return "Music"
+            case LTButton: return "Art & Literature"
+            case EDButton: return "Education"
+            case SLButton: return "Social"
+            case FDButton: return "Food"
+            default: return ""
+            }
+        }
+    
+    func getLocation(for button: UIButton) -> String {
+            switch button {
+            case NRButton: return "Northern"
+            case CLButton: return "The Capital"
+            case MQButton: return "Muharraq"
+            case SRButton: return "Southern"
+            case WEButton: return "This Week"
+            case MOButton: return "This Month"
+            default: return ""
+            }
+        }
+
         
-                       
+    
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func saveSelectedFilters() -> Bool {
+        // Simulate saving process
+        // Replace this with actual saving logic later
+        let savingSuccessful = !selectedCategories.isEmpty || !selectedLocations.isEmpty
+        return savingSuccessful
     }
     
     
     func updateSelectedCategories(_ category: String, isSelected: Bool) {
-           if isSelected {
-               selectedCategories.append(category)
-           } else {
-               selectedCategories.removeAll { $0 == category }
-           }
-       }
+            if isSelected {
+                selectedCategories.append(category)
+            } else {
+                selectedCategories.removeAll { $0 == category }
+            }
+        }
 
-       func updateSelectedLocations(_ location: String, isSelected: Bool) {
-           if isSelected {
-               selectedLocations.append(location)
-           } else {
-               selectedLocations.removeAll { $0 == location }
-           }
-       }
+        func updateSelectedLocations(_ location: String, isSelected: Bool) {
+            if isSelected {
+                selectedLocations.append(location)
+            } else {
+                selectedLocations.removeAll { $0 == location }
+            }
+        }
     
     @IBAction func HATapped(_ sender: UIButton) {
-        if sender == HAbutton {
-                         HAChecked.toggle()
-                         if HAChecked {
-                            selectedCategories.append("Health Wellness")
-                         } else {
-                            selectedCategories.removeAll { $0 == "Health Wellness" }
-                         }
-                     }
-                     
-                     // Update button states
-                     updateButtonStates()
+        toggleSelection(for: sender, category: "Health Wellness")
            }
     
     
     @IBAction func SPTapped(_ sender: UIButton) {
-        SPChecked.toggle()
-            let imageName = SPChecked ? "checkmark.square.fill" : "square"
-            let image = UIImage(systemName: imageName)
-            SPButton.setImage(image, for: .normal)
-            updateSelectedCategories("Sports", isSelected: SPChecked)
+        toggleSelection(for: sender, category: "Sports")
     }
     
     @IBAction func FNTapped(_ sender: UIButton) {
-        FNChecked = !FNChecked
+        FNChecked.toggle()
         let imageName = FNChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         FNButton.setImage(image, for: .normal)
+        updateSelectedCategories("Fashion", isSelected: FNChecked)
     }
     
     @IBAction func ENTapped(_ sender: Any) {
-        ENChecked = !ENChecked
+        ENChecked.toggle()
         let imageName = ENChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         ENButton.setImage(image, for: .normal)
+        updateSelectedCategories("Entertainment", isSelected: ENChecked)
     }
   
     @IBAction func CMTapped(_ sender: UIButton) {
-        CMChecked = !CMChecked
+        CMChecked.toggle()
         let imageName = CMChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         CMButton.setImage(image, for: .normal)
+        updateSelectedCategories("Comedy", isSelected: CMChecked)
     }
     
     @IBAction func EDTapped(_ sender: UIButton) {
-        EDChecked = !EDChecked
+        EDChecked.toggle()
         let imageName = EDChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         EDButton.setImage(image, for: .normal)
+        updateSelectedCategories("Education", isSelected: EDChecked)
     }
     
     @IBAction func SLTapped(_ sender: UIButton) {
-        SLChecked = !SLChecked
+        SLChecked.toggle()
         let imageName = SLChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         SLButton.setImage(image, for: .normal)
+        updateSelectedCategories("Social", isSelected: SLChecked)
     }
     
     @IBAction func FDTapped(_ sender: UIButton) {
-        FDChecked = !FDChecked
+        FDChecked.toggle()
         let imageName = FDChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         FDButton.setImage(image, for: .normal)
+        updateSelectedCategories("Food", isSelected: FDChecked)
     }
     
     @IBAction func LRTapped(_ sender: Any) {
-        LTChecked = !LTChecked
+        LTChecked.toggle()
         let imageName = LTChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         LTButton.setImage(image, for: .normal)
+        updateSelectedCategories("Art & Literture", isSelected: LTChecked)
     }
     
     @IBAction func MSTapped(_ sender: UIButton) {
-        MSChecked = !MSChecked
+        MSChecked.toggle()
         let imageName = MSChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         MSButton.setImage(image, for: .normal)
+        updateSelectedCategories("Music", isSelected: MSChecked)
     }
     
     
@@ -1024,49 +1171,55 @@ class FilterSearchViewController: UIViewController {
     
     
     @IBAction func NRTapped(_ sender: UIButton) {
-        NRChecked = !NRChecked
+        NRChecked.toggle()
         let imageName = NRChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         NRButton.setImage(image, for: .normal)
+        updateSelectedCategories("Northern", isSelected: NRChecked)
     }
     
     
     @IBAction func CLTapped(_ sender: UIButton) {
-        CLChecked = !CLChecked
+        CLChecked.toggle()
         let imageName = CLChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         CLButton.setImage(image, for: .normal)
+        updateSelectedCategories("The Capital", isSelected: CLChecked)
     }
     
     @IBAction func MQTapped(_ sender: UIButton) {
-        MQChecked = !MQChecked
+        MQChecked.toggle()
         let imageName = MQChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         MQButton.setImage(image, for: .normal)
+        updateSelectedCategories("Muharraq", isSelected: MQChecked)
     }
     
     @IBAction func SRTapped(_ sender: UIButton) {
-        SRChecked = !SRChecked
+        SRChecked.toggle()
         let imageName = SRChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         SRButton.setImage(image, for: .normal)
+        updateSelectedCategories("Southern", isSelected: SRChecked)
     }
     
     
     
     
     @IBAction func WETapped(_ sender: UIButton) {
-        WEChecked = !WEChecked
+        WEChecked.toggle()
         let imageName = WEChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         WEButton.setImage(image, for: .normal)
+        updateSelectedCategories("This Week", isSelected: WEChecked)
     }
     
     @IBAction func MOTapped(_ sender: UIButton) {
-        MOChecked = !MOChecked
+        MOChecked.toggle()
         let imageName = MOChecked ? "checkmark.square.fill" : "square"
         let image = UIImage(systemName: imageName)
         MOButton.setImage(image, for: .normal)
+        updateSelectedCategories("This Month", isSelected: MOChecked)
     }
     
     
@@ -1079,6 +1232,18 @@ class FilterSearchViewController: UIViewController {
               SPButton.setImage(UIImage(systemName: "square"), for: .normal)
                  FNButton.setImage(UIImage(systemName: "square"), for: .normal)
                  ENButton.setImage(UIImage(systemName: "square"), for: .normal)
+        SLButton.setImage(UIImage(systemName: "square"), for: .normal)
+        CMButton.setImage(UIImage(systemName: "square"), for: .normal)
+           CLButton.setImage(UIImage(systemName: "square"), for: .normal)
+           NRButton.setImage(UIImage(systemName: "square"), for: .normal)
+        SRButton.setImage(UIImage(systemName: "square"), for: .normal)
+        MSButton.setImage(UIImage(systemName: "square"), for: .normal)
+           EDButton.setImage(UIImage(systemName: "square"), for: .normal)
+           FDButton.setImage(UIImage(systemName: "square"), for: .normal)
+        LTButton.setImage(UIImage(systemName: "square"), for: .normal)
+        MQButton.setImage(UIImage(systemName: "square"), for: .normal)
+           WEButton.setImage(UIImage(systemName: "square"), for: .normal)
+           MOButton.setImage(UIImage(systemName: "square"), for: .normal)
               // Reset other buttons similarly
           }
     

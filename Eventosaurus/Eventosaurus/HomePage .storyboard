@@ -447,7 +447,7 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="filterShow:" destination="GwK-9W-DbL" eventType="touchUpInside" id="M5G-1n-VpQ"/>
+                                    <action selector="filterShow:" destination="GwK-9W-DbL" eventType="touchUpInside" id="igw-VP-oFp"/>
                                     <segue destination="KLT-ee-JYW" kind="presentation" modalPresentationStyle="fullScreen" id="7mm-w0-ae2"/>
                                 </connections>
                             </button>
@@ -1033,6 +1033,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="doneClicked:" destination="KLT-ee-JYW" eventType="touchUpInside" id="f4A-ab-NtQ"/>
+                                            <segue destination="GwK-9W-DbL" kind="presentation" modalPresentationStyle="fullScreen" id="9gf-n5-Hf3"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Art &amp; Literature " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LY-Rt-Pgt">
@@ -1669,7 +1670,7 @@ Aminatour1@evento.saurus.bh</string>
     <inferredMetricsTieBreakers>
         <segue reference="8Mm-fn-Hlm"/>
         <segue reference="k69-l0-SPF"/>
-        <segue reference="ona-u7-5V5"/>
+        <segue reference="9gf-n5-Hf3"/>
         <segue reference="QUW-bh-7c5"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1695,10 +1696,10 @@ Aminatour1@evento.saurus.bh</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
