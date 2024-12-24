@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Create Event View Controller-->
         <scene sceneID="yfJ-Q1-p1a">
             <objects>
-                <viewController id="Mbr-ez-O4e" sceneMemberID="viewController">
+                <viewController id="Mbr-ez-O4e" customClass="CreateEventViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AA6-zw-vdK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,13 +34,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event Time" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-bM-P0w">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event Date" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-bM-P0w">
                                         <rect key="frame" x="48" y="259" width="297" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event Date" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mii-aV-Iqb">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Organizer" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mii-aV-Iqb">
                                         <rect key="frame" x="48" y="298" width="297" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -74,6 +74,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Submit">
                                             <color key="baseBackgroundColor" red="0.6615204026" green="0.49980388780000001" blue="0.80078417850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="submitButtonTapped:" destination="Mbr-ez-O4e" eventType="touchUpInside" id="2TH-He-2ib"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -125,6 +128,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DLY-YO-UQS"/>
+                    <connections>
+                        <outlet property="coOrganizerTextField" destination="21G-f4-PVQ" id="JvR-BO-ASm"/>
+                        <outlet property="descriptionTextView" destination="mEa-4F-jD6" id="Cpd-ei-xnv"/>
+                        <outlet property="eventDateTextField" destination="vWa-bM-P0w" id="i9k-6U-qaM"/>
+                        <outlet property="eventNameTextField" destination="jUi-FW-mEg" id="P2K-Hw-jSa"/>
+                        <outlet property="maxAttendeesTextField" destination="kvi-7P-VIO" id="5np-0g-1JP"/>
+                        <outlet property="organizerTextField" destination="Mii-aV-Iqb" id="s6q-N0-ZfE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXq-fv-7ZY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
