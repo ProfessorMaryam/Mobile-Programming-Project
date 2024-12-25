@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3FB619892D1C2BDC005E2C6F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FB619882D1C2BDC005E2C6F /* GoogleService-Info.plist */; };
 		3FB6198B2D1C404F005E2C6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FB6198A2D1C404F005E2C6F /* Main.storyboard */; };
-		3FB6198D2D1C43D5005E2C6F /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FB6198C2D1C43D5005E2C6F /* Interests.storyboard */; };
 		C3466CA82D080A5E0082AAC1 /* EditEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3466CA72D080A5E0082AAC1 /* EditEvent.storyboard */; };
 		C3466CAC2D0814010082AAC1 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3466CAB2D0814010082AAC1 /* EditEventViewController.swift */; };
 		C3466CAE2D0817A90082AAC1 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3466CAD2D0817A90082AAC1 /* CreateEvent.storyboard */; };
@@ -58,7 +57,6 @@
 /* Begin PBXFileReference section */
 		3FB619882D1C2BDC005E2C6F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FB6198A2D1C404F005E2C6F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		3FB6198C2D1C43D5005E2C6F /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		C3466CA72D080A5E0082AAC1 /* EditEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditEvent.storyboard; sourceTree = "<group>"; };
 		C3466CAB2D0814010082AAC1 /* EditEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
 		C3466CAD2D0817A90082AAC1 /* CreateEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				C395B1632CFCA80D00C073C2 /* Admin.swift */,
 				C395B1672CFCA9E700C073C2 /* Event.swift */,
 				3FB6198A2D1C404F005E2C6F /* Main.storyboard */,
-				3FB6198C2D1C43D5005E2C6F /* Interests.storyboard */,
 				C395B1692CFCB02300C073C2 /* System.swift */,
 				C395B1382CFC996900C073C2 /* Assets.xcassets */,
 				C395B13A2CFC996900C073C2 /* LaunchScreen.storyboard */,
@@ -298,7 +295,6 @@
 			files = (
 				C395B13C2CFC996900C073C2 /* LaunchScreen.storyboard in Resources */,
 				3FB619892D1C2BDC005E2C6F /* GoogleService-Info.plist in Resources */,
-				3FB6198D2D1C43D5005E2C6F /* Interests.storyboard in Resources */,
 				C3466CAE2D0817A90082AAC1 /* CreateEvent.storyboard in Resources */,
 				C395B1392CFC996900C073C2 /* Assets.xcassets in Resources */,
 				C3466CA82D080A5E0082AAC1 /* EditEvent.storyboard in Resources */,
