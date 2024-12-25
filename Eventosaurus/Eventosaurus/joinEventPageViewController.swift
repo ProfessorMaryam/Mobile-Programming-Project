@@ -31,7 +31,7 @@ class joinEventPageViewController: UIViewController {
             
             let doneAction = UIAlertAction(title: "Done", style: .default) { _ in
                 // Handle any actions when the user taps "Done" here
-                print("User tapped Done.")
+                print("Done.")
             }
             
             alertController.addAction(doneAction)

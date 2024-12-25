@@ -406,10 +406,10 @@
             </objects>
             <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
         </scene>
-        <!--LeaveEventPage-->
+        <!--CreateEvent-->
         <scene sceneID="cCT-qZ-Q4a">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="LeaveEvent" storyboardName="LeaveEventPage" id="q8q-Jm-Tqa" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="CreateEvent" storyboardName="CreateEvent" id="q8q-Jm-Tqa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EpW-no-s42" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="686" y="338"/>
