@@ -309,16 +309,6 @@
             </objects>
             <point key="canvasLocation" x="1964.6511627906978" y="31.545064377682404"/>
         </scene>
-        <!--Interests-->
-        <scene sceneID="lmS-Mz-URI">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="interests" storyboardName="Interests" id="gC5-zx-fZf" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Pe6-w3-rph"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oSk-wh-HP4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2784" y="23"/>
-        </scene>
         <!--BecomeOrg-->
         <scene sceneID="GS8-Ov-4Hw">
             <objects>
@@ -630,16 +620,6 @@
             </objects>
             <point key="canvasLocation" x="2062.3255813953488" y="804.72103004291853"/>
         </scene>
-        <!--AdminPage-->
-        <scene sceneID="Jcw-nA-2fL">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="adminPage" storyboardName="AdminPage" id="MTe-8R-2Mp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="sIm-b1-MUE"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Bo-9B-Iwy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1537" y="1309"/>
-        </scene>
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
@@ -650,10 +630,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
