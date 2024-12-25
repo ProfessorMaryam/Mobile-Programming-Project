@@ -211,6 +211,9 @@
                                             </attributedString>
                                             <color key="baseBackgroundColor" red="0.40121406316757202" green="0.080976270139217377" blue="0.39257454872131348" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="MhR-cM-JzT" eventType="touchUpInside" id="Ry1-lM-eVj"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -263,6 +266,7 @@
                     </view>
                     <connections>
                         <outlet property="Email" destination="3Fe-GK-WPv" id="bVS-f1-TzJ"/>
+                        <outlet property="SaveButton" destination="tJw-vR-TCn" id="nGP-ey-lh9"/>
                         <outlet property="dateOfBirth" destination="gLW-IY-O6u" id="EO1-fp-V3n"/>
                         <outlet property="fullName" destination="JIm-Dh-LhZ" id="Y5V-kP-XUq"/>
                         <outlet property="status" destination="9GI-Ut-NSU" id="xMJ-mm-yVK"/>
@@ -270,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kec-4L-sy6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4696.7441860465115" y="-710.08583690987132"/>
+            <point key="canvasLocation" x="4709" y="-713"/>
         </scene>
         <!--Requests View Controller-->
         <scene sceneID="OpU-3X-pFh">
@@ -416,6 +420,40 @@
             </objects>
             <point key="canvasLocation" x="4502.7906976744189" y="733.90557939914163"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="SHm-dG-z1X">
+            <objects>
+                <viewController id="hUR-gj-HmJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aXU-7J-ufY">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="ROw-B7-9mD">
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixa-L3-Cbc">
+                                <rect key="frame" x="0.0" y="64" width="430" height="868"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="f6o-lR-KWD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ixa-L3-Cbc" firstAttribute="top" secondItem="f6o-lR-KWD" secondAttribute="top" constant="5" id="2jc-W6-lzS"/>
+                            <constraint firstItem="ROw-B7-9mD" firstAttribute="top" secondItem="aXU-7J-ufY" secondAttribute="top" id="59q-ql-mcX"/>
+                            <constraint firstItem="ROw-B7-9mD" firstAttribute="leading" secondItem="f6o-lR-KWD" secondAttribute="leading" id="884-ML-g2P"/>
+                            <constraint firstAttribute="bottom" secondItem="ROw-B7-9mD" secondAttribute="bottom" id="HwL-2i-VI1"/>
+                            <constraint firstItem="ROw-B7-9mD" firstAttribute="trailing" secondItem="f6o-lR-KWD" secondAttribute="trailing" id="RVO-H7-DM6"/>
+                            <constraint firstItem="Ixa-L3-Cbc" firstAttribute="leading" secondItem="f6o-lR-KWD" secondAttribute="leading" id="ZZ2-dr-48b"/>
+                            <constraint firstItem="Ixa-L3-Cbc" firstAttribute="trailing" secondItem="f6o-lR-KWD" secondAttribute="trailing" id="gzN-6S-5jp"/>
+                            <constraint firstAttribute="bottom" secondItem="Ixa-L3-Cbc" secondAttribute="bottom" id="yjC-W7-2gz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zSm-OC-P0w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6330.6976744186049" y="267.16738197424894"/>
+        </scene>
         <!--Events Display Controller-->
         <scene sceneID="WPP-Bv-RHh">
             <objects>
@@ -515,10 +553,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

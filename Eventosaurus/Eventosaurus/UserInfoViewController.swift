@@ -12,6 +12,7 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
     var statusOption: [String] = ["Organizer", "Attendee"]
     
+    @IBOutlet weak var SaveButton: UIButton!
     @IBOutlet weak var status: UIPickerView!
     @IBOutlet weak var dateOfBirth: UIDatePicker!
     @IBOutlet weak var Email: UITextField!
@@ -19,6 +20,12 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
     // Define a property to hold the email passed from UsersDisplayController
     var userEmail: String?
+    
+    // Keep track of the original data to detect changes
+    var originalFullName: String?
+    var originalEmail: String?
+    var originalDateOfBirth: Date?
+    var originalStatus: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +44,38 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
         } else {
             print("Error: userEmail is nil.")
         }
+        
+        // Initially disable the Save button
+        SaveButton.isEnabled = false
+        
+        // Add observers to detect text changes and enable Save button
+        fullName.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        Email.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        dateOfBirth.addTarget(self, action: #selector(datePickerDidChange), for: .valueChanged)
+    }
+    
+    // MARK: - Detect Changes in Text Fields
+    @objc func textFieldDidChange() {
+        checkForChanges()
+    }
+    
+    @objc func datePickerDidChange() {
+        checkForChanges()
+    }
+
+    // Detect Picker View selection change
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        checkForChanges()
+    }
+
+    // Check if there are changes in any fields to enable the Save button
+    func checkForChanges() {
+        let isChanged = (fullName.text != originalFullName) ||
+                        (Email.text != originalEmail) ||
+                        (dateOfBirth.date != originalDateOfBirth) ||
+                        (statusOption[status.selectedRow(inComponent: 0)] != originalStatus)
+        
+        SaveButton.isEnabled = isChanged
     }
 
     // MARK: - Fetch user data from Firestore
@@ -58,20 +97,37 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
             // Extract the user's data from the document
             let fullName = document.get("Full Name") as? String ?? "Unknown Name"
             let email = document.get("Email") as? String ?? "No Email"
-            let dateOfBirthTimestamp = document.get("Date of Birth") as? Timestamp
+            let dateOfBirthTimestamp = document.get("Date Of Birth") as? Timestamp
+            let isOrganizer = document.get("Is Organizer") as? Bool ?? false
 
             self.fullName.text = fullName
             self.Email.text = email
 
+            // Set the Date of Birth in the UIDatePicker
             if let dateOfBirth = dateOfBirthTimestamp?.dateValue() {
                 self.dateOfBirth.date = dateOfBirth
             } else {
                 print("Date of Birth not found for user \(email)")
             }
 
-            if let status = document.get("Status") as? String, let index = self.statusOption.firstIndex(of: status) {
-                self.status.selectRow(index, inComponent: 0, animated: true)
+            // Set the status in the UIPickerView based on the "Is Organizer" field
+            if isOrganizer {
+                // If "Is Organizer" is true, set the status to "Organizer"
+                if let index = self.statusOption.firstIndex(of: "Organizer") {
+                    self.status.selectRow(index, inComponent: 0, animated: true)
+                }
+            } else {
+                // If "Is Organizer" is false, set the status to "Attendee"
+                if let index = self.statusOption.firstIndex(of: "Attendee") {
+                    self.status.selectRow(index, inComponent: 0, animated: true)
+                }
             }
+
+            // Store the original values to track changes
+            self.originalFullName = fullName
+            self.originalEmail = email
+            self.originalDateOfBirth = self.dateOfBirth.date
+            self.originalStatus = isOrganizer ? "Organizer" : "Attendee"
         }
     }
 
@@ -88,9 +144,57 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return statusOption[row]
     }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedStatus = statusOption[row]
-        print("Selected Status: \(selectedStatus)")
+
+    // MARK: - Save Button Action
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        // Get the updated data from the text fields
+        let updatedFullName = fullName.text ?? ""
+        let updatedEmail = Email.text ?? ""
+        let updatedDateOfBirth = dateOfBirth.date
+        let updatedStatus = statusOption[status.selectedRow(inComponent: 0)]
+
+        // Update Firestore with the new data
+        updateUserData(fullName: updatedFullName, email: updatedEmail, dateOfBirth: updatedDateOfBirth, status: updatedStatus)
+
+        // After saving, update the original values
+        originalFullName = updatedFullName
+        originalEmail = updatedEmail
+        originalDateOfBirth = updatedDateOfBirth
+        originalStatus = updatedStatus
+        
+        // Optionally, disable the Save button after saving
+        SaveButton.isEnabled = false
+    }
+
+    // MARK: - Update User Data in Firestore
+    func updateUserData(fullName: String, email: String, dateOfBirth: Date, status: String) {
+        let db = Firestore.firestore()
+        
+        // Query Firestore for the document with the matching email
+        db.collection("Users").whereField("Email", isEqualTo: email.lowercased()).getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Error updating user data: \(error.localizedDescription)")
+                return
+            }
+
+            guard let snapshot = snapshot, let document = snapshot.documents.first else {
+                print("Error: User not found in Firestore.")
+                return
+            }
+
+            // Update the user's data in Firestore
+            document.reference.updateData([
+                "Full Name": fullName,
+                "Email": email,
+                "Date Of Birth": dateOfBirth,
+                "Is Organizer": status == "Organizer"
+            ]) { error in
+                if let error = error {
+                    print("Error updating user: \(error.localizedDescription)")
+                } else {
+                    print("User data updated successfully.")
+                }
+            }
+        }
     }
 }

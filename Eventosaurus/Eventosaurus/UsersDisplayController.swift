@@ -132,4 +132,49 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
         // Push the view controller onto the navigation stack
         self.navigationController?.pushViewController(userInfoVC, animated: true)
     }
+
+    // MARK: - Swipe to Delete (UITableView)
+
+    // Implement the swipe-to-delete feature
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Get the email of the user to delete
+            let userToDelete = filteredUsersList[indexPath.row]
+            deleteUserFromFirestore(email: userToDelete.email)
+
+            // Remove the user from the local data models (usersList and filteredUsersList)
+            filteredUsersList.remove(at: indexPath.row)
+            usersList.removeAll { $0.email == userToDelete.email }
+
+            // Delete the row from the table view
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+
+    // Delete user from Firestore
+    func deleteUserFromFirestore(email: String) {
+        let db = Firestore.firestore()
+
+        // Find the document by email and delete it
+        db.collection("Users").whereField("Email", isEqualTo: email).getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Error deleting user: \(error.localizedDescription)")
+                return
+            }
+
+            guard let snapshot = snapshot, let document = snapshot.documents.first else {
+                print("Error: User not found in Firestore.")
+                return
+            }
+
+            // Delete the document
+            document.reference.delete { error in
+                if let error = error {
+                    print("Error deleting document: \(error.localizedDescription)")
+                } else {
+                    print("User deleted successfully.")
+                }
+            }
+        }
+    }
 }
