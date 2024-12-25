@@ -16,12 +16,39 @@ import FirebaseFirestore
 
 class HomePageViewController: UIViewController {
     
+    
+    @IBOutlet weak var helloDino: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     
         
     }
+    
+    override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+
+    let gradient = CAGradientLayer()
+
+    // Define the gradient colors (purple to pink to orange to peach)withAlphaComponent(0.7).cgColor
+    gradient.colors = [
+        UIColor(red: 0.29, green: 0.00, blue: 0.51, alpha: 1.0).cgColor, // Purple
+        UIColor(red: 0.87, green: 0.19, blue: 0.56, alpha: 1.0).cgColor, // Pink
+        UIColor(red: 1.00, green: 0.49, blue: 0.31, alpha: 1.0).cgColor, // Orange
+        UIColor(red: 1.00, green: 0.80, blue: 0.50, alpha: 1.0).cgColor // Peach
+    ]
+    gradient.locations = [0.0, 0.33, 0.66, 1.0] // Color stops
+    gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+    gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+
+    // Set the frame dynamically
+    gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+
+    // Insert gradient as the background
+    self.view.layer.insertSublayer(gradient, at: 0)
+    }
+    
     
     
 }
@@ -250,6 +277,30 @@ class EventHomeViewController: UIViewController {
         fetchEvents()
         
     }
+    
+    override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+
+    let gradient = CAGradientLayer()
+
+    // Define the gradient colors (purple to pink to orange to peach)
+    gradient.colors = [
+    UIColor(red: 0.29, green: 0.00, blue: 0.51, alpha: 1.0).cgColor, // Purple
+    UIColor(red: 0.87, green: 0.19, blue: 0.56, alpha: 1.0).cgColor, // Pink
+    UIColor(red: 1.00, green: 0.49, blue: 0.31, alpha: 1.0).cgColor, // Orange
+    UIColor(red: 1.00, green: 0.80, blue: 0.50, alpha: 1.0).cgColor // Peach
+    ]
+    gradient.locations = [0.0, 0.33, 0.66, 1.0] // Color stops
+    gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+    gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+
+    // Set the frame dynamically
+    gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+
+    // Insert gradient as the background
+    self.view.layer.insertSublayer(gradient, at: 0)
+    }
+    
     
     func fetchEvents() {
         db.collection("Events").getDocuments { (snapshot, error) in
