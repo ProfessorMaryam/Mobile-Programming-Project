@@ -55,9 +55,26 @@ class LoginPage: UIViewController {
                 if let document = snapshot?.documents.first {
                     let storedPassword = document.get("Password") as? String ?? ""
                     
+                    let userID = document.documentID
+                            let fullName = document.get("Full Name") as? String ?? ""
+                            let email = document.get("Email") as? String ?? ""
+                            let dateOfBirth = (document.get("Date Of Birth") as? Timestamp)?.dateValue()
+                            let isAdmin = document.get("Is Admin") as? Bool ?? false
+                            let isOrganizer = document.get("Is Organizer") as? Bool ?? false
+
                     if password == storedPassword {
                         let isAdmin = document.get("Is Admin") as? Bool ?? false
-                        
+                        // Populate CurrentUser
+                               CurrentUser.shared.setUser(from: User(
+                                   fullName: fullName,
+                                   email: email,
+                                   dateOfBirth: dateOfBirth ?? Date(),
+                                   password: storedPassword,  // Avoid using plaintext password in real apps
+                                   isOrganizer: isOrganizer,
+                                   isAdmin: isAdmin
+                               ))
+                               CurrentUser.shared.userID = userID
+
                         if isAdmin {
                             // Admin login successful, instantiate AdminPage from the "Admin Page" storyboard
                             self.navigateToAdminPage()

@@ -12,6 +12,20 @@
 		5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5737BDFF2D01D84100B40D01 /* Interests.storyboard */; };
 		57A5F0462D12B74800252873 /* EventsDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */; };
 		57A5F0472D12B74800252873 /* EventsDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */; };
+		7ECFEE072D1C296400C6FEEA /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECFEE062D1C296400C6FEEA /* Profile.storyboard */; };
+		7ECFEE092D1C29C900C6FEEA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECFEE082D1C29C900C6FEEA /* ProfileViewController.swift */; };
+		7ECFEE0B2D1C29F300C6FEEA /* ProfileNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECFEE0A2D1C29F300C6FEEA /* ProfileNavController.swift */; };
+		7ECFEE0D2D1C2A5500C6FEEA /* OrganizerProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECFEE0C2D1C2A5500C6FEEA /* OrganizerProfile.storyboard */; };
+		7ECFEE0F2D1C2AAD00C6FEEA /* OrganizerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECFEE0E2D1C2AAD00C6FEEA /* OrganizerProfileViewController.swift */; };
+		7ECFEE112D1C2B0C00C6FEEA /* OrganizerProfileNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECFEE102D1C2B0C00C6FEEA /* OrganizerProfileNavController.swift */; };
+		7ECFEE132D1C2B3F00C6FEEA /* OrgViewUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECFEE122D1C2B3F00C6FEEA /* OrgViewUser.storyboard */; };
+		7ECFEE152D1C2B7000C6FEEA /* OrgViewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECFEE142D1C2B7000C6FEEA /* OrgViewUserViewController.swift */; };
+		7ECFEE172D1C2BA100C6FEEA /* OrgViewUserNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECFEE162D1C2BA100C6FEEA /* OrgViewUserNavController.swift */; };
+		7ECFEE192D1C2C2300C6FEEA /* UserViewOrg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ECFEE182D1C2C2300C6FEEA /* UserViewOrg.storyboard */; };
+		7ECFEE1B2D1C2C9800C6FEEA /* UserViewOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECFEE1A2D1C2C9800C6FEEA /* UserViewOrgViewController.swift */; };
+		7ECFEE1D2D1C2CDA00C6FEEA /* UserViewOrgNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECFEE1C2D1C2CDA00C6FEEA /* UserViewOrgNavController.swift */; };
+		7ECFEE1F2D1C328700C6FEEA /* GlobalLoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECFEE1E2D1C328700C6FEEA /* GlobalLoggedInUser.swift */; };
+		7ECFEE212D1C3B3800C6FEEA /* UserEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECFEE202D1C3B3800C6FEEA /* UserEditViewController.swift */; };
 		C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */; };
 		C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313441E2D0D797B00B17BF4 /* AdminTVC.swift */; };
 		C31344212D0D797B00B17BF4 /* AdminTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C313441F2D0D797B00B17BF4 /* AdminTVC.xib */; };
@@ -78,6 +92,20 @@
 		5737BDFF2D01D84100B40D01 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDisplayTableViewCell.swift; sourceTree = "<group>"; };
 		57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsDisplayTableViewCell.xib; sourceTree = "<group>"; };
+		7ECFEE062D1C296400C6FEEA /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		7ECFEE082D1C29C900C6FEEA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7ECFEE0A2D1C29F300C6FEEA /* ProfileNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavController.swift; sourceTree = "<group>"; };
+		7ECFEE0C2D1C2A5500C6FEEA /* OrganizerProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizerProfile.storyboard; sourceTree = "<group>"; };
+		7ECFEE0E2D1C2AAD00C6FEEA /* OrganizerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerProfileViewController.swift; sourceTree = "<group>"; };
+		7ECFEE102D1C2B0C00C6FEEA /* OrganizerProfileNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerProfileNavController.swift; sourceTree = "<group>"; };
+		7ECFEE122D1C2B3F00C6FEEA /* OrgViewUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrgViewUser.storyboard; sourceTree = "<group>"; };
+		7ECFEE142D1C2B7000C6FEEA /* OrgViewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgViewUserViewController.swift; sourceTree = "<group>"; };
+		7ECFEE162D1C2BA100C6FEEA /* OrgViewUserNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgViewUserNavController.swift; sourceTree = "<group>"; };
+		7ECFEE182D1C2C2300C6FEEA /* UserViewOrg.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserViewOrg.storyboard; sourceTree = "<group>"; };
+		7ECFEE1A2D1C2C9800C6FEEA /* UserViewOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewOrgViewController.swift; sourceTree = "<group>"; };
+		7ECFEE1C2D1C2CDA00C6FEEA /* UserViewOrgNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewOrgNavController.swift; sourceTree = "<group>"; };
+		7ECFEE1E2D1C328700C6FEEA /* GlobalLoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalLoggedInUser.swift; sourceTree = "<group>"; };
+		7ECFEE202D1C3B3800C6FEEA /* UserEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditViewController.swift; sourceTree = "<group>"; };
 		C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPageTableViewController.swift; sourceTree = "<group>"; };
 		C313441E2D0D797B00B17BF4 /* AdminTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTVC.swift; sourceTree = "<group>"; };
 		C313441F2D0D797B00B17BF4 /* AdminTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminTVC.xib; sourceTree = "<group>"; };
@@ -150,6 +178,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7ECFEE032D1C292600C6FEEA /* Manaf */ = {
+			isa = PBXGroup;
+			children = (
+				7ECFEE052D1C293E00C6FEEA /* Views */,
+				7ECFEE042D1C293500C6FEEA /* Controllers */,
+			);
+			path = Manaf;
+			sourceTree = "<group>";
+		};
+		7ECFEE042D1C293500C6FEEA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7ECFEE082D1C29C900C6FEEA /* ProfileViewController.swift */,
+				7ECFEE0A2D1C29F300C6FEEA /* ProfileNavController.swift */,
+				7ECFEE0E2D1C2AAD00C6FEEA /* OrganizerProfileViewController.swift */,
+				7ECFEE102D1C2B0C00C6FEEA /* OrganizerProfileNavController.swift */,
+				7ECFEE142D1C2B7000C6FEEA /* OrgViewUserViewController.swift */,
+				7ECFEE162D1C2BA100C6FEEA /* OrgViewUserNavController.swift */,
+				7ECFEE1A2D1C2C9800C6FEEA /* UserViewOrgViewController.swift */,
+				7ECFEE1C2D1C2CDA00C6FEEA /* UserViewOrgNavController.swift */,
+				7ECFEE1E2D1C328700C6FEEA /* GlobalLoggedInUser.swift */,
+				7ECFEE202D1C3B3800C6FEEA /* UserEditViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7ECFEE052D1C293E00C6FEEA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7ECFEE062D1C296400C6FEEA /* Profile.storyboard */,
+				7ECFEE0C2D1C2A5500C6FEEA /* OrganizerProfile.storyboard */,
+				7ECFEE122D1C2B3F00C6FEEA /* OrgViewUser.storyboard */,
+				7ECFEE182D1C2C2300C6FEEA /* UserViewOrg.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C395B1232CFC996700C073C2 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +238,7 @@
 		C395B12E2CFC996700C073C2 /* Eventosaurus */ = {
 			isa = PBXGroup;
 			children = (
+				7ECFEE032D1C292600C6FEEA /* Manaf */,
 				C3EBFD7B2D05C7E900B4D000 /* GoogleService-Info.plist */,
 				C395B12F2CFC996700C073C2 /* AppDelegate.swift */,
 				C395B1312CFC996700C073C2 /* SceneDelegate.swift */,
@@ -352,13 +418,17 @@
 				CE807E792D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib in Resources */,
 				DAB6A4412D118647002FEC6D /* DisplayUsersTableViewCell.xib in Resources */,
 				C395B1392CFC996900C073C2 /* Assets.xcassets in Resources */,
+				7ECFEE072D1C296400C6FEEA /* Profile.storyboard in Resources */,
+				7ECFEE0D2D1C2A5500C6FEEA /* OrganizerProfile.storyboard in Resources */,
 				C31344212D0D797B00B17BF4 /* AdminTVC.xib in Resources */,
 				5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */,
 				C326037B2D0872DB008BD790 /* BecomeOrg.storyboard in Resources */,
 				DA911F382D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib in Resources */,
+				7ECFEE132D1C2B3F00C6FEEA /* OrgViewUser.storyboard in Resources */,
 				57A5F0472D12B74800252873 /* EventsDisplayTableViewCell.xib in Resources */,
 				C395B1372CFC996700C073C2 /* Main.storyboard in Resources */,
 				C326037F2D0891A3008BD790 /* AdminPage.storyboard in Resources */,
+				7ECFEE192D1C2C2300C6FEEA /* UserViewOrg.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,16 +453,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ECFEE172D1C2BA100C6FEEA /* OrgViewUserNavController.swift in Sources */,
 				C395B1682CFCA9E700C073C2 /* Event.swift in Sources */,
 				C3E287382D0DA60500CBF459 /* UsersDisplayController.swift in Sources */,
 				57A5F0462D12B74800252873 /* EventsDisplayTableViewCell.swift in Sources */,
+				7ECFEE112D1C2B0C00C6FEEA /* OrganizerProfileNavController.swift in Sources */,
 				C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */,
+				7ECFEE152D1C2B7000C6FEEA /* OrgViewUserViewController.swift in Sources */,
+				7ECFEE0F2D1C2AAD00C6FEEA /* OrganizerProfileViewController.swift in Sources */,
 				DAB6A4402D118647002FEC6D /* DisplayUsersTableViewCell.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,
+				7ECFEE1F2D1C328700C6FEEA /* GlobalLoggedInUser.swift in Sources */,
 				C370DA6E2D0F163300B2A097 /* RequestsViewController.swift in Sources */,
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
 				C3EBFD892D05DB6700B4D000 /* Register.swift in Sources */,
+				7ECFEE0B2D1C29F300C6FEEA /* ProfileNavController.swift in Sources */,
+				7ECFEE212D1C3B3800C6FEEA /* UserEditViewController.swift in Sources */,
 				C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */,
+				7ECFEE092D1C29C900C6FEEA /* ProfileViewController.swift in Sources */,
 				C3E2873A2D0DA71700CBF459 /* EventsDisplayController.swift in Sources */,
 				C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */,
 				C3EBFD8C2D05EDBD00B4D000 /* LoginPage.swift in Sources */,
@@ -402,8 +480,10 @@
 				DA911F372D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift in Sources */,
 				571D0BBE2D16C15F00DA7A27 /* UserInterestsViewController.swift in Sources */,
 				C3E2873C2D0DA84600CBF459 /* InterestsDisplayPage.swift in Sources */,
+				7ECFEE1D2D1C2CDA00C6FEEA /* UserViewOrgNavController.swift in Sources */,
 				CE807E782D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift in Sources */,
 				C326037D2D0875F4008BD790 /* TermsAndConditions.swift in Sources */,
+				7ECFEE1B2D1C2C9800C6FEEA /* UserViewOrgViewController.swift in Sources */,
 				C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */,
 				DA911F342D130E5900159376 /* RequestForm.swift in Sources */,
 				C3EBFD8F2D05F01400B4D000 /* ForgotPassword.swift in Sources */,

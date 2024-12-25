@@ -200,11 +200,37 @@ class UserInterestsViewController: UIViewController, UICollectionViewDataSource,
                     // Once all categories are fetched, update the user's interests
                     if categoryReferences.count == 4 {
                         self.updateUserInterests(userId: userId, categoryReferences: categoryReferences)
+                        self.navigateToNextPage()
                     }
                 }
         }
     }
-    
+    func navigateToNextPage() {
+        // Attempt to load the "Profile" storyboard
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        
+        // Debugging: Check storyboard instantiation
+        print("Storyboard loaded: \(storyboard)")
+        
+        // Attempt to instantiate the ProfileNavController
+        if let profileNavController = storyboard.instantiateViewController(withIdentifier: "ProfileNavController") as? UINavigationController {
+            print("ProfileNavController instantiated: \(profileNavController)")
+            
+            // Navigate to ProfileNavController
+            if let navigationController = self.navigationController {
+                if let rootViewController = profileNavController.viewControllers.first {
+                    print("Root view controller: \(rootViewController)")
+                    navigationController.pushViewController(rootViewController, animated: true)
+                } else {
+                    print("Error: ProfileNavController has no root view controller.")
+                }
+            } else {
+                self.present(profileNavController, animated: true, completion: nil)
+            }
+        } else {
+            print("Error: Unable to instantiate ProfileNavController.")
+        }
+    }
     // Update the user's interests in Firestore
     func updateUserInterests(userId: String, categoryReferences: [DocumentReference]) {
         let userRef = db.collection("Users").document(userId)
