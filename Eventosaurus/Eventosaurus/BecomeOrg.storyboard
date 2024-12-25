@@ -177,13 +177,13 @@
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-su-6dr">
                                         <rect key="frame" x="30" y="85" width="328" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vUb-fT-zrM">
                                         <rect key="frame" x="30" y="139" width="333" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why do you want to become an organizer?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUo-KY-7Yr">
@@ -196,7 +196,7 @@
                                         <rect key="frame" x="30" y="452" width="333" height="99"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -211,8 +211,23 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmv-R4-nJo">
+                                        <rect key="frame" x="30" y="219" width="333" height="196"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="196" id="dPJ-5Q-OWl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppe-eL-T67">
-                                        <rect key="frame" x="69.666666666666671" y="576" width="249.66666666666663" height="43"/>
+                                        <rect key="frame" x="70" y="576" width="249.66666666666663" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="4sC-ua-mvC"/>
                                         </constraints>
@@ -230,26 +245,9 @@
                                             <color key="baseBackgroundColor" red="0.45695394277572632" green="0.09061441570520401" blue="0.64342409372329712" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="submitForm:" destination="kCt-t3-4f6" eventType="touchUpInside" id="kwf-S5-7wP"/>
-                                            <segue destination="laf-sE-hxe" kind="unwind" unwindAction="unwindToStartupWithUnwindSegue:" id="HfQ-hJ-E25"/>
+                                            <action selector="submitForm:" destination="kCt-t3-4f6" eventType="touchUpInside" id="fte-14-zcn"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wmv-R4-nJo">
-                                        <rect key="frame" x="30" y="219" width="333" height="196"/>
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="196" id="dPJ-5Q-OWl"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -308,7 +306,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tE-ah-7F3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="laf-sE-hxe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1927.1484374999998" y="3.5139092240117127"/>
         </scene>

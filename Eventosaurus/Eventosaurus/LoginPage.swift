@@ -3,6 +3,8 @@ import FirebaseFirestore
 
 class LoginPage: UIViewController {
     
+    
+    // outlets for text fields and their corresponding labels
     @IBOutlet weak var emailReqLabel: UILabel!
     @IBOutlet weak var passwordReqLabel: UILabel!
     @IBOutlet weak var emailTxtField: UITextField!
@@ -12,10 +14,15 @@ class LoginPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //hidden initiallay
         emailReqLabel.isHidden = true
         passwordReqLabel.isHidden = true
     }
     
+    
+    
+    //Login button action
     @IBAction func loginButtonTapped(_ sender: Any) {
         var isValid = true
         emailReqLabel.isHidden = true
@@ -62,12 +69,11 @@ class LoginPage: UIViewController {
                             // Admin login successful, instantiate AdminPage from the "Admin Page" storyboard
                             self.navigateToAdminPage()
                         } else {
-//                            // Handle non-admin user login if necessary
+         
                             
                             
                             
-                            
-//                            self.showAlert(title: "Login Error", message: "You do not have admin access.")
+//                        Non-Admin User segues to be handled here
                             
                             
                             
@@ -76,14 +82,14 @@ class LoginPage: UIViewController {
                             
                         }
                     } else {
-                        self.showAlert(title: "Login Error", message: "Incorrect password. Please try again.")
+                        self.showAlert(title: "Login Error", message: "Incorrect password. Please try again.") //wrong password
                     }
                 } else {
-                    self.showAlert(title: "Login Error", message: "Account does not exist. Please sign up.")
+                    self.showAlert(title: "Login Error", message: "Account does not exist. Please sign up.") //account doesnt exist
                 }
             }
         } else {
-            self.showAlert(title: "Invalid Input", message: "Please enter both email and password.")
+            self.showAlert(title: "Invalid Input", message: "Please enter both email and password.") // empty fields
         }
     }
     
@@ -94,7 +100,7 @@ class LoginPage: UIViewController {
         return emailTest.evaluate(with: email)
     }
     
-    // Function to show custom alert
+    // custom alert
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -103,7 +109,7 @@ class LoginPage: UIViewController {
     
     // Function to navigate to the AdminPage view controller in another storyboard
     func navigateToAdminPage() {
-        // Load the "Admin Page" storyboard
+        // Load the "AdminPage" storyboard
         let adminStoryboard = UIStoryboard(name: "AdminPage", bundle: nil)
         
         // Instantiate the AdminPage view controller using its Storyboard ID
@@ -114,7 +120,7 @@ class LoginPage: UIViewController {
                 // Push the AdminPage view controller
                 navigationController.pushViewController(adminVC, animated: true)
                 
-                // Remove the back button from the navigation bar (so the user can't go back to login page)
+                // Remove the back button from the navigation bar so the user cannot go back to login page
                 adminVC.navigationItem.hidesBackButton = true
             } else {
                 // If not inside a navigation controller, present the AdminPage modally

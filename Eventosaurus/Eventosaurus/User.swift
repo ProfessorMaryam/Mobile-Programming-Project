@@ -8,15 +8,17 @@
 import FirebaseFirestore
 
 class User: Codable {
+    
+    //Attributes
     let fullName: String
     let email: String
-    var dateOfBirth: Date  // This is now a Date object
-    var password: String  // Store hashed password
+    var dateOfBirth: Date
+    var password: String
     var userID: String
     var isOrganizer: Bool
     var isAdmin: Bool
     
-    // Constructor used in registration
+    // Construstor used in registration
     init(fullName: String, email: String, dateOfBirth: Date, password: String, isOrganizer: Bool, isAdmin: Bool) {
         self.fullName = fullName
         self.email = email
@@ -27,7 +29,7 @@ class User: Codable {
         self.isAdmin = isAdmin
     }
     
-    // Convert to dictionary for Firestore
+    // Dictionary used to conform to the Firestore data layout
     func toDictionary() -> [String: Any] {
         return [
             "Full Name": fullName,

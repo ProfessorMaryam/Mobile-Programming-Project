@@ -120,6 +120,20 @@ class EventsDisplayController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
 
+    // MARK: - Cell Selection - Navigate to EventInfoViewController
+    // MARK: - Cell Selection - Navigate to EventInfoViewController
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Instantiate the EventInfoViewController from the storyboard
+        let eventInfoVC = self.storyboard?.instantiateViewController(withIdentifier: "EventInfoVC") as! EventsInfoViewController
+        
+        // Set the title of the navigation bar to "Event Information"
+        eventInfoVC.title = "Event Information"
+        
+        // Push the view controller
+        self.navigationController?.pushViewController(eventInfoVC, animated: true)
+    }
+
+
     // MARK: - Swipe-to-Delete Action
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let event = filteredEvents[indexPath.row]

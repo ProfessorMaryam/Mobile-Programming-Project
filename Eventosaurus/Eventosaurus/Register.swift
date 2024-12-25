@@ -4,11 +4,15 @@ import Firebase
 
 class Register: UIViewController {
 
+    
+    //outlets to the labels that point out the errors to their corresponding text fields
+    
     @IBOutlet weak var fnReqLabel: UILabel!
     @IBOutlet weak var emailReqLabel: UILabel!
     @IBOutlet weak var dobReqLabel: UILabel!
     @IBOutlet weak var confirmPassReqLabel: UILabel!
     
+    //text field outlets
     @IBOutlet weak var fullnameTxtField: UITextField!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var DatePicker: UIDatePicker!
@@ -18,7 +22,7 @@ class Register: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Hiding validation labels initially
+        // labels hidden initially
         fnReqLabel.isHidden = true
         emailReqLabel.isHidden = true
         dobReqLabel.isHidden = true
@@ -26,12 +30,14 @@ class Register: UIViewController {
     }
 
     @IBAction func didTapSignUp(_ sender: Any) {
-        // Step 1: Validate all input fields first
+       
+        //if everything is valid:
         if isValid() {
-            // Step 2: If validation is successful, get the selected date from the UIDatePicker
+        
+            //save the date fromt the date picker
             let selectedDate = DatePicker.date
             
-            // Create new user with all the details (password is stored directly)
+            //create a new user using dictionary
             let newUser = User(
                 fullName: fullnameTxtField.text!,
                 email: emailTxtField.text ?? "",
@@ -41,7 +47,7 @@ class Register: UIViewController {
                 isAdmin: false
             )
             
-            // Step 3: Check if the email already exists in Firestore
+            //  Check if the email already exists in Firestore
             checkIfEmailExists(newUser.email) { emailExists in
                 if emailExists {
                     // Step 4: If email exists, show error message and don't perform segue
@@ -58,7 +64,7 @@ class Register: UIViewController {
         }
     }
 
-    // Function to validate all input fields
+    // this function is used to validate all the text fields and check email regex
     func isValid() -> Bool {
         var isValid = true
         
@@ -107,7 +113,7 @@ class Register: UIViewController {
         return emailTest.evaluate(with: email)
     }
 
-    // Function to check if the email already exists in Firestore
+    // this function checks if the email already exists in Firestore
     func checkIfEmailExists(_ email: String, completion: @escaping (Bool) -> Void) {
         Firestore.firestore().collection("Users")
             .whereField("Email", isEqualTo: email)
@@ -122,9 +128,9 @@ class Register: UIViewController {
             }
     }
 
-    // Function to store user data in Firestore
+    // this function stores the user in firestore
     func storeUserInFirestore(_ newUser: User) {
-        let userDict = newUser.toDictionary()
+        let userDict = newUser.toDictionary() //using dictionary
         
         Firestore.firestore().collection("Users").document().setData(userDict) { error in
             if let error = error {
@@ -138,27 +144,30 @@ class Register: UIViewController {
         }
     }
 
-    // Display a custom alert
+    // create a custom alert
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
 
-    // Function to navigate to the UserInterests view controller in another storyboard
+    // this function navigates to UserInterests view controller in the Interests story board
     func navigateToUserInterests() {
-        // Load the "Interests" storyboard
+        // store "Interests" storyboard in a variable
         let interestsStoryboard = UIStoryboard(name: "Interests", bundle: nil)
         
         // Instantiate the UserInterests view controller using its Storyboard ID
         if let userInterestsVC = interestsStoryboard.instantiateViewController(withIdentifier: "UserInterests") as? UserInterestsViewController {
             
+            // Pass the email from this view controller to the UserInterests view controller to use it to store the interests as references to the documentss corresponding to them in the Categories collection
+            userInterestsVC.userEmail = emailTxtField.text
+
             // Check if the current view controller is inside a navigation controller
             if let navigationController = self.navigationController {
                 // Push the UserInterests view controller
                 navigationController.pushViewController(userInterestsVC, animated: true)
                 
-                // Remove the back button from the navigation bar (so the user can't go back to register page)
+                // Remove the back button from the navigation bar so the user cannot go back to register page
                 userInterestsVC.navigationItem.hidesBackButton = true
             } else {
                 // If not inside a navigation controller, present the UserInterests view controller modally

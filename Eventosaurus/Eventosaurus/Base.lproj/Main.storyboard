@@ -80,7 +80,7 @@
                                     <color key="baseForegroundColor" red="0.23990869522094727" green="0.076750300824642181" blue="0.36543652415275574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="yzt-Ye-Rt4" kind="presentation" modalPresentationStyle="automatic" id="DQI-Xf-CnQ"/>
+                                    <segue destination="yzt-Ye-Rt4" kind="presentation" modalPresentationStyle="fullScreen" id="DQI-Xf-CnQ"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image 1" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-Lg-Q6P">
@@ -309,16 +309,6 @@
             </objects>
             <point key="canvasLocation" x="1964.6511627906978" y="31.545064377682404"/>
         </scene>
-        <!--Interests-->
-        <scene sceneID="lmS-Mz-URI">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="interests" storyboardName="Interests" id="gC5-zx-fZf" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Pe6-w3-rph"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oSk-wh-HP4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2784" y="23"/>
-        </scene>
         <!--BecomeOrg-->
         <scene sceneID="GS8-Ov-4Hw">
             <objects>
@@ -332,7 +322,7 @@
         <!--Log in-->
         <scene sceneID="CuE-EN-T7f">
             <objects>
-                <viewController id="Qgn-FE-iaj" customClass="LoginPage" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="Qgn-FE-iaj" customClass="LoginPage" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="46v-A1-dHl">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -398,7 +388,7 @@
                                             <color key="baseForegroundColor" red="0.41983866689999999" green="0.12453217060000001" blue="0.61969172949999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="V6M-l0-scj" kind="show" id="9Se-6a-jDp"/>
+                                            <segue destination="V6M-l0-scj" kind="show" identifier="loginVC" id="9Se-6a-jDp"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ym-oo-RZz">
@@ -561,7 +551,6 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="changePassTapped:" destination="V6M-l0-scj" eventType="touchUpInside" id="phh-A2-sbe"/>
-                                            <segue destination="YwJ-zd-x98" kind="unwind" unwindAction="unwindToStartupWithUnwindSegue:" id="vha-vC-0U4"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NpV-hy-iMH">
@@ -628,19 +617,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhF-NZ-hYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="YwJ-zd-x98" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2062.3255813953488" y="804.72103004291853"/>
-        </scene>
-        <!--AdminPage-->
-        <scene sceneID="Jcw-nA-2fL">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="adminPage" storyboardName="AdminPage" id="MTe-8R-2Mp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="sIm-b1-MUE"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Bo-9B-Iwy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1537" y="1309"/>
         </scene>
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -652,10 +630,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

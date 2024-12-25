@@ -12,12 +12,14 @@
 		5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5737BDFF2D01D84100B40D01 /* Interests.storyboard */; };
 		57A5F0462D12B74800252873 /* EventsDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */; };
 		57A5F0472D12B74800252873 /* EventsDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */; };
+		C30A646F2D1C466200D86BD8 /* EventsInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */; };
 		C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */; };
 		C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313441E2D0D797B00B17BF4 /* AdminTVC.swift */; };
 		C31344212D0D797B00B17BF4 /* AdminTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C313441F2D0D797B00B17BF4 /* AdminTVC.xib */; };
 		C326037B2D0872DB008BD790 /* BecomeOrg.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C326037A2D0872DB008BD790 /* BecomeOrg.storyboard */; };
 		C326037D2D0875F4008BD790 /* TermsAndConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C326037C2D0875F4008BD790 /* TermsAndConditions.swift */; };
 		C326037F2D0891A3008BD790 /* AdminPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C326037E2D0891A3008BD790 /* AdminPage.storyboard */; };
+		C33F5DDA2D1C4B510000D8A5 /* EventsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33F5DD92D1C4B510000D8A5 /* EventsInfoViewController.swift */; };
 		C370DA6E2D0F163300B2A097 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C370DA6D2D0F163300B2A097 /* RequestsViewController.swift */; };
 		C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B12F2CFC996700C073C2 /* AppDelegate.swift */; };
 		C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1312CFC996700C073C2 /* SceneDelegate.swift */; };
@@ -44,6 +46,7 @@
 		C3EBFD8F2D05F01400B4D000 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBFD8D2D05EFF400B4D000 /* ForgotPassword.swift */; };
 		CE807E782D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE807E762D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift */; };
 		CE807E792D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE807E772D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib */; };
+		CFF79CFB2D1AB53A002EFA39 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */; };
 		D5FDE8332D071D1300EB1819 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8322D071D1300EB1819 /* FirebaseAuth */; };
 		D5FDE8352D071D1300EB1819 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8342D071D1300EB1819 /* FirebaseCore */; };
 		D5FDE8372D071D1300EB1819 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8362D071D1300EB1819 /* FirebaseFirestore */; };
@@ -78,12 +81,14 @@
 		5737BDFF2D01D84100B40D01 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDisplayTableViewCell.swift; sourceTree = "<group>"; };
 		57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsDisplayTableViewCell.xib; sourceTree = "<group>"; };
+		C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInformationTableViewController.swift; sourceTree = "<group>"; };
 		C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPageTableViewController.swift; sourceTree = "<group>"; };
 		C313441E2D0D797B00B17BF4 /* AdminTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTVC.swift; sourceTree = "<group>"; };
 		C313441F2D0D797B00B17BF4 /* AdminTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminTVC.xib; sourceTree = "<group>"; };
 		C326037A2D0872DB008BD790 /* BecomeOrg.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BecomeOrg.storyboard; sourceTree = "<group>"; };
 		C326037C2D0875F4008BD790 /* TermsAndConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditions.swift; sourceTree = "<group>"; };
 		C326037E2D0891A3008BD790 /* AdminPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdminPage.storyboard; sourceTree = "<group>"; };
+		C33F5DD92D1C4B510000D8A5 /* EventsInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInfoViewController.swift; sourceTree = "<group>"; };
 		C370DA6D2D0F163300B2A097 /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		C395B12C2CFC996700C073C2 /* Eventosaurus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventosaurus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C395B12F2CFC996700C073C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +117,7 @@
 		C3EBFD8D2D05EFF400B4D000 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		CE807E762D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDisplaysInterestsTableViewCell.swift; sourceTree = "<group>"; };
 		CE807E772D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminDisplaysInterestsTableViewCell.xib; sourceTree = "<group>"; };
+		CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		DA911F332D130E5900159376 /* RequestForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestForm.swift; sourceTree = "<group>"; };
 		DA911F352D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayRequestsTVCTableViewCell.swift; sourceTree = "<group>"; };
 		DA911F362D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayRequestsTVCTableViewCell.xib; sourceTree = "<group>"; };
@@ -184,7 +190,9 @@
 				C395B1672CFCA9E700C073C2 /* Event.swift */,
 				C395B1352CFC996700C073C2 /* Main.storyboard */,
 				C3EBFD882D05DB6700B4D000 /* Register.swift */,
+				C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */,
 				C3EBFD8A2D05EDB900B4D000 /* LoginPage.swift */,
+				CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */,
 				C3EBFD8D2D05EFF400B4D000 /* ForgotPassword.swift */,
 				5737BDFF2D01D84100B40D01 /* Interests.storyboard */,
 				571D0BBB2D16C00700DA7A27 /* InterestsCategoriesCollectionViewCell.swift */,
@@ -195,6 +203,7 @@
 				C326037C2D0875F4008BD790 /* TermsAndConditions.swift */,
 				C3E2873B2D0DA84600CBF459 /* InterestsDisplayPage.swift */,
 				C370DA6D2D0F163300B2A097 /* RequestsViewController.swift */,
+				C33F5DD92D1C4B510000D8A5 /* EventsInfoViewController.swift */,
 				DA911F352D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift */,
 				DA911F362D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib */,
 				C326037E2D0891A3008BD790 /* AdminPage.storyboard */,
@@ -392,6 +401,7 @@
 				C370DA6E2D0F163300B2A097 /* RequestsViewController.swift in Sources */,
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
 				C3EBFD892D05DB6700B4D000 /* Register.swift in Sources */,
+				C33F5DDA2D1C4B510000D8A5 /* EventsInfoViewController.swift in Sources */,
 				C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */,
 				C3E2873A2D0DA71700CBF459 /* EventsDisplayController.swift in Sources */,
 				C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */,
@@ -401,7 +411,9 @@
 				C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */,
 				DA911F372D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift in Sources */,
 				571D0BBE2D16C15F00DA7A27 /* UserInterestsViewController.swift in Sources */,
+				C30A646F2D1C466200D86BD8 /* EventsInformationTableViewController.swift in Sources */,
 				C3E2873C2D0DA84600CBF459 /* InterestsDisplayPage.swift in Sources */,
+				CFF79CFB2D1AB53A002EFA39 /* UserInfoViewController.swift in Sources */,
 				CE807E782D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift in Sources */,
 				C326037D2D0875F4008BD790 /* TermsAndConditions.swift in Sources */,
 				C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */,
