@@ -17,10 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="GGv-FM-Goa">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="706.66666666666663"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0U-tE-FDJ">
-                                <rect key="frame" x="0.0" y="333" width="393" height="373.66666666666674"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a0U-tE-FDJ">
+                                <rect key="frame" x="0.0" y="333" width="393" height="519"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Manaf Mohamed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxa-Lg-A5F">
                                         <rect key="frame" x="98" y="73" width="186" height="27"/>
@@ -131,9 +132,6 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="a0U-tE-FDJ" secondAttribute="height" multiplier="131:178" id="5yd-fV-6KB"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="40"/>
@@ -157,10 +155,6 @@
                         <constraints>
                             <constraint firstItem="GGv-FM-Goa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="5Vt-P9-jhI"/>
                             <constraint firstItem="GGv-FM-Goa" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="82M-6i-vvT"/>
-                            <constraint firstItem="a0U-tE-FDJ" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="TmH-pY-8z9"/>
-                            <constraint firstItem="a0U-tE-FDJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="230" id="Z30-2S-Cng"/>
-                            <constraint firstItem="a0U-tE-FDJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="c8G-xP-rxh"/>
-                            <constraint firstAttribute="bottom" secondItem="a0U-tE-FDJ" secondAttribute="bottom" id="dcR-Pm-95o"/>
                             <constraint firstItem="GGv-FM-Goa" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottom" id="ggD-1F-LwV"/>
                             <constraint firstItem="GGv-FM-Goa" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="yKC-TO-cbD"/>
                         </constraints>

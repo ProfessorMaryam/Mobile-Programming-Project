@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E287ABD2D1C246B00C21123 /* manaf-main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E287ABC2D1C246B00C21123 /* manaf-main.storyboard */; };
 		7E3B5E6A2D0736B2005167A2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3B5E692D0736B2005167A2 /* Profile.storyboard */; };
 		7E3E692E2D18355300085F4E /* UserViewOrgNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3E692D2D18355300085F4E /* UserViewOrgNavController.swift */; };
 		7E3E69302D18388200085F4E /* UserViewOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3E692F2D18388200085F4E /* UserViewOrgViewController.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E287ABC2D1C246B00C21123 /* manaf-main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "manaf-main.storyboard"; sourceTree = "<group>"; };
 		7E3B5E692D0736B2005167A2 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		7E3E692D2D18355300085F4E /* UserViewOrgNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewOrgNavController.swift; sourceTree = "<group>"; };
 		7E3E692F2D18388200085F4E /* UserViewOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewOrgViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				C395B1382CFC996900C073C2 /* Assets.xcassets */,
 				C395B13A2CFC996900C073C2 /* LaunchScreen.storyboard */,
 				C395B13D2CFC996900C073C2 /* Info.plist */,
+				7E287ABC2D1C246B00C21123 /* manaf-main.storyboard */,
 			);
 			path = Eventosaurus;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C395B13C2CFC996900C073C2 /* LaunchScreen.storyboard in Resources */,
+				7E287ABD2D1C246B00C21123 /* manaf-main.storyboard in Resources */,
 				C395B1392CFC996900C073C2 /* Assets.xcassets in Resources */,
 				7E4885D12D0EEEEC00EFA875 /* UserViewOrg.storyboard in Resources */,
 				7E3B5E6A2D0736B2005167A2 /* Profile.storyboard in Resources */,

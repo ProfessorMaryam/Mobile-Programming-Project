@@ -16,12 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-TV-xsc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-TV-xsc">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dl2-PK-re3">
-                                <rect key="frame" x="159" y="154" width="75" height="39"/>
+                                <rect key="frame" x="159" y="189" width="75" height="39"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Profile"/>
                                 <connections>
@@ -29,7 +28,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpl-um-E8P">
-                                <rect key="frame" x="120" y="240" width="152" height="39"/>
+                                <rect key="frame" x="120" y="275" width="152" height="39"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Organizer Profile"/>
                                 <connections>
@@ -37,7 +36,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqY-ol-O9o">
-                                <rect key="frame" x="130" y="334" width="134" height="39"/>
+                                <rect key="frame" x="130" y="369" width="134" height="39"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Org View User"/>
                                 <connections>
@@ -45,7 +44,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkl-Mg-E0r">
-                                <rect key="frame" x="130" y="417" width="134" height="39"/>
+                                <rect key="frame" x="130" y="452" width="134" height="39"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="User View Org"/>
                                 <connections>
@@ -56,22 +55,22 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dl2-PK-re3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="159" id="145-4p-N1T"/>
-                            <constraint firstItem="bqY-ol-O9o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="4At-I1-Mvz"/>
-                            <constraint firstItem="kkl-Mg-E0r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="Agr-IA-ERr"/>
-                            <constraint firstItem="kpl-um-E8P" firstAttribute="top" secondItem="dl2-PK-re3" secondAttribute="bottom" constant="47" id="BcV-2B-Odw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kkl-Mg-E0r" secondAttribute="trailing" constant="129" id="Guy-oK-B9J"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kkl-Mg-E0r" secondAttribute="bottom" constant="362" id="elI-ta-C8b"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kpl-um-E8P" secondAttribute="trailing" constant="121" id="jNd-s6-Jut"/>
-                            <constraint firstItem="dl2-PK-re3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="95" id="joQ-dh-vgv"/>
-                            <constraint firstItem="bqY-ol-O9o" firstAttribute="top" secondItem="kpl-um-E8P" secondAttribute="bottom" constant="55" id="mJf-fe-MwI"/>
-                            <constraint firstItem="kpl-um-E8P" firstAttribute="top" secondItem="dl2-PK-re3" secondAttribute="bottom" constant="47" id="nNF-Zc-UF1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dl2-PK-re3" secondAttribute="trailing" constant="159" id="nhI-4d-0gL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bqY-ol-O9o" secondAttribute="trailing" constant="129" id="qPG-bl-ddj"/>
-                            <constraint firstItem="kkl-Mg-E0r" firstAttribute="top" secondItem="bqY-ol-O9o" secondAttribute="bottom" constant="44" id="qfx-QH-egv"/>
-                            <constraint firstItem="kpl-um-E8P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="rSm-me-5dy"/>
-                            <constraint firstItem="bqY-ol-O9o" firstAttribute="top" secondItem="kpl-um-E8P" secondAttribute="bottom" constant="55" id="wCK-fC-8bn"/>
-                            <constraint firstItem="kkl-Mg-E0r" firstAttribute="top" secondItem="bqY-ol-O9o" secondAttribute="bottom" constant="44" id="yGj-vR-eHn"/>
+                            <constraint firstItem="bqY-ol-O9o" firstAttribute="top" secondItem="kpl-um-E8P" secondAttribute="bottom" constant="55" id="1xp-lz-BVx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bqY-ol-O9o" secondAttribute="trailing" constant="129" id="5MB-F2-Ui7"/>
+                            <constraint firstItem="nuf-TV-xsc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HjS-f4-p0O"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kpl-um-E8P" secondAttribute="trailing" constant="121" id="MTG-9h-l6Z"/>
+                            <constraint firstItem="dl2-PK-re3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="130" id="PYt-U1-ReI"/>
+                            <constraint firstItem="kkl-Mg-E0r" firstAttribute="top" secondItem="bqY-ol-O9o" secondAttribute="bottom" constant="44" id="Q8C-yz-mnc"/>
+                            <constraint firstItem="kpl-um-E8P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="UuQ-S2-Qfz"/>
+                            <constraint firstItem="bqY-ol-O9o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="VaH-OH-rxj"/>
+                            <constraint firstItem="kpl-um-E8P" firstAttribute="top" secondItem="dl2-PK-re3" secondAttribute="bottom" constant="47" id="X3a-hn-fSQ"/>
+                            <constraint firstItem="kkl-Mg-E0r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="ZXU-yw-l5w"/>
+                            <constraint firstItem="nuf-TV-xsc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="obR-lo-78y"/>
+                            <constraint firstItem="dl2-PK-re3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="159" id="ot3-C7-1PP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dl2-PK-re3" secondAttribute="trailing" constant="159" id="q0c-jT-Ocy"/>
+                            <constraint firstItem="nuf-TV-xsc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rkv-hl-Pij"/>
+                            <constraint firstAttribute="bottom" secondItem="nuf-TV-xsc" secondAttribute="bottom" id="xeo-9f-NHX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kkl-Mg-E0r" secondAttribute="trailing" constant="129" id="xtS-8k-eBZ"/>
                         </constraints>
                     </view>
                 </viewController>
