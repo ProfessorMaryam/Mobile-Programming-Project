@@ -8,22 +8,56 @@
 import UIKit
 
 class UserViewOrgViewController: UIViewController {
-
+    
+    @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var labelFollowers: UILabel!
+    
+    var followerCount: Int {
+            get {
+                // Retrieve follower count from UserDefaults or default to 100 if not found
+                return UserDefaults.standard.integer(forKey: "followerCount")
+            }
+            set {
+                // Save the new follower count to UserDefaults
+                UserDefaults.standard.set(newValue, forKey: "followerCount")
+            }
+        }
+    
+    
+    var isFollowing = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        labelFollowers.text = "\(followerCount)"
+        
+        followButton.setTitle(isFollowing ? "Following" : "Follow", for: .normal)
+           
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let organizerProfileVC = segue.destination as? OrganizerProfileViewController {
+            organizerProfileVC.followerCount = followerCount
+        }
+        
     }
     
+    @IBAction func followButtonTapped(_ sender: UIButton) {
+        
+        if isFollowing {
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            followButton.setTitle("Follow", for: .normal)
+            followerCount -= 1
+            isFollowing = false
+            
+        } else {
+         
+            followButton.setTitle("Following", for: .normal)
+            followerCount += 1
+            isFollowing = true
+            
+        }
+        labelFollowers.text = "\(followerCount)"
     }
-    */
-
 }
