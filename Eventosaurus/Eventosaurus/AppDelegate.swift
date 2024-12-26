@@ -4,26 +4,19 @@
 //
 //  Created by BP-36-201-14 on 01/12/2024.
 //
-
 import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseCore
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Configure Firebase
         FirebaseApp.configure()
-        
         // Override point for customization after application launch.
         return true
     }
-    
     // MARK: UISceneSession Lifecycle
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, optons: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
