@@ -327,7 +327,7 @@
                                         </buttonConfiguration>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deK-bQ-lZA">
-                                        <rect key="frame" x="211.66666666666663" y="94" width="127.33333333333337" height="35"/>
+                                        <rect key="frame" x="211.66666666666666" y="94" width="127.33333333333334" height="35"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Organizers" titleAlignment="center">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
@@ -1391,9 +1391,8 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                         <rect key="frame" x="32" y="18.999999999999996" width="366" height="51.666666666666657"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="________________________________________" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyV-pI-9UC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="________________________________________" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyV-pI-9UC">
                                         <rect key="frame" x="-13" y="94" width="480" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                         <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1464,6 +1463,7 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="DyV-pI-9UC" firstAttribute="leading" secondItem="6w3-xc-rFf" secondAttribute="leading" constant="-13" id="A6m-VC-4fj"/>
                                     <constraint firstItem="qAE-tJ-OoX" firstAttribute="top" secondItem="6w3-xc-rFf" secondAttribute="top" constant="147" id="HWB-Uc-M2k"/>
                                     <constraint firstAttribute="trailing" secondItem="qAE-tJ-OoX" secondAttribute="trailing" id="Hom-kh-UpM"/>
                                     <constraint firstItem="kYs-6Q-HhG" firstAttribute="top" secondItem="w4k-et-8YV" secondAttribute="bottom" constant="21" id="INT-Uc-js6"/>
@@ -1478,6 +1478,7 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                     <constraint firstItem="qAE-tJ-OoX" firstAttribute="leading" secondItem="6w3-xc-rFf" secondAttribute="leading" id="aI3-z7-dYa"/>
                                     <constraint firstAttribute="trailing" secondItem="w4k-et-8YV" secondAttribute="trailing" constant="32" id="hKl-ZY-iMg"/>
                                     <constraint firstAttribute="width" secondItem="6w3-xc-rFf" secondAttribute="height" multiplier="393:755" constant="-34.312582781456967" id="pql-YH-ME2"/>
+                                    <constraint firstAttribute="trailing" secondItem="DyV-pI-9UC" secondAttribute="trailing" constant="-37" id="xHb-r3-j1t"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1525,38 +1526,28 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i99-Nb-uxn">
-                                <rect key="frame" x="0.0" y="38" width="430" height="826"/>
+                                <rect key="frame" x="0.0" y="40" width="430" height="892"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKU-3P-oX2">
-                                        <rect key="frame" x="259" y="32" width="115" height="27"/>
+                                        <rect key="frame" x="156" y="24" width="115" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OJd-6Y-eOR">
-                                        <rect key="frame" x="51" y="115" width="291" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OJd-6Y-eOR">
+                                        <rect key="frame" x="51" y="115" width="328" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Subject" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mp0-6i-3Si">
-                                        <rect key="frame" x="51" y="182" width="291" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Subject" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mp0-6i-3Si">
+                                        <rect key="frame" x="51" y="182" width="328" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How can we help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGo-cW-lPm">
-                                        <rect key="frame" x="122" y="254" width="149" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uEo-Mr-XIY">
-                                        <rect key="frame" x="51" y="295" width="291" height="308"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uEo-Mr-XIY">
+                                        <rect key="frame" x="51" y="295" width="325" height="433"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1568,9 +1559,8 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihI-PA-3hh">
-                                        <rect key="frame" x="133" y="651" width="126" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihI-PA-3hh">
+                                        <rect key="frame" x="152" y="798" width="126" height="37"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled">
                                             <attributedString key="attributedTitle">
@@ -1593,13 +1583,45 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                             <segue destination="LnL-5D-gjp" kind="presentation" modalPresentationStyle="fullScreen" id="2cR-Qx-fi7"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqr-BV-UeF">
+                                        <rect key="frame" x="35" y="20" width="49.333333333333343" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="">
+                                            <color key="baseForegroundColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="LnL-5D-gjp" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="ot9-7m-xg2"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How can we help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGo-cW-lPm">
+                                        <rect key="frame" x="51" y="252" width="149" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="i99-Nb-uxn" secondAttribute="height" multiplier="393:755" id="9tB-x9-mqd"/>
-                                    <constraint firstItem="rKU-3P-oX2" firstAttribute="top" secondItem="i99-Nb-uxn" secondAttribute="top" constant="32" id="JFg-ny-dw5"/>
-                                    <constraint firstAttribute="width" secondItem="i99-Nb-uxn" secondAttribute="height" multiplier="393:755" id="NcX-IP-zoa"/>
-                                    <constraint firstAttribute="trailing" secondItem="rKU-3P-oX2" secondAttribute="trailing" constant="56" id="VjN-ga-a02"/>
+                                    <constraint firstItem="uEo-Mr-XIY" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="51" id="3Nh-bE-isg"/>
+                                    <constraint firstItem="uEo-Mr-XIY" firstAttribute="top" secondItem="QGo-cW-lPm" secondAttribute="bottom" constant="19" id="6C7-TT-btP"/>
+                                    <constraint firstItem="ihI-PA-3hh" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="152" id="Cb0-bx-I2n"/>
+                                    <constraint firstAttribute="trailing" secondItem="OJd-6Y-eOR" secondAttribute="trailing" constant="51" id="DEh-F9-dv5"/>
+                                    <constraint firstItem="QGo-cW-lPm" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="51" id="F4w-OH-ihl"/>
+                                    <constraint firstAttribute="trailing" secondItem="uEo-Mr-XIY" secondAttribute="trailing" constant="54" id="HEv-Il-IhT"/>
+                                    <constraint firstItem="rKU-3P-oX2" firstAttribute="top" secondItem="i99-Nb-uxn" secondAttribute="top" constant="24" id="LHf-qU-7IV"/>
+                                    <constraint firstAttribute="trailing" secondItem="mp0-6i-3Si" secondAttribute="trailing" constant="51" id="Qv8-yk-0jp"/>
+                                    <constraint firstAttribute="trailing" secondItem="ihI-PA-3hh" secondAttribute="trailing" constant="152" id="d48-RZ-IP9"/>
+                                    <constraint firstAttribute="trailing" secondItem="rKU-3P-oX2" secondAttribute="trailing" constant="159" id="ddn-hI-xtp"/>
+                                    <constraint firstItem="mp0-6i-3Si" firstAttribute="top" secondItem="OJd-6Y-eOR" secondAttribute="bottom" constant="33" id="eXS-k1-a1n"/>
+                                    <constraint firstItem="OJd-6Y-eOR" firstAttribute="top" secondItem="rKU-3P-oX2" secondAttribute="bottom" constant="64" id="g2N-n8-Se3"/>
+                                    <constraint firstItem="mp0-6i-3Si" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="51" id="lbB-xy-Zan"/>
+                                    <constraint firstAttribute="bottom" secondItem="ihI-PA-3hh" secondAttribute="bottom" constant="57" id="oY4-D2-phF"/>
+                                    <constraint firstItem="ihI-PA-3hh" firstAttribute="top" secondItem="uEo-Mr-XIY" secondAttribute="bottom" constant="70" id="wbt-dR-mG9"/>
+                                    <constraint firstItem="rKU-3P-oX2" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="156" id="yIv-1d-JmN"/>
+                                    <constraint firstItem="QGo-cW-lPm" firstAttribute="top" secondItem="mp0-6i-3Si" secondAttribute="bottom" constant="36" id="zGo-Ie-enl"/>
+                                    <constraint firstItem="OJd-6Y-eOR" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="51" id="zVc-BA-ChX"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1608,31 +1630,21 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqr-BV-UeF">
-                                <rect key="frame" x="39" y="9" width="49" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="">
-                                    <color key="baseForegroundColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="LnL-5D-gjp" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="ot9-7m-xg2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bbc-FI-raT"/>
                         <color key="backgroundColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="bbc-FI-raT" firstAttribute="bottom" secondItem="i99-Nb-uxn" secondAttribute="bottom" id="039-3t-t84"/>
+                            <constraint firstItem="bbc-FI-raT" firstAttribute="trailing" secondItem="i99-Nb-uxn" secondAttribute="trailing" id="87m-Su-Fjc"/>
+                            <constraint firstItem="i99-Nb-uxn" firstAttribute="top" secondItem="bbc-FI-raT" secondAttribute="top" constant="40" id="XVL-2b-Xgh"/>
                             <constraint firstItem="i99-Nb-uxn" firstAttribute="leading" secondItem="bbc-FI-raT" secondAttribute="leading" id="ecL-Yq-89U"/>
                             <constraint firstItem="i99-Nb-uxn" firstAttribute="centerX" secondItem="bSh-FT-gqS" secondAttribute="centerX" id="hQj-bd-V1s"/>
-                            <constraint firstItem="i99-Nb-uxn" firstAttribute="top" secondItem="bbc-FI-raT" secondAttribute="top" constant="38" id="qfK-7f-Mux"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gk9-eT-Mtv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4566" y="-770"/>
+            <point key="canvasLocation" x="4565.5813953488368" y="-770.60085836909877"/>
         </scene>
         <!--AboutUs-->
         <scene sceneID="muK-6w-D9N">
@@ -1718,9 +1730,9 @@ Aminatour1@evento.saurus.bh</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uns-kt-Srp"/>
-        <segue reference="S3t-mt-M9y"/>
-        <segue reference="9gf-n5-Hf3"/>
+        <segue reference="2cR-Qx-fi7"/>
+        <segue reference="WfW-zp-FCv"/>
+        <segue reference="UPm-DE-OTP"/>
         <segue reference="RZl-8h-KH2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

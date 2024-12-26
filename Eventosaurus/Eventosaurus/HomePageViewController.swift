@@ -521,6 +521,7 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
         
     var eventNames: [String] = []
           var filteredEventNames: [String] = []
+          var filteredEventCategories: [String] = []
           var eventCategories: [String] = []
        var eventLocations: [String] = []
        var selectedCategories: [String] = []
@@ -532,10 +533,30 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
            collectioniView.delegate = self
            collectioniView.collectionViewLayout = UICollectionViewFlowLayout()
            searchBar.delegate = self
-           didUpdateFilters(selectedCategories: selectedCategories, selectedLocations: selectedLocations)
-
-           fetchEvents()
+//           print(filteredEventNames)
+           print("before fetch")
+             print(selectedLocations)
+           print(selectedCategories)
+                fetchEvents()
+           print("after fetch")
+             print(selectedLocations)
+           print(selectedCategories)
+               didUpdateFilters(selectedCategories: selectedCategories, selectedLocations: selectedLocations)
+           print("after fetch")
+             print(selectedLocations)
+           print(selectedCategories)
+           filteredEventNames = eventNames
+           print("filtered names\(filteredEventNames)")
+              
+           
+           
+           print("Entered View Did Load, line 536")
+           
        }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        didUpdateFilters(selectedCategories: selectedCategories, selectedLocations: selectedLocations)
+//    }
     
     override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
@@ -577,26 +598,47 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
             self.selectedLocations = selectedLocations
             
             // Call method to update or fetch the filtered events
-            filterEvents()
-        }
+        filterEvents()
         
-        func filterEvents() {
-            filteredEventNames = zip(eventNames, eventCategories).filter { (eventName, category) in
-                       // Check if the event's category matches any of the selected categories
-                       let matchesCategory = selectedCategories.isEmpty || selectedCategories.contains(category)
-                       
-                       // Assuming eventLocations contains locations and you need to filter similarly
-                       let matchesLocation = selectedLocations.isEmpty || selectedLocations.contains(eventLocations.first(where: { $0 == category }) ?? "")
-
-                       return matchesCategory && matchesLocation
-                   }.map { (eventName, _) in
-                       return eventName
-                   }
-                
-                collectioniView.reloadData()
+            
         }
+    
+        
+//        func filterEvents() {
+//            filteredEventNames = zip(eventNames, eventCategories).filter { (eventName, category) in
+//                       // Check if the event's category matches any of the selected categories
+//                       let matchesCategory = selectedCategories.isEmpty || selectedCategories.contains(category)
+//                       
+//                       // Assuming eventLocations contains locations and you need to filter similarly
+//                       let matchesLocation = selectedLocations.isEmpty || selectedLocations.contains(eventLocations.first(where: { $0 == category }) ?? "")
+//
+//                       return matchesCategory && matchesLocation
+//                   }.map { (eventName, _) in
+//                       return eventName
+//                   }
+//                
+//                collectioniView.reloadData()
+//        }
         
        
+    func filterEvents() {
+        // Filter both eventNames and eventCategories based on the selected categories and locations
+        let filteredEvents = zip(eventNames, eventCategories).filter { (eventName, category) in
+            // Check if the event's category matches any of the selected categories
+            let matchesCategory = selectedCategories.isEmpty || selectedCategories.contains(category)
+            
+            // Assuming eventLocations contains locations and you need to filter similarly
+            let matchesLocation = selectedLocations.isEmpty || selectedLocations.contains(eventLocations.first(where: { $0 == category }) ?? "")
+
+            return matchesCategory && matchesLocation
+        }
+
+        // Unzip the filtered results into separate arrays
+        filteredEventNames = filteredEvents.map { $0.0 } // Extract event names
+        filteredEventCategories = filteredEvents.map { $0.1 } // Extract event categories
+        
+        collectioniView.reloadData()
+    }
     
     func fetchEvents() {
             db.collection("Events").getDocuments { (snapshot, error) in
@@ -698,9 +740,10 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
               
            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EveCollectionViewCell", for: indexPath) as! EveCollectionViewCell
-                   
+                   print("filtered event names  line 702\(filteredEventNames)" )
+                    print("event categoriee : \(eventCategories)")
                    let eventName = filteredEventNames[indexPath.row]
-                   let eventCategory = eventCategories[indexPath.row] // Get the category for this event
+                   let eventCategory = filteredEventCategories[indexPath.row] // Get the category for this event
                   
                
                    // Debugging: Log to check the values being passed to the cell
@@ -1146,10 +1189,16 @@ class FilterSearchViewController: UIViewController {
 
     
     @IBAction func resetClicked(_ sender: UIButton) {
-        
         selectedCategories.removeAll()
-                selectedLocations.removeAll()
+        selectedLocations.removeAll()
+
         resetButtons()
+        
+        if let eventSearchVC = self.presentingViewController as? EventSearchViewController {
+            eventSearchVC.filteredEventNames = eventSearchVC.eventNames
+            eventSearchVC.filteredEventCategories = eventSearchVC.eventCategories
+            eventSearchVC.collectioniView.reloadData()
+        }
     }
     
     @IBAction func doneClicked(_ sender: UIButton) {
