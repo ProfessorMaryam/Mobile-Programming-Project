@@ -57,7 +57,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="followButtonTapped:" destination="Dcn-sL-9gf" eventType="touchUpInside" id="7p8-Ly-WKx"/>
+                                            <action selector="followButtonTapped:" destination="Dcn-sL-9gf" eventType="touchUpInside" id="oxc-Tl-DO6"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Hosting a sign language event to promote exclusivity through workshops and Deaf community engagement at Bahrain Polytechnic." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SN-4q-Nwo">
