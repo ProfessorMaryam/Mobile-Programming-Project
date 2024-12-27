@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C30328042D1F1F8800A5C3A6 /* FeedBack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30328032D1F1F8800A5C3A6 /* FeedBack.storyboard */; };
+		C30328062D1F200100A5C3A6 /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30328052D1F200100A5C3A6 /* FeedBackViewController.swift */; };
 		C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B12F2CFC996700C073C2 /* AppDelegate.swift */; };
 		C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1312CFC996700C073C2 /* SceneDelegate.swift */; };
 		C395B1342CFC996700C073C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395B1332CFC996700C073C2 /* ViewController.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C30328032D1F1F8800A5C3A6 /* FeedBack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedBack.storyboard; sourceTree = "<group>"; };
+		C30328052D1F200100A5C3A6 /* FeedBackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		C395B12C2CFC996700C073C2 /* Eventosaurus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventosaurus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C395B12F2CFC996700C073C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C395B1312CFC996700C073C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				C395B13D2CFC996900C073C2 /* Info.plist */,
 				C3C4E36F2D008B950039DAD6 /* HomePage .storyboard */,
 				C3C4E3712D008BC40039DAD6 /* HomePageViewController.swift */,
+				C30328052D1F200100A5C3A6 /* FeedBackViewController.swift */,
+				C30328032D1F1F8800A5C3A6 /* FeedBack.storyboard */,
 			);
 			path = Eventosaurus;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 				C395B13C2CFC996900C073C2 /* LaunchScreen.storyboard in Resources */,
 				C3C4E3702D008B950039DAD6 /* HomePage .storyboard in Resources */,
 				C3F364542D12B9C0007A458F /* GoogleService-Info.plist in Resources */,
+				C30328042D1F1F8800A5C3A6 /* FeedBack.storyboard in Resources */,
 				C395B1392CFC996900C073C2 /* Assets.xcassets in Resources */,
 				C395B1372CFC996700C073C2 /* Main.storyboard in Resources */,
 			);
@@ -308,6 +315,7 @@
 				C395B1602CFCA7A800C073C2 /* User.swift in Sources */,
 				C395B1342CFC996700C073C2 /* ViewController.swift in Sources */,
 				C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */,
+				C30328062D1F200100A5C3A6 /* FeedBackViewController.swift in Sources */,
 				C395B16A2CFCB02300C073C2 /* System.swift in Sources */,
 				C3C4E3722D008BC40039DAD6 /* HomePageViewController.swift in Sources */,
 				C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */,

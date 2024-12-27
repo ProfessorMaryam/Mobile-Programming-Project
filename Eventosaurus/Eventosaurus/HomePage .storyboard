@@ -9,6 +9,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--FeedBackViewController-->
+        <scene sceneID="PoF-Ol-BCH">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="FeedBackViewController" storyboardName="FeedBack" referencedIdentifier="FeedBackViewController" id="IN5-TQ-0V7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u52-hQ-Hoz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1082" y="-42"/>
+        </scene>
         <!--Home Page-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
@@ -32,6 +40,17 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0x-1t-Gat">
+                                <rect key="frame" x="178" y="186" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <color key="baseForegroundColor" red="0.25950597339999998" green="0.31708525580000002" blue="0.85481048729999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="IN5-TQ-0V7" kind="presentation" modalPresentationStyle="fullScreen" id="0N0-Tq-Sae"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -295,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jyv-7O-U4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3031" y="839"/>
+            <point key="canvasLocation" x="5060" y="797"/>
         </scene>
         <!--Event Search View Controller-->
         <scene sceneID="Hew-CP-JXi">
@@ -1737,9 +1756,9 @@ Aminatour1@evento.saurus.bh</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="uns-kt-Srp"/>
-        <segue reference="Dyv-fy-lbz"/>
-        <segue reference="9gf-n5-Hf3"/>
-        <segue reference="DwF-wQ-wJU"/>
+        <segue reference="U3y-aa-01n"/>
+        <segue reference="ona-u7-5V5"/>
+        <segue reference="1jp-Ry-qXF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
@@ -1765,10 +1784,10 @@ Aminatour1@evento.saurus.bh</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
