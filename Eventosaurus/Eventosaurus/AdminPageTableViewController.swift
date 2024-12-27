@@ -89,12 +89,19 @@ class AdminPageTableViewController: UIViewController, UITableViewDataSource, UIT
                 self.navigationController?.pushViewController(requestsVC, animated: true)
             }
         case 4:
+            // Logout Implementation
             let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
-                print("Logged out")
+                // Clear the login state in UserDefaults
+                UserDefaults.standard.set(false, forKey: "isLoggedIn")
+                UserDefaults.standard.set(false, forKey: "isAdmin")
+                UserDefaults.standard.synchronize()
+
+                // Navigate back to the login screen
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                if let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC") as? ViewController {
-                    self.navigationController?.setViewControllers([mainVC], animated: true)
+                if let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC") as? ViewController {
+                    // Reset the navigation stack to ensure the user cannot go back to the admin page
+                    self.navigationController?.setViewControllers([loginVC], animated: true)
                 }
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -104,4 +111,6 @@ class AdminPageTableViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
 
-}
+    }
+
+

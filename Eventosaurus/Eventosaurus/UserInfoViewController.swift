@@ -83,7 +83,7 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
         let db = Firestore.firestore()
 
         // Query Firestore for the document with the matching email
-        db.collection("Users").whereField("Email", isEqualTo: email.lowercased()).getDocuments { (snapshot, error) in
+        db.collection("Users").whereField("Email", isEqualTo: email).getDocuments { (snapshot, error) in
             if let error = error {
                 print("Error fetching user data: \(error.localizedDescription)")
                 return
@@ -95,8 +95,8 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
             }
 
             // Extract the user's data from the document
-            let fullName = document.get("Full Name") as? String ?? "Unknown Name"
-            let email = document.get("Email") as? String ?? "No Email"
+            let fullName = document.get("Full Name") as? String ?? ""
+            let email = document.get("Email") as? String ?? ""
             let dateOfBirthTimestamp = document.get("Date Of Birth") as? Timestamp
             let isOrganizer = document.get("Is Organizer") as? Bool ?? false
 

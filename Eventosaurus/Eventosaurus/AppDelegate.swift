@@ -19,18 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    // MARK: - UISceneSession Lifecycle
+}
 
+// MARK: - UISceneSession Lifecycle
+
+@available(iOS 13.0, *)
+extension AppDelegate {
+    
     // This method is called when a new scene session is being created.
     // We use it to configure the scene.
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    internal func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Return the configuration for the scene. You can adjust the name as needed.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
+    // Called when the user discards a scene session.
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
         // Use this method to release any resources that were specific to the discarded scenes.
     }
-
 }

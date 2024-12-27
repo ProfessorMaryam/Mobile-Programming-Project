@@ -80,7 +80,7 @@
                                     <color key="baseForegroundColor" red="0.23990869522094727" green="0.076750300824642181" blue="0.36543652415275574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="yzt-Ye-Rt4" kind="presentation" modalPresentationStyle="fullScreen" id="DQI-Xf-CnQ"/>
+                                    <segue destination="yzt-Ye-Rt4" kind="presentation" modalPresentationStyle="automatic" id="DQI-Xf-CnQ"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image 1" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-Lg-Q6P">
@@ -569,6 +569,7 @@
                                     <constraint firstItem="An4-ha-Hov" firstAttribute="leading" secondItem="olq-2z-5pu" secondAttribute="leading" constant="70" id="Hj7-HG-kdR"/>
                                     <constraint firstItem="OtS-QO-Vqa" firstAttribute="top" secondItem="An4-ha-Hov" secondAttribute="bottom" constant="20" id="Hso-G8-6FJ"/>
                                     <constraint firstItem="erm-A5-dv3" firstAttribute="top" secondItem="NpV-hy-iMH" secondAttribute="bottom" constant="8" id="IWV-VO-JWY"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wqL-L6-5D2" secondAttribute="trailing" constant="20" symbolic="YES" id="KfL-W4-CCg"/>
                                     <constraint firstItem="VPs-ku-m8H" firstAttribute="top" secondItem="wqL-L6-5D2" secondAttribute="bottom" constant="8" id="Pvu-H8-THg"/>
                                     <constraint firstItem="VPs-ku-m8H" firstAttribute="leading" secondItem="NpV-hy-iMH" secondAttribute="leading" id="Wuj-k0-Aji"/>
                                     <constraint firstAttribute="trailing" secondItem="An4-ha-Hov" secondAttribute="trailing" constant="70" id="YlF-BP-dxw"/>
@@ -579,6 +580,7 @@
                                     <constraint firstItem="wqL-L6-5D2" firstAttribute="leading" secondItem="OtS-QO-Vqa" secondAttribute="leading" id="gmx-oZ-46C"/>
                                     <constraint firstItem="ldk-D6-KTu" firstAttribute="centerX" secondItem="An4-ha-Hov" secondAttribute="centerX" id="hKQ-wp-S9u"/>
                                     <constraint firstItem="VPs-ku-m8H" firstAttribute="leading" secondItem="wqL-L6-5D2" secondAttribute="leading" id="sjF-5Z-wyR"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="erm-A5-dv3" secondAttribute="trailing" constant="20" symbolic="YES" id="tMb-y4-xhc"/>
                                     <constraint firstItem="wqL-L6-5D2" firstAttribute="top" secondItem="OtS-QO-Vqa" secondAttribute="bottom" constant="8" symbolic="YES" id="uGa-W2-lY7"/>
                                     <constraint firstItem="OtS-QO-Vqa" firstAttribute="leading" secondItem="olq-2z-5pu" secondAttribute="leading" constant="20" id="zg8-fq-MpY"/>
                                 </constraints>

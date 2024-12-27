@@ -43,19 +43,27 @@ class RequestForm: UIViewController, UITextViewDelegate {
             return
         }
         
-        // Check if the email exists in the "Users" collection and if the user is an organizer
-        checkEmailExistsAndOrganizer(email: email) { exists, isOrganizer in
+        // Check if the email exists in the "Requests" collection
+        checkEmailExistsInRequests(email: email) { exists in
             if exists {
-                if isOrganizer {
-                    // User is already an organizer, show an alert
-                    self.showAlert(message: "You're already an organizer.")
-                } else {
-                    // Email exists and user is not an organizer, save the request data
-                    self.saveRequestData(email: email, fullName: fullName, qualifications: qualifications, WDYWTBO: WDYWTBO)
-                }
+                // Email already exists in Requests collection, show alert
+                self.showAlert(message: "You have already sent a request. Please wait for approval.")
             } else {
-                // Email does not exist, show an alert
-                self.showAlert(message: "You need to register first.")
+                // Check if the email exists in the "Users" collection and if the user is an organizer
+                self.checkEmailExistsAndOrganizer(email: email) { exists, isOrganizer in
+                    if exists {
+                        if isOrganizer {
+                            // User is already an organizer, show an alert
+                            self.showAlert(message: "You're already an organizer.")
+                        } else {
+                            // Email exists and user is not an organizer, save the request data
+                            self.saveRequestData(email: email, fullName: fullName, qualifications: qualifications, WDYWTBO: WDYWTBO)
+                        }
+                    } else {
+                        // Email does not exist, show an alert
+                        self.showAlert(message: "You need to register first.")
+                    }
+                }
             }
         }
     }
@@ -104,7 +112,10 @@ class RequestForm: UIViewController, UITextViewDelegate {
                 // Show a success alert or navigate to another screen
                 self.showAlert(message: "Request submitted successfully!") {
                     // Perform the unwind segue to go back to the startup screen
-                    self.performSegue(withIdentifier: "unwindToStartup", sender: self)
+                    self.FullNameTextField.text = ""
+                    self.EmailTextField.text = ""
+                    self.WDYWTBOTextField.text = ""
+                    self.qualificationsTextField.text = ""
                 }
             }
         }
@@ -112,7 +123,7 @@ class RequestForm: UIViewController, UITextViewDelegate {
     
     // Helper function to show alerts
     func showAlert(message: String, completion: (() -> Void)? = nil) {
-        let alertController = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default) { _ in
             // Call the completion block after alert is dismissed
             completion?()
@@ -159,6 +170,27 @@ class RequestForm: UIViewController, UITextViewDelegate {
         if textView.text.isEmpty {
             // Set the placeholder text if the text view is empty
             setPlaceholderForTextView(textView, placeholder: textView == qualificationsTextField ? qualificationsPlaceholder : WDYWTBOPlaceholder)
+        }
+    }
+
+    // Function to check if email exists in "Requests" collection
+    func checkEmailExistsInRequests(email: String, completion: @escaping (Bool) -> Void) {
+        let requestsRef = db.collection("Requests")
+        
+        // Query the "Requests" collection for the given email
+        requestsRef.whereField("Email", isEqualTo: email).getDocuments { snapshot, error in
+            if let error = error {
+                print("Error checking email in Requests: \(error.localizedDescription)")
+                completion(false)  // If there's an error, return false
+                return
+            }
+            
+            // If a document with the email is found, return true
+            if let document = snapshot?.documents.first {
+                completion(true)  // Email already exists in the Requests collection
+            } else {
+                completion(false)  // Email does not exist in the Requests collection
+            }
         }
     }
 }
