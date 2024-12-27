@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,6 @@
 		C30CAB342D1EFD2500892F01 /* JoinEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30CAB332D1EFD2500892F01 /* JoinEventViewController.swift */; };
 		C30CAB362D1EFD5500892F01 /* LeaveEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30CAB352D1EFD5500892F01 /* LeaveEvent.storyboard */; };
 		C30CAB382D1EFD7100892F01 /* LeaveEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30CAB372D1EFD7100892F01 /* LeaveEventViewController.swift */; };
-		C30CAB3A2D1EFDA600892F01 /* EditEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30CAB392D1EFDA600892F01 /* EditEvent.storyboard */; };
 		C30CAB3C2D1EFDE400892F01 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30CAB3B2D1EFDE400892F01 /* EditEventViewController.swift */; };
 		C30CAB3E2D1EFE2900892F01 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30CAB3D2D1EFE2900892F01 /* CreateEvent.storyboard */; };
 		C30CAB402D1EFE4A00892F01 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30CAB3F2D1EFE4A00892F01 /* CreateEventViewController.swift */; };
@@ -153,6 +152,11 @@
 		DAB6A43F2D118647002FEC6D /* DisplayUsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayUsersTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D060EF792D1F542A002FC228 /* CalendarPage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CalendarPage; sourceTree = "<group>"; };
+		D060EF802D1F5551002FC228 /* NotificationPage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NotificationPage; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		C395B1292CFC996700C073C2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -207,6 +211,8 @@
 		C395B12E2CFC996700C073C2 /* Eventosaurus */ = {
 			isa = PBXGroup;
 			children = (
+				D060EF802D1F5551002FC228 /* NotificationPage */,
+				D060EF792D1F542A002FC228 /* CalendarPage */,
 				C3EBFD7B2D05C7E900B4D000 /* GoogleService-Info.plist */,
 				C395B12F2CFC996700C073C2 /* AppDelegate.swift */,
 				C395B1312CFC996700C073C2 /* SceneDelegate.swift */,
@@ -321,6 +327,10 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D060EF792D1F542A002FC228 /* CalendarPage */,
+				D060EF802D1F5551002FC228 /* NotificationPage */,
 			);
 			name = Eventosaurus;
 			packageProductDependencies = (
