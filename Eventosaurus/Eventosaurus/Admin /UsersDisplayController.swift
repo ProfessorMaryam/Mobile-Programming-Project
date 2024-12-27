@@ -127,22 +127,22 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
         userInfoVC.title = "User Information"
 
         // Pass the selected user's email to UserInfoViewController
-        userInfoVC.userEmail = userEmail  // <-- Pass email here
+        userInfoVC.userEmail = userEmail
 
         // Push the view controller onto the navigation stack
         self.navigationController?.pushViewController(userInfoVC, animated: true)
     }
 
-    // MARK: - Swipe to Delete (UITableView)
+    
 
-    // Implement the swipe-to-delete feature
+ 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Get the email of the user to delete
             let userToDelete = filteredUsersList[indexPath.row]
             deleteUserFromFirestore(email: userToDelete.email)
 
-            // Remove the user from the local data models (usersList and filteredUsersList)
+            // Remove the user from the local data arrays (usersList and filteredUsersList)
             filteredUsersList.remove(at: indexPath.row)
             usersList.removeAll { $0.email == userToDelete.email }
 

@@ -162,6 +162,8 @@ class UserInterestsViewController: UIViewController, UICollectionViewDataSource,
                     }
                 }
         }
+        
+   
     }
 
     // Update the user's interests in Firestore using category references
@@ -185,6 +187,20 @@ class UserInterestsViewController: UIViewController, UICollectionViewDataSource,
                         print("Error updating user interests: \(error.localizedDescription)")
                     } else {
                         print("User interests updated successfully!")
+                        
+                        
+                        
+                        let userStoryboard = UIStoryboard(name: "HomePage ", bundle: nil)  // Remove extra space in storyboard name
+                        
+                        if let userVC = userStoryboard.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController {
+                            // Set the modal presentation style to full screen
+                            userVC.modalPresentationStyle = .fullScreen
+                            
+                            // Present the view controller modally
+                            self.present(userVC, animated: true, completion: nil)
+                        } else {
+                            //self.showAlert(title: "Error", message: "Unable to load User Page.")
+                        }
                     }
                 }
             } else {

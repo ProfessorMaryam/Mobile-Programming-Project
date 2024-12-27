@@ -9,7 +9,7 @@ import UIKit
 import FirebaseFirestore
 
 class EventsDisplayController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var eventsSearch: UISearchBar!
     
@@ -120,19 +120,23 @@ class EventsDisplayController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
 
-    // MARK: - Cell Selection - Navigate to EventInfoViewController
-    // MARK: - Cell Selection - Navigate to EventInfoViewController
+    // MARK: - Navigate to ViewFeedback and Pass EventID
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Instantiate the EventInfoViewController from the storyboard
-        let eventInfoVC = self.storyboard?.instantiateViewController(withIdentifier: "EventInfoVC") as! EventsInfoViewController
+        // Get the selected event and its document ID
+        let selectedEvent = filteredEvents[indexPath.row]
+        let eventID = selectedEvent.documentID
         
-        // Set the title of the navigation bar to "Event Information"
-        eventInfoVC.title = "Event Information"
-        
-        // Push the view controller
-        self.navigationController?.pushViewController(eventInfoVC, animated: true)
+        // Instantiate the ViewFeedback controller
+        if let feedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewFeedback") as? ViewFeedback {
+            feedbackVC.eventID = "Events/" + eventID // Pass the EventID to ViewFeedback
+            
+            // Set the title of the navigation bar (optional)
+            feedbackVC.title = "Event Feedback"
+            
+            // Push the ViewFeedback controller to the navigation stack
+            self.navigationController?.pushViewController(feedbackVC, animated: true)
+        }
     }
-
 
     // MARK: - Swipe-to-Delete Action
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

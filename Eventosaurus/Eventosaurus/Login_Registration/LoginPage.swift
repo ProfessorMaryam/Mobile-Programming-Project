@@ -78,7 +78,7 @@ class LoginPage: UIViewController {
                             self.navigateToAdminPage()
                         } else {
                             // Non-Admin User: Navigate to UserPage (you should implement this view)
-                       //     self.navigateToUserPage()
+                           self.navigateToUserPage()
                         }
                     } else {
                         self.showAlert(title: "Login Error", message: "Incorrect password. Please try again.")
@@ -122,24 +122,29 @@ class LoginPage: UIViewController {
     }
     
     // Navigate to UserPage view controller (for non-admin users)
-//    func navigateToUserPage() {
-//        // Implement this navigation for non-admin users
-//        let userStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
-//     //   if let userVC = userStoryboard.instantiateViewController(withIdentifier: "userPage") {
-//            self.present(userVC, animated: true, completion: nil)
-//        } else {
-//            self.showAlert(title: "Error", message: "Unable to load User Page.")
-//        }
-//    }
-//    
+    func navigateToUserPage() {
+        // Implement this navigation for non-admin users
+        let userStoryboard = UIStoryboard(name: "HomePage ", bundle: nil)  // Remove extra space in storyboard name
+        
+        if let userVC = userStoryboard.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController {
+            // Set the modal presentation style to full screen
+            userVC.modalPresentationStyle = .fullScreen
+            
+            // Present the view controller modally
+            self.present(userVC, animated: true, completion: nil)
+        } else {
+            self.showAlert(title: "Error", message: "Unable to load User Page.")
+        }
+    }
+
+    
     // Navigate to the appropriate page based on user type
     func navigateToAppropriatePage() {
         if let isAdmin = UserDefaults.standard.value(forKey: "isAdmin") as? Bool, isAdmin {
             // If the user is an admin, navigate to AdminPage
             navigateToAdminPage()
         } else {
-            // Non-admin user navigation
-           // navigateToUserPage()
+            navigateToUserPage()
         }
     }
 }
