@@ -36,10 +36,10 @@ class LoginPage: UIViewController {
             emailReqLabel.isHidden = false
             emailReqLabel.text = "Email is required."
             isValid = false
-        } else if let email = emailTxtField.text, !isValidEmail(email) {
-            emailReqLabel.isHidden = false
-            emailReqLabel.text = "Invalid email format."
-            isValid = false
+        } else if let email = emailTxtField.text, !isValidEmail(email) {  //uses the regex checking method defined below, if regex is invalid then...
+            emailReqLabel.isHidden = false // ... show label
+            emailReqLabel.text = "Invalid email format." // change label text to error message
+            isValid = false // nnot valid
         }
         
         // Validate password

@@ -37,7 +37,7 @@ class Register: UIViewController {
             //save the date fromt the date picker
             let selectedDate = DatePicker.date
             
-            //create a new user using dictionary
+            //create a new user object
             let newUser = User(
                 fullName: fullnameTxtField.text!,
                 email: emailTxtField.text ?? "",
@@ -47,14 +47,14 @@ class Register: UIViewController {
                 isAdmin: false
             )
             
-            //  Check if the email already exists in Firestore
+            //  Check if the email already exists in Firestore, calls the function created below
             checkIfEmailExists(newUser.email) { emailExists in
                 if emailExists {
-                    // Step 4: If email exists, show error message and don't perform segue
-                    self.emailReqLabel.isHidden = false
+                    // If email exists, show error message and don't perform segue
+                    self.emailReqLabel.isHidden = false //label is unhidden
                     self.emailReqLabel.text = "Email already exists. Please try another."
                 } else {
-                    // Step 5: If email doesn't exist, store user in Firestore and navigate to the Interests screen
+                    // If email doesn't exist, store user in Firestore
                     self.storeUserInFirestore(newUser)
                 }
             }
@@ -115,28 +115,32 @@ class Register: UIViewController {
 
     // this function checks if the email already exists in Firestore
     func checkIfEmailExists(_ email: String, completion: @escaping (Bool) -> Void) {
-        Firestore.firestore().collection("Users")
+        Firestore.firestore().collection("Users") //refers to the Users collection
+        //refers to the Email field. this fetches all the email fields where the field matches the email passed in the parameter
             .whereField("Email", isEqualTo: email)
-            .getDocuments { snapshot, error in
+            .getDocuments { snapshot, error in //getting documents, the snapshot contains the documents that match the query. Error is not nil if there are any errors that may arise
                 if let error = error {
                     print("Error: \(error.localizedDescription)")
-                    completion(false)
+                    completion(false) //completion is false in case of error
                 } else {
                     // If documents exist, it means the email already exists
-                    completion(snapshot?.documents.isEmpty == false)
+                    completion(snapshot?.documents.isEmpty == false) //isEmpty == false due to the the snapshot containing the matched document.
                 }
             }
     }
 
     // this function stores the user in firestore
     func storeUserInFirestore(_ newUser: User) {
-        let userDict = newUser.toDictionary() //using dictionary
+        let userDict = newUser.toDictionary() //storing the dictionary ina variable using dictionary method in from the user object
         
+        
+        
+        //the following gets the Firestore instance and specifies where the data will be stored (in Users collection)
         Firestore.firestore().collection("Users").document().setData(userDict) { error in
-            if let error = error {
+            if let error = error { //error handling
                 self.showAlert(title: "Error", message: "Failed to save user data to Firestore. \(error.localizedDescription)")
                 return
-            }
+            } //end of error handling
             
             // Successfully stored user in Firestore, proceed to the next screen
             print("User successfully added to Firestore!")
@@ -151,23 +155,23 @@ class Register: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 
-    // this function navigates to UserInterests view controller in the Interests story board
+    // this function navigates to UserInterests view controller in the Interests storyboard
     func navigateToUserInterests() {
         // store "Interests" storyboard in a variable
         let interestsStoryboard = UIStoryboard(name: "Interests", bundle: nil)
         
-        // Instantiate the UserInterests view controller using its Storyboard ID
+        // Instantiate the UserInterests view controller using its Storyboard ID. store the Interests page reference in "userInterestsVC" variable
         if let userInterestsVC = interestsStoryboard.instantiateViewController(withIdentifier: "UserInterests") as? UserInterestsViewController {
             
-            // Pass the email from this view controller to the UserInterests view controller to use it to store the interests as references to the documentss corresponding to them in the Categories collection
-            userInterestsVC.userEmail = emailTxtField.text
+            // Pass the email from this view controller to the UserInterests view controller to use it to store the interests as references to the documents corresponding to them in the Categories collection
+            userInterestsVC.userEmail = emailTxtField.text //whatever email is there in the emailTxtField, it will be assigned to the optional variable "userEmail" in the UserInterestsViewController
 
             // Check if the current view controller is inside a navigation controller
             if let navigationController = self.navigationController {
                 // Push the UserInterests view controller
                 navigationController.pushViewController(userInterestsVC, animated: true)
                 
-                // Remove the back button from the navigation bar so the user cannot go back to register page
+                // Remove the back button from the navigation bar in UserInterestsViewController so the user cannot go back to register page
                 userInterestsVC.navigationItem.hidesBackButton = true
             } else {
                 // If not inside a navigation controller, present the UserInterests view controller modally
