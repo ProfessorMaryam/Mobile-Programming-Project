@@ -78,7 +78,7 @@ class WriteFeedbackViewController: UIViewController {
 
 
 
-
+// MARK: - DisplayNameViewController
 
 class DisplayNameViewController: UIViewController {
     
@@ -254,7 +254,7 @@ class DisplayNameViewController: UIViewController {
 
 
 
-
+// MARK: - Event Home View Controller
 
 class EventHomeViewController: UIViewController {
     
@@ -508,7 +508,7 @@ class EventCollectionViewCell: UICollectionViewCell {
 
 
 
-
+// MARK: - EventSearchViewController
 
 class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSearchViewControllerDelegate {
     
@@ -1140,7 +1140,7 @@ class FilterSearchViewController: UIViewController {
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            updateButtonStateForSavedCategories()
+//            updateButtonStateForSavedCategories()
             
         }
     func updateButtonStateForSavedCategories() {
