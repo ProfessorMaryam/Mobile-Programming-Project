@@ -357,7 +357,7 @@ class EventHomeViewController: UIViewController {
                     }
                 } else {
                     // If there is no valid category reference, fall back to default category
-                    let defaultCategory = "General"
+                    let defaultCategory = "Fashion"
                     self.eventNames.append(eventName)
                     self.eventCategories.append(defaultCategory)
                     CategoryStore.shared.addEventToCategory(eventName: eventName, category: defaultCategory)
@@ -519,13 +519,19 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
     @IBOutlet weak var collectioniView: UICollectionView!
     let db = Firestore.firestore()
         
-    var eventNames: [String] = []
+          var eventNames: [String] = []
           var filteredEventNames: [String] = []
           var filteredEventCategories: [String] = []
+          var filteredEventLocations: [String] = []
+          var filteredEventDescriptions: [String] = []
+          var filteredEventDates: [String] = []
+          var eventDates: [String] = []
           var eventCategories: [String] = []
-       var eventLocations: [String] = []
-       var selectedCategories: [String] = []
-       var selectedLocations: [String] = []
+          var eventLocations: [String] = []
+          var eventDescriptions: [String] = []
+          var selectedCategories: [String] = []
+          var selectedLocations: [String] = []
+          var selectedDates: [String] = []
        
        override func viewDidLoad() {
            super.viewDidLoad()
@@ -541,7 +547,7 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
            print("after fetch")
              print(selectedLocations)
            print(selectedCategories)
-               didUpdateFilters(selectedCategories: selectedCategories, selectedLocations: selectedLocations)
+           didUpdateFilters(selectedCategories: selectedCategories, selectedLocations: selectedLocations, selectedDates: selectedDates)
            print("after fetch")
              print(selectedLocations)
            print(selectedCategories)
@@ -587,119 +593,124 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
                        if let filterVC = storyboard.instantiateViewController(withIdentifier: "FilterSearchViewController") as? FilterSearchViewController {
                            filterVC.savedSelectedCategories = selectedCategories
                            filterVC.savedSelectedLocations = selectedLocations
+                           filterVC.savedSelectedDates = selectedDates
                            filterVC.delegate = self
                            self.present(filterVC, animated: true, completion: nil)
                 }
     }
     
-    func didUpdateFilters(selectedCategories: [String], selectedLocations: [String]) {
+    func didUpdateFilters(selectedCategories: [String], selectedLocations: [String], selectedDates: [String]) {
             // Update local variables with selected filters
             self.selectedCategories = selectedCategories
             self.selectedLocations = selectedLocations
+            self.selectedDates = selectedDates
             
             // Call method to update or fetch the filtered events
         filterEvents()
         
             
         }
-    
-        
-//        func filterEvents() {
-//            filteredEventNames = zip(eventNames, eventCategories).filter { (eventName, category) in
-//                       // Check if the event's category matches any of the selected categories
-//                       let matchesCategory = selectedCategories.isEmpty || selectedCategories.contains(category)
-//                       
-//                       // Assuming eventLocations contains locations and you need to filter similarly
-//                       let matchesLocation = selectedLocations.isEmpty || selectedLocations.contains(eventLocations.first(where: { $0 == category }) ?? "")
-//
-//                       return matchesCategory && matchesLocation
-//                   }.map { (eventName, _) in
-//                       return eventName
-//                   }
-//                
-//                collectioniView.reloadData()
-//        }
         
        
     func filterEvents() {
-        // Filter both eventNames and eventCategories based on the selected categories and locations
-        let filteredEvents = zip(eventNames, eventCategories).filter { (eventName, category) in
-            // Check if the event's category matches any of the selected categories
-            let matchesCategory = selectedCategories.isEmpty || selectedCategories.contains(category)
-            
-            // Assuming eventLocations contains locations and you need to filter similarly
-            let matchesLocation = selectedLocations.isEmpty || selectedLocations.contains(eventLocations.first(where: { $0 == category }) ?? "")
+          // Filter both eventNames, eventCategories, eventLocations based on selected categories and locations
+          let filteredEvents = zip(zip(eventNames, eventCategories), zip(eventLocations, eventDescriptions)).filter { eventTuple in
+              let (eventNameCategory, locationDescription) = eventTuple
+              let (eventName, category) = eventNameCategory
+              let (location, description) = locationDescription
 
-            return matchesCategory && matchesLocation
-        }
+              let matchesCategory = selectedCategories.isEmpty || selectedCategories.contains(category)
+              let matchesLocation = selectedLocations.isEmpty || selectedLocations.contains(location)
 
-        // Unzip the filtered results into separate arrays
-        filteredEventNames = filteredEvents.map { $0.0 } // Extract event names
-        filteredEventCategories = filteredEvents.map { $0.1 } // Extract event categories
-        
-        collectioniView.reloadData()
-    }
-    
-    func fetchEvents() {
-            db.collection("Events").getDocuments { (snapshot, error) in
-                if let error = error {
-                    print("Error fetching events: \(error)")
-                    return
-                }
+              return matchesCategory && matchesLocation
+          }
 
-                guard let documents = snapshot?.documents, documents.count > 0 else {
-                    print("No events found.")
-                    return
-                }
 
-                self.eventNames.removeAll()
-                self.eventCategories.removeAll()
-                self.eventLocations.removeAll() // Clear locations
 
-                var newEventNames: [String] = []
-                var newEventCategories: [String] = []
-                var newEventLocations: [String] = [] // Array for event locations
+          // Unzip the filtered results into separate arrays
+          filteredEventNames = filteredEvents.map { $0.0.0 } // Extract event names
+          filteredEventCategories = filteredEvents.map { $0.0.1 } // Extract event categories
+          filteredEventLocations = filteredEvents.map { $0.1.0 } // Extract event locations
+          filteredEventDescriptions = filteredEvents.map { $0.1.1 } // Extract event descriptions
 
-                let group = DispatchGroup() // To handle async calls
+          collectioniView.reloadData()
+      }
+      
+      func fetchEvents() {
+          db.collection("Events").getDocuments { (snapshot, error) in
+              if let error = error {
+                  print("Error fetching events: \(error)")
+                  return
+              }
 
-                documents.forEach { document in
-                    group.enter()
-                    let data = document.data()
-                    let eventName = data["Event Name"] as? String ?? "Unnamed Event"
+              guard let documents = snapshot?.documents, documents.count > 0 else {
+                  print("No events found.")
+                  return
+              }
 
-                    if let categoryRef = data["Category"] as? DocumentReference {
-                        categoryRef.getDocument { (categorySnapshot, error) in
-                            if let error = error {
-                                print("Error fetching category: \(error)")
-                            }
+              self.eventNames.removeAll()
+              self.eventCategories.removeAll()
+              self.eventLocations.removeAll() // Clear locations
+              self.eventDescriptions.removeAll() // Clear descriptions
+              self.eventDates.removeAll()
+              
+              var newEventNames: [String] = []
+              var newEventCategories: [String] = []
+              var newEventLocations: [String] = [] // Array for event locations
+              var newEventDescriptions: [String] = [] // Array for event descriptions
+              var newEventDates: [String] = []
+              
+              let group = DispatchGroup() // To handle async calls
 
-                            if let categorySnapshot = categorySnapshot,
-                               let categoryName = categorySnapshot.data()?["Category Name"] as? String {
-                                newEventNames.append(eventName)
-                                newEventCategories.append(categoryName)
-                                newEventLocations.append("Default Location") // Add location data (should come from Firestore or another source)
-                            }
+              documents.forEach { document in
+                  group.enter()
+                  let data = document.data()
+                  let eventName = data["Event Name"] as? String ?? "Unnamed Event"
+                  let description = data["Description"] as? String ?? "No Description" // Get description
 
-                            group.leave() // Notify that this async call is done
-                        }
-                    } else {
-                        let defaultCategory = "General"
-                        newEventNames.append(eventName)
-                        newEventCategories.append(defaultCategory)
-                        newEventLocations.append("Default Location") // Default location if none found
-                        group.leave() // No async needed for default category
-                    }
-                }
+                  // Split the description to extract location
+                  let location = description.components(separatedBy: " - ").first ?? "Unknown Location"
+                  let actualDescription = description.components(separatedBy: " - ").dropFirst().joined(separator: " - ")
 
-                group.notify(queue: .main) {
-                    self.eventNames = newEventNames
-                    self.eventCategories = newEventCategories
-                    self.eventLocations = newEventLocations // Assign fetched locations
-                    self.collectioniView.reloadData()
-                    self.filterEvents() // Now filter the events after the data is fully fetched
-                }
-            }
-        }
+                  if let categoryRef = data["Category"] as? DocumentReference {
+                      categoryRef.getDocument { (categorySnapshot, error) in
+                          if let error = error {
+                              print("Error fetching category: \(error)")
+                          }
+
+                          if let categorySnapshot = categorySnapshot,
+                             let categoryName = categorySnapshot.data()?["Category Name"] as? String {
+                              newEventNames.append(eventName)
+                              newEventCategories.append(categoryName)
+                              newEventLocations.append(location) // Store the extracted location
+                              newEventDescriptions.append(actualDescription) // Store the actual description
+                          }
+
+                          group.leave() // Notify that this async call is done
+                      }
+                  } else {
+                      let defaultCategory = "Fashion" // Only use this if
+                      newEventNames.append(eventName)
+                      newEventCategories.append(defaultCategory)
+                      newEventLocations.append(location) // Default location if none found
+                      newEventDescriptions.append(actualDescription)
+//                      newEventDates.append(date) // Default description
+                      group.leave() // No async needed for default category
+                  }
+              }
+
+              group.notify(queue: .main) {
+                  self.eventNames = newEventNames
+                  self.eventCategories = newEventCategories
+                  self.eventLocations = newEventLocations // Assign fetched locations
+                  self.eventDescriptions = newEventDescriptions // Assign descriptions
+                  self.eventDates = newEventDates
+                  self.collectioniView.reloadData()
+                  self.filterEvents() // Now filter the events after the data is fully fetched
+              }
+          }
+      }
+
 
 
        
@@ -740,17 +751,14 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
               
            func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EveCollectionViewCell", for: indexPath) as! EveCollectionViewCell
-                   print("filtered event names  line 702\(filteredEventNames)" )
-                    print("event categoriee : \(eventCategories)")
+                   
                    let eventName = filteredEventNames[indexPath.row]
                    let eventCategory = filteredEventCategories[indexPath.row] // Get the category for this event
-                  
-               
-                   // Debugging: Log to check the values being passed to the cell
-                   print("Event Name in cell: \(eventName), Event Category in cell: \(eventCategory)")
-                   
-                   // Populate the cell with event data
-                   cell.setup(with: eventName, category: eventCategory)
+                   let eventLocation = filteredEventLocations[indexPath.row] // Get the location for this event
+                   let eventDescription = filteredEventDescriptions[indexPath.row] // Get the description for this event
+                   let eventDate = filteredEventDates[indexPath.row]
+                   // Pass data to the cell
+               cell.setup(with: eventName, category: eventCategory, location: eventLocation, description: eventDescription, date: eventDate)
                    
                    return cell
            }
@@ -785,10 +793,10 @@ class EveCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    func setup(with eventName: String, category: String) {
-            titleLabel.text = eventName
-            setImageForCategory(category)
-        }
+    func setup(with eventName: String, category: String, location: String, description: String, date: String) {
+           titleLabel.text = eventName
+           setImageForCategory(category)
+       }
         
         private func setImageForCategory(_ category: String) {
             print("Setting image for category: \(category)") // Debug log
@@ -996,7 +1004,6 @@ class ContactUsViewController: UIViewController {
 
 
 
-
 class CategoryStore {
     static let shared = CategoryStore() // Singleton instance
     
@@ -1014,6 +1021,9 @@ class CategoryStore {
     var music: [String] = []
     
     var eventLocations: [String] = []
+    
+    // New properties for date-based filtering
+    var eventsByDate: [String: Date] = [:]
     
     func addEventToCategory(eventName: String, category: String) {
         switch category {
@@ -1042,6 +1052,10 @@ class CategoryStore {
         }
     }
     
+    func addEventToDateCategory(eventName: String, eventDate: Date) {
+            eventsByDate[eventName] = eventDate
+        }
+    
     func clearAllCategories() {
         healthWellness.removeAll()
         sports.removeAll()
@@ -1053,6 +1067,7 @@ class CategoryStore {
         food.removeAll()
         artLiterature.removeAll()
         music.removeAll()
+        eventsByDate.removeAll()
     }
 }
 
@@ -1069,7 +1084,7 @@ class CategoryStore {
 
 // MARK: - Filter work
 protocol FilterSearchViewControllerDelegate: AnyObject {
-    func didUpdateFilters(selectedCategories: [String], selectedLocations: [String])
+    func didUpdateFilters(selectedCategories: [String], selectedLocations: [String], selectedDates: [String])
 }
 
 class FilterSearchViewController: UIViewController {
@@ -1078,6 +1093,10 @@ class FilterSearchViewController: UIViewController {
     
         var selectedCategories: [String] = []
         var selectedLocations: [String] = []
+        var selectedDates: [String] = []
+    var savedSelectedCategories: [String] = []
+    var savedSelectedLocations: [String] = []
+    var savedSelectedDates: [String] = []
     
     @IBOutlet weak var resetButton: UIButton!
     
@@ -1125,85 +1144,42 @@ class FilterSearchViewController: UIViewController {
     @IBOutlet weak var SRButton: UIButton!
     var SRChecked = false
     
-    
-    
-    
     @IBOutlet weak var WEButton: UIButton!
     var WEChecked = false
     
     @IBOutlet weak var MOButton: UIButton!
     var MOChecked = false
     
-    var savedSelectedCategories: [String] = []
-        var savedSelectedLocations: [String] = []
-
+    
         
         override func viewDidLoad() {
             super.viewDidLoad()
-//            updateButtonStateForSavedCategories()
             
         }
-    func updateButtonStateForSavedCategories() {
-            
-            HAChecked = savedSelectedCategories.contains("Health Wellness")
-            SPChecked = savedSelectedCategories.contains("Sports")
-            FNChecked = savedSelectedCategories.contains("Fashion")
-            ENChecked = savedSelectedCategories.contains("Entertainment")
-            CMChecked = savedSelectedCategories.contains("Comedy")
-            
-            LTChecked = savedSelectedCategories.contains("Art & Literature")
-            MSChecked = savedSelectedCategories.contains("Music")
-            FDChecked = savedSelectedCategories.contains("Food")
-            EDChecked = savedSelectedCategories.contains("Education")
-            SLChecked = savedSelectedCategories.contains("Social")
-            
-            CLChecked = savedSelectedCategories.contains("The Capital")
-            SRChecked = savedSelectedCategories.contains("Southern")
-            NRChecked = savedSelectedCategories.contains("Northern")
-            MQChecked = savedSelectedCategories.contains("Muharraq")
-            
-            WEChecked = savedSelectedCategories.contains("This Week")
-            MOChecked = savedSelectedCategories.contains("This Month")
-            
-            
-            updateButtonState(button: HAbutton, checkedState: &HAChecked, category: "Health Wellness", isCategory: true)
-            updateButtonState(button: SPButton, checkedState: &SPChecked, category: "Sports", isCategory: true)
-            updateButtonState(button: FNButton, checkedState: &FNChecked, category: "Fashion", isCategory: true)
-            updateButtonState(button: ENButton, checkedState: &ENChecked, category: "Entertainment", isCategory: true)
-            updateButtonState(button: CMButton, checkedState: &CMChecked, category: "Comedy", isCategory: true)
-            updateButtonState(button: EDButton, checkedState: &EDChecked, category: "Education", isCategory: true)
-            updateButtonState(button: FDButton, checkedState: &FDChecked, category: "Food", isCategory: true)
-            updateButtonState(button: LTButton, checkedState: &LTChecked, category: "Art & Literature", isCategory: true)
-            updateButtonState(button: MSButton, checkedState: &MSChecked, category: "Music", isCategory: true)
-            updateButtonState(button: SLButton, checkedState: &SLChecked, category: "Social", isCategory: true)
-            
-            updateButtonState(button: MQButton, checkedState: &MQChecked, category: "Muharraq", isCategory: false)
-            updateButtonState(button: SRButton, checkedState: &SRChecked, category: "Southern", isCategory: false)
-            updateButtonState(button: NRButton, checkedState: &NRChecked, category: "Northern", isCategory: false)
-            updateButtonState(button: CLButton, checkedState: &CLChecked, category: "The Capital", isCategory: false)
-            
-            updateButtonState(button: WEButton, checkedState: &WEChecked, category: "This Week", isCategory: false)
-            updateButtonState(button: MOButton, checkedState: &MOChecked, category: "This Month", isCategory: false)
-            // Update other categories in the same manner
-        }
+    
 
     
     @IBAction func resetClicked(_ sender: UIButton) {
+        
         selectedCategories.removeAll()
         selectedLocations.removeAll()
+        selectedDates.removeAll()
 
         resetButtons()
         
         if let eventSearchVC = self.presentingViewController as? EventSearchViewController {
             eventSearchVC.filteredEventNames = eventSearchVC.eventNames
             eventSearchVC.filteredEventCategories = eventSearchVC.eventCategories
+            eventSearchVC.filteredEventLocations = eventSearchVC.eventLocations
+            eventSearchVC.filteredEventDescriptions = eventSearchVC.eventDescriptions
+            eventSearchVC.filteredEventDates = eventSearchVC.eventDates
             eventSearchVC.collectioniView.reloadData()
         }
     }
     
     @IBAction func doneClicked(_ sender: UIButton) {
                 
-        delegate?.didUpdateFilters(selectedCategories: selectedCategories, selectedLocations: selectedLocations)
+        delegate?.didUpdateFilters(selectedCategories: selectedCategories, selectedLocations: selectedLocations, selectedDates: selectedDates)
                 
                 // Dismiss the filter view
                 self.dismiss(animated: true, completion: nil)
@@ -1218,7 +1194,9 @@ class FilterSearchViewController: UIViewController {
             if isCategory {
                 updateSelectedCategories(category, isSelected: checkedState)
             } else {
+                
                 updateSelectedLocations(category, isSelected: checkedState)
+                
             }
         }
         
@@ -1237,6 +1215,14 @@ class FilterSearchViewController: UIViewController {
                     selectedLocations.removeAll { $0 == location }
                 }
             }
+    
+    func updateSelectedDates(_ date: String, isSelected: Bool) {
+        if isSelected {
+            selectedDates.append(date)
+        } else {
+            selectedDates.removeAll { $0 == date }
+        }
+    }
     
     @IBAction func HATapped(_ sender: UIButton) {
         updateButtonState(button: HAbutton, checkedState: &HAChecked, category: "Health Wellness", isCategory: true)
@@ -1272,15 +1258,12 @@ class FilterSearchViewController: UIViewController {
     }
     
     @IBAction func LRTapped(_ sender: Any) {
-        updateButtonState(button: LTButton, checkedState: &LTChecked, category: "Art & Litarture", isCategory: true)
+        updateButtonState(button: LTButton, checkedState: &LTChecked, category: "Art & Literature", isCategory: true)
     }
     
     @IBAction func MSTapped(_ sender: UIButton) {
         updateButtonState(button: MSButton, checkedState: &MSChecked, category: "Music", isCategory: true)
     }
-    
-    
-    
     
     
     @IBAction func NRTapped(_ sender: UIButton) {
@@ -1302,8 +1285,6 @@ class FilterSearchViewController: UIViewController {
     }
     
     
-    
-    
     @IBAction func WETapped(_ sender: UIButton) {
         updateButtonState(button: WEButton, checkedState: &WEChecked, category: "This Week", isCategory: false)
     }
@@ -1313,11 +1294,11 @@ class FilterSearchViewController: UIViewController {
     }
     
     
+    
    
     
     private func resetButtons() {
-              // Reset button images to "unselected" state
-              // For each button, reset the image to square
+              
               HAbutton.setImage(UIImage(systemName: "square"), for: .normal)
               SPButton.setImage(UIImage(systemName: "square"), for: .normal)
                  FNButton.setImage(UIImage(systemName: "square"), for: .normal)
@@ -1334,7 +1315,7 @@ class FilterSearchViewController: UIViewController {
         MQButton.setImage(UIImage(systemName: "square"), for: .normal)
            WEButton.setImage(UIImage(systemName: "square"), for: .normal)
            MOButton.setImage(UIImage(systemName: "square"), for: .normal)
-              // Reset other buttons similarly
+              
           }
     
     
