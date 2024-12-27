@@ -182,43 +182,16 @@
 				C3EBFD7B2D05C7E900B4D000 /* GoogleService-Info.plist */,
 				C395B12F2CFC996700C073C2 /* AppDelegate.swift */,
 				C395B1312CFC996700C073C2 /* SceneDelegate.swift */,
-				C395B1332CFC996700C073C2 /* ViewController.swift */,
-				C395B15F2CFCA7A800C073C2 /* User.swift */,
+				CF5E96992D1EAFE0005ABE4F /* Login_Registration */,
+				CF5E969A2D1EB036005ABE4F /* Become Organizer */,
+				CF5E969B2D1EB10B005ABE4F /* Admin  */,
 				C395B1652CFCA83900C073C2 /* Organizer.swift */,
+				C395B15F2CFCA7A800C073C2 /* User.swift */,
 				C395B1612CFCA7EE00C073C2 /* Attendee.swift */,
 				C395B1632CFCA80D00C073C2 /* Admin.swift */,
 				C395B1672CFCA9E700C073C2 /* Event.swift */,
-				C395B1352CFC996700C073C2 /* Main.storyboard */,
-				C3EBFD882D05DB6700B4D000 /* Register.swift */,
-				C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */,
-				C3EBFD8A2D05EDB900B4D000 /* LoginPage.swift */,
-				CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */,
-				C3EBFD8D2D05EFF400B4D000 /* ForgotPassword.swift */,
-				5737BDFF2D01D84100B40D01 /* Interests.storyboard */,
-				571D0BBB2D16C00700DA7A27 /* InterestsCategoriesCollectionViewCell.swift */,
 				C395B13A2CFC996900C073C2 /* LaunchScreen.storyboard */,
-				571D0BBD2D16C15F00DA7A27 /* UserInterestsViewController.swift */,
-				DA911F332D130E5900159376 /* RequestForm.swift */,
-				C326037A2D0872DB008BD790 /* BecomeOrg.storyboard */,
-				C326037C2D0875F4008BD790 /* TermsAndConditions.swift */,
-				C3E2873B2D0DA84600CBF459 /* InterestsDisplayPage.swift */,
-				C370DA6D2D0F163300B2A097 /* RequestsViewController.swift */,
-				C33F5DD92D1C4B510000D8A5 /* EventsInfoViewController.swift */,
-				DA911F352D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift */,
-				DA911F362D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib */,
-				C326037E2D0891A3008BD790 /* AdminPage.storyboard */,
-				CE807E762D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift */,
-				CE807E772D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib */,
-				C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */,
-				C313441E2D0D797B00B17BF4 /* AdminTVC.swift */,
-				C313441F2D0D797B00B17BF4 /* AdminTVC.xib */,
-				C3E287372D0DA60500CBF459 /* UsersDisplayController.swift */,
-				DAB6A43E2D118647002FEC6D /* DisplayUsersTableViewCell.swift */,
-				DAB6A43F2D118647002FEC6D /* DisplayUsersTableViewCell.xib */,
-				C3E287392D0DA71700CBF459 /* EventsDisplayController.swift */,
 				C395B1382CFC996900C073C2 /* Assets.xcassets */,
-				57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */,
-				57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */,
 				C395B13D2CFC996900C073C2 /* Info.plist */,
 			);
 			path = Eventosaurus;
@@ -239,6 +212,57 @@
 				C395B1522CFC996900C073C2 /* EventosaurusUITestsLaunchTests.swift */,
 			);
 			path = EventosaurusUITests;
+			sourceTree = "<group>";
+		};
+		CF5E96992D1EAFE0005ABE4F /* Login_Registration */ = {
+			isa = PBXGroup;
+			children = (
+				C395B1352CFC996700C073C2 /* Main.storyboard */,
+				C395B1332CFC996700C073C2 /* ViewController.swift */,
+				C3EBFD882D05DB6700B4D000 /* Register.swift */,
+				C3EBFD8A2D05EDB900B4D000 /* LoginPage.swift */,
+				C3EBFD8D2D05EFF400B4D000 /* ForgotPassword.swift */,
+				5737BDFF2D01D84100B40D01 /* Interests.storyboard */,
+				571D0BBD2D16C15F00DA7A27 /* UserInterestsViewController.swift */,
+			);
+			path = Login_Registration;
+			sourceTree = "<group>";
+		};
+		CF5E969A2D1EB036005ABE4F /* Become Organizer */ = {
+			isa = PBXGroup;
+			children = (
+				C326037A2D0872DB008BD790 /* BecomeOrg.storyboard */,
+				DA911F332D130E5900159376 /* RequestForm.swift */,
+				C326037C2D0875F4008BD790 /* TermsAndConditions.swift */,
+			);
+			path = "Become Organizer";
+			sourceTree = "<group>";
+		};
+		CF5E969B2D1EB10B005ABE4F /* Admin  */ = {
+			isa = PBXGroup;
+			children = (
+				C326037E2D0891A3008BD790 /* AdminPage.storyboard */,
+				C3E287372D0DA60500CBF459 /* UsersDisplayController.swift */,
+				C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */,
+				CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */,
+				C370DA6D2D0F163300B2A097 /* RequestsViewController.swift */,
+				C3E2873B2D0DA84600CBF459 /* InterestsDisplayPage.swift */,
+				DA911F352D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift */,
+				C33F5DD92D1C4B510000D8A5 /* EventsInfoViewController.swift */,
+				571D0BBB2D16C00700DA7A27 /* InterestsCategoriesCollectionViewCell.swift */,
+				DA911F362D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib */,
+				CE807E762D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift */,
+				C313441E2D0D797B00B17BF4 /* AdminTVC.swift */,
+				C313441F2D0D797B00B17BF4 /* AdminTVC.xib */,
+				DAB6A43F2D118647002FEC6D /* DisplayUsersTableViewCell.xib */,
+				C3E287392D0DA71700CBF459 /* EventsDisplayController.swift */,
+				DAB6A43E2D118647002FEC6D /* DisplayUsersTableViewCell.swift */,
+				CE807E772D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib */,
+				C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */,
+				57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */,
+				57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */,
+			);
+			path = "Admin ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

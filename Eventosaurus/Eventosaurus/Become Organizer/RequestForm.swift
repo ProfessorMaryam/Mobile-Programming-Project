@@ -123,7 +123,7 @@ class RequestForm: UIViewController, UITextViewDelegate {
     
     // Helper function to show alerts
     func showAlert(message: String, completion: (() -> Void)? = nil) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default) { _ in
             // Call the completion block after alert is dismissed
             completion?()
@@ -186,7 +186,7 @@ class RequestForm: UIViewController, UITextViewDelegate {
             }
             
             // If a document with the email is found, return true
-            if let document = snapshot?.documents.first {
+            if (snapshot?.documents.first) != nil {
                 completion(true)  // Email already exists in the Requests collection
             } else {
                 completion(false)  // Email does not exist in the Requests collection
