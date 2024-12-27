@@ -532,6 +532,7 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
           var selectedCategories: [String] = []
           var selectedLocations: [String] = []
           var selectedDates: [String] = []
+    
        
        override func viewDidLoad() {
            super.viewDidLoad()
@@ -613,28 +614,30 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
         
        
     func filterEvents() {
-          // Filter both eventNames, eventCategories, eventLocations based on selected categories and locations
-          let filteredEvents = zip(zip(eventNames, eventCategories), zip(eventLocations, eventDescriptions)).filter { eventTuple in
-              let (eventNameCategory, locationDescription) = eventTuple
-              let (eventName, category) = eventNameCategory
-              let (location, description) = locationDescription
+        // Ensure selected categories and locations are non-empty before filtering
+        let filteredEvents = zip(zip(zip(eventNames, eventCategories), zip(eventLocations, eventDescriptions)), eventDates).filter { eventTuple in
+            let ((eventNameCategory, locationDescription), eventDate) = eventTuple
+            let (_, category) = eventNameCategory
+            let (location, _) = locationDescription
+            
+            // Ensure that if no filter is selected, it doesn't filter out all events
+            let matchesCategory = selectedCategories.isEmpty || selectedCategories.contains(category)
+            let matchesLocation = selectedLocations.isEmpty || selectedLocations.contains(location)
+            let matchesDate = selectedDates.isEmpty || selectedDates.contains(eventDate)  // Filter by selected dates
 
-              let matchesCategory = selectedCategories.isEmpty || selectedCategories.contains(category)
-              let matchesLocation = selectedLocations.isEmpty || selectedLocations.contains(location)
+            return matchesCategory && matchesLocation && matchesDate
+        }
 
-              return matchesCategory && matchesLocation
-          }
+        // Unzip the filtered results into separate arrays
+        filteredEventNames = filteredEvents.map { $0.0.0.0 }  // Extract event names
+        filteredEventCategories = filteredEvents.map { $0.0.0.1 }  // Extract event categories
+        filteredEventLocations = filteredEvents.map { $0.0.1.0 }  // Extract event locations
+        filteredEventDescriptions = filteredEvents.map { $0.0.1.1 }  // Extract event descriptions
+        filteredEventDates = filteredEvents.map { $0.1 }  // Extract event dates
 
+        collectioniView.reloadData()
+    }
 
-
-          // Unzip the filtered results into separate arrays
-          filteredEventNames = filteredEvents.map { $0.0.0 } // Extract event names
-          filteredEventCategories = filteredEvents.map { $0.0.1 } // Extract event categories
-          filteredEventLocations = filteredEvents.map { $0.1.0 } // Extract event locations
-          filteredEventDescriptions = filteredEvents.map { $0.1.1 } // Extract event descriptions
-
-          collectioniView.reloadData()
-      }
       
       func fetchEvents() {
           db.collection("Events").getDocuments { (snapshot, error) in
@@ -672,6 +675,28 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
                   let location = description.components(separatedBy: " - ").first ?? "Unknown Location"
                   let actualDescription = description.components(separatedBy: " - ").dropFirst().joined(separator: " - ")
 
+                  var date = ""
+                  if let eventDateTimestamp = data["Date"] as? Timestamp {
+                      let eventDate = eventDateTimestamp.dateValue() // Convert the Firestore timestamp to a Date
+                      
+                      // Determine if the event is this week or this month
+                      
+                      let currentDate = Date()
+                      
+                      let calendar = Calendar.current
+                      // Check if the event is in this week
+                      if calendar.isDate(eventDate, equalTo: currentDate, toGranularity: .weekOfYear) {
+                          date = "This Week"
+                      }
+                      // Check if the event is in this month
+                      else if calendar.isDate(eventDate, equalTo: currentDate, toGranularity: .month) {
+                          date = "This Month"
+                      } else {
+                          date = "Other" // You can adjust this based on your needs
+                      }
+                  }
+                  print("698 date: \(date)")
+                  
                   if let categoryRef = data["Category"] as? DocumentReference {
                       categoryRef.getDocument { (categorySnapshot, error) in
                           if let error = error {
@@ -684,6 +709,7 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
                               newEventCategories.append(categoryName)
                               newEventLocations.append(location) // Store the extracted location
                               newEventDescriptions.append(actualDescription) // Store the actual description
+                              newEventDates.append(date)
                           }
 
                           group.leave() // Notify that this async call is done
@@ -694,7 +720,7 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
                       newEventCategories.append(defaultCategory)
                       newEventLocations.append(location) // Default location if none found
                       newEventDescriptions.append(actualDescription)
-//                      newEventDates.append(date) // Default description
+                      newEventDates.append("Unknown Date") // Default description
                       group.leave() // No async needed for default category
                   }
               }
@@ -1023,7 +1049,7 @@ class CategoryStore {
     var eventLocations: [String] = []
     
     // New properties for date-based filtering
-    var eventsByDate: [String: Date] = [:]
+    var eventDates: [String] = []
     
     func addEventToCategory(eventName: String, category: String) {
         switch category {
@@ -1052,9 +1078,6 @@ class CategoryStore {
         }
     }
     
-    func addEventToDateCategory(eventName: String, eventDate: Date) {
-            eventsByDate[eventName] = eventDate
-        }
     
     func clearAllCategories() {
         healthWellness.removeAll()
@@ -1067,7 +1090,7 @@ class CategoryStore {
         food.removeAll()
         artLiterature.removeAll()
         music.removeAll()
-        eventsByDate.removeAll()
+        
     }
 }
 
@@ -1191,14 +1214,16 @@ class FilterSearchViewController: UIViewController {
             let image = UIImage(systemName: imageName)
             button.setImage(image, for: .normal)
             
-            if isCategory {
-                updateSelectedCategories(category, isSelected: checkedState)
-            } else {
-                
-                updateSelectedLocations(category, isSelected: checkedState)
-                
-            }
-        }
+        if isCategory {
+               updateSelectedCategories(category, isSelected: checkedState)
+           } else if category == "This Week" || category == "This Month" || category == "Other" {
+               // If category is one of the date strings, update selected dates
+               updateSelectedDates(category, isSelected: checkedState)
+           } else {
+               // Otherwise, update selected locations
+               updateSelectedLocations(category, isSelected: checkedState)
+           }
+       }
         
         func updateSelectedCategories(_ category: String, isSelected: Bool) {
                 if isSelected {
@@ -1281,7 +1306,7 @@ class FilterSearchViewController: UIViewController {
     }
     
     @IBAction func SRTapped(_ sender: UIButton) {
-        updateButtonState(button: SRButton, checkedState: &SRChecked, category: "The Southern", isCategory: false)
+        updateButtonState(button: SRButton, checkedState: &SRChecked, category: "Southern", isCategory: false)
     }
     
     
