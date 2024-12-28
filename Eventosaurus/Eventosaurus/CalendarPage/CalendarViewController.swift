@@ -16,6 +16,15 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         setMonthView()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "YourSegueIdentifier" {
+            guard let destination = segue.destination as? MenuPageViewController else { return }
+            let navigationController = UINavigationController(rootViewController: destination)
+            self.present(navigationController, animated: true, completion: nil)
+        }
+    }
+    
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 

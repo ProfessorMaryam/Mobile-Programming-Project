@@ -25,6 +25,8 @@ class HomePageViewController: UIViewController {
     
         
     }
+    
+    
    
     
     override func viewWillLayoutSubviews() {
@@ -57,6 +59,17 @@ class HomePageViewController: UIViewController {
 
 
 
+class MenuPageViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    
+        
+    }
+    
+    
+}
     
 
 
