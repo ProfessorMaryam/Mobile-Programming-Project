@@ -128,8 +128,7 @@ class EventsDisplayController: UIViewController, UITableViewDataSource, UITableV
         
         // Instantiate the ViewFeedback controller
         if let feedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewFeedback") as? ViewFeedback {
-            feedbackVC.eventID = "Events/" + eventID // Pass the EventID to ViewFeedback
-            
+          
             // Set the title of the navigation bar (optional)
             feedbackVC.title = "Event Feedback"
             

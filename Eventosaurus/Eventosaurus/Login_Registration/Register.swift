@@ -144,6 +144,9 @@ class Register: UIViewController {
             
             // Successfully stored user in Firestore, proceed to the next screen
             print("User successfully added to Firestore!")
+            
+            UserDefaults.standard.set(true, forKey: "isLoggedIn")
+            UserDefaults.standard.synchronize()
             self.navigateToUserInterests()  // Navigate to the UserInterests screen
         }
     }
