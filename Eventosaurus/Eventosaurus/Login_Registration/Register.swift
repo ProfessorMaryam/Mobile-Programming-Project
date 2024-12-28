@@ -19,6 +19,7 @@ class Register: UIViewController {
     @IBOutlet weak var passwordTxtfield: UITextField!
     @IBOutlet weak var confirmPasswordTxtField: UITextField!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +31,7 @@ class Register: UIViewController {
     }
 
     @IBAction func didTapSignUp(_ sender: Any) {
-       
+        
         //if everything is valid:
         if isValid() {
         
@@ -55,6 +56,7 @@ class Register: UIViewController {
                     self.emailReqLabel.text = "Email already exists. Please try another."
                 } else {
                     // If email doesn't exist, store user in Firestore
+              
                     self.storeUserInFirestore(newUser)
                 }
             }
@@ -144,6 +146,8 @@ class Register: UIViewController {
             
             // Successfully stored user in Firestore, proceed to the next screen
             print("User successfully added to Firestore!")
+            //save user email for access in other storyboards
+            User.loggedInemail = self.emailTxtField.text ?? ""
             self.navigateToUserInterests()  // Navigate to the UserInterests screen
         }
     }
