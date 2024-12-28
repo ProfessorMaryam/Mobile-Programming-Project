@@ -81,7 +81,6 @@ class AdminPageTableViewController: UIViewController, UITableViewDataSource, UIT
         case 2: //if cell at index 2 is clicked....
             if let categoriesVC = storyboard.instantiateViewController(withIdentifier: "InterestsVC") as? InterestsDisplayPage {
                 categoriesVC.title = "Categories"
-                self.navigationController?.pushViewController(categoriesVC, animated: true)
             }
         case 3: //if cell at index 3 is clicked....
             if let requestsVC = storyboard.instantiateViewController(withIdentifier: "RequestsVC") as? RequestsViewController {
