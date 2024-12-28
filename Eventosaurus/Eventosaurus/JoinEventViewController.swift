@@ -7,11 +7,18 @@ class joinEventPageViewController: UIViewController {
     // Create an instance of Firestore to interact with the database
     let db = Firestore.firestore()
     
+    @IBOutlet weak var backButton: UIButton!
     // Property to get the current user's ID if they are logged in
     var currentUserID: String? {
         return Auth.auth().currentUser?.uid
     }
     
+    @IBAction func BackbuttonTapped(_ sender: Any) {
+        
+        navigateToHomePage()
+        
+        
+    }
     // Property to hold the event ID for the event the user wants to join
     var eventID: String?
 
@@ -56,6 +63,24 @@ class joinEventPageViewController: UIViewController {
                 alertController.addAction(doneAction)
                 self.present(alertController, animated: true, completion: nil)
             }
+        }
+    }
+    
+    
+    
+    // Function to navigate to the "HomePage" storyboard modally
+    func navigateToHomePage() {
+        // Load the "HomePage" storyboard
+        let storyboard = UIStoryboard(name: "HomePage ", bundle: nil)
+        
+        // Instantiate the "EventHomeViewController" by its identifier
+        if let eventHomeVC = storyboard.instantiateViewController(withIdentifier: "EventHomeViewController") as? EventHomeViewController {
+            // Present the EventHomeViewController modally
+            eventHomeVC.modalPresentationStyle = .fullScreen
+            present(eventHomeVC, animated: true, completion: nil)
+        } else {
+            // Handle the error if the view controller could not be casted
+            print("Error: Unable to cast the view controller to EventHomeViewController")
         }
     }
 }

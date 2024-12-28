@@ -123,13 +123,12 @@ class EventsDisplayController: UIViewController, UITableViewDataSource, UITableV
     // MARK: - Navigate to ViewFeedback and Pass EventID
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Get the selected event and its document ID
-        let selectedEvent = filteredEvents[indexPath.row]
-        let eventID = selectedEvent.documentID
+       // let selectedEvent = filteredEvents[indexPath.row]
+      //  let eventID = selectedEvent.documentID
         
         // Instantiate the ViewFeedback controller
         if let feedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewFeedback") as? ViewFeedback {
-            feedbackVC.eventID = "Events/" + eventID // Pass the EventID to ViewFeedback
-            
+          
             // Set the title of the navigation bar (optional)
             feedbackVC.title = "Event Feedback"
             
