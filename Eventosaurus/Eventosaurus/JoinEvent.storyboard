@@ -73,6 +73,15 @@
                                             <segue destination="cAc-uP-RBa" kind="custom" id="ZoL-HC-7WK"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cyc-RO-d6T">
+                                        <rect key="frame" x="34" y="668" width="61" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="back"/>
+                                        <connections>
+                                            <action selector="BackbuttonTapped:" destination="MOH-gj-7ZB" eventType="touchUpInside" id="5kn-rr-2a8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -110,6 +119,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KhI-zt-Pol"/>
+                    <connections>
+                        <outlet property="backButton" destination="Cyc-RO-d6T" id="Rzp-WL-BA6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdd-t0-vrv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
