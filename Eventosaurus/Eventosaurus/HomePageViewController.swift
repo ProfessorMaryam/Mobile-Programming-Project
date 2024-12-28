@@ -8,7 +8,7 @@
 import UIKit
 
 import FirebaseFirestore
-
+import FirebaseAuth
 
 
 
@@ -57,194 +57,6 @@ class HomePageViewController: UIViewController {
 
 
 
-
-
-
-
-
-class WriteFeedbackViewController: UIViewController {
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
-    
-}
-
-
-
-
-
-
-// MARK: - DisplayNameViewController
-
-class DisplayNameViewController: UIViewController {
-    
-    @IBOutlet weak var CategoryName: UILabel!
-    
-    @IBOutlet weak var EventNameL: UILabel!
-    
-    
-    let db = Firestore.firestore()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Fetch a random event name from Firestore
-        showFeedbackAlert()
-        fetchRandomEvent()
-    }
-    
-    @IBAction func buttonShow(_ sender: UIButton) {
-        showFeedbackAlert()
-    }
-    
-    func showFeedbackAlert() {
-        // Create the alert controller
-        let alertController = UIAlertController(title: "How did you find today's event?", message: nil, preferredStyle: .alert)
-
-        // Add a custom star rating view
-        let starRatingView = UIStackView()
-        starRatingView.axis = .horizontal
-        starRatingView.distribution = .fillEqually
-        starRatingView.spacing = 5
-
-        // Create the 5 star buttons
-        for index in 0..<5 {
-            let starButton = UIButton(type: .system)
-            starButton.setTitle("★", for: .normal)
-            starButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            starButton.tintColor = .lightGray
-            starButton.tag = index + 1 // Assign tag to identify which star was tapped
-            starButton.addTarget(self, action: #selector(starTapped(_:)), for: .touchUpInside)
-            starRatingView.addArrangedSubview(starButton)
-        }
-
-        // Convert starRatingView to a UIViewController to add it to the alert
-        let hostingController = UIViewController()
-        hostingController.view = starRatingView
-        hostingController.preferredContentSize = CGSize(width: 200, height: 50)
-        
-        // Set the content view of the alert to be the star rating view
-        alertController.setValue(hostingController, forKey: "contentViewController")
-
-        // Add "Feedback" button
-        let feedbackAction = UIAlertAction(title: "Feedback", style: .default) { _ in
-            print("Feedback button tapped")
-            self.navigateToFeedbackPage()
-        }
-        alertController.addAction(feedbackAction)
-
-        // Add "Cancel" and "Confirm" actions
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
-            print("Confirm button tapped")
-        }
-        alertController.addAction(cancelAction)
-        alertController.addAction(confirmAction)
-
-        // Present the alert
-        present(alertController, animated: true, completion: nil)
-    }
-    @objc func starTapped(_ sender: UIButton) {
-        // Handle star tap logic, e.g., change the tint color for selected stars
-        guard let stackView = sender.superview as? UIStackView else { return }
-        
-        for star in stackView.arrangedSubviews {
-            if let button = star as? UIButton {
-                button.tintColor = .lightGray
-            }
-        }
-        
-        // Highlight stars up to the tapped one
-        if let index = stackView.arrangedSubviews.firstIndex(of: sender) {
-            for i in 0...index {
-                if let button = stackView.arrangedSubviews[i] as? UIButton {
-                    button.tintColor = .systemYellow
-                }
-            }
-        }
-    }
-    func fetchRandomEvent() {
-        // Reference to the "events" collection in Firestore
-        db.collection("Events").getDocuments { (snapshot, error) in
-            if let error = error {
-                print("Error fetching events: \(error)")
-                return
-            }
-            
-            // Check if we have documents in the snapshot
-            guard let documents = snapshot?.documents, documents.count > 0 else {
-                print("No events found.")
-                return
-            }
-            
-            // Randomly pick an event from the documents
-            let randomIndex = Int.random(in: 0..<documents.count)
-            let randomEvent = documents[randomIndex]
-            
-            // Extract the event name from the document data
-            if let eventName = randomEvent.data()["Event Name"] as? String {
-                // Set the event name on the label
-                self.EventNameL.text = eventName
-            } else {
-                print("Event Name not found in the document.")
-                return
-            }
-            
-            // Extract the category reference
-            if let categoryRef = randomEvent.data()["Category"] as? DocumentReference {
-                // Fetch the category document using the reference
-                categoryRef.getDocument { (categorySnapshot, error) in
-                    if let error = error {
-                        print("Error fetching category: \(error)")
-                        return
-                    }
-                    
-                    // Check if the category document exists
-                    if let categorySnapshot = categorySnapshot, categorySnapshot.exists {
-                        // Extract the category name from the category document
-                        if let categoryName = categorySnapshot.data()?["Category Name"] as? String {
-                            // Set the category name on the label
-                            self.CategoryName.text = categoryName
-                        } else {
-                            print("Category Name not found in the document.")
-                        }
-                    } else {
-                        print("Category document does not exist.")
-                    }
-                }
-            } else {
-                print("Category reference not found in the event document.")
-            }
-        }
-    }
-    func navigateToFeedbackPage() {
-        // Ensure that the storyboard name is correct
-        let storyboardName = "HomePage "  // Ensure this matches the name of your storyboard
-
-        // Create an instance of the storyboard
-        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
-
-        // Attempt to instantiate WriteFeedbackViewController from the storyboard using the storyboard ID
-        if let feedbackVC = storyboard.instantiateViewController(withIdentifier: "WriteFeedbackViewController") as? WriteFeedbackViewController {
-            
-            // Set modal presentation style
-            feedbackVC.modalPresentationStyle = .fullScreen
-            
-            // Present the feedback view controller
-            self.present(feedbackVC, animated: true, completion: nil)
-        } else {
-            // Debugging message if the view controller cannot be found
-            print("Could not instantiate WriteFeedbackViewController from the storyboard.")
-        }
-    }
-
-
-    }
-
     
 
 
@@ -267,6 +79,9 @@ class EventHomeViewController: UIViewController {
     var eventNames: [String] = []
     var eventCategories: [String] = [] // Store the category names
     
+    var eventID: String? // The event ID for the event user joined
+        var selectedStarRating: Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -276,7 +91,8 @@ class EventHomeViewController: UIViewController {
         
         
         fetchEvents()
-        
+        let eventID = "3plSFQlyblfBbgvkxSGGH" // Replace this with the actual event ID you want to use
+        showFeedbackAlert(forEvent: eventID)
     }
     
     override func viewWillLayoutSubviews() {
@@ -300,6 +116,147 @@ class EventHomeViewController: UIViewController {
 
     // Insert gradient as the background
     self.view.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    func showFeedbackAlert(forEvent eventID: String) {
+        // Check if the alert has already been shown for this session
+        if UserDefaults.standard.bool(forKey: "hasShownFeedbackAlertForEvent_\(eventID)") {
+            print("Alert already shown for event \(eventID). Skipping...")
+            return  // Do nothing if the alert has already been shown
+        }
+
+        print("Attempting to show the alert for event \(eventID)...")
+        
+        let alertController = UIAlertController(title: "How did you find today's event?", message: nil, preferredStyle: .alert)
+        
+        // Add a custom star rating view
+        let starRatingView = UIStackView()
+        starRatingView.axis = .horizontal
+        starRatingView.distribution = .fillEqually
+        starRatingView.spacing = 5
+        
+        // Create the 5 star buttons
+        for index in 0..<5 {
+            let starButton = UIButton(type: .system)
+            starButton.setTitle("★", for: .normal)
+            starButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+            starButton.tintColor = .lightGray  // Initial tint color is light gray
+            starButton.tag = index + 1 // Assign tag to identify which star was tapped
+            starButton.addTarget(self, action: #selector(starTapped(_:)), for: .touchUpInside)
+            starRatingView.addArrangedSubview(starButton)
+        }
+        
+        // Convert starRatingView to a UIViewController to add it to the alert
+        let hostingController = UIViewController()
+        hostingController.view = starRatingView
+        hostingController.preferredContentSize = CGSize(width: 200, height: 50)
+        
+        // Set the content view of the alert to be the star rating view
+        alertController.setValue(hostingController, forKey: "contentViewController")
+        
+        // Add "Feedback" button
+        let feedbackAction = UIAlertAction(title: "Feedback", style: .default) { _ in
+            print("Feedback button tapped")
+            self.navigateToFeedbackPage(forEvent: eventID)
+        }
+        alertController.addAction(feedbackAction)
+        
+        // Add "Cancel" and "Confirm" actions
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
+            print("Confirm button tapped")
+            
+            // Save the star rating when "Confirm" is tapped, if any star rating is selected
+            if self.selectedStarRating > 0 {
+                self.saveStarRating(stars: self.selectedStarRating, eventID: eventID)
+            } else {
+                print("No star rating selected")
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        
+        // Present the alert
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        // Set the flag in UserDefaults to indicate that the alert has been shown for this event
+        UserDefaults.standard.set(true, forKey: "hasShownFeedbackAlertForEvent_\(eventID)")
+    }
+
+    
+    
+
+        // Method to handle star taps
+        @objc func starTapped(_ sender: UIButton) {
+            // Get the stack view containing the star buttons
+                    guard let stackView = sender.superview as? UIStackView else { return }
+                    
+                    // Reset the tint color of all stars to light gray
+            for star in stackView.arrangedSubviews {
+                if let button = star as? UIButton {
+                    button.tintColor = .lightGray
+                }}
+            
+            if let index = stackView.arrangedSubviews.firstIndex(of: sender) {
+                      // Highlight stars up to the tapped one
+                      for i in 0...index {
+                          if let button = stackView.arrangedSubviews[i] as? UIButton {
+                              button.tintColor = .systemYellow
+                          }
+                      }
+        }
+            
+            self.selectedStarRating = sender.tag
+                    print("Star selected: \(selectedStarRating)")
+                }
+
+
+        // Save the star rating to Firestore
+        func saveStarRating(stars: Int, eventID: String) {
+            let db = Firestore.firestore()
+            
+            // Save the star rating data to Firestore (similar to your previous code)
+            let feedbackData: [String: Any] = [
+                "Stars": stars,
+                "EventID": eventID
+            ]
+            
+            db.collection("FeedBack").addDocument(data: feedbackData) { error in
+                if let error = error {
+                    print("Error saving star rating: \(error.localizedDescription)")
+                } else {
+                    print("Star rating saved successfully!")
+                }
+            }
+
+            // After saving feedback, set didReceive to true so alert doesn't show again
+            UserDefaults.standard.set(true, forKey: "didReceiveFeedback-\(eventID)")
+            
+        }
+    
+    func navigateToFeedbackPage(forEvent eventID: String) {
+        let storyboardName = "FeedBack"  // Ensure this matches the name of your storyboard
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        
+        // Try to instantiate the feedback view controller using the correct storyboard ID
+        if let feedbackVC = storyboard.instantiateViewController(withIdentifier: "WriteFeedbackViewController") as? WriteFeedbackViewController {
+            
+            // Pass the selected star rating and event ID
+            feedbackVC.starRating = self.selectedStarRating  // Pass the selected star rating here
+            feedbackVC.eventID = eventID  // Pass the eventID here
+            
+            // Ensure the modal is presented correctly
+            feedbackVC.modalPresentationStyle = .fullScreen  // Use .fullScreen or .pageSheet depending on your needs
+            print("Presenting feedback page for eventID: \(eventID)") // Log for debugging
+            
+            // Present the feedback view controller modally
+            self.present(feedbackVC, animated: true, completion: nil)
+        } else {
+            print("Could not instantiate WriteFeedbackViewController from the storyboard.") // Log error
+        }
     }
     
     

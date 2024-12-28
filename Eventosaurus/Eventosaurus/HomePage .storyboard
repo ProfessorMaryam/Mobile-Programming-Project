@@ -57,7 +57,7 @@
         <!--Event Home View Controller-->
         <scene sceneID="lbg-bo-55b">
             <objects>
-                <viewController id="6Tc-Qy-AiF" customClass="EventHomeViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventHomeViewController" id="6Tc-Qy-AiF" customClass="EventHomeViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c2U-qS-Bh4">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,6 +131,7 @@
                                                 <connections>
                                                     <outlet property="eventImageView" destination="bAh-SQ-ddr" id="ZET-bS-rPN"/>
                                                     <outlet property="titleLabel" destination="Kba-MN-ZYx" id="8mI-Za-oOe"/>
+                                                    <segue destination="JVO-Uy-GbO" kind="presentation" modalPresentationStyle="fullScreen" id="AoR-xy-dSj"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -190,114 +191,13 @@
             </objects>
             <point key="canvasLocation" x="3757.6744186046512" y="9.0128755364806867"/>
         </scene>
-        <!--Write Feedback View Controller-->
-        <scene sceneID="A9g-2l-heF">
+        <!--joinEventPageViewController-->
+        <scene sceneID="WIh-2U-maK">
             <objects>
-                <viewController storyboardIdentifier="WriteFeedbackViewController" id="ILX-es-1A3" customClass="WriteFeedbackViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="v82-DT-f7d">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="hdp-Ci-wdu">
-                                <rect key="frame" x="-49" y="0.0" width="528" height="926"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="926" id="mfx-i8-AWR"/>
-                                </constraints>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2e-zy-OFq">
-                                <rect key="frame" x="0.0" y="59" width="430" height="873"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5y-wR-vhU">
-                                        <rect key="frame" x="33" y="28" width="50" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="">
-                                            <color key="baseForegroundColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhU-b6-Adx">
-                                        <rect key="frame" x="133" y="651" width="126" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Submit">
-                                                    <attributes>
-                                                        <font key="NSFont" size="20" name="Helvetica"/>
-                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <color key="baseBackgroundColor" red="0.66293680669999999" green="0.35248607399999998" blue="0.65909749269999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </buttonConfiguration>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Write your feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qh-lN-Lht">
-                                        <rect key="frame" x="93" y="32" width="207" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <color key="textColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geM-4Y-lWj">
-                                        <rect key="frame" x="33" y="71" width="326" height="555"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x1B-Wu-V6N">
-                                                <rect key="frame" x="18" y="23" width="291" height="508"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                                <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="15"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </textView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.90523688730275498" green="0.81533360858776405" blue="0.97294741870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="T7w-JX-9cp"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="hdp-Ci-wdu" firstAttribute="centerX" secondItem="P2e-zy-OFq" secondAttribute="centerX" id="45A-lR-IFj"/>
-                            <constraint firstItem="P2e-zy-OFq" firstAttribute="top" secondItem="T7w-JX-9cp" secondAttribute="top" id="9pt-LS-nat"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="P2e-zy-OFq" secondAttribute="bottom" constant="-34" id="AJE-xM-O3t"/>
-                            <constraint firstItem="hdp-Ci-wdu" firstAttribute="leading" secondItem="v82-DT-f7d" secondAttribute="leadingMargin" constant="-69" id="DmQ-GL-A6g"/>
-                            <constraint firstItem="hdp-Ci-wdu" firstAttribute="centerX" secondItem="v82-DT-f7d" secondAttribute="centerX" id="I3P-t1-1i3"/>
-                            <constraint firstItem="P2e-zy-OFq" firstAttribute="leading" secondItem="T7w-JX-9cp" secondAttribute="leading" id="eSr-Sf-U90"/>
-                            <constraint firstItem="hdp-Ci-wdu" firstAttribute="top" secondItem="v82-DT-f7d" secondAttribute="topMargin" constant="-59" id="xxp-hi-24C"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jyv-7O-U4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="joinEventPageViewController" storyboardName="JoinEvent" referencedIdentifier="joinEventPageViewController" id="JVO-Uy-GbO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qIt-fa-Fg1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3031" y="839"/>
+            <point key="canvasLocation" x="3758" y="432"/>
         </scene>
         <!--Event Search View Controller-->
         <scene sceneID="Hew-CP-JXi">
@@ -1737,7 +1637,6 @@ Aminatour1@evento.saurus.bh</string>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
-        <image name="Background" width="301.66665649414062" height="706.66668701171875"/>
         <image name="DinoProfile" width="828" height="828"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="bell.circle" catalog="system" width="128" height="123"/>
