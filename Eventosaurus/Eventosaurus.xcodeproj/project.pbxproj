@@ -69,8 +69,8 @@
 		DA911F382D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA911F362D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib */; };
 		DAB6A4402D118647002FEC6D /* DisplayUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6A43E2D118647002FEC6D /* DisplayUsersTableViewCell.swift */; };
 		DAB6A4412D118647002FEC6D /* DisplayUsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB6A43F2D118647002FEC6D /* DisplayUsersTableViewCell.xib */; };
-		DCB99AB52D205D4F00AC9EFF /* FeedBack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB99AB42D205D4F00AC9EFF /* FeedBack.storyboard */; };
-		DCB99AB72D205D7800AC9EFF /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB99AB62D205D7700AC9EFF /* FeedBackViewController.swift */; };
+		DCB99ABE2D20791500AC9EFF /* FeedBack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB99ABC2D20791500AC9EFF /* FeedBack.storyboard */; };
+		DCB99ABF2D20791500AC9EFF /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB99ABD2D20791500AC9EFF /* FeedBackViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,8 +152,8 @@
 		DA911F362D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayRequestsTVCTableViewCell.xib; sourceTree = "<group>"; };
 		DAB6A43E2D118647002FEC6D /* DisplayUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUsersTableViewCell.swift; sourceTree = "<group>"; };
 		DAB6A43F2D118647002FEC6D /* DisplayUsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayUsersTableViewCell.xib; sourceTree = "<group>"; };
-		DCB99AB42D205D4F00AC9EFF /* FeedBack.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FeedBack.storyboard; path = "../../../Mobile-Programming-Project 2/Eventosaurus/Eventosaurus/FeedBack.storyboard"; sourceTree = "<group>"; };
-		DCB99AB62D205D7700AC9EFF /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedBackViewController.swift; path = "../../../Mobile-Programming-Project 2/Eventosaurus/Eventosaurus/FeedBackViewController.swift"; sourceTree = "<group>"; };
+		DCB99ABC2D20791500AC9EFF /* FeedBack.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedBack.storyboard; sourceTree = "<group>"; };
+		DCB99ABD2D20791500AC9EFF /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,13 +222,13 @@
 				C395B1632CFCA80D00C073C2 /* Admin.swift */,
 				C395B1672CFCA9E700C073C2 /* Event.swift */,
 				C39C866B2D1EFFE700EA1AFE /* HomePage .storyboard */,
-				DCB99AB42D205D4F00AC9EFF /* FeedBack.storyboard */,
-				DCB99AB62D205D7700AC9EFF /* FeedBackViewController.swift */,
 				C39C866D2D1EFFF400EA1AFE /* HomePageViewController.swift */,
 				C39C866F2D1F09D100EA1AFE /* SettingsMenuViewController.swift */,
 				C395B13A2CFC996900C073C2 /* LaunchScreen.storyboard */,
 				C395B1382CFC996900C073C2 /* Assets.xcassets */,
 				C395B13D2CFC996900C073C2 /* Info.plist */,
+				DCB99ABC2D20791500AC9EFF /* FeedBack.storyboard */,
+				DCB99ABD2D20791500AC9EFF /* FeedBackViewController.swift */,
 				C30CAB2F2D1EFC1500892F01 /* JoinEvent.storyboard */,
 				C30CAB332D1EFD2500892F01 /* JoinEventViewController.swift */,
 				C30CAB352D1EFD5500892F01 /* LeaveEvent.storyboard */,
@@ -430,7 +430,7 @@
 				C3EBFD7C2D05C7E900B4D000 /* GoogleService-Info.plist in Resources */,
 				C395B13C2CFC996900C073C2 /* LaunchScreen.storyboard in Resources */,
 				CE807E792D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib in Resources */,
-				DCB99AB52D205D4F00AC9EFF /* FeedBack.storyboard in Resources */,
+				DCB99ABE2D20791500AC9EFF /* FeedBack.storyboard in Resources */,
 				C30CAB3E2D1EFE2900892F01 /* CreateEvent.storyboard in Resources */,
 				DAB6A4412D118647002FEC6D /* DisplayUsersTableViewCell.xib in Resources */,
 				C395B1392CFC996900C073C2 /* Assets.xcassets in Resources */,
@@ -484,7 +484,7 @@
 				C33F5DDA2D1C4B510000D8A5 /* EventsInfoViewController.swift in Sources */,
 				C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */,
 				C3E2873A2D0DA71700CBF459 /* EventsDisplayController.swift in Sources */,
-				DCB99AB72D205D7800AC9EFF /* FeedBackViewController.swift in Sources */,
+				DCB99ABF2D20791500AC9EFF /* FeedBackViewController.swift in Sources */,
 				C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */,
 				C3EBFD8C2D05EDBD00B4D000 /* LoginPage.swift in Sources */,
 				C30CAB402D1EFE4A00892F01 /* CreateEventViewController.swift in Sources */,

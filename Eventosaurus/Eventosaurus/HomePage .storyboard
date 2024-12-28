@@ -1427,8 +1427,8 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i99-Nb-uxn">
                                 <rect key="frame" x="0.0" y="40" width="430" height="892"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKU-3P-oX2">
-                                        <rect key="frame" x="156" y="24" width="115" height="27"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKU-3P-oX2">
+                                        <rect key="frame" x="106" y="24" width="217" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1494,8 +1494,8 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                             <segue destination="LnL-5D-gjp" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="ot9-7m-xg2"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How can we help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGo-cW-lPm">
-                                        <rect key="frame" x="51" y="252" width="149" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How can we help" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGo-cW-lPm">
+                                        <rect key="frame" x="51" y="252" width="220" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="0.49319273229999999" green="0.26145282390000002" blue="0.4823947549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -1510,16 +1510,16 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                     <constraint firstItem="QGo-cW-lPm" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="51" id="F4w-OH-ihl"/>
                                     <constraint firstAttribute="trailing" secondItem="uEo-Mr-XIY" secondAttribute="trailing" constant="54" id="HEv-Il-IhT"/>
                                     <constraint firstAttribute="trailing" secondItem="mp0-6i-3Si" secondAttribute="trailing" constant="51" id="Qv8-yk-0jp"/>
+                                    <constraint firstAttribute="trailing" secondItem="rKU-3P-oX2" secondAttribute="trailing" constant="107" id="Xly-Gc-jXP"/>
                                     <constraint firstAttribute="trailing" secondItem="ihI-PA-3hh" secondAttribute="trailing" constant="152" id="d48-RZ-IP9"/>
-                                    <constraint firstAttribute="trailing" secondItem="rKU-3P-oX2" secondAttribute="trailing" constant="159" id="ddn-hI-xtp"/>
                                     <constraint firstItem="mp0-6i-3Si" firstAttribute="top" secondItem="OJd-6Y-eOR" secondAttribute="bottom" constant="33" id="eXS-k1-a1n"/>
                                     <constraint firstItem="OJd-6Y-eOR" firstAttribute="top" secondItem="rKU-3P-oX2" secondAttribute="bottom" constant="64" id="g2N-n8-Se3"/>
+                                    <constraint firstAttribute="trailing" secondItem="QGo-cW-lPm" secondAttribute="trailing" constant="159" id="gSO-ZF-pBa"/>
+                                    <constraint firstItem="rKU-3P-oX2" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="106" id="iDv-Bb-Qxh"/>
                                     <constraint firstItem="mp0-6i-3Si" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="51" id="lbB-xy-Zan"/>
                                     <constraint firstAttribute="bottom" secondItem="ihI-PA-3hh" secondAttribute="bottom" constant="57" id="oY4-D2-phF"/>
                                     <constraint firstItem="rKU-3P-oX2" firstAttribute="top" secondItem="i99-Nb-uxn" secondAttribute="top" constant="24" id="sCX-sc-Fha"/>
                                     <constraint firstItem="ihI-PA-3hh" firstAttribute="top" secondItem="uEo-Mr-XIY" secondAttribute="bottom" constant="70" id="wbt-dR-mG9"/>
-                                    <constraint firstItem="rKU-3P-oX2" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="156" id="yIv-1d-JmN"/>
-                                    <constraint firstAttribute="trailing" secondItem="QGo-cW-lPm" secondAttribute="trailing" constant="230" id="yMu-rw-yw6"/>
                                     <constraint firstItem="QGo-cW-lPm" firstAttribute="top" secondItem="mp0-6i-3Si" secondAttribute="bottom" constant="36" id="zGo-Ie-enl"/>
                                     <constraint firstItem="OJd-6Y-eOR" firstAttribute="leading" secondItem="i99-Nb-uxn" secondAttribute="leading" constant="51" id="zVc-BA-ChX"/>
                                 </constraints>
@@ -1630,7 +1630,7 @@ Aminatour1@evento.saurus.bh</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uns-kt-Srp"/>
+        <segue reference="ot9-7m-xg2"/>
         <segue reference="U3y-aa-01n"/>
         <segue reference="ona-u7-5V5"/>
         <segue reference="DwF-wQ-wJU"/>
