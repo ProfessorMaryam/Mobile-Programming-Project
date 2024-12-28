@@ -8,13 +8,24 @@
 import UIKit
 
 class UserViewOrgNavController: UINavigationController {
-
+    var organizerEmail: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // Get the storyboard that contains UserViewOrgViewController
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        
+        // Instantiate UserViewOrgViewController from that storyboard
+        if let userViewOrgVC = storyboard.instantiateViewController(withIdentifier: "UserViewOrgViewController") as? UserViewOrgViewController {
+            // Pass the email
+            userViewOrgVC.organizerEmail = self.organizerEmail
+            
+            // Set it as the root view controller
+            setViewControllers([userViewOrgVC], animated: false)
+        }
     }
-    
+}
 
     /*
     // MARK: - Navigation
@@ -26,4 +37,4 @@ class UserViewOrgNavController: UINavigationController {
     }
     */
 
-}
+

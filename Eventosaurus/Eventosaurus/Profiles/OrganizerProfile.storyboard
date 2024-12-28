@@ -163,9 +163,6 @@
                     <navigationItem key="navigationItem" id="tcq-RA-JBh">
                         <barButtonItem key="leftBarButtonItem" image="arrow.backward" catalog="system" id="k3f-7w-Q2K">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="O4N-eG-kWg" kind="presentation" modalPresentationStyle="fullScreen" id="6mx-Qc-AKP"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -323,14 +320,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iC4-0T-Xz0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="109" y="-2"/>
-        </scene>
-        <!--HomePage-->
-        <scene sceneID="HPq-aQ-OgZ">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="HomePage" id="O4N-eG-kWg" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wk5-w8-Ven" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="514" y="-392"/>
         </scene>
     </scenes>
     <resources>

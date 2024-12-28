@@ -875,16 +875,19 @@ class OrganizerSearchViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var collectioneView: UICollectionView!
-    var organizers: [String] = []
-    var filteredOrgNames: [String] = []
+    var organizers: [(name: String, email: String)] = []
+      var filteredOrgNames: [(name: String, email: String)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("ViewDidLoad called")
         collectioneView.dataSource = self
         collectioneView.delegate = self
         collectioneView.collectionViewLayout = UICollectionViewFlowLayout()
         searchBar.delegate = self
         fetchOrganizers()
+        
+        
         }
     
     override func viewWillLayoutSubviews() {
@@ -924,10 +927,13 @@ class OrganizerSearchViewController: UIViewController, UISearchBarDelegate {
                 
                 // Map fetched users' full names to the organizers array
                 self.organizers = snapshot?.documents.compactMap { document in
-                    let data = document.data()
-                    return data["Full Name"] as? String  // Extract Full Name
-                } ?? []
-                
+                            let data = document.data()
+                            guard let fullName = data["Full Name"] as? String,
+                                  let email = data["Email"] as? String else {
+                                return nil
+                            }
+                            return (name: fullName, email: email)
+                        } ?? []
                 // Initially, set filteredOrgNames to be the same as organizers
                 self.filteredOrgNames = self.organizers
                 
@@ -945,7 +951,7 @@ class OrganizerSearchViewController: UIViewController, UISearchBarDelegate {
                 } else {
                     // Filter organizers based on the search text
                     filteredOrgNames = organizers.filter { orgName in
-                        return orgName.lowercased().contains(searchText.lowercased())
+                        return orgName.name.lowercased().contains(searchText.lowercased())
                     }
                 }
                 
@@ -967,14 +973,14 @@ class OrganizerSearchViewController: UIViewController, UISearchBarDelegate {
 extension OrganizerSearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return filteredOrgNames.count  // Return the count of filtered organizers
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrgCollectionViewCell", for: indexPath) as! OrgCollectionViewCell
-            cell.setup(with: filteredOrgNames[indexPath.row])  // Pass the filtered organizer name
-            return cell
-        }
+           return filteredOrgNames.count
+       }
+       
+       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrgCollectionViewCell", for: indexPath) as! OrgCollectionViewCell
+           cell.setup(with: filteredOrgNames[indexPath.row].name)
+           return cell
+       }
 }
 
 extension OrganizerSearchViewController: UICollectionViewDelegateFlowLayout {
@@ -990,15 +996,31 @@ extension OrganizerSearchViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension OrganizerSearchViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            print(filteredOrgNames[indexPath.row])  // Print the selected organizer's name
+            let selectedOrganizer = filteredOrgNames[indexPath.row]
+            if navigationController == nil {
+                let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+                if let userViewOrgVC = storyboard.instantiateViewController(withIdentifier: "UserViewOrgNavController") as? UserViewOrgNavController {
+                    userViewOrgVC.organizerEmail = selectedOrganizer.email
+                    userViewOrgVC.modalPresentationStyle = .fullScreen
+                    present(userViewOrgVC, animated: true)
+                }
+            } else {
+                let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+                if let userViewOrgVC = storyboard.instantiateViewController(withIdentifier: "UserViewOrgNavController") as? UserViewOrgNavController {
+                    userViewOrgVC.organizerEmail = selectedOrganizer.email
+                    navigationController?.pushViewController(userViewOrgVC, animated: true)
+                }
+            }
         }
-    
 }
 
 class OrgCollectionViewCell: UICollectionViewCell{
-    
+    override func awakeFromNib() {
+            super.awakeFromNib()
+            // Enable user interaction
+            self.isUserInteractionEnabled = true
+        }
     
     @IBOutlet weak var orgImageView: UIImageView!
     
