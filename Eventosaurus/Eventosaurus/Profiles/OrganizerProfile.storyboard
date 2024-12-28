@@ -167,7 +167,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="Brieftxt" destination="dTv-ja-WMq" id="fC6-DH-m7R"/>
-                        <outlet property="followersLabel" destination="FjJ-JG-UWl" id="B6a-rX-29P"/>
                         <outlet property="followingtxt" destination="hRa-j1-Ll7" id="4Q1-sb-x64"/>
                         <outlet property="follwerstxt" destination="FjJ-JG-UWl" id="TxO-5C-LNR"/>
                         <outlet property="nametxt" destination="fYE-PT-n50" id="Qcs-I8-1hs"/>
@@ -177,10 +176,10 @@
             </objects>
             <point key="canvasLocation" x="919.84732824427476" y="-2.1126760563380285"/>
         </scene>
-        <!--View Controller-->
+        <!--Organizer Edit View Controller-->
         <scene sceneID="K6a-3c-S5h">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="vvf-Dj-pW0" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="vvf-Dj-pW0" customClass="OrganizerEditViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ChQ-aL-lLE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,6 +203,9 @@
                                         <color key="tintColor" red="0.35686278339999999" green="0.28627452250000002" blue="0.45490193369999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="vvf-Dj-pW0" eventType="touchUpInside" id="9fQ-gp-wpS"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DinoProfile" translatesAutoresizingMaskIntoConstraints="NO" id="dRb-Ls-VaH">
                                         <rect key="frame" x="19" y="86" width="150" height="150"/>
@@ -268,21 +270,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uMn-dC-od0">
-                                        <rect key="frame" x="26" y="449" width="326" height="128"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LSe-we-ifU">
+                                        <rect key="frame" x="26" y="462" width="326" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textView>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -305,6 +299,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jTM-KR-djs"/>
+                    <connections>
+                        <outlet property="brieftxt" destination="LSe-we-ifU" id="dqo-Q1-q1p"/>
+                        <outlet property="emailtxt" destination="H8P-pN-cbl" id="vti-So-UwB"/>
+                        <outlet property="saveBtn" destination="jGZ-fh-OpI" id="CUA-Db-n6T"/>
+                        <outlet property="usernametxt" destination="LVt-o8-56j" id="i5I-x3-xlv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkI-b7-JfZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -344,9 +344,6 @@
         <image name="DinoProfile" width="828" height="828"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

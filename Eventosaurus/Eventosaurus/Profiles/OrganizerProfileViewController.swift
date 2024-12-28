@@ -7,27 +7,19 @@
 
 import UIKit
 import Firebase
-
 class OrganizerProfileViewController: UIViewController {
-    
     let db = Firestore.firestore()
     @IBOutlet weak var follwerstxt: UILabel!
-    
     @IBOutlet weak var followingtxt: UILabel!
-    
-    
     @IBOutlet weak var nametxt: UILabel!
-    
     @IBOutlet weak var Brieftxt: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         loadUserData()
+        loadFollowersCount()
     }
     
-
     func loadUserData() {
         let userEmail = User.loggedInemail
         
@@ -57,14 +49,40 @@ class OrganizerProfileViewController: UIViewController {
             }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func loadFollowersCount() {
+        let userEmail = User.loggedInemail
+        
+        // Count people following this user (followers)
+        db.collection("Followers")
+            .whereField("user", isEqualTo: userEmail)
+            .getDocuments { [weak self] snapshot, error in
+                if let error = error {
+                    print("Error fetching followers: \(error)")
+                    return
+                }
+                
+                let followersCount = snapshot?.documents.count ?? 0
+                
+                DispatchQueue.main.async {
+                    self?.follwerstxt.text = "\(followersCount)"
+                }
+            }
+        
+        // Count people this user follows (following)
+        db.collection("Followers")
+            .whereField("follower", isEqualTo: userEmail)
+            .getDocuments { [weak self] snapshot, error in
+                if let error = error {
+                    print("Error fetching following: \(error)")
+                    return
+                }
+                
+                let followingCount = snapshot?.documents.count ?? 0
+                
+                DispatchQueue.main.async {
+                    self?.followingtxt.text = "\(followingCount)"
+                }
+            }
     }
-    */
-
 }
