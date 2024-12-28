@@ -59,18 +59,18 @@ class ForgotPassword: UIViewController {
             guard let email = emailTxtField.text else { return }
 
             // First, check if the email exists in Firestore Users collection
-            let usersRef = db.collection("Users")
-            usersRef.whereField("Email", isEqualTo: email).getDocuments { (snapshot, error) in
+            let usersRef = db.collection("Users") //references Users collection
+            usersRef.whereField("Email", isEqualTo: email).getDocuments { (snapshot, error) in //looking through the email fields in the Users collection and checking if any of the emails match the one in the text field
                 if let error = error {
-                    // Handle Firestore error
+                    // Handle Firestore error before proceeding
                     let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alertController, animated: true, completion: nil)
                     return
                 }
                 
-                // If user is found in Firestore, proceed with password update
-                if let document = snapshot?.documents.first {
+                // if user is found in Firestore, proceed with password update
+                if let document = snapshot?.documents.first { //store the document in the snapshot
                     // User exists in Firestore, now update password
                     self.updatePasswordInFirestore(email: email, newPassword: self.passwordTxtField.text!, firestoreDocument: document)
                 } else {
@@ -89,9 +89,9 @@ class ForgotPassword: UIViewController {
     }
 
     // Function to update the user's password field in Firestore (in the User collection)
-    func updatePasswordInFirestore(email: String, newPassword: String, firestoreDocument: DocumentSnapshot) {
+    func updatePasswordInFirestore(email: String, newPassword: String, firestoreDocument: DocumentSnapshot) { //passes the email, the new password, and the email that is found and stored in the snapshot
         // Update password field in Firestore
-        firestoreDocument.reference.updateData(["Password": newPassword]) { error in
+        firestoreDocument.reference.updateData(["Password": newPassword]) { error in //replacing old password with the new password
             if let error = error {
                 let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -107,7 +107,8 @@ class ForgotPassword: UIViewController {
     func showSuccessAlert() {
         let alertController = UIAlertController(title: "Success", message: "Your password has been updated successfully.", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            // Perform unwind segue to go back to the Startup view controller
+            
+            //once password is updated successfully, the text fields are cleared
                 self.emailTxtField.text = ""
             self.passwordTxtField.text = ""
             self.confirmPasswordTxtField.text = ""

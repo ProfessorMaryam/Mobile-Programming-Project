@@ -8,6 +8,8 @@
 import UIKit
 
 class TermsAndConditions: UIViewController {
+    
+    //Nothing much here, just a keeping the next button diabled until user agrees to the terms and conditions. Once they do they the next button is enabled and they are taken to the request form
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +32,6 @@ class TermsAndConditions: UIViewController {
               checkButton.setImage(image, for: .normal)
               nextButton.isEnabled = isChecked
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }

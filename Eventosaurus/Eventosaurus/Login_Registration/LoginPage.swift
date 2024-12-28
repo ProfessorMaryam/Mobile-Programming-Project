@@ -39,7 +39,7 @@ class LoginPage: UIViewController {
         } else if let email = emailTxtField.text, !isValidEmail(email) {  //uses the regex checking method defined below, if regex is invalid then...
             emailReqLabel.isHidden = false // ... show label
             emailReqLabel.text = "Invalid email format." // change label text to error message
-            isValid = false // nnot valid
+            isValid = false // not valid
         }
         
         // Validate password
@@ -92,14 +92,14 @@ class LoginPage: UIViewController {
         }
     }
     
-    // Function to validate email format using regex
+    // Email regex validation
     func isValidEmail(_ email: String) -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         return emailTest.evaluate(with: email)
     }
     
-    // Custom alert
+    // Custom alert fucntion
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -108,16 +108,17 @@ class LoginPage: UIViewController {
     
     // Navigate to AdminPage view controller
     func navigateToAdminPage() {
-        let adminStoryboard = UIStoryboard(name: "AdminPage", bundle: nil)
-        if let adminVC = adminStoryboard.instantiateViewController(withIdentifier: "adminPage") as? AdminPageTableViewController {
-            if let navigationController = self.navigationController {
-                navigationController.pushViewController(adminVC, animated: true)
-                adminVC.navigationItem.hidesBackButton = true
+        let adminStoryboard = UIStoryboard(name: "AdminPage", bundle: nil) //store storyboard in a variable
+        if let adminVC = adminStoryboard.instantiateViewController(withIdentifier: "adminPage") as? AdminPageTableViewController { //instantiate view controller and casting it as AdminPageTableViewController type class
+            
+            if let navigationController = self.navigationController { //referencing the current navigation controller. if it is inside a navigation controller
+                navigationController.pushViewController(adminVC, animated: true) // if true then push to adminVC
+                adminVC.navigationItem.hidesBackButton = true //hiding back button after logg
             } else {
-                self.present(adminVC, animated: true, completion: nil)
+                self.present(adminVC, animated: true, completion: nil) //if not present modally
             }
         } else {
-            self.showAlert(title: "Error", message: "Unable to load Admin Page.")
+            self.showAlert(title: "Error", message: "Unable to load Admin Page.") //error handling
         }
     }
     
@@ -127,13 +128,12 @@ class LoginPage: UIViewController {
         let userStoryboard = UIStoryboard(name: "HomePage ", bundle: nil)  // Remove extra space in storyboard name
         
         if let userVC = userStoryboard.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController {
-            // Set the modal presentation style to full screen
+            // Set the modal presentation style to full screen since the HomePageViewController has no navigation controller embedded in it
             userVC.modalPresentationStyle = .fullScreen
-            
             // Present the view controller modally
             self.present(userVC, animated: true, completion: nil)
         } else {
-            self.showAlert(title: "Error", message: "Unable to load User Page.")
+            self.showAlert(title: "Error", message: "Unable to load User Page.") //error handling
         }
     }
 

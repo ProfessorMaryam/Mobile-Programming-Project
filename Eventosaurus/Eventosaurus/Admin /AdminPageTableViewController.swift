@@ -68,32 +68,32 @@ class AdminPageTableViewController: UIViewController, UITableViewDataSource, UIT
         let storyboard = UIStoryboard(name: "AdminPage", bundle: nil)
 
         switch index {
-        case 0:
+        case 0: //if cell at index 0 is clicked....
             if let eventsVC = storyboard.instantiateViewController(withIdentifier: "EventsVC") as? EventsDisplayController {
                 eventsVC.title = "Events"
                 self.navigationController?.pushViewController(eventsVC, animated: true)
             }
-        case 1:
+        case 1: //if cell at index 1 is clicked....
             if let usersVC = storyboard.instantiateViewController(withIdentifier: "UsersVC") as? UsersDisplayController {
                 usersVC.title = "Users"
                 self.navigationController?.pushViewController(usersVC, animated: true)
             }
-        case 2:
+        case 2: //if cell at index 2 is clicked....
             if let categoriesVC = storyboard.instantiateViewController(withIdentifier: "InterestsVC") as? InterestsDisplayPage {
                 categoriesVC.title = "Categories"
                 self.navigationController?.pushViewController(categoriesVC, animated: true)
             }
-        case 3:
+        case 3: //if cell at index 3 is clicked....
             if let requestsVC = storyboard.instantiateViewController(withIdentifier: "RequestsVC") as? RequestsViewController {
                 requestsVC.title = "Requests"
                 self.navigationController?.pushViewController(requestsVC, animated: true)
             }
-        case 4:
+        case 4: //if cell at index 4 is clicked....
             // Logout Implementation
             let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
                 // Clear the login state in UserDefaults
-                UserDefaults.standard.set(false, forKey: "isLoggedIn")
+                UserDefaults.standard.set(false, forKey: "isLoggedIn") 
                 UserDefaults.standard.set(false, forKey: "isAdmin")
                 UserDefaults.standard.synchronize()
 

@@ -6,8 +6,8 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var userTableView: UITableView!
     @IBOutlet weak var UserSearch: UISearchBar!
     
-    var usersList: [(fullName: String, email: String)] = []
-    var filteredUsersList: [(fullName: String, email: String)] = []
+    var usersList: [(fullName: String, email: String)] = []  //tuple containing the full name and email of each user
+    var filteredUsersList: [(fullName: String, email: String)] = [] //for the search function
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,33 +26,37 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
 
     // Fetch users from Firestore and update the table view
     func fetchUserNamesFromFirestore() {
-        let db = Firestore.firestore()
+        let db = Firestore.firestore() //firestore database reference
 
-        db.collection("Users").getDocuments { (snapshot, error) in
+        db.collection("Users").getDocuments { (snapshot, error) in //goes to the "Users" Collection and gets all the documents in there
             if let error = error {
                 print("Error fetching user names: \(error.localizedDescription)")
                 return
             }
 
+            //making shut snapshot is valid and contains documents
             guard let snapshot = snapshot else { return }
 
-            var fetchedUsers: [(String, String)] = []
+            var fetchedUsers: [(String, String)] = [] //fetched users are stored here
             
-            for document in snapshot.documents {
-                if let fullName = document.get("Full Name") as? String,
-                   let email = document.get("Email") as? String,
-                   let isAdmin = document.get("Is Admin") as? Bool, !isAdmin {
-                    fetchedUsers.append((fullName, email))
+            for document in snapshot.documents { //sloops through every document in the snapshot
+                if let fullName = document.get("Full Name") as? String, //get the full name from the field
+                   let email = document.get("Email") as? String, //get the email from the field
+                   let isAdmin = document.get("Is Admin") as? Bool, !isAdmin { //if user is not an admin...
+                    fetchedUsers.append((fullName, email)) //... append to the fetched users list
+                    
+                    //Admin account does not append just in cause they accidentally delete their own account
                 }
             }
 
+            //at this point in time both contain the same data
             self.usersList = fetchedUsers
             self.filteredUsersList = fetchedUsers
 
             print("Fetched Users: \(self.usersList)") // Debug log
 
             DispatchQueue.main.async {
-                self.userTableView.reloadData()
+                self.userTableView.reloadData() //loads all the fetched data
             }
         }
     }
@@ -69,11 +73,11 @@ class UsersDisplayController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? DisplayUsersTableViewCell {
             let user = filteredUsersList[indexPath.row]
-            cell.NameDisplayLbl.text = user.fullName
-            cell.EmailDisplayLbl.text = user.email
+            cell.NameDisplayLbl.text = user.fullName //refrencing the label in the nib
+            cell.EmailDisplayLbl.text = user.email //referencing the label in th enib
             return cell
         }
-        return UITableViewCell()
+        return UITableViewCell() //return cell
     }
 
     // MARK: - UISearchBarDelegate Methods
