@@ -167,7 +167,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="briedText" destination="eWb-Gm-Rh1" id="IhQ-Ah-NPb"/>
+                        <outlet property="eventHistory" destination="AW8-6G-1cV" id="TnH-vZ-9Jw"/>
                         <outlet property="name" destination="l1g-VT-nxh" id="lEB-3Z-afu"/>
+                        <outlet property="upcomingEvent" destination="BMl-pW-O7I" id="0aQ-fE-FJz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cK-As-mPa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

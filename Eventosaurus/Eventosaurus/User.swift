@@ -10,7 +10,7 @@ import FirebaseFirestore
 class User: Codable {
     
     
-    static var loggedInemail = "maryam45@gmail.com"
+    static var loggedInemail = "noora@gmail.com"
     //Attributes
     let fullName: String
     let email: String

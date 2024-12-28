@@ -167,9 +167,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="Brieftxt" destination="dTv-ja-WMq" id="fC6-DH-m7R"/>
+                        <outlet property="eventHistorytxt" destination="ti6-kt-icI" id="imC-LN-htw"/>
                         <outlet property="followingtxt" destination="hRa-j1-Ll7" id="4Q1-sb-x64"/>
                         <outlet property="follwerstxt" destination="FjJ-JG-UWl" id="TxO-5C-LNR"/>
                         <outlet property="nametxt" destination="fYE-PT-n50" id="Qcs-I8-1hs"/>
+                        <outlet property="upcomingeventstxt" destination="Cca-zL-B6V" id="1gP-LJ-Nkj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ceb-pt-aTR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -14,10 +14,13 @@ class OrganizerProfileViewController: UIViewController {
     @IBOutlet weak var nametxt: UILabel!
     @IBOutlet weak var Brieftxt: UITextView!
     
+    @IBOutlet weak var eventHistorytxt: UITextView!
+    @IBOutlet weak var upcomingeventstxt: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadUserData()
         loadFollowersCount()
+        loadOrganizerEvents()
     }
     
     func loadUserData() {
@@ -85,4 +88,59 @@ class OrganizerProfileViewController: UIViewController {
                 }
             }
     }
+    
+    func loadOrganizerEvents() {
+           let userEmail = User.loggedInemail
+           
+           // Get all events where this user is organizer1
+           db.collection("Events")
+               .whereField("Organizer1", isEqualTo: "/Users/\(userEmail)")
+               .getDocuments { [weak self] snapshot, error in
+                   if let error = error {
+                       print("Error fetching events: \(error)")
+                       return
+                   }
+                   
+                   guard let documents = snapshot?.documents else {
+                       print("No events found")
+                       return
+                   }
+                   
+                   var upcomingEvents: [String] = []
+                   var historyEvents: [String] = []
+                   
+                   for document in documents {
+                       guard let eventName = document.data()["Event Name"] as? String,
+                             let status = document.data()["Status"] as? String else {
+                           continue
+                       }
+                       
+                       print("Found event: \(eventName) with status: \(status)")
+                       
+                       if status == "UpComing" {
+                           upcomingEvents.append(eventName)
+                       } else {
+                           historyEvents.append(eventName)
+                       }
+                   }
+                   
+                   DispatchQueue.main.async {
+                       // Display upcoming events
+                       if upcomingEvents.isEmpty {
+                           self?.upcomingeventstxt.text = "No upcoming events"
+                       } else {
+                           self?.upcomingeventstxt.text = upcomingEvents.joined(separator: "\n")
+                       }
+                       
+                       // Display last 3 historical events with dots
+                       if historyEvents.isEmpty {
+                           self?.eventHistorytxt.text = "No event history"
+                       } else {
+                           let lastThreeEvents = Array(historyEvents.prefix(3))
+                           let displayText = lastThreeEvents.joined(separator: "\n...\n")
+                           self?.eventHistorytxt.text = displayText + (historyEvents.count > 3 ? "\n..." : "")
+                       }
+                   }
+               }
+       }
 }
