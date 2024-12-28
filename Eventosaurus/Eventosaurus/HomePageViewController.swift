@@ -91,7 +91,7 @@ class EventHomeViewController: UIViewController {
         
         
         fetchEvents()
-        let eventID = "3plSFQlyblfBbgvkxSGGH" // Replace this with the actual event ID you want to use
+        let eventID = "3plSFQlyblfBdbgvkxSGGH" // Replace this with the actual event ID you want to use
         showFeedbackAlert(forEvent: eventID)
     }
     
