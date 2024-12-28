@@ -122,6 +122,8 @@
                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
+                                                            <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <size key="shadowOffset" width="2" height="-1"/>
                                                         </label>
                                                     </subviews>
                                                 </collectionViewCellContentView>
@@ -327,7 +329,7 @@
                                         </buttonConfiguration>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deK-bQ-lZA">
-                                        <rect key="frame" x="211.66666666666663" y="92.666666666666657" width="127.33333333333337" height="36.333333333333343"/>
+                                        <rect key="frame" x="211.66666666666666" y="92.666666666666657" width="127.33333333333334" height="36.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Organizers" titleAlignment="center">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
@@ -1387,7 +1389,7 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="________________________________________" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyV-pI-9UC">
-                                        <rect key="frame" x="-13" y="91.666666666666657" width="480" height="47.333333333333343"/>
+                                        <rect key="frame" x="-13" y="92" width="480" height="47"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                         <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1404,7 +1406,7 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-vn-e0J">
-                                        <rect key="frame" x="211.66666666666663" y="87.666666666666671" width="127.33333333333337" height="41.333333333333329"/>
+                                        <rect key="frame" x="211.66666666666666" y="87.666666666666671" width="127.33333333333334" height="41.333333333333329"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Organizers" titleAlignment="center">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
@@ -1728,10 +1730,9 @@ Aminatour1@evento.saurus.bh</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hop-DF-fst"/>
         <segue reference="uns-kt-Srp"/>
-        <segue reference="S3t-mt-M9y"/>
-        <segue reference="9gf-n5-Hf3"/>
+        <segue reference="U3y-aa-01n"/>
+        <segue reference="ona-u7-5V5"/>
         <segue reference="DwF-wQ-wJU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
