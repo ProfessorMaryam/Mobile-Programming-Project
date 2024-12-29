@@ -55,11 +55,13 @@ class Register: UIViewController {
                     self.emailReqLabel.text = "Email already exists. Please try another."
                 } else {
                     // If email doesn't exist, store user in Firestore
+                    UserDefaults.standard.synchronize()
+                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
                     self.storeUserInFirestore(newUser)
                 }
             }
         } else {
-            // Step 6: Show error message if input validation failed
+            //Show error message if input validation failed
             showAlert(title: "Invalid Input", message: "Please fill in all the required fields and make sure the passwords match.")
         }
     }
