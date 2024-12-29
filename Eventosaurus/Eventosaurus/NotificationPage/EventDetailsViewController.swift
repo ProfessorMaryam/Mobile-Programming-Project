@@ -11,23 +11,24 @@ class EventDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Optionally, you can set up UI elements to display event details
         if let eventName = eventData?["Event Name"] as? String {
-            self.title = eventName // Set the navigation title to the event name
+            self.title = eventName
         }
     }
 
     @IBAction func joinButtonTapped(_ sender: UIButton) {
-        guard let user = Auth.auth().currentUser,
-              let eventData = eventData,
-              let eventID = eventData["eventID"] as? String else {
-            print("User not logged in or eventData is invalid.")
+        guard let user = Auth.auth().currentUser else {
+            print("Error: User not logged in.")
+            return
+        }
+        
+        guard let eventData = eventData, let eventID = eventData["eventID"] as? String else {
+            print("Error: Invalid event data.")
             return
         }
         
         let userEmail = user.email ?? "unknown"
         
-        // Add the event to the Event_User collection
         db.collection("Event_User").addDocument(data: [
             "email": userEmail,
             "event_id": eventID
@@ -36,9 +37,8 @@ class EventDetailsViewController: UIViewController {
                 print("Error joining event: \(error)")
             } else {
                 print("Event joined successfully!")
-                
-                // Navigate back to NotificationViewController
-                self.navigationController?.popViewController(animated: true)
+                NotificationCenter.default.post(name: Notification.Name("EventJoined"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
