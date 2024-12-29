@@ -55,9 +55,14 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     // Fetch joined events for the current user
+    // Fetch joined events for the current user
     func fetchJoinedEvents() {
-        guard let userEmail = Auth.auth().currentUser?.email else { return }
+        guard let userEmail = Auth.auth().currentUser?.email else {
+            print("User email not found.")
+            return
+        }
         
+        // Step 1: Fetch documents from Event_User where email matches
         db.collection("Event_User").whereField("email", isEqualTo: userEmail).getDocuments { snapshot, error in
             if let error = error {
                 print("Error fetching joined events: \(error)")
@@ -65,26 +70,43 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             }
             
             guard let documents = snapshot?.documents else {
-                print("No documents found for joined events.")
+                print("No joined events found for user.")
                 return
             }
             
+            // Step 2: Extract event_id values
             let eventIDs = documents.compactMap { $0.data()["event_id"] as? String }
-            print("Fetched Event IDs for Joined Events: \(eventIDs)")
             
+            if eventIDs.isEmpty {
+                print("No event IDs found for joined events.")
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                return
+            }
+            
+            print("Event IDs for joined events: \(eventIDs)")
+            
+            // Step 3: Fetch events from the Events collection using event_id
             self.db.collection("Events").whereField(FieldPath.documentID(), in: eventIDs).getDocuments { snapshot, error in
                 if let error = error {
                     print("Error fetching event details for joined events: \(error)")
                     return
                 }
                 
-                guard let documents = snapshot?.documents else { return }
+                guard let documents = snapshot?.documents else {
+                    print("No event details found.")
+                    return
+                }
                 
+                // Step 4: Map the data and reload the table
                 self.joinedEvents = documents.map { doc in
                     var data = doc.data()
-                    data["eventID"] = doc.documentID
+                    data["eventID"] = doc.documentID // Include the document ID
                     return data
                 }
+                
+                print("Joined Events: \(self.joinedEvents)")
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
