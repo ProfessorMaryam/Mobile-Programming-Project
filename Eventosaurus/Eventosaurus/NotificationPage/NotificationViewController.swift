@@ -1,84 +1,137 @@
-//
-//  NotificationViewController.swift
-//  Eventosaurus
-//
-//  Created by Hx on 14/12/2024.
-//
-
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 class NotificationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    // Arrays to hold event data
-    var nameArray: [String] = []
-    var imageArray: [UIImage] = []
-    var descriptionArray: [String] = []
-
+    var upcomingEvents: [[String: Any]] = []
+    var joinedEvents: [[String: Any]] = []
+    let db = Firestore.firestore()
+    var currentUserID: String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set tableView delegate and dataSource
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Enable dynamic cell height
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 120
+        
+        fetchUpcomingEvents()
+        fetchJoinedEvents()
     }
     
-    // Number of rows in section
+    // Fetch upcoming events
+    func fetchUpcomingEvents() {
+        db.collection("Events").whereField("Status", isEqualTo: "UpComing").getDocuments { snapshot, error in
+            if let error = error {
+                print("Error fetching upcoming events: \(error)")
+                return
+            }
+            
+            guard let documents = snapshot?.documents else {
+                print("No documents found for upcoming events.")
+                return
+            }
+            
+            print("Fetched upcoming events: \(documents.count)")
+            
+            self.upcomingEvents = documents.map { doc in
+                var data = doc.data()
+                data["eventID"] = doc.documentID // Add document ID to the dictionary
+                return data
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    // Fetch joined events for the current user
+    func fetchJoinedEvents() {
+        guard let userEmail = Auth.auth().currentUser?.email else { return }
+        
+        db.collection("Event_User").whereField("email", isEqualTo: userEmail).getDocuments { snapshot, error in
+            if let error = error {
+                print("Error fetching joined events: \(error)")
+                return
+            }
+            
+            guard let documents = snapshot?.documents else {
+                print("No documents found for joined events.")
+                return
+            }
+            
+            let eventIDs = documents.compactMap { $0.data()["event_id"] as? String }
+            print("Fetched Event IDs for Joined Events: \(eventIDs)")
+            
+            self.db.collection("Events").whereField(FieldPath.documentID(), in: eventIDs).getDocuments { snapshot, error in
+                if let error = error {
+                    print("Error fetching event details for joined events: \(error)")
+                    return
+                }
+                
+                guard let documents = snapshot?.documents else { return }
+                
+                self.joinedEvents = documents.map { doc in
+                    var data = doc.data()
+                    data["eventID"] = doc.documentID
+                    return data
+                }
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    // MARK: - TableView DataSource & Delegate
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2 // Section 0 for Upcoming Events, Section 1 for Joined Events
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nameArray.count
+        if section == 0 {
+            return upcomingEvents.count
+        } else {
+            return joinedEvents.count
+        }
     }
     
-    // Cell for row at indexPath
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard indexPath.row < nameArray.count,
-              indexPath.row < imageArray.count,
-              indexPath.row < descriptionArray.count else {
-            fatalError("Error: Index out of bounds for data arrays.")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! notificationTableViewCell
+        let event = indexPath.section == 0 ? upcomingEvents[indexPath.row] : joinedEvents[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell") as? notificationTableViewCell else {
-            fatalError("Error: Unable to dequeue cell with identifier 'NotificationCell'.")
-        }
-        
-        let originalImage = imageArray[indexPath.row]
-        let resizedImage = resizeImage(image: originalImage, targetSize: CGSize(width: 50, height: 50))
-        
-        cell.eventImage.image = resizedImage
-        cell.eventTitle.text = nameArray[indexPath.row]
-        cell.eventDescription.text = descriptionArray[indexPath.row]
+        cell.eventTitle.text = event["Event Name"] as? String
+        cell.eventDescription.text = event["Description"] as? String
+        cell.eventImage.image = UIImage(systemName: "calendar") // Placeholder image
         
         return cell
     }
     
-    // Row height
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // Set header titles
+        return section == 0 ? "Upcoming Events" : "Joined Events"
     }
     
-    // Helper function to resize images
-    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
-        let size = image.size
-        guard size.width > 0, size.height > 0 else {
-            print("Error: Invalid image dimensions \(size). Returning original image.")
-            return image
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedEvent = indexPath.section == 0 ? upcomingEvents[indexPath.row] : joinedEvents[indexPath.row]
+        performSegue(withIdentifier: "showEventDetails", sender: selectedEvent)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEventDetails",
+           let destinationVC = segue.destination as? EventDetailsViewController,
+           let eventData = sender as? [String: Any] {
+            destinationVC.eventData = eventData
         }
-        
-        let widthRatio  = targetSize.width / size.width
-        let heightRatio = targetSize.height / size.height
-        
-        // Determine the scale factor to maintain aspect ratio
-        let scaleFactor = min(widthRatio, heightRatio)
-        
-        // Compute the new size
-        let newSize = CGSize(width: size.width * scaleFactor, height: size.height * scaleFactor)
-        
-        // Resize the image
-        let renderer = UIGraphicsImageRenderer(size: newSize)
-        let resizedImage = renderer.image { context in
-            image.draw(in: CGRect(origin: .zero, size: newSize))
-        }
-        
-        return resizedImage
     }
 }
