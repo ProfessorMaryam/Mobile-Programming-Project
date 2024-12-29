@@ -73,6 +73,7 @@ class LoginPage: UIViewController {
                         UserDefaults.standard.set(isAdmin, forKey: "isAdmin") // Store whether the user is an admin
                         UserDefaults.standard.synchronize()
                         
+                        User.loggedInemail = email
                         if isAdmin {
                             // Admin login successful, navigate to the AdminPage
                             self.navigateToAdminPage()
