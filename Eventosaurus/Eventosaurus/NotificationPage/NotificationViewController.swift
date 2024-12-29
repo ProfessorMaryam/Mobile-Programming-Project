@@ -25,6 +25,13 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         
         fetchUpcomingEvents()
         fetchJoinedEvents()
+        
+        // Refresh data when an event is joined
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchJoinedEvents), name: Notification.Name("EventJoined"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("EventJoined"), object: nil)
     }
     
     // Fetch upcoming events
@@ -40,8 +47,6 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
                 return
             }
             
-            print("Fetched upcoming events: \(documents.count)")
-            
             self.upcomingEvents = documents.map { doc in
                 var data = doc.data()
                 data["eventID"] = doc.documentID // Add document ID to the dictionary
@@ -55,14 +60,12 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     // Fetch joined events for the current user
-    // Fetch joined events for the current user
-    func fetchJoinedEvents() {
+    @objc func fetchJoinedEvents() {
         guard let userEmail = Auth.auth().currentUser?.email else {
             print("User email not found.")
             return
         }
         
-        // Step 1: Fetch documents from Event_User where email matches
         db.collection("Event_User").whereField("email", isEqualTo: userEmail).getDocuments { snapshot, error in
             if let error = error {
                 print("Error fetching joined events: \(error)")
@@ -74,7 +77,6 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
                 return
             }
             
-            // Step 2: Extract event_id values
             let eventIDs = documents.compactMap { $0.data()["event_id"] as? String }
             
             if eventIDs.isEmpty {
@@ -85,28 +87,19 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
                 return
             }
             
-            print("Event IDs for joined events: \(eventIDs)")
-            
-            // Step 3: Fetch events from the Events collection using event_id
             self.db.collection("Events").whereField(FieldPath.documentID(), in: eventIDs).getDocuments { snapshot, error in
                 if let error = error {
                     print("Error fetching event details for joined events: \(error)")
                     return
                 }
                 
-                guard let documents = snapshot?.documents else {
-                    print("No event details found.")
-                    return
-                }
+                guard let documents = snapshot?.documents else { return }
                 
-                // Step 4: Map the data and reload the table
                 self.joinedEvents = documents.map { doc in
                     var data = doc.data()
-                    data["eventID"] = doc.documentID // Include the document ID
+                    data["eventID"] = doc.documentID
                     return data
                 }
-                
-                print("Joined Events: \(self.joinedEvents)")
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -140,7 +133,6 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // Set header titles
         return section == 0 ? "Upcoming Events" : "Joined Events"
     }
     
