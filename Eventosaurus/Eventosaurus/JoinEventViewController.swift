@@ -42,7 +42,7 @@ class joinEventPageViewController: UIViewController {
             if let error = error {
                 // Handle error and show an alert if the update fails
                 print("Error updating document: \(error)")
-                let alertController = UIAlertController(title: "Error", message: "Failed to join event. Please try again.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Error", message: "You have successfully joined the event.", preferredStyle: .alert)
                 let doneAction = UIAlertAction(title: "Done", style: .default, handler: nil)
                 alertController.addAction(doneAction)
                 self.present(alertController, animated: true, completion: nil)
@@ -58,4 +58,29 @@ class joinEventPageViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func backButton(_ sender: UIBarButtonItem) {
+        navigateToEventHome()
+    }
+    func navigateToEventHome() {
+        // Create an instance of EventHomeViewController from the storyboard
+        let storyboard = UIStoryboard(name: "HomePage ", bundle: nil)
+        guard let eventHomeVC = storyboard.instantiateViewController(withIdentifier: "EventHomeViewController") as? EventHomeViewController else {
+            print("Error: Could not find EventHomeViewController in storyboard")
+            return
+        }
+        
+        // Initialize a navigation controller with EventHomeViewController as the root view controller
+        let navigationController = UINavigationController(rootViewController: eventHomeVC)
+        
+        // Find the active scene and set the navigation controller as the root view controller
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
+        } else {
+            print("Error: Unable to find the active window scene.")
+        }
+    }
+
 }

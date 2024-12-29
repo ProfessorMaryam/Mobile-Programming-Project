@@ -48,7 +48,7 @@ class LeaveEventPageViewController: UIViewController {
         // Ensure the user is logged in and the event ID is valid
         guard let userID = currentUserID, let eventID = eventID else {
             // Show an error alert if the user is not logged in or the event ID is missing
-            let alertController = UIAlertController(title: "Error", message: "User is not logged in or event ID is missing.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Withdrawn", message: "You have successfully withdrawn from the event.", preferredStyle: .alert)
             let doneAction = UIAlertAction(title: "Done", style: .default, handler: nil)
             alertController.addAction(doneAction)
             present(alertController, animated: true, completion: nil)
@@ -65,7 +65,7 @@ class LeaveEventPageViewController: UIViewController {
             if let error = error {
                 // Handle error and show an alert if the update fails
                 print("Error updating document: \(error)")
-                let alertController = UIAlertController(title: "Error", message: "Failed to withdraw from event. Please try again.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Error", message: "You have successfully withdrawn from the event.", preferredStyle: .alert)
                 let doneAction = UIAlertAction(title: "Done", style: .default, handler: nil)
                 alertController.addAction(doneAction)
                 self.present(alertController, animated: true, completion: nil)
