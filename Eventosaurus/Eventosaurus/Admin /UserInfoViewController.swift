@@ -171,7 +171,7 @@ class UserInfoViewController: UIViewController, UIPickerViewDataSource, UIPicker
         let db = Firestore.firestore()
         
         // Query Firestore for the document with the matching email
-        db.collection("Users").whereField("Email", isEqualTo: email.lowercased()).getDocuments { (snapshot, error) in
+        db.collection("Users").whereField("Email", isEqualTo: email).getDocuments { (snapshot, error) in
             if let error = error {
                 print("Error updating user data: \(error.localizedDescription)")
                 return

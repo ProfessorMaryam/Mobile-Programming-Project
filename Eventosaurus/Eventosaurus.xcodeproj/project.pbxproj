@@ -12,6 +12,14 @@
 		5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5737BDFF2D01D84100B40D01 /* Interests.storyboard */; };
 		57A5F0462D12B74800252873 /* EventsDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */; };
 		57A5F0472D12B74800252873 /* EventsDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */; };
+		5EA4059D2D2565EE0051C510 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4059C2D2565EE0051C510 /* Calendar.storyboard */; };
+		5EA4059F2D2566CB0051C510 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4059E2D2566CB0051C510 /* CalendarCell.swift */; };
+		5EA405A12D25673C0051C510 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA405A02D25673C0051C510 /* CalendarHelper.swift */; };
+		5EA405A32D2567790051C510 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA405A22D2567790051C510 /* CalendarViewController.swift */; };
+		5EA405A62D256CC90051C510 /* notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA405A52D256CC90051C510 /* notification.storyboard */; };
+		5EA405A82D256D780051C510 /* notificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA405A72D256D780051C510 /* notificationTableViewCell.swift */; };
+		5EA405AA2D256E1E0051C510 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA405A92D256E1E0051C510 /* NotificationViewController.swift */; };
+		5EA405AC2D256E560051C510 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA405AB2D256E560051C510 /* EventDetailsViewController.swift */; };
 		C30A646F2D1C466200D86BD8 /* EventsInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */; };
 		C30CAB302D1EFC1500892F01 /* JoinEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30CAB2F2D1EFC1500892F01 /* JoinEvent.storyboard */; };
 		C30CAB342D1EFD2500892F01 /* JoinEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30CAB332D1EFD2500892F01 /* JoinEventViewController.swift */; };
@@ -96,6 +104,14 @@
 		5737BDFF2D01D84100B40D01 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDisplayTableViewCell.swift; sourceTree = "<group>"; };
 		57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsDisplayTableViewCell.xib; sourceTree = "<group>"; };
+		5EA4059C2D2565EE0051C510 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		5EA4059E2D2566CB0051C510 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		5EA405A02D25673C0051C510 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		5EA405A22D2567790051C510 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		5EA405A52D256CC90051C510 /* notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = notification.storyboard; sourceTree = "<group>"; };
+		5EA405A72D256D780051C510 /* notificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationTableViewCell.swift; sourceTree = "<group>"; };
+		5EA405A92D256E1E0051C510 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		5EA405AB2D256E560051C510 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInformationTableViewController.swift; sourceTree = "<group>"; };
 		C30CAB2F2D1EFC1500892F01 /* JoinEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JoinEvent.storyboard; sourceTree = "<group>"; };
 		C30CAB332D1EFD2500892F01 /* JoinEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEventViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +203,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5EA4059B2D2565B20051C510 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5EA4059C2D2565EE0051C510 /* Calendar.storyboard */,
+				5EA4059E2D2566CB0051C510 /* CalendarCell.swift */,
+				5EA405A02D25673C0051C510 /* CalendarHelper.swift */,
+				5EA405A22D2567790051C510 /* CalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		5EA405A42D256C980051C510 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5EA405A52D256CC90051C510 /* notification.storyboard */,
+				5EA405A72D256D780051C510 /* notificationTableViewCell.swift */,
+				5EA405A92D256E1E0051C510 /* NotificationViewController.swift */,
+				5EA405AB2D256E560051C510 /* EventDetailsViewController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		C395B1232CFC996700C073C2 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +248,7 @@
 		C395B12E2CFC996700C073C2 /* Eventosaurus */ = {
 			isa = PBXGroup;
 			children = (
+				5EA405A42D256C980051C510 /* Notification */,
 				C3EBFD7B2D05C7E900B4D000 /* GoogleService-Info.plist */,
 				C395B12F2CFC996700C073C2 /* AppDelegate.swift */,
 				C395B1312CFC996700C073C2 /* SceneDelegate.swift */,
@@ -217,6 +256,7 @@
 				CF5E969A2D1EB036005ABE4F /* Become Organizer */,
 				CF5E969B2D1EB10B005ABE4F /* Admin  */,
 				C395B1652CFCA83900C073C2 /* Organizer.swift */,
+				5EA4059B2D2565B20051C510 /* Calendar */,
 				C395B15F2CFCA7A800C073C2 /* User.swift */,
 				C395B1612CFCA7EE00C073C2 /* Attendee.swift */,
 				C395B1632CFCA80D00C073C2 /* Admin.swift */,
@@ -443,6 +483,8 @@
 				57A5F0472D12B74800252873 /* EventsDisplayTableViewCell.xib in Resources */,
 				C39C86762D1F2A1200EA1AFE /* FeedbackTableViewCell.xib in Resources */,
 				C395B1372CFC996700C073C2 /* Main.storyboard in Resources */,
+				5EA4059D2D2565EE0051C510 /* Calendar.storyboard in Resources */,
+				5EA405A62D256CC90051C510 /* notification.storyboard in Resources */,
 				C326037F2D0891A3008BD790 /* AdminPage.storyboard in Resources */,
 				C39C866C2D1EFFE700EA1AFE /* HomePage .storyboard in Resources */,
 			);
@@ -469,13 +511,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA405A32D2567790051C510 /* CalendarViewController.swift in Sources */,
 				C39C86722D1F274900EA1AFE /* ViewFeedback.swift in Sources */,
 				C395B1682CFCA9E700C073C2 /* Event.swift in Sources */,
 				C30CAB382D1EFD7100892F01 /* LeaveEventViewController.swift in Sources */,
+				5EA405A82D256D780051C510 /* notificationTableViewCell.swift in Sources */,
 				C3E287382D0DA60500CBF459 /* UsersDisplayController.swift in Sources */,
 				57A5F0462D12B74800252873 /* EventsDisplayTableViewCell.swift in Sources */,
 				C395B1662CFCA83900C073C2 /* Organizer.swift in Sources */,
 				DAB6A4402D118647002FEC6D /* DisplayUsersTableViewCell.swift in Sources */,
+				5EA405A12D25673C0051C510 /* CalendarHelper.swift in Sources */,
 				C395B1622CFCA7EE00C073C2 /* Attendee.swift in Sources */,
 				C39C86702D1F09D100EA1AFE /* SettingsMenuViewController.swift in Sources */,
 				C370DA6E2D0F163300B2A097 /* RequestsViewController.swift in Sources */,
@@ -498,11 +543,14 @@
 				571D0BBE2D16C15F00DA7A27 /* UserInterestsViewController.swift in Sources */,
 				C30A646F2D1C466200D86BD8 /* EventsInformationTableViewController.swift in Sources */,
 				C3E2873C2D0DA84600CBF459 /* InterestsDisplayPage.swift in Sources */,
+				5EA4059F2D2566CB0051C510 /* CalendarCell.swift in Sources */,
 				CFF79CFB2D1AB53A002EFA39 /* UserInfoViewController.swift in Sources */,
 				CE807E782D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift in Sources */,
 				C326037D2D0875F4008BD790 /* TermsAndConditions.swift in Sources */,
 				C395B1322CFC996700C073C2 /* SceneDelegate.swift in Sources */,
 				DA911F342D130E5900159376 /* RequestForm.swift in Sources */,
+				5EA405AA2D256E1E0051C510 /* NotificationViewController.swift in Sources */,
+				5EA405AC2D256E560051C510 /* EventDetailsViewController.swift in Sources */,
 				C3EBFD8F2D05F01400B4D000 /* ForgotPassword.swift in Sources */,
 				C39C86752D1F2A1200EA1AFE /* FeedbackTableViewCell.swift in Sources */,
 				571D0BBC2D16C00700DA7A27 /* InterestsCategoriesCollectionViewCell.swift in Sources */,

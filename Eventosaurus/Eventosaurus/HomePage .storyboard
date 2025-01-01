@@ -417,6 +417,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="    Calendar">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="RJd-ii-c4j" kind="presentation" modalPresentationStyle="pageSheet" id="P2J-pK-ipv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nw3-cc-cbd">
                                 <rect key="frame" x="20" y="370.66666666666669" width="205" height="38.333333333333314"/>
@@ -424,6 +427,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="          Notifications">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="V5C-Xq-8JM" kind="presentation" modalPresentationStyle="pageSheet" id="KA9-I3-0wH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeY-rG-GT6">
                                 <rect key="frame" x="20" y="620.33333333333337" width="205" height="38.333333333333371"/>
@@ -1546,6 +1552,24 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
             </objects>
             <point key="canvasLocation" x="4565.5813953488368" y="-770.60085836909877"/>
         </scene>
+        <!--Calendar-->
+        <scene sceneID="fB4-RO-bxS">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CalendarViewController" storyboardName="Calendar" id="RJd-ii-c4j" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="syr-Fw-DJr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2325" y="-1298"/>
+        </scene>
+        <!--notification-->
+        <scene sceneID="rfQ-68-SgG">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="notifPage" storyboardName="notification" id="V5C-Xq-8JM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="RMY-xq-xbv"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OCg-7E-gcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1729" y="-1387"/>
+        </scene>
         <!--AboutUs-->
         <scene sceneID="muK-6w-D9N">
             <objects>
@@ -1630,8 +1654,8 @@ Aminatour1@evento.saurus.bh</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ot9-7m-xg2"/>
-        <segue reference="U3y-aa-01n"/>
+        <segue reference="uns-kt-Srp"/>
+        <segue reference="WfW-zp-FCv"/>
         <segue reference="ona-u7-5V5"/>
         <segue reference="DwF-wQ-wJU"/>
     </inferredMetricsTieBreakers>
@@ -1658,10 +1682,10 @@ Aminatour1@evento.saurus.bh</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
