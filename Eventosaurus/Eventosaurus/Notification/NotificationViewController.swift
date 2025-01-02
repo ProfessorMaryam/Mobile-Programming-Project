@@ -2,10 +2,11 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class NotificationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class NotificationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,EventDetailsDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var userName: User?
     var upcomingEvents: [[String: Any]] = []
     var joinedEvents: [[String: Any]] = []
     let db = Firestore.firestore()
@@ -26,6 +27,14 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         fetchUpcomingEvents()
         fetchJoinedEvents()
     }
+    func didJoinEvent(eventData: [String: Any]) {
+        print("entered for notification view controller")
+            // Add the event to the joined events array
+            joinedEvents.append(eventData)
+            
+            // Reload the table view
+            tableView.reloadData()
+        }
     
     // Fetch upcoming events
     func fetchUpcomingEvents() {
@@ -63,7 +72,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         // Step 1: Fetch documents from Event_User where email matches
-        db.collection("Event_User").whereField("email", isEqualTo: userEmail).getDocuments { snapshot, error in
+        db.collection("Users").whereField("email", isEqualTo: userEmail).getDocuments { snapshot, error in
             if let error = error {
                 print("Error fetching joined events: \(error)")
                 return

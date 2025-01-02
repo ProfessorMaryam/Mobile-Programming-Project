@@ -1,33 +1,33 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
-
+protocol EventDetailsDelegate: AnyObject {
+    func didJoinEvent(eventData: [String: Any])
+}
 class EventDetailsViewController: UIViewController {
     @IBOutlet weak var joinButton: UIButton!
     
     let db = Firestore.firestore()
     var eventData: [String: Any]?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Optionally, you can set up UI elements to display event details
-        if let eventName = eventData?["Event Name"] as? String {
-            self.title = eventName // Set the navigation title to the event name
-        }
-    }
+    weak var delegate: EventDetailsDelegate?
 
     @IBAction func joinButtonTapped(_ sender: UIButton) {
-        guard let user = Auth.auth().currentUser,
-              let eventData = eventData,
+        guard let eventData = eventData,
               let eventID = eventData["eventID"] as? String else {
-            print("User not logged in or eventData is invalid.")
+            print("Event data is invalid.")
             return
         }
         
-        let userEmail = user.email ?? "unknown"
+        // Function to show a popup notification
+        func showPopupNotification(title: String, message: String) {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        let user = Auth.auth().currentUser
+        let userEmail = user?.email ?? "unknown"
         
-        // Add the event to the Event_User collection
+        // Add the event to the Firestore Event_User collection
         db.collection("Event_User").addDocument(data: [
             "email": userEmail,
             "event_id": eventID
@@ -37,8 +37,17 @@ class EventDetailsViewController: UIViewController {
             } else {
                 print("Event joined successfully!")
                 
-                // Navigate back to NotificationViewController
-                self.navigationController?.popViewController(animated: true)
+                // Show success notification
+                showPopupNotification(title: "Success", message: "You have successfully joined the event!")
+                
+                // Pass the event data to the JoinedEventsViewController
+                if let navigationController = self.navigationController,
+                               let notificationVC = navigationController.viewControllers.last as? NotificationViewController {
+                                notificationVC.joinedEvents.append(eventData) // Add the event to the list
+                                notificationVC.tableView.reloadData() // Reload the table view
+                            }
+                                // Dismiss the current view controller
+                       self.navigationController?.popViewController(animated: true)
             }
         }
     }

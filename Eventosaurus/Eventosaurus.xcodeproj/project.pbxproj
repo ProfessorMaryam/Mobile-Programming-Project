@@ -68,6 +68,7 @@
 		CE807E782D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE807E762D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift */; };
 		CE807E792D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE807E772D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib */; };
 		CFF79CFB2D1AB53A002EFA39 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */; };
+		D0E975932D26A22F009F952A /* notifPage.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0E975922D26A22F009F952A /* notifPage.txt */; };
 		D5FDE8332D071D1300EB1819 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8322D071D1300EB1819 /* FirebaseAuth */; };
 		D5FDE8352D071D1300EB1819 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8342D071D1300EB1819 /* FirebaseCore */; };
 		D5FDE8372D071D1300EB1819 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8362D071D1300EB1819 /* FirebaseFirestore */; };
@@ -163,6 +164,7 @@
 		CE807E762D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDisplaysInterestsTableViewCell.swift; sourceTree = "<group>"; };
 		CE807E772D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminDisplaysInterestsTableViewCell.xib; sourceTree = "<group>"; };
 		CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		D0E975922D26A22F009F952A /* notifPage.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notifPage.txt; sourceTree = "<group>"; };
 		DA911F332D130E5900159376 /* RequestForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestForm.swift; sourceTree = "<group>"; };
 		DA911F352D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayRequestsTVCTableViewCell.swift; sourceTree = "<group>"; };
 		DA911F362D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayRequestsTVCTableViewCell.xib; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				5EA405A72D256D780051C510 /* notificationTableViewCell.swift */,
 				5EA405A92D256E1E0051C510 /* NotificationViewController.swift */,
 				5EA405AB2D256E560051C510 /* EventDetailsViewController.swift */,
+				D0E975922D26A22F009F952A /* notifPage.txt */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3EBFD7C2D05C7E900B4D000 /* GoogleService-Info.plist in Resources */,
+				D0E975932D26A22F009F952A /* notifPage.txt in Resources */,
 				C395B13C2CFC996900C073C2 /* LaunchScreen.storyboard in Resources */,
 				CE807E792D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib in Resources */,
 				DCB99ABE2D20791500AC9EFF /* FeedBack.storyboard in Resources */,
