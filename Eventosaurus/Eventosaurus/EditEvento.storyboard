@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Edit Event View Controller-->
+        <!--Edit Evento View Controller-->
         <scene sceneID="EuA-14-P5a">
             <objects>
-                <viewController storyboardIdentifier="EditEventViewController" id="Vzp-rl-G9v" customClass="EditEventViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditEventoViewController" id="Vzp-rl-G9v" customClass="EditEventoViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W6i-R1-OLg">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,13 +31,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event Time" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ri-1X-4XW">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event Date" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ri-1X-4XW">
                                         <rect key="frame" x="47" y="305" width="298" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event Date" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LWK-oj-Xaw">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Organizer" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LWK-oj-Xaw">
                                         <rect key="frame" x="47" y="359" width="298" height="34"/>
                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -124,6 +124,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="euo-Re-dtJ"/>
+                    <connections>
+                        <outlet property="coOrganizerTextField" destination="cws-T2-UXe" id="1ki-Fa-ArC"/>
+                        <outlet property="descriptionTextView" destination="KQ1-X9-iPl" id="Pnb-Cm-bmN"/>
+                        <outlet property="eventDateTextField" destination="1ri-1X-4XW" id="AJK-M0-d0K"/>
+                        <outlet property="eventNameTextField" destination="Mba-dv-tTc" id="Ud7-Rq-wdh"/>
+                        <outlet property="maxAttendeesTextField" destination="BT7-uL-dPt" id="Kl9-EE-DZF"/>
+                        <outlet property="organizerTextField" destination="LWK-oj-Xaw" id="tP5-jZ-zXI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZs-fC-OWd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

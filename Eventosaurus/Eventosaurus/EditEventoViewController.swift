@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
-class EditEventViewController: UIViewController {
+class EditEventoViewController: UIViewController {
     
     // Outlets for the text fields and text view to edit event details
     @IBOutlet weak var eventNameTextField: UITextField!
@@ -22,12 +22,15 @@ class EditEventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadEventData() // Load event data when the view loads
+        // Load event data is now triggered by a button action
     }
 
-    // Load event data from Firestore based on Event Name
-    func loadEventData() {
-        guard let eventName = eventNameTextField.text, !eventName.isEmpty else { return }
+    // Action triggered to load event data
+    @IBAction func loadEventData(_ sender: UIButton) {
+        guard let eventName = eventNameTextField.text, !eventName.isEmpty else {
+            print("Event Name is empty.")
+            return
+        }
 
         // Search for the event document by Event Name
         db.collection("Events").whereField("Event Name", isEqualTo: eventName).getDocuments { [weak self] (querySnapshot, error) in
@@ -37,14 +40,12 @@ class EditEventViewController: UIViewController {
                 print("Error fetching document: \(error)") // Print error if occurs
                 return
             }
-            guard let documents = querySnapshot?.documents, !documents.isEmpty else {
+            guard let documents = querySnapshot?.documents, let document = documents.first else {
                 print("No matching events found.") // Print message if no events are found
                 return
             }
 
-            // Assuming the first match is the desired event
-            let document = documents.first
-            let data = document?.data() ?? [:]
+            let data = document.data()
 
             // Populate text fields with event data retrieved from Firestore
             self.eventNameTextField.text = data["Event Name"] as? String

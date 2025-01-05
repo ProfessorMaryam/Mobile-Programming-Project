@@ -954,6 +954,28 @@
                                             <segue destination="GwK-9W-DbL" kind="presentation" modalPresentationStyle="fullScreen" id="9gf-n5-Hf3"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHn-ca-E0Q">
+                                        <rect key="frame" x="165" y="516" width="165" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Create Event page">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="P3t-z5-Lwc" kind="presentation" modalPresentationStyle="fullScreen" id="OW0-x5-Rff"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uo7-W2-nF0">
+                                        <rect key="frame" x="210" y="313" width="75" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="H8s-rL-57S" kind="presentation" modalPresentationStyle="fullScreen" id="cVd-5K-6Zy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -1095,6 +1117,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTX-i3-Oc9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6302.7906976744189" y="12.231759656652361"/>
+        </scene>
+        <!--EditEventoViewController-->
+        <scene sceneID="TQD-AV-mMy">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="EditEventoViewController" storyboardName="EditEvento" referencedIdentifier="EditEventoViewController" id="H8s-rL-57S" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PEU-4c-2Pj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6929" y="-55"/>
+        </scene>
+        <!--CreateEvent-->
+        <scene sceneID="LUg-eG-Bxi">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CreateEvent" storyboardName="CreateEvent" id="P3t-z5-Lwc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NzA-25-U8o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6858" y="160"/>
         </scene>
         <!--Settings Menu View Controller-->
         <scene sceneID="aGl-Tl-eB8">
@@ -1656,7 +1694,7 @@ Aminatour1@evento.saurus.bh</string>
     <inferredMetricsTieBreakers>
         <segue reference="uns-kt-Srp"/>
         <segue reference="WfW-zp-FCv"/>
-        <segue reference="ona-u7-5V5"/>
+        <segue reference="9gf-n5-Hf3"/>
         <segue reference="DwF-wQ-wJU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

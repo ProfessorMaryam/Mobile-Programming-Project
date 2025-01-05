@@ -7,7 +7,6 @@
 
 import UIKit
 import FirebaseFirestore
-import FirebaseAuth
 
 class CreateEventViewController: UIViewController {
 
@@ -45,12 +44,6 @@ class CreateEventViewController: UIViewController {
             return // Exit the function if validation fails
         }
 
-        // Check if the user is authenticated before proceeding
-        guard let user = Auth.auth().currentUser else {
-            print("User is not authenticated.")
-            return // Exit the function if the user is not logged in
-        }
-
         // Create a dictionary to hold event data
         let eventData: [String: Any] = [
             "Event Name": eventName,
@@ -58,8 +51,7 @@ class CreateEventViewController: UIViewController {
             "Organizer1": organizer1,
             "Organizer2": organizer2,
             "Maximum Attendees": maxAttendees,
-            "Description": description,
-            "UserID": user.uid // Optionally store the user ID for reference
+            "Description": description
         ]
 
         // Add the event data to the "Events" collection in Firestore

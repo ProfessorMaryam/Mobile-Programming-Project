@@ -38,6 +38,7 @@
                                         <rect key="frame" x="30" y="369" width="240" height="153.33333333333337"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="153.33333333333337" id="99b-qw-eKg"/>
                                             <constraint firstAttribute="width" constant="240" id="T3C-o4-SME"/>
                                         </constraints>
                                         <string key="text">a classical event for the ones who admire stand-up comedy, improv and other fun activities to cheer you up.                                                        if you need to lift up your smile, be our guest!                                            Date: 10/10/2024                                location manama</string>
@@ -45,35 +46,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ypG-3B-w3L">
-                                        <rect key="frame" x="35" y="602.66666666666663" width="54" height="35.333333333333371"/>
-                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="54" id="5MH-h3-tb9"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3Q-PA-dvu">
-                                        <rect key="frame" x="239" y="600.66666666666663" width="119" height="38.333333333333371"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Leave">
-                                            <color key="baseBackgroundColor" red="0.6615204026" green="0.49980388780000001" blue="0.80078417850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="leaveBtn:" destination="Oxk-65-NS9" eventType="touchUpInside" id="Gsk-QC-i1H"/>
-                                            <action selector="leaveBtn:" destination="Cid-tv-kxU" eventType="touchUpInside" id="fo4-ml-ulQ"/>
-                                            <segue destination="515-7o-hBu" kind="presentation" modalPresentationStyle="fullScreen" id="Xj2-4C-jDQ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAP-FK-rlY">
-                                        <rect key="frame" x="104" y="600.66666666666663" width="120" height="38.333333333333371"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="uk6-0Q-o6n"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Share">
-                                            <color key="baseBackgroundColor" red="0.6615204026" green="0.49980388780000001" blue="0.80078417850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </buttonConfiguration>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJf-yq-cPG">
                                         <rect key="frame" x="48" y="3" width="50" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -85,25 +57,31 @@
                                             <segue destination="AIm-3i-uIv" kind="presentation" modalPresentationStyle="fullScreen" id="cps-9B-8PN"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3Q-PA-dvu">
+                                        <rect key="frame" x="35" y="600.66666666666663" width="323" height="38.333333333333371"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Leave">
+                                            <color key="baseBackgroundColor" red="0.6615204026" green="0.49980388780000001" blue="0.80078417850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="leaveBtn:" destination="Oxk-65-NS9" eventType="touchUpInside" id="Gsk-QC-i1H"/>
+                                            <action selector="leaveBtn:" destination="Cid-tv-kxU" eventType="touchUpInside" id="fo4-ml-ulQ"/>
+                                            <segue destination="515-7o-hBu" kind="presentation" modalPresentationStyle="fullScreen" id="Xj2-4C-jDQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="hCt-2p-Rxz" firstAttribute="leading" secondItem="z0S-Er-tl7" secondAttribute="leading" constant="30" id="0aM-10-h0s"/>
                                     <constraint firstItem="eX5-Fg-go2" firstAttribute="top" secondItem="LTW-1o-vD4" secondAttribute="bottom" constant="40" id="6x8-eq-OUl"/>
-                                    <constraint firstItem="ypG-3B-w3L" firstAttribute="leading" secondItem="eX5-Fg-go2" secondAttribute="leading" id="9e8-dY-Q2u"/>
                                     <constraint firstItem="h3Q-PA-dvu" firstAttribute="trailing" secondItem="eX5-Fg-go2" secondAttribute="trailing" id="9kh-Xx-dg1"/>
                                     <constraint firstAttribute="trailing" secondItem="eX5-Fg-go2" secondAttribute="trailing" constant="35" id="AzY-cM-UEZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="ypG-3B-w3L" secondAttribute="bottom" constant="110" id="D7w-FG-kTJ"/>
                                     <constraint firstItem="hCt-2p-Rxz" firstAttribute="top" secondItem="eX5-Fg-go2" secondAttribute="bottom" constant="8" symbolic="YES" id="H0l-Rg-8nM"/>
                                     <constraint firstItem="LTW-1o-vD4" firstAttribute="top" secondItem="z0S-Er-tl7" secondAttribute="top" constant="41" id="RKZ-FD-7nG"/>
                                     <constraint firstItem="LTW-1o-vD4" firstAttribute="leading" secondItem="z0S-Er-tl7" secondAttribute="leading" constant="35" id="YNZ-sN-HCf"/>
                                     <constraint firstItem="eX5-Fg-go2" firstAttribute="leading" secondItem="z0S-Er-tl7" secondAttribute="leading" constant="35" id="blK-KC-1rz"/>
-                                    <constraint firstItem="ypG-3B-w3L" firstAttribute="bottom" secondItem="TAP-FK-rlY" secondAttribute="bottom" id="fNI-Nq-kRO"/>
-                                    <constraint firstItem="TAP-FK-rlY" firstAttribute="leading" secondItem="ypG-3B-w3L" secondAttribute="trailing" constant="15" id="gdZ-gj-U7u"/>
-                                    <constraint firstItem="TAP-FK-rlY" firstAttribute="top" secondItem="hCt-2p-Rxz" secondAttribute="bottom" constant="78.333333333333371" id="hFt-pp-fcm"/>
                                     <constraint firstItem="h3Q-PA-dvu" firstAttribute="top" secondItem="hCt-2p-Rxz" secondAttribute="bottom" constant="78.333333333333371" id="hRM-Mk-0x0"/>
-                                    <constraint firstItem="h3Q-PA-dvu" firstAttribute="leading" secondItem="TAP-FK-rlY" secondAttribute="trailing" constant="15" id="uAV-qB-KDl"/>
-                                    <constraint firstItem="ypG-3B-w3L" firstAttribute="top" secondItem="hCt-2p-Rxz" secondAttribute="bottom" constant="78.333333333333371" id="uiG-bR-UtU"/>
+                                    <constraint firstItem="h3Q-PA-dvu" firstAttribute="centerX" secondItem="eX5-Fg-go2" secondAttribute="centerX" id="nff-m7-evu"/>
                                     <constraint firstAttribute="trailing" secondItem="LTW-1o-vD4" secondAttribute="trailing" constant="35" id="yE9-cr-45Y"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -137,8 +115,8 @@
         <!--joinEventPageViewController-->
         <scene sceneID="TT3-XP-1gv">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LTV-IV-YV4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="joinEventPageViewController" storyboardName="JoinEvent" referencedIdentifier="joinEventPageViewController" id="515-7o-hBu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LTV-IV-YV4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3466" y="197"/>
         </scene>
@@ -173,7 +151,6 @@
         <image name="Background" width="301.66665649414062" height="706.66668701171875"/>
         <image name="Fashion" width="1800" height="900"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
