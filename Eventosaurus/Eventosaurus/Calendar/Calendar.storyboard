@@ -127,8 +127,9 @@
                                 </connections>
                             </collectionView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="testing somethinmg" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Yib-nq-e2M">
-                                <rect key="frame" x="87" y="658" width="240" height="128"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <rect key="frame" x="0.0" y="652" width="393" height="166"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -140,25 +141,25 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="G3T-iL-5do" secondAttribute="leading" id="2ZW-ZZ-PL4"/>
                             <constraint firstItem="G3T-iL-5do" firstAttribute="height" secondItem="nST-AR-Lhg" secondAttribute="height" id="2kQ-jH-0MC"/>
                             <constraint firstItem="Lxz-mE-fK1" firstAttribute="leading" secondItem="nST-AR-Lhg" secondAttribute="trailing" id="3TQ-C3-Okd"/>
+                            <constraint firstItem="Yib-nq-e2M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5TM-Eh-q5x"/>
                             <constraint firstItem="Xxl-GX-PPb" firstAttribute="top" secondItem="yVl-is-6Nz" secondAttribute="bottom" id="8qB-Qn-xN6"/>
                             <constraint firstItem="G3T-iL-5do" firstAttribute="centerY" secondItem="nST-AR-Lhg" secondAttribute="centerY" id="Akx-kH-spM"/>
                             <constraint firstItem="yVl-is-6Nz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="BcK-cg-2W3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yib-nq-e2M" secondAttribute="trailing" id="CdJ-Qd-4Ag"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xxl-GX-PPb" secondAttribute="trailing" id="FXt-DB-mm3"/>
                             <constraint firstItem="nST-AR-Lhg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HgR-9L-VCQ"/>
                             <constraint firstItem="nST-AR-Lhg" firstAttribute="leading" secondItem="G3T-iL-5do" secondAttribute="trailing" id="MfO-32-fOx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lxz-mE-fK1" secondAttribute="trailing" id="RcR-86-yBj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Yib-nq-e2M" secondAttribute="bottom" id="Rg0-gr-wfi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yVl-is-6Nz" secondAttribute="trailing" id="UgG-eN-fyt"/>
                             <constraint firstItem="Xxl-GX-PPb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZM5-k7-VVD"/>
                             <constraint firstItem="Lxz-mE-fK1" firstAttribute="centerY" secondItem="nST-AR-Lhg" secondAttribute="centerY" id="gF8-Tr-WaE"/>
                             <constraint firstItem="yVl-is-6Nz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h7g-5o-5M8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Yib-nq-e2M" secondAttribute="bottom" constant="32" id="ibW-8Z-Q0i"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yib-nq-e2M" secondAttribute="trailing" constant="66" id="oXC-YX-nOA"/>
                             <constraint firstItem="yVl-is-6Nz" firstAttribute="top" secondItem="nST-AR-Lhg" secondAttribute="bottom" constant="30" id="plC-xo-RA5"/>
                             <constraint firstItem="nST-AR-Lhg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="qq3-2l-gVv"/>
-                            <constraint firstItem="Yib-nq-e2M" firstAttribute="top" secondItem="yVl-is-6Nz" secondAttribute="bottom" constant="419.67000000000002" id="qyh-go-GIp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Xxl-GX-PPb" secondAttribute="bottom" id="t0t-0c-XX1"/>
                             <constraint firstItem="Lxz-mE-fK1" firstAttribute="height" secondItem="nST-AR-Lhg" secondAttribute="height" id="xYZ-89-FIU"/>
-                            <constraint firstItem="Yib-nq-e2M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="yOH-Z4-Ayj"/>
+                            <constraint firstItem="Yib-nq-e2M" firstAttribute="top" secondItem="yVl-is-6Nz" secondAttribute="bottom" constant="413.67000000000002" id="yU6-Lr-NWD"/>
                             <constraint firstItem="nST-AR-Lhg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="z4m-9O-B3k"/>
                         </constraints>
                     </view>
@@ -201,8 +202,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -114,7 +114,7 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
             
             self.upcomingEvents = documents.map { doc in
                 var data = doc.data()
-                data["eventID"] = doc.documentID // Add document ID to the dictionary
+                data["eventID"] = doc.documentID
                 return data
             }
             
@@ -245,9 +245,8 @@ class NotificationViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    // MARK: - TableView DataSource & Delegate
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2 // Section 0 for Upcoming Events, Section 1 for Joined Events
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
