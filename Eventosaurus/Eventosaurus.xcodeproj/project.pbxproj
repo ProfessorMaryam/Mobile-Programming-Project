@@ -23,8 +23,6 @@
 		C30A646F2D1C466200D86BD8 /* EventsInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */; };
 		C30CAB302D1EFC1500892F01 /* JoinEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30CAB2F2D1EFC1500892F01 /* JoinEvent.storyboard */; };
 		C30CAB342D1EFD2500892F01 /* JoinEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30CAB332D1EFD2500892F01 /* JoinEventViewController.swift */; };
-		C30CAB362D1EFD5500892F01 /* LeaveEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30CAB352D1EFD5500892F01 /* LeaveEvent.storyboard */; };
-		C30CAB382D1EFD7100892F01 /* LeaveEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30CAB372D1EFD7100892F01 /* LeaveEventViewController.swift */; };
 		C30CAB3E2D1EFE2900892F01 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30CAB3D2D1EFE2900892F01 /* CreateEvent.storyboard */; };
 		C30CAB402D1EFE4A00892F01 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30CAB3F2D1EFE4A00892F01 /* CreateEventViewController.swift */; };
 		C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */; };
@@ -78,6 +76,8 @@
 		DAB6A4412D118647002FEC6D /* DisplayUsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB6A43F2D118647002FEC6D /* DisplayUsersTableViewCell.xib */; };
 		DC2ED4882D2AAFBD007624D2 /* EditEvento.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC2ED4872D2AAFBD007624D2 /* EditEvento.storyboard */; };
 		DC2ED48A2D2AB00F007624D2 /* EditEventoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2ED4892D2AB00F007624D2 /* EditEventoViewController.swift */; };
+		DC4A491E2D2AC1DE003CCC67 /* LeaveEvento.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4A491D2D2AC1DE003CCC67 /* LeaveEvento.storyboard */; };
+		DC4A49202D2AC20C003CCC67 /* LeaveEventoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A491F2D2AC20C003CCC67 /* LeaveEventoViewController.swift */; };
 		DCB99ABE2D20791500AC9EFF /* FeedBack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB99ABC2D20791500AC9EFF /* FeedBack.storyboard */; };
 		DCB99ABF2D20791500AC9EFF /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB99ABD2D20791500AC9EFF /* FeedBackViewController.swift */; };
 /* End PBXBuildFile section */
@@ -116,8 +116,6 @@
 		C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInformationTableViewController.swift; sourceTree = "<group>"; };
 		C30CAB2F2D1EFC1500892F01 /* JoinEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JoinEvent.storyboard; sourceTree = "<group>"; };
 		C30CAB332D1EFD2500892F01 /* JoinEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEventViewController.swift; sourceTree = "<group>"; };
-		C30CAB352D1EFD5500892F01 /* LeaveEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaveEvent.storyboard; sourceTree = "<group>"; };
-		C30CAB372D1EFD7100892F01 /* LeaveEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveEventViewController.swift; sourceTree = "<group>"; };
 		C30CAB3D2D1EFE2900892F01 /* CreateEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		C30CAB3F2D1EFE4A00892F01 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		C313441A2D0D6F8300B17BF4 /* AdminPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPageTableViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +167,8 @@
 		DAB6A43F2D118647002FEC6D /* DisplayUsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayUsersTableViewCell.xib; sourceTree = "<group>"; };
 		DC2ED4872D2AAFBD007624D2 /* EditEvento.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditEvento.storyboard; sourceTree = "<group>"; };
 		DC2ED4892D2AB00F007624D2 /* EditEventoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventoViewController.swift; sourceTree = "<group>"; };
+		DC4A491D2D2AC1DE003CCC67 /* LeaveEvento.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaveEvento.storyboard; sourceTree = "<group>"; };
+		DC4A491F2D2AC20C003CCC67 /* LeaveEventoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveEventoViewController.swift; sourceTree = "<group>"; };
 		DCB99ABC2D20791500AC9EFF /* FeedBack.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedBack.storyboard; sourceTree = "<group>"; };
 		DCB99ABD2D20791500AC9EFF /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -272,8 +272,8 @@
 				DCB99ABD2D20791500AC9EFF /* FeedBackViewController.swift */,
 				C30CAB2F2D1EFC1500892F01 /* JoinEvent.storyboard */,
 				C30CAB332D1EFD2500892F01 /* JoinEventViewController.swift */,
-				C30CAB352D1EFD5500892F01 /* LeaveEvent.storyboard */,
-				C30CAB372D1EFD7100892F01 /* LeaveEventViewController.swift */,
+				DC4A491D2D2AC1DE003CCC67 /* LeaveEvento.storyboard */,
+				DC4A491F2D2AC20C003CCC67 /* LeaveEventoViewController.swift */,
 				DC2ED4872D2AAFBD007624D2 /* EditEvento.storyboard */,
 				DC2ED4892D2AB00F007624D2 /* EditEventoViewController.swift */,
 				C30CAB3D2D1EFE2900892F01 /* CreateEvent.storyboard */,
@@ -475,10 +475,10 @@
 				DCB99ABE2D20791500AC9EFF /* FeedBack.storyboard in Resources */,
 				C30CAB3E2D1EFE2900892F01 /* CreateEvent.storyboard in Resources */,
 				DAB6A4412D118647002FEC6D /* DisplayUsersTableViewCell.xib in Resources */,
+				DC4A491E2D2AC1DE003CCC67 /* LeaveEvento.storyboard in Resources */,
 				C395B1392CFC996900C073C2 /* Assets.xcassets in Resources */,
 				C30CAB302D1EFC1500892F01 /* JoinEvent.storyboard in Resources */,
 				C31344212D0D797B00B17BF4 /* AdminTVC.xib in Resources */,
-				C30CAB362D1EFD5500892F01 /* LeaveEvent.storyboard in Resources */,
 				5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */,
 				C326037B2D0872DB008BD790 /* BecomeOrg.storyboard in Resources */,
 				DA911F382D131DD900159376 /* DisplayRequestsTVCTableViewCell.xib in Resources */,
@@ -516,7 +516,6 @@
 				5EA405A32D2567790051C510 /* CalendarViewController.swift in Sources */,
 				C39C86722D1F274900EA1AFE /* ViewFeedback.swift in Sources */,
 				C395B1682CFCA9E700C073C2 /* Event.swift in Sources */,
-				C30CAB382D1EFD7100892F01 /* LeaveEventViewController.swift in Sources */,
 				5EA405A82D256D780051C510 /* notificationTableViewCell.swift in Sources */,
 				C3E287382D0DA60500CBF459 /* UsersDisplayController.swift in Sources */,
 				57A5F0462D12B74800252873 /* EventsDisplayTableViewCell.swift in Sources */,
@@ -536,6 +535,7 @@
 				C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */,
 				C3EBFD8C2D05EDBD00B4D000 /* LoginPage.swift in Sources */,
 				C30CAB402D1EFE4A00892F01 /* CreateEventViewController.swift in Sources */,
+				DC4A49202D2AC20C003CCC67 /* LeaveEventoViewController.swift in Sources */,
 				C30CAB342D1EFD2500892F01 /* JoinEventViewController.swift in Sources */,
 				C395B1602CFCA7A800C073C2 /* User.swift in Sources */,
 				C395B1342CFC996700C073C2 /* ViewController.swift in Sources */,

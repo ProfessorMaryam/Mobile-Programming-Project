@@ -111,10 +111,28 @@ class EditEventoViewController: UIViewController {
                     print("Error updating Event: \(error)") // Print error if occurs
                 } else {
                     print("Event updated successfully!") // Confirmation message
-                    // Navigate back to previous view
-                    self.navigationController?.popViewController(animated: true)
+                    self.showSuccessAlert() // Show success alert
+                    self.clearFields() // Clear fields after successful update
                 }
             }
         }
+    }
+    
+    // Function to show a success alert
+    func showSuccessAlert() {
+        let alertController = UIAlertController(title: "Success", message: "Event edited successfully!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    // Function to clear all input fields in the form
+    func clearFields() {
+        eventNameTextField.text = ""
+        eventDateTextField.text = ""
+        organizerTextField.text = ""
+        coOrganizerTextField.text = ""
+        maxAttendeesTextField.text = ""
+        descriptionTextView.text = ""
     }
 }

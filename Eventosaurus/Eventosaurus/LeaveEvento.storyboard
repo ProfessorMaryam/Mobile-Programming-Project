@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Leave Event Page View Controller-->
+        <!--Leave Evento View Controller-->
         <scene sceneID="GTL-ct-nqt">
             <objects>
-                <viewController storyboardIdentifier="LeaveEvent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cid-tv-kxU" customClass="LeaveEventPageViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeaveEvento" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cid-tv-kxU" customClass="LeaveEventoViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UuC-MX-Lo3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +65,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="leaveBtn:" destination="Oxk-65-NS9" eventType="touchUpInside" id="Gsk-QC-i1H"/>
-                                            <action selector="leaveBtn:" destination="Cid-tv-kxU" eventType="touchUpInside" id="fo4-ml-ulQ"/>
+                                            <action selector="leaveBtn:" destination="Cid-tv-kxU" eventType="touchUpInside" id="vHo-zg-oP7"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name to leave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uHW-Kx-2XW">
@@ -121,11 +121,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="uGW-NY-Qhr"/>
                     <connections>
-                        <outlet property="DescriptionView" destination="hCt-2p-Rxz" id="973-BS-miq"/>
-                        <outlet property="EventName" destination="qti-Mi-SON" id="Y56-xH-G0J"/>
-                        <outlet property="LabelText" destination="eX5-Fg-go2" id="A5T-bn-1vn"/>
-                        <outlet property="UserFullName" destination="uHW-Kx-2XW" id="Zj4-Ff-i3o"/>
-                        <outlet property="description" destination="hCt-2p-Rxz" id="f1M-Uh-xcS"/>
+                        <outlet property="EventName" destination="qti-Mi-SON" id="N7S-lN-X0E"/>
+                        <outlet property="UserFullName" destination="uHW-Kx-2XW" id="YeG-uD-vKM"/>
+                        <outlet property="userFullName" destination="uHW-Kx-2XW" id="HU4-dM-5xV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTw-gK-gQ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

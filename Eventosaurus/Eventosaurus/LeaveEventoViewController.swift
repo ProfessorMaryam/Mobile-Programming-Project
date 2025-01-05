@@ -1,17 +1,18 @@
 //
-//  LeaveEventPageViewController.swift
+//  LeaveEventoViewController.swift
 //  Eventosaurus
 //
-//  Created by BP-36-201-15 on 10/12/2024.
+//  Created by BP-36-215-04 on 05/01/2025.
 //
 
 import UIKit
 import FirebaseFirestore
+class LeaveEventoViewController: UIViewController {
 
-class LeaveEventPageViewController: UIViewController {
 
-    @IBOutlet weak var UserFullName: UITextField! // Outlet for the user's full name text field
-    @IBOutlet weak var EventName: UITextField! // Outlet for the event name text field
+    @IBOutlet weak var EventName: UITextField!
+    @IBOutlet weak var UserFullName: UITextField!
+    
     let db = Firestore.firestore() // Create an instance of Firestore for database operations
     
     override func viewDidLoad() {
@@ -20,7 +21,7 @@ class LeaveEventPageViewController: UIViewController {
     }
     
     // Action triggered when the leave button is pressed
-    @IBAction func leaveBtn(_ sender: UIButton) {
+    @IBAction func leaveBtn(_ sender: Any) {
         withdrawFromEvent() // Call the method to handle user's withdrawal
     }
     

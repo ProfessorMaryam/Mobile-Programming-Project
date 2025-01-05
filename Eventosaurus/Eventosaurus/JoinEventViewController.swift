@@ -10,10 +10,9 @@ import FirebaseFirestore
 
 class joinEventPageViewController: UIViewController {
     
-    // Create an instance of Firestore to interact with the database
-    let db = Firestore.firestore()
-    
-    // Property to hold the event ID for the event the user wants to join
+    @IBOutlet weak var EventName: UITextField! // Outlet for the event name text field
+    @IBOutlet weak var FullName: UITextField! // Outlet for the full name text field
+    let db = Firestore.firestore() // Create an instance of Firestore to interact with the database
     var eventID: String?
 
     override func viewDidLoad() {
@@ -21,26 +20,45 @@ class joinEventPageViewController: UIViewController {
         // Additional setup can be done here after the view has loaded
     }
     
-    // Action triggered when the payment button is pressed
-    @IBAction func payBtn(_ sender: UIButton) {
-        // Check if the event ID is not nil
-        guard let eventID = eventID else {
-            return // Exit if the event ID is missing
+    @IBAction func JoinEvent(_ sender: Any) {
+        guard let eventName = EventName.text, !eventName.isEmpty else {
+            showAlert(message: "Please enter the event name.")
+            return // Exit if the event name is empty
         }
         
-        // Assuming a default user ID for demonstration purposes
-        let userID = "default-user-id" // Replace this with actual user identification logic
-        let userRef = db.collection("Users").document(userID)
+        guard let fullName = FullName.text, !fullName.isEmpty else {
+            showAlert(message: "Please enter your full name.")
+            return // Exit if the full name is empty
+        }
         
-        // Update the user's document to add the event they are joining
-        userRef.updateData([
-            "joinedEvents": FieldValue.arrayUnion([eventID]) // Use arrayUnion to add eventID to joinedEvents array
-        ]) { _ in
-            // Show a simple alert indicating the user joined the event
-            let alertController = UIAlertController(title: "Success", message: "User Joined Event Successfully!", preferredStyle: .alert)
-            let doneAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(doneAction)
-            self.present(alertController, animated: true, completion: nil)
+        // Query Firestore to find the event document by its name
+        db.collection("Events").whereField("Event Name", isEqualTo: eventName).getDocuments { [weak self] (querySnapshot, error) in
+            guard let self = self else { return } // Ensure self is available
+            
+            if let error = error {
+                print("Error fetching event document: \(error)")
+                self.showAlert(message: "Failed to find event.")
+                return
+            }
+            
+            // Check if any documents were returned
+            guard let documents = querySnapshot?.documents, let eventDocument = documents.first else {
+                self.showAlert(message: "No event found with that name.")
+                return
+            }
+            
+            // Update the participants field in the found event document
+            eventDocument.reference.updateData([
+                "participants": FieldValue.arrayUnion([fullName]) // Add the user's full name to the participants array
+            ]) { error in
+                if let error = error {
+                    print("Error updating event document: \(error)")
+                    self.showAlert(message: "Failed to join event.")
+                } else {
+                    // Show a success alert indicating the user joined the event
+                    self.showAlert(message: "User joined event successfully!")
+                }
+            }
         }
     }
     
@@ -48,6 +66,9 @@ class joinEventPageViewController: UIViewController {
         navigateToEventHome()
     }
     
+    @IBAction func paybtn(_ sender: Any) {
+        showAlert(message: "Paid successfully!")
+    }
     func navigateToEventHome() {
         // Create an instance of EventHomeViewController from the storyboard
         let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
@@ -67,5 +88,13 @@ class joinEventPageViewController: UIViewController {
         } else {
             print("Error: Unable to find the active window scene.")
         }
+    }
+
+    // Function to show an alert with a given message
+    private func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(doneAction)
+        present(alertController, animated: true, completion: nil)
     }
 }

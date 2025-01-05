@@ -60,9 +60,18 @@ class CreateEventViewController: UIViewController {
                 print("Error adding event: \(error)") // Print error message if the operation fails
             } else {
                 print("Event added successfully!") // Confirm successful addition
+                self.showSuccessAlert() // Show success alert
                 self.clearFields() // Clear the text fields after successful submission
             }
         }
+    }
+
+    // Function to show a success alert
+    func showSuccessAlert() {
+        let alertController = UIAlertController(title: "Success", message: "Event created successfully!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 
     // Function to clear all input fields in the form
