@@ -1360,7 +1360,7 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                                 <connections>
                                                     <outlet property="orgImageView" destination="uNk-KC-GR3" id="d5a-zS-svp"/>
                                                     <outlet property="titleLabel" destination="DNg-xU-2xc" id="AEW-SW-sEZ"/>
-                                                    <segue destination="fJw-hn-iEY" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="4cj-2g-aTc"/>
+                                                    <segue destination="fJw-hn-iEY" kind="presentation" modalPresentationStyle="fullScreen" id="4cj-2g-aTc"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>

@@ -4,6 +4,12 @@ import FirebaseAuth
 
 class joinEventPageViewController: UIViewController {
     
+    @IBOutlet weak var eventImageView: UIImageView!
+    
+    @IBOutlet weak var eventNameLabel: UILabel!
+    
+    @IBOutlet weak var eventDescText: UITextView!
+    
     // Create an instance of Firestore to interact with the database
     let db = Firestore.firestore()
     
@@ -14,11 +20,66 @@ class joinEventPageViewController: UIViewController {
     
     // Property to hold the event ID for the event the user wants to join
     var eventID: String?
+    var eventName: String?
+    var eventCatg: String?
+    var eventDesc: String?
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Ensure data is set before updating the UI
+        eventID = EventCurrentSelection.shared.getEventID()
+        eventName = EventCurrentSelection.shared.getEventName()
+        eventDesc = EventCurrentSelection.shared.getEventDescription()
+        eventCatg = EventCurrentSelection.shared.getEventCategory()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Additional setup can be done here after the view has loaded
+        // Debugging log to check if the values are correctly set
+        print("eventID: \(eventID ?? "nil")")
+        print("eventName: \(eventName ?? "nil")")
+        print("eventDesc: \(eventDesc ?? "nil")")
+        print("eventCatg: \(eventCatg ?? "nil")")
+
+        // Set the UI elements with the event data
+        eventNameLabel.text = eventName
+        eventDescText.text = eventDesc
+
+        // Set the image for the category
+        if let category = eventCatg {
+            setImageForCategory(category)
+        }
     }
+    
+    
+    private func setImageForCategory(_ category: String) {
+        print("Setting image for category: \(category)") // Debug log
+        
+        switch category {
+        case "Music":
+            eventImageView.image = UIImage(named: "Music.png")
+        case "Sports":
+            eventImageView.image = UIImage(named: "Sports.png")
+        case "Entertainment":
+            eventImageView.image = UIImage(named: "Entertaintment.png")
+        case "Comedy":
+            eventImageView.image = UIImage(named: "Comedy.png")
+        case "Health Wellness":
+            eventImageView.image = UIImage(named: "Health.png")
+        case "Social":
+            eventImageView.image = UIImage(named: "Social.png")
+        case "Art & Literature":
+            eventImageView.image = UIImage(named: "Art.png")
+        case "Education":
+            eventImageView.image = UIImage(named: "Education.png")
+        case "Food":
+            eventImageView.image = UIImage(named: "Food.png")
+        case "Fashion":
+            eventImageView.image = UIImage(named: "Fashion.png")
+        default:
+            eventImageView.image = UIImage(named: "Social.png")
+        }
+    }
+    
     
     // Action triggered when the payment button is pressed
     @IBAction func payBtn(_ sender: UIButton) {

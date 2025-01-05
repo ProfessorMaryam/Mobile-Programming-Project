@@ -12,6 +12,7 @@
 		5737BE002D01D84100B40D01 /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5737BDFF2D01D84100B40D01 /* Interests.storyboard */; };
 		57A5F0462D12B74800252873 /* EventsDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */; };
 		57A5F0472D12B74800252873 /* EventsDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */; };
+		5E30F1EE2D2AFE920027EE69 /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E30F1ED2D2AFE920027EE69 /* FeedBackViewController.swift */; };
 		5EA4059D2D2565EE0051C510 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4059C2D2565EE0051C510 /* Calendar.storyboard */; };
 		5EA4059F2D2566CB0051C510 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA4059E2D2566CB0051C510 /* CalendarCell.swift */; };
 		5EA405A12D25673C0051C510 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA405A02D25673C0051C510 /* CalendarHelper.swift */; };
@@ -82,7 +83,6 @@
 		DAB6A4402D118647002FEC6D /* DisplayUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6A43E2D118647002FEC6D /* DisplayUsersTableViewCell.swift */; };
 		DAB6A4412D118647002FEC6D /* DisplayUsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB6A43F2D118647002FEC6D /* DisplayUsersTableViewCell.xib */; };
 		DCB99ABE2D20791500AC9EFF /* FeedBack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB99ABC2D20791500AC9EFF /* FeedBack.storyboard */; };
-		DCB99ABF2D20791500AC9EFF /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB99ABD2D20791500AC9EFF /* FeedBackViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +108,7 @@
 		5737BDFF2D01D84100B40D01 /* Interests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interests.storyboard; sourceTree = "<group>"; };
 		57A5F0442D12B74800252873 /* EventsDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDisplayTableViewCell.swift; sourceTree = "<group>"; };
 		57A5F0452D12B74800252873 /* EventsDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsDisplayTableViewCell.xib; sourceTree = "<group>"; };
+		5E30F1ED2D2AFE920027EE69 /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 		5EA4059C2D2565EE0051C510 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		5EA4059E2D2566CB0051C510 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		5EA405A02D25673C0051C510 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
@@ -177,7 +178,6 @@
 		DAB6A43E2D118647002FEC6D /* DisplayUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUsersTableViewCell.swift; sourceTree = "<group>"; };
 		DAB6A43F2D118647002FEC6D /* DisplayUsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayUsersTableViewCell.xib; sourceTree = "<group>"; };
 		DCB99ABC2D20791500AC9EFF /* FeedBack.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedBack.storyboard; sourceTree = "<group>"; };
-		DCB99ABD2D20791500AC9EFF /* FeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,7 +280,7 @@
 				C395B1382CFC996900C073C2 /* Assets.xcassets */,
 				C395B13D2CFC996900C073C2 /* Info.plist */,
 				DCB99ABC2D20791500AC9EFF /* FeedBack.storyboard */,
-				DCB99ABD2D20791500AC9EFF /* FeedBackViewController.swift */,
+				5E30F1ED2D2AFE920027EE69 /* FeedBackViewController.swift */,
 				C30CAB2F2D1EFC1500892F01 /* JoinEvent.storyboard */,
 				C30CAB332D1EFD2500892F01 /* JoinEventViewController.swift */,
 				C30CAB352D1EFD5500892F01 /* LeaveEvent.storyboard */,
@@ -544,7 +544,6 @@
 				5EEB0A1A2D2AE1BE0083D4B2 /* UserProfileViewController.swift in Sources */,
 				C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */,
 				C3E2873A2D0DA71700CBF459 /* EventsDisplayController.swift in Sources */,
-				DCB99ABF2D20791500AC9EFF /* FeedBackViewController.swift in Sources */,
 				C313441B2D0D6F8300B17BF4 /* AdminPageTableViewController.swift in Sources */,
 				C3EBFD8C2D05EDBD00B4D000 /* LoginPage.swift in Sources */,
 				C30CAB402D1EFE4A00892F01 /* CreateEventViewController.swift in Sources */,
@@ -552,6 +551,7 @@
 				C395B1602CFCA7A800C073C2 /* User.swift in Sources */,
 				C395B1342CFC996700C073C2 /* ViewController.swift in Sources */,
 				C39C866E2D1EFFF400EA1AFE /* HomePageViewController.swift in Sources */,
+				5E30F1EE2D2AFE920027EE69 /* FeedBackViewController.swift in Sources */,
 				C395B1302CFC996700C073C2 /* AppDelegate.swift in Sources */,
 				DA911F372D131DD900159376 /* DisplayRequestsTVCTableViewCell.swift in Sources */,
 				C30CAB3C2D1EFDE400892F01 /* EditEventViewController.swift in Sources */,

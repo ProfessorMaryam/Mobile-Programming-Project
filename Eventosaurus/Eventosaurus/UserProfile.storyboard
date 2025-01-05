@@ -35,7 +35,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iXK-vB-Ttf">
                                 <rect key="frame" x="0.0" y="279" width="393" height="573"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rGw-zR-4Lq">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DinoProfile" translatesAutoresizingMaskIntoConstraints="NO" id="rGw-zR-4Lq">
                                         <rect key="frame" x="122" y="-74" width="149" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="7rK-Ns-ZHe"/>
@@ -124,6 +124,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DinoProfile" width="828" height="828"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

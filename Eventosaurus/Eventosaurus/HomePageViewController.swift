@@ -60,6 +60,60 @@ class HomePageViewController: UIViewController {
     
 
 
+class EventCurrentSelection {
+    static let shared = EventCurrentSelection()
+    
+    private var eventID: String?
+    private var eventName: String?
+    private var eventDescription: String?
+    private var eventCategory: String?
+    
+    // Private initializer to prevent instantiation from outside
+    private init() {}
+    
+    // Setters
+    func setEventID(_ eventID: String) {
+        self.eventID = eventID
+    }
+    
+    func setEventName(_ eventName: String) {
+        self.eventName = eventName
+    }
+    
+    func setEventDescription(_ eventDescription: String) {
+        self.eventDescription = eventDescription
+    }
+    
+    func setEventCategory(_ eventCategory: String) {
+        self.eventCategory = eventCategory
+    }
+    
+    // Getters
+    func getEventID() -> String? {
+        return self.eventID
+    }
+    
+    func getEventName() -> String? {
+        return self.eventName
+    }
+    
+    func getEventDescription() -> String? {
+        return self.eventDescription
+    }
+    
+    func getEventCategory() -> String? {
+        return self.eventCategory
+    }
+}
+
+
+
+
+
+
+protocol EventSelectionDelegate: AnyObject {
+    var eventID: String? { get set }
+}
 
 
 
@@ -78,10 +132,11 @@ class EventHomeViewController: UIViewController {
     
     var eventNames: [String] = []
     var eventCategories: [String] = [] // Store the category names
-    
-    var eventID: String? // The event ID for the event user joined
-        var selectedStarRating: Int = 0
-    
+    var eventIDs: [String] = []  // Add eventIDs to store the IDs
+    var eventID: String?
+    weak var delegate: EventSelectionDelegate?
+    var eventDescriptions: [String] = []
+    var eventDescription: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +146,7 @@ class EventHomeViewController: UIViewController {
         
         
         fetchEvents()
-     
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -117,6 +172,12 @@ class EventHomeViewController: UIViewController {
     self.view.layer.insertSublayer(gradient, at: 0)
     }
     
+    
+    func didSelectEvent(eventID: String) {
+        self.eventID = eventID
+        print("Selected Event ID: \(eventID)")
+    }
+    
    
     func fetchEvents() {
         db.collection("Events").getDocuments { (snapshot, error) in
@@ -125,7 +186,6 @@ class EventHomeViewController: UIViewController {
                 return
             }
             
-            // Check if we have any documents
             guard let documents = snapshot?.documents, documents.count > 0 else {
                 print("No events found.")
                 return
@@ -134,57 +194,64 @@ class EventHomeViewController: UIViewController {
             // Clear previous data
             self.eventNames.removeAll()
             self.eventCategories.removeAll()
+            self.eventDescriptions.removeAll() // Remove previous descriptions
+            self.eventIDs.removeAll()
+            
+            // Create a dispatch group to synchronize the fetch
+            let group = DispatchGroup()
+            
+            // This will hold the event data temporarily as we fetch
+            var eventsData: [(String, String, String, String)] = []
             
             // Map documents to event data arrays
-            documents.forEach { document in
+            for document in documents {
                 let data = document.data()
-                
-                // Debugging: Log the data to check the fields
-                print("Fetched document data: \(data)")
-                
                 let eventName = data["Event Name"] as? String ?? "Unnamed Event"
+                let eventID = document.documentID
+                
+                // Fetch the description of the event
+                let eventDescription = data["Description"] as? String ?? "No Description Available"
                 
                 // Fetch the Category document reference
+                var categoryName = "Fashion" // Default value
                 if let categoryRef = data["Category"] as? DocumentReference {
-                    // Fetch the category document using the reference
+                    group.enter() // Enter the dispatch group
+                    
+                    // Fetch the category name
                     categoryRef.getDocument { (categorySnapshot, error) in
                         if let error = error {
                             print("Error fetching category: \(error)")
-                            return
+                        } else if let categorySnapshot = categorySnapshot, categorySnapshot.exists {
+                            categoryName = categorySnapshot.data()?["Category Name"] as? String ?? "Unknown"
                         }
                         
-                        // Check if the category document exists
-                        if let categorySnapshot = categorySnapshot, categorySnapshot.exists {
-                            // Extract the category name from the category document
-                            if let categoryName = categorySnapshot.data()?["Category Name"] as? String {
-                                // Debugging: Log the event name and category
-                                print("Event Name: \(eventName), Category Name: \(categoryName)")
-                                
-                                // Add data to arrays
-                                self.eventNames.append(eventName)
-                                self.eventCategories.append(categoryName)
-                                
-                                CategoryStore.shared.addEventToCategory(eventName: eventName, category: categoryName)
-                                                                
-                                // Reload collection view after fetching events (inside the completion handler)
-                                self.collectionoView.reloadData()
-                            }
-                        }
+                        // Append event data after fetching category
+                        eventsData.append((eventName, categoryName, eventDescription, eventID))
+                        
+                        group.leave() // Leave the dispatch group after processing this event
                     }
                 } else {
-                    // If there is no valid category reference, fall back to default category
-                    let defaultCategory = "Fashion"
-                    self.eventNames.append(eventName)
-                    self.eventCategories.append(defaultCategory)
-                    CategoryStore.shared.addEventToCategory(eventName: eventName, category: defaultCategory)
-                    // Reload collection view after fetching events (inside the completion handler)
-                    self.collectionoView.reloadData()
+                    // If no category reference, use default category
+                    eventsData.append((eventName, categoryName, eventDescription, eventID))
                 }
+            }
+            
+            // Wait for all requests to finish before reloading the collection view
+            group.notify(queue: .main) {
+                // Populate the arrays with fetched data in correct order
+                for eventData in eventsData {
+                    self.eventNames.append(eventData.0)
+                    self.eventCategories.append(eventData.1)
+                    self.eventDescriptions.append(eventData.2)
+                    self.eventIDs.append(eventData.3)
+                }
+                
+                // Reload the collection view
+                self.collectionoView.reloadData()
             }
         }
     }
-    
-    }
+}
 
     
 
@@ -234,8 +301,19 @@ extension EventHomeViewController: UICollectionViewDelegateFlowLayout {
 extension EventHomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-                print("Event selected: \(eventNames[indexPath.row])")
-            }
+            let selectedEventID = eventIDs[indexPath.row]
+            let selectedEventName = eventNames[indexPath.row]
+            let selectedEventCategory = eventCategories[indexPath.row]
+            let selectedEventDescription = eventDescriptions[indexPath.row] // Assume you have a descriptions array
+            
+            print("Event selected with ID: \(selectedEventID), Name: \(selectedEventName), Category: \(selectedEventCategory), Description: \(selectedEventDescription)")
+
+            // Store the selected event details in EventCurrentSelection
+            EventCurrentSelection.shared.setEventID(selectedEventID)
+            EventCurrentSelection.shared.setEventName(selectedEventName)
+            EventCurrentSelection.shared.setEventDescription(selectedEventDescription)
+            EventCurrentSelection.shared.setEventCategory(selectedEventCategory)
+        }
 }
 
 
@@ -700,6 +778,41 @@ class EveCollectionViewCell: UICollectionViewCell {
 
 
 
+class OrganizerCurrentSelection {
+    
+    static var shared = OrganizerCurrentSelection()
+    var orgName: String?
+    var orgID: String?
+    var orgBrief: String?
+    
+    private init() {}
+    
+    func setOrgName(_ name: String ) {
+        orgName = name
+    }
+    
+    func getOrgName() -> String? {
+        return orgName
+    }
+    
+    func setOrgID(_ id: String ) {
+        orgID = id
+    }
+    
+    func getOrgID() -> String? {
+        return orgID
+    }
+    
+    func setOrgBrief(_ brief: String ) {
+        orgBrief = brief
+    }
+    
+    func getOrgBrief() -> String? {
+        return orgBrief
+    }
+    
+}
+
 
 
 
@@ -712,7 +825,9 @@ class OrganizerSearchViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var collectioneView: UICollectionView!
     var organizers: [String] = []
+    var organizerss: [(String, String, String)] = []
        var filteredOrgNames: [String] = []
+
        
        override func viewDidLoad() {
            super.viewDidLoad()
@@ -722,33 +837,82 @@ class OrganizerSearchViewController: UIViewController, UISearchBarDelegate {
            searchBar.delegate = self
            fetchOrganizers()
        }
+    
+    override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+
+    let gradient = CAGradientLayer()
+
+    // Define the gradient colors (purple to pink to orange to peach)
+    gradient.colors = [
+    UIColor(red: 0.29, green: 0.00, blue: 0.51, alpha: 1.0).cgColor, // Purple
+    UIColor(red: 0.87, green: 0.19, blue: 0.56, alpha: 1.0).cgColor, // Pink
+    UIColor(red: 1.00, green: 0.49, blue: 0.31, alpha: 1.0).cgColor, // Orange
+    UIColor(red: 1.00, green: 0.80, blue: 0.50, alpha: 1.0).cgColor // Peach
+    ]
+    gradient.locations = [0.0, 0.33, 0.66, 1.0] // Color stops
+    gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+    gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+
+    // Set the frame dynamically
+    gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+
+    // Insert gradient as the background
+    self.view.layer.insertSublayer(gradient, at: 0)
+    }
+    
 
        // Fetch users where "Is Organizer" is true
-       func fetchOrganizers() {
-           let db = Firestore.firestore()
+    func fetchOrganizers() {
+        let db = Firestore.firestore()
 
-           // Query to get all users who are marked as organizers
-           db.collection("Users").whereField("Is Organizer", isEqualTo: true).getDocuments { snapshot, error in
-               if let error = error {
-                   print("Error fetching organizers: \(error)")
-                   return
-               }
-               
-               // Map fetched users' full names to the organizers array
-               self.organizers = snapshot?.documents.compactMap { document in
-                   let data = document.data()
-                   return data["Full Name"] as? String  // Extract Full Name
-               } ?? []
+        // Query to get all users who are marked as organizers
+        db.collection("Users").whereField("Is Organizer", isEqualTo: true).getDocuments { snapshot, error in
+            if let error = error {
+                print("Error fetching organizers: \(error)")
+                return
+            }
+            
+            guard let documents = snapshot?.documents, documents.count > 0 else {
+                print("No organizers found.")
+                return
+            }
+            
+            // Clear previous data
+            self.organizers.removeAll()
+            
+            // Create a dispatch group to synchronize the fetch
+            let group = DispatchGroup()
+            
+            // This will hold the organizer data temporarily as we fetch
+            var organizersData: [(String, String, String)] = []
+            
+            // Map documents to organizer data arrays
+            for document in documents {
+                let data = document.data()
+                let organizerName = data["Full Name"] as? String ?? "Unnamed Organizer"
+                let organizerID = document.documentID  // Document ID as the organizer ID
+                let organizerBrief = data["Brief"] as? String ?? "No Brief Available"
+                
+                // Append organizer data to the array
+                organizersData.append((organizerName, organizerID, organizerBrief))
+            }
+            
+            // Populate the arrays with fetched data
+            self.organizerss = organizersData  // Fix: assign the tuple array directly
 
-               // Initially, set filteredOrgNames to be the same as organizers
-               self.filteredOrgNames = self.organizers
-               
-               // Reload the collection view to display the fetched organizers
-               DispatchQueue.main.async {
-                   self.collectioneView.reloadData()
-               }
-           }
-       }
+            // Set filteredOrgNames to display the full names of the organizers
+            self.filteredOrgNames = self.organizerss.map { $0.0 }
+
+            // Reload the collection view after data fetch
+            DispatchQueue.main.async {
+                self.collectioneView.reloadData()
+            }
+        }
+    }
+
+
+
 
        // MARK: - Search Bar Methods
        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -798,9 +962,24 @@ class OrganizerSearchViewController: UIViewController, UISearchBarDelegate {
    extension OrganizerSearchViewController: UICollectionViewDelegate {
        
        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           let selectedOrganizer = filteredOrgNames[indexPath.row]  // Get the selected organizer's name
-//           performSegue(withIdentifier: "OrganizerViewProfileViewController", sender: selectedOrganizer)  // Use the correct segue identifier
+           let selectedOrganizerData = organizerss[indexPath.row]  // Get the tuple for the selected organizer
+
+           let name = selectedOrganizerData.0  // Full Name (First element of the tuple)
+           let id = selectedOrganizerData.1    // Organizer ID (Second element of the tuple)
+           let brief = selectedOrganizerData.2 // Brief (Third element of the tuple)
+
+           // Set the organizer's name, ID, and brief in the shared instance
+           OrganizerCurrentSelection.shared.setOrgName(name)
+           OrganizerCurrentSelection.shared.setOrgID(id)
+           OrganizerCurrentSelection.shared.setOrgBrief(brief)
+
+           // Optionally, you can perform a segue to the profile view controller
+//           performSegue(withIdentifier: "OrganizerViewProfileViewController", sender: selectedOrganizerData)
        }
+
+
+
+
    }
 
    // MARK: - UICollectionView Delegate Flow Layout Methods

@@ -8,6 +8,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--WriteFeedbackViewController-->
+        <scene sceneID="15a-gZ-zYV">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="WriteFeedbackViewController" storyboardName="FeedBack" referencedIdentifier="WriteFeedbackViewController" id="b0n-Rv-0sW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D0q-6l-gUv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="700" y="941"/>
+        </scene>
         <!--Join Event Page View Controller-->
         <scene sceneID="eAa-kA-go6">
             <objects>
@@ -27,6 +35,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="285" id="6rE-2n-UUE"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modern Fashion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9O8-h1-0G2">
                                         <rect key="frame" x="27" y="351" width="135.66666666666666" height="23"/>
@@ -45,19 +59,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njd-Om-de6">
-                                        <rect key="frame" x="231" y="717" width="120" height="38.333333333333371"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="bR7-GB-wK1"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Join">
-                                            <color key="baseBackgroundColor" red="0.6615204026" green="0.49980388780000001" blue="0.80078417850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="cAc-uP-RBa" kind="presentation" modalPresentationStyle="fullScreen" id="ZoL-HC-7WK"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZt-gs-Yar">
                                         <rect key="frame" x="40" y="3" width="50" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -69,31 +70,75 @@
                                             <segue destination="atH-7C-VYf" kind="presentation" modalPresentationStyle="fullScreen" id="kXQ-Ia-GkD"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gH7-Jg-QpR">
-                                        <rect key="frame" x="40" y="717" width="120" height="38.333333333333371"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gH7-Jg-QpR">
+                                        <rect key="frame" x="40" y="743" width="120" height="38.333333333333371"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="oas-5X-1hY"/>
+                                            <constraint firstAttribute="height" constant="38.329999999999998" id="dLk-jL-1d5"/>
+                                            <constraint firstAttribute="width" constant="120" id="ro1-Af-etg"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.55294120309999995" green="0.32941177490000001" blue="0.6784313917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Share">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.6615204026" green="0.49980388780000001" blue="0.80078417850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giJ-Jy-47u">
+                                        <rect key="frame" x="40" y="696" width="120" height="38.333333333333371"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38.329999999999998" id="W0e-Gc-5gu"/>
+                                            <constraint firstAttribute="width" constant="120" id="zrN-x0-Yf7"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.55294120309999995" green="0.32941177490000001" blue="0.6784313917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Feedback">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.6615204026" green="0.49980388780000001" blue="0.80078417850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="b0n-Rv-0sW" kind="presentation" modalPresentationStyle="fullScreen" id="mPL-T3-xdL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njd-Om-de6">
+                                        <rect key="frame" x="198" y="709" width="154" height="59"/>
+                                        <color key="backgroundColor" red="0.55294120309999995" green="0.32941177490000001" blue="0.6784313917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="59" id="IDR-lN-mWn"/>
+                                            <constraint firstAttribute="width" constant="154" id="Rhv-uh-yCH"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.55294120309999995" green="0.32941177490000001" blue="0.6784313917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Join">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.55177772008559478" green="0.33295536944068971" blue="0.67841897551546393" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="cAc-uP-RBa" kind="presentation" modalPresentationStyle="fullScreen" id="ZoL-HC-7WK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="Njd-Om-de6" firstAttribute="leading" secondItem="gH7-Jg-QpR" secondAttribute="trailing" constant="18" id="4h3-mE-M5J"/>
                                     <constraint firstItem="bmq-Xt-kHr" firstAttribute="leading" secondItem="1uK-ba-K74" secondAttribute="leading" constant="27" id="5Hg-45-M8f"/>
                                     <constraint firstItem="bmq-Xt-kHr" firstAttribute="leading" secondItem="9O8-h1-0G2" secondAttribute="leading" id="AsV-Io-z8S"/>
-                                    <constraint firstAttribute="bottom" secondItem="Njd-Om-de6" secondAttribute="bottom" constant="96" id="BSL-xK-1ig"/>
-                                    <constraint firstItem="Njd-Om-de6" firstAttribute="trailing" secondItem="bmq-Xt-kHr" secondAttribute="trailing" id="FaS-JE-G3J"/>
+                                    <constraint firstItem="bzO-bx-a09" firstAttribute="top" secondItem="9O8-h1-0G2" secondAttribute="bottom" constant="102" id="DFy-5E-1qS"/>
+                                    <constraint firstItem="giJ-Jy-47u" firstAttribute="leading" secondItem="1uK-ba-K74" secondAttribute="leading" constant="40" id="DJB-gy-zei"/>
+                                    <constraint firstItem="gH7-Jg-QpR" firstAttribute="top" secondItem="giJ-Jy-47u" secondAttribute="bottom" constant="8.6699999999999999" id="LCP-2z-ZCc"/>
                                     <constraint firstItem="bmq-Xt-kHr" firstAttribute="leading" secondItem="bzO-bx-a09" secondAttribute="leading" id="TFQ-C1-dFv"/>
+                                    <constraint firstAttribute="bottom" secondItem="gH7-Jg-QpR" secondAttribute="bottom" constant="70.670000000000002" id="WTT-7Q-yf3"/>
                                     <constraint firstItem="bmq-Xt-kHr" firstAttribute="top" secondItem="1uK-ba-K74" secondAttribute="top" constant="36" id="bCS-kP-zAB"/>
-                                    <constraint firstItem="Njd-Om-de6" firstAttribute="top" secondItem="bzO-bx-a09" secondAttribute="bottom" constant="104.67" id="bMG-XH-NUs"/>
                                     <constraint firstItem="9O8-h1-0G2" firstAttribute="top" secondItem="bmq-Xt-kHr" secondAttribute="bottom" constant="30" id="cp9-j3-pXz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Njd-Om-de6" secondAttribute="bottom" constant="84" id="dK4-H8-Tyb"/>
+                                    <constraint firstAttribute="trailing" secondItem="Njd-Om-de6" secondAttribute="trailing" constant="41" id="i8Q-Vm-ikA"/>
                                     <constraint firstAttribute="trailing" secondItem="bmq-Xt-kHr" secondAttribute="trailing" constant="28" id="oty-LX-owc"/>
-                                    <constraint firstItem="gH7-Jg-QpR" firstAttribute="baseline" secondItem="Njd-Om-de6" secondAttribute="baseline" id="sET-rR-A8N"/>
                                     <constraint firstAttribute="trailing" secondItem="bzO-bx-a09" secondAttribute="trailing" constant="32" id="tPx-lb-l7d"/>
+                                    <constraint firstItem="gH7-Jg-QpR" firstAttribute="leading" secondItem="1uK-ba-K74" secondAttribute="leading" constant="40" id="yCt-hu-crD"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -117,10 +162,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KhI-zt-Pol"/>
+                    <connections>
+                        <outlet property="eventDescText" destination="bzO-bx-a09" id="ky8-Mv-ePX"/>
+                        <outlet property="eventImageView" destination="bmq-Xt-kHr" id="Ug8-61-guY"/>
+                        <outlet property="eventNameLabel" destination="9O8-h1-0G2" id="Iug-VY-jG1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdd-t0-vrv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148.8372093023256" y="593.45930232558135"/>
+            <point key="canvasLocation" x="1147.3282442748091" y="592.95774647887322"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="80N-MJ-LXF">
@@ -359,7 +409,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
