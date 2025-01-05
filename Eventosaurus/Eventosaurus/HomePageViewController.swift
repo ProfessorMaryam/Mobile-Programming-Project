@@ -379,17 +379,17 @@ class EventSearchViewController: UIViewController, UISearchBarDelegate, FilterSe
     
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showJoinEventPage" {
+    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       // if segue.identifier == "showJoinEventPage" {
             // Retrieve the destination view controller
-            if let joinEventVC = segue.destination as? JoinEventPageViewController {
+          //  if let joinEventVC = segue.destination as? JoinEventPageViewController {
                 // Pass the eventID to JoinEventPageViewController
-                if let eventID = sender as? String {
-                    joinEventVC.eventID = eventID
-                }
-            }
-        }
-    }
+             //   if let eventID = sender as? String {
+                 //   joinEventVC.eventID = eventID
+               // }
+         //   }
+       // }
+   // }
     
     
     
