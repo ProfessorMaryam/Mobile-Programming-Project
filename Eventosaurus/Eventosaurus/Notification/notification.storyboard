@@ -109,6 +109,12 @@
                                     <action selector="joinButtonTapped:" destination="KXa-5B-0l0" eventType="touchUpInside" id="o0U-1f-45y"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jso-0Y-WZk">
+                                <rect key="frame" x="141" y="451" width="69" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Leave"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7y7-B1-D5z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -116,6 +122,7 @@
                     <navigationItem key="navigationItem" id="qUY-YQ-vwZ"/>
                     <connections>
                         <outlet property="joinButton" destination="4EK-do-im4" id="nfX-RZ-DbH"/>
+                        <outlet property="leaveButton" destination="jso-0Y-WZk" id="hNE-Ct-7Nq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2F-Qh-2zp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

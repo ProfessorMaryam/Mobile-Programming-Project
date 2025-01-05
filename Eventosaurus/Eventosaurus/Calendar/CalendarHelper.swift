@@ -53,4 +53,10 @@ class CalendarHelper
         return components.weekday! - 1
     }
     
+    /// Sets the day of the month for a given date
+    func setDay(date: Date, day: Int) -> Date {
+        var components = calendar.dateComponents([.year, .month], from: date)
+            components.day = day
+        return calendar.date(from: components)!
+    }
 }

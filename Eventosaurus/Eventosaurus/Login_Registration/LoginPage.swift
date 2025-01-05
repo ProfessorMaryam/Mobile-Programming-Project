@@ -70,6 +70,7 @@ class LoginPage: UIViewController {
                         
                         // Save the login state and user role in UserDefaults
                         UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                        User.loggeduser = email
                         UserDefaults.standard.set(isAdmin, forKey: "isAdmin") // Store whether the user is an admin
                         UserDefaults.standard.synchronize()
                         
