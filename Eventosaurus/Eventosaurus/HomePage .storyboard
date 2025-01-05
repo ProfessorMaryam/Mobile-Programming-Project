@@ -1089,6 +1089,7 @@
                         <outlet property="SRButton" destination="biU-0h-bln" id="BLW-dE-dXN"/>
                         <outlet property="WEButton" destination="lAu-7C-HEF" id="PSu-Wv-YaB"/>
                         <outlet property="doneButton" destination="JsD-M8-nhs" id="daA-iA-bbz"/>
+                        <outlet property="musix" destination="16l-vI-2CD" id="oem-cr-2dV"/>
                         <outlet property="resetButton" destination="h3w-nq-bpt" id="yiL-Tz-gJW"/>
                     </connections>
                 </viewController>
@@ -1359,6 +1360,7 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                                                 <connections>
                                                     <outlet property="orgImageView" destination="uNk-KC-GR3" id="d5a-zS-svp"/>
                                                     <outlet property="titleLabel" destination="DNg-xU-2xc" id="AEW-SW-sEZ"/>
+                                                    <segue destination="fJw-hn-iEY" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="4cj-2g-aTc"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -1421,6 +1423,14 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCe-n9-LKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5464.1860465116279" y="11.587982832618026"/>
+        </scene>
+        <!--OrganizerViewProfileViewController-->
+        <scene sceneID="LUT-35-cwS">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="OrganizerViewProfileViewController" storyboardName="OrganizerViewProfile" referencedIdentifier="OrganizerViewProfileViewController" id="fJw-hn-iEY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3CQ-j1-8gz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5496" y="433"/>
         </scene>
         <!--ContactUs-->
         <scene sceneID="93b-5i-HZk">
@@ -1656,8 +1666,8 @@ Aminatour1@evento.saurus.bh</string>
     <inferredMetricsTieBreakers>
         <segue reference="uns-kt-Srp"/>
         <segue reference="U3y-aa-01n"/>
-        <segue reference="ona-u7-5V5"/>
-        <segue reference="9Pd-oF-jgB"/>
+        <segue reference="UPm-DE-OTP"/>
+        <segue reference="RZl-8h-KH2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>

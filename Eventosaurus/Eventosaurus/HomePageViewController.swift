@@ -712,127 +712,107 @@ class OrganizerSearchViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var collectioneView: UICollectionView!
     var organizers: [String] = []
-    var filteredOrgNames: [String] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectioneView.dataSource = self
-        collectioneView.delegate = self
-        collectioneView.collectionViewLayout = UICollectionViewFlowLayout()
-        searchBar.delegate = self
-        fetchOrganizers()
-        }
-    
-    override func viewWillLayoutSubviews() {
-    super.viewWillLayoutSubviews()
+       var filteredOrgNames: [String] = []
+       
+       override func viewDidLoad() {
+           super.viewDidLoad()
+           collectioneView.dataSource = self
+           collectioneView.delegate = self
+           collectioneView.collectionViewLayout = UICollectionViewFlowLayout()
+           searchBar.delegate = self
+           fetchOrganizers()
+       }
 
-    let gradient = CAGradientLayer()
+       // Fetch users where "Is Organizer" is true
+       func fetchOrganizers() {
+           let db = Firestore.firestore()
 
-    // Define the gradient colors (purple to pink to orange to peach)withAlphaComponent(0.7).cgColor
-    gradient.colors = [
-        UIColor(red: 0.29, green: 0.00, blue: 0.51, alpha: 1.0).cgColor, // Purple
-        UIColor(red: 0.87, green: 0.19, blue: 0.56, alpha: 1.0).cgColor, // Pink
-        UIColor(red: 1.00, green: 0.49, blue: 0.31, alpha: 1.0).cgColor, // Orange
-        UIColor(red: 1.00, green: 0.80, blue: 0.50, alpha: 1.0).cgColor // Peach
-    ]
-    gradient.locations = [0.0, 0.33, 0.66, 1.0] // Color stops
-    gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-    gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+           // Query to get all users who are marked as organizers
+           db.collection("Users").whereField("Is Organizer", isEqualTo: true).getDocuments { snapshot, error in
+               if let error = error {
+                   print("Error fetching organizers: \(error)")
+                   return
+               }
+               
+               // Map fetched users' full names to the organizers array
+               self.organizers = snapshot?.documents.compactMap { document in
+                   let data = document.data()
+                   return data["Full Name"] as? String  // Extract Full Name
+               } ?? []
 
-    // Set the frame dynamically
-    gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+               // Initially, set filteredOrgNames to be the same as organizers
+               self.filteredOrgNames = self.organizers
+               
+               // Reload the collection view to display the fetched organizers
+               DispatchQueue.main.async {
+                   self.collectioneView.reloadData()
+               }
+           }
+       }
 
-    // Insert gradient as the background
-    self.view.layer.insertSublayer(gradient, at: 0)
-    }
-    
+       // MARK: - Search Bar Methods
+       func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+           if searchText.isEmpty {
+               filteredOrgNames = organizers
+           } else {
+               filteredOrgNames = organizers.filter { orgName in
+                   return orgName.lowercased().contains(searchText.lowercased())
+               }
+           }
+           collectioneView.reloadData()
+       }
 
-        // Fetch users where "Is Organiser" is true
-    func fetchOrganizers() {
-            let db = Firestore.firestore()
-            
-            // Query to get all users who are marked as organizers
-            db.collection("Users").whereField("Is Organizer", isEqualTo: true).getDocuments { snapshot, error in
-                if let error = error {
-                    print("Error fetching organizers: \(error)")
-                    return
-                }
-                
-                // Map fetched users' full names to the organizers array
-                self.organizers = snapshot?.documents.compactMap { document in
-                    let data = document.data()
-                    return data["Full Name"] as? String  // Extract Full Name
-                } ?? []
-                
-                // Initially, set filteredOrgNames to be the same as organizers
-                self.filteredOrgNames = self.organizers
-                
-                // Reload the collection view to display the fetched organizers
-                DispatchQueue.main.async {
-                    self.collectioneView.reloadData()
-                }
-            }
-        }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // If the search text is empty, show all events
-        if searchText.isEmpty {
-                    filteredOrgNames = organizers
-                } else {
-                    // Filter organizers based on the search text
-                    filteredOrgNames = organizers.filter { orgName in
-                        return orgName.lowercased().contains(searchText.lowercased())
-                    }
-                }
-                
-                // Reload the collection view to reflect the filtered results
-                collectioneView.reloadData()
-    }
-        
-        // Optionally handle the search bar cancel button
-        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            searchBar.text = ""
-                    filteredOrgNames = organizers  // Reset the filtered list
-                    collectioneView.reloadData()
-        }
-    }
-    
-    
+       func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+           searchBar.text = ""
+           filteredOrgNames = organizers  // Reset the filtered list
+           collectioneView.reloadData()
+       }
 
+       // MARK: - Prepare for Segue
+       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "OrganizerViewProfile" {
+               if let profileVC = segue.destination as? OrganizerViewProfileViewController {
+                   // The sender is the selected organizer's name passed from the collection view
+                   if let selectedOrganizer = sender as? String {
+                       profileVC.organizerName = selectedOrganizer  // Pass the selected organizer's name
+                   }
+               }
+           }
+       }
+   }
 
-extension OrganizerSearchViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return filteredOrgNames.count  // Return the count of filtered organizers
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrgCollectionViewCell", for: indexPath) as! OrgCollectionViewCell
-            cell.setup(with: filteredOrgNames[indexPath.row])  // Pass the filtered organizer name
-            return cell
-        }
-}
+   // MARK: - UICollectionView DataSource Methods
+   extension OrganizerSearchViewController: UICollectionViewDataSource {
+       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+           return filteredOrgNames.count  // Return the count of filtered organizers
+       }
+       
+       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrgCollectionViewCell", for: indexPath) as! OrgCollectionViewCell
+           cell.setup(with: filteredOrgNames[indexPath.row])  // Pass the filtered organizer name
+           return cell
+       }
+   }
 
-extension OrganizerSearchViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 379, height: 100)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0
-            )
-        }
-}
+   // MARK: - UICollectionView Delegate Methods
+   extension OrganizerSearchViewController: UICollectionViewDelegate {
+       
+       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+           let selectedOrganizer = filteredOrgNames[indexPath.row]  // Get the selected organizer's name
+//           performSegue(withIdentifier: "OrganizerViewProfileViewController", sender: selectedOrganizer)  // Use the correct segue identifier
+       }
+   }
 
-extension OrganizerSearchViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            print(filteredOrgNames[indexPath.row])  // Print the selected organizer's name
-        }
-    
-}
-
+   // MARK: - UICollectionView Delegate Flow Layout Methods
+   extension OrganizerSearchViewController: UICollectionViewDelegateFlowLayout {
+       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+           return CGSize(width: 379, height: 100)
+       }
+       
+       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+           return UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
+       }
+   }
 class OrgCollectionViewCell: UICollectionViewCell{
     
     
@@ -1010,8 +990,6 @@ class FilterSearchViewController: UIViewController {
     @IBOutlet weak var MOButton: UIButton!
     var MOChecked = false
     
-    
-        
         override func viewDidLoad() {
             super.viewDidLoad()
             

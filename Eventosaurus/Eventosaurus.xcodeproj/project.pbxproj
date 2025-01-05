@@ -20,6 +20,10 @@
 		5EA405A82D256D780051C510 /* notificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA405A72D256D780051C510 /* notificationTableViewCell.swift */; };
 		5EA405AA2D256E1E0051C510 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA405A92D256E1E0051C510 /* NotificationViewController.swift */; };
 		5EA405AC2D256E560051C510 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA405AB2D256E560051C510 /* EventDetailsViewController.swift */; };
+		5EEB0A162D2AA7E60083D4B2 /* OrganizerViewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB0A152D2AA7E50083D4B2 /* OrganizerViewProfileViewController.swift */; };
+		5EEB0A182D2AA8210083D4B2 /* OrganizerViewProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EEB0A172D2AA8210083D4B2 /* OrganizerViewProfile.storyboard */; };
+		5EEB0A1A2D2AE1BE0083D4B2 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB0A192D2AE1BE0083D4B2 /* UserProfileViewController.swift */; };
+		5EEB0A1C2D2AE1D30083D4B2 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EEB0A1B2D2AE1D30083D4B2 /* UserProfile.storyboard */; };
 		C30A646F2D1C466200D86BD8 /* EventsInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */; };
 		C30CAB302D1EFC1500892F01 /* JoinEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C30CAB2F2D1EFC1500892F01 /* JoinEvent.storyboard */; };
 		C30CAB342D1EFD2500892F01 /* JoinEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30CAB332D1EFD2500892F01 /* JoinEventViewController.swift */; };
@@ -112,6 +116,10 @@
 		5EA405A72D256D780051C510 /* notificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationTableViewCell.swift; sourceTree = "<group>"; };
 		5EA405A92D256E1E0051C510 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		5EA405AB2D256E560051C510 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		5EEB0A152D2AA7E50083D4B2 /* OrganizerViewProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerViewProfileViewController.swift; sourceTree = "<group>"; };
+		5EEB0A172D2AA8210083D4B2 /* OrganizerViewProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizerViewProfile.storyboard; sourceTree = "<group>"; };
+		5EEB0A192D2AE1BE0083D4B2 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		5EEB0A1B2D2AE1D30083D4B2 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		C30A646E2D1C466200D86BD8 /* EventsInformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInformationTableViewController.swift; sourceTree = "<group>"; };
 		C30CAB2F2D1EFC1500892F01 /* JoinEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JoinEvent.storyboard; sourceTree = "<group>"; };
 		C30CAB332D1EFD2500892F01 /* JoinEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEventViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +256,10 @@
 		C395B12E2CFC996700C073C2 /* Eventosaurus */ = {
 			isa = PBXGroup;
 			children = (
+				5EEB0A152D2AA7E50083D4B2 /* OrganizerViewProfileViewController.swift */,
+				5EEB0A172D2AA8210083D4B2 /* OrganizerViewProfile.storyboard */,
+				5EEB0A192D2AE1BE0083D4B2 /* UserProfileViewController.swift */,
+				5EEB0A1B2D2AE1D30083D4B2 /* UserProfile.storyboard */,
 				5EA405A42D256C980051C510 /* Notification */,
 				C3EBFD7B2D05C7E900B4D000 /* GoogleService-Info.plist */,
 				C395B12F2CFC996700C073C2 /* AppDelegate.swift */,
@@ -485,8 +497,10 @@
 				C395B1372CFC996700C073C2 /* Main.storyboard in Resources */,
 				5EA4059D2D2565EE0051C510 /* Calendar.storyboard in Resources */,
 				5EA405A62D256CC90051C510 /* notification.storyboard in Resources */,
+				5EEB0A182D2AA8210083D4B2 /* OrganizerViewProfile.storyboard in Resources */,
 				C326037F2D0891A3008BD790 /* AdminPage.storyboard in Resources */,
 				C39C866C2D1EFFE700EA1AFE /* HomePage .storyboard in Resources */,
+				5EEB0A1C2D2AE1D30083D4B2 /* UserProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +541,7 @@
 				C395B1642CFCA80D00C073C2 /* Admin.swift in Sources */,
 				C3EBFD892D05DB6700B4D000 /* Register.swift in Sources */,
 				C33F5DDA2D1C4B510000D8A5 /* EventsInfoViewController.swift in Sources */,
+				5EEB0A1A2D2AE1BE0083D4B2 /* UserProfileViewController.swift in Sources */,
 				C31344202D0D797B00B17BF4 /* AdminTVC.swift in Sources */,
 				C3E2873A2D0DA71700CBF459 /* EventsDisplayController.swift in Sources */,
 				DCB99ABF2D20791500AC9EFF /* FeedBackViewController.swift in Sources */,
@@ -554,6 +569,7 @@
 				C3EBFD8F2D05F01400B4D000 /* ForgotPassword.swift in Sources */,
 				C39C86752D1F2A1200EA1AFE /* FeedbackTableViewCell.swift in Sources */,
 				571D0BBC2D16C00700DA7A27 /* InterestsCategoriesCollectionViewCell.swift in Sources */,
+				5EEB0A162D2AA7E60083D4B2 /* OrganizerViewProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
