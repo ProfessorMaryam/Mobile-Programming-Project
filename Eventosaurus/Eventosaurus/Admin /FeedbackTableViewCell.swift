@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import Firebase
 
 class FeedbackTableViewCell: UITableViewCell {
 
@@ -13,16 +15,13 @@ class FeedbackTableViewCell: UITableViewCell {
     @IBOutlet weak var feedbackLabel: UILabel!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+           super.awakeFromNib()
+       }
 
-    // Configure the cell with feedback data
-    func configure(with feedback: String, stars: Int) {
-        feedbackLabel.text = feedback
-        self.stars.text = "⭐️ \(stars)"
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-}
+       // Configure the cell with feedback data
+       func configure(with feedback: String, stars: Int) {
+           feedbackLabel.text = feedback  // Set the feedback text
+           self.stars.text = "⭐️ \(stars)"  // Set the star rating
+       }
+       
+   }
