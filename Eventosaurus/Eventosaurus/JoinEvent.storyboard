@@ -45,22 +45,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="leV-RV-BRv">
-                                        <rect key="frame" x="27" y="719.66666666666663" width="54" height="35.333333333333371"/>
-                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gH7-Jg-QpR">
-                                        <rect key="frame" x="107" y="717.66666666666663" width="120" height="38.333333333333371"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="oas-5X-1hY"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Share">
-                                            <color key="baseBackgroundColor" red="0.6615204026" green="0.49980388780000001" blue="0.80078417850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njd-Om-de6">
-                                        <rect key="frame" x="245" y="717.66666666666663" width="120" height="38.333333333333371"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njd-Om-de6">
+                                        <rect key="frame" x="231" y="717" width="120" height="38.333333333333371"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="bR7-GB-wK1"/>
                                         </constraints>
@@ -83,26 +69,30 @@
                                             <segue destination="atH-7C-VYf" kind="presentation" modalPresentationStyle="fullScreen" id="kXQ-Ia-GkD"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gH7-Jg-QpR">
+                                        <rect key="frame" x="40" y="717" width="120" height="38.333333333333371"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="oas-5X-1hY"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Share">
+                                            <color key="baseBackgroundColor" red="0.6615204026" green="0.49980388780000001" blue="0.80078417850000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Njd-Om-de6" firstAttribute="leading" secondItem="gH7-Jg-QpR" secondAttribute="trailing" constant="18" id="4h3-mE-M5J"/>
                                     <constraint firstItem="bmq-Xt-kHr" firstAttribute="leading" secondItem="1uK-ba-K74" secondAttribute="leading" constant="27" id="5Hg-45-M8f"/>
-                                    <constraint firstItem="gH7-Jg-QpR" firstAttribute="top" secondItem="leV-RV-BRv" secondAttribute="top" id="90v-jd-HCT"/>
                                     <constraint firstItem="bmq-Xt-kHr" firstAttribute="leading" secondItem="9O8-h1-0G2" secondAttribute="leading" id="AsV-Io-z8S"/>
                                     <constraint firstAttribute="bottom" secondItem="Njd-Om-de6" secondAttribute="bottom" constant="96" id="BSL-xK-1ig"/>
                                     <constraint firstItem="Njd-Om-de6" firstAttribute="trailing" secondItem="bmq-Xt-kHr" secondAttribute="trailing" id="FaS-JE-G3J"/>
                                     <constraint firstItem="bmq-Xt-kHr" firstAttribute="leading" secondItem="bzO-bx-a09" secondAttribute="leading" id="TFQ-C1-dFv"/>
-                                    <constraint firstItem="gH7-Jg-QpR" firstAttribute="leading" secondItem="leV-RV-BRv" secondAttribute="trailing" constant="26" id="Vge-au-neA"/>
-                                    <constraint firstItem="leV-RV-BRv" firstAttribute="leading" secondItem="1uK-ba-K74" secondAttribute="leading" constant="27" id="Yyi-2w-vSn"/>
                                     <constraint firstItem="bmq-Xt-kHr" firstAttribute="top" secondItem="1uK-ba-K74" secondAttribute="top" constant="36" id="bCS-kP-zAB"/>
                                     <constraint firstItem="Njd-Om-de6" firstAttribute="top" secondItem="bzO-bx-a09" secondAttribute="bottom" constant="104.67" id="bMG-XH-NUs"/>
                                     <constraint firstItem="9O8-h1-0G2" firstAttribute="top" secondItem="bmq-Xt-kHr" secondAttribute="bottom" constant="30" id="cp9-j3-pXz"/>
-                                    <constraint firstItem="gH7-Jg-QpR" firstAttribute="leading" secondItem="leV-RV-BRv" secondAttribute="trailing" constant="26" id="ktA-ir-I5Y"/>
-                                    <constraint firstItem="leV-RV-BRv" firstAttribute="leading" secondItem="bzO-bx-a09" secondAttribute="leading" id="l10-cU-Bsj"/>
                                     <constraint firstAttribute="trailing" secondItem="bmq-Xt-kHr" secondAttribute="trailing" constant="28" id="oty-LX-owc"/>
                                     <constraint firstItem="gH7-Jg-QpR" firstAttribute="baseline" secondItem="Njd-Om-de6" secondAttribute="baseline" id="sET-rR-A8N"/>
-                                    <constraint firstItem="gH7-Jg-QpR" firstAttribute="bottom" secondItem="leV-RV-BRv" secondAttribute="bottom" id="sfK-uF-wy8"/>
                                     <constraint firstAttribute="trailing" secondItem="bzO-bx-a09" secondAttribute="trailing" constant="32" id="tPx-lb-l7d"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -353,6 +343,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="ZoL-HC-7WK"/>
         <segue reference="cR3-X7-GtV"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -361,7 +352,6 @@
         <image name="Fashion" width="1800" height="900"/>
         <image name="MasterCard" width="225" height="225"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

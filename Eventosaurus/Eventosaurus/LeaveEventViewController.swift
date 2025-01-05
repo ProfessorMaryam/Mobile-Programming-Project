@@ -2,7 +2,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class LeaveEventPageViewController: UIViewController {
+class LeaveEventPageViewController: UIViewController, WriteFeedbackDelegate {
 
     // Create an instance of Firestore for database operations
     let db = Firestore.firestore()
@@ -19,6 +19,35 @@ class LeaveEventPageViewController: UIViewController {
         super.viewDidLoad()
         // Additional setup can be done here after the view has loaded
     }
+    
+    func didSubmitFeedbackSuccessfully() {
+            // Handle the feedback submission and do anything you need when feedback is submitted
+            print("Feedback was successfully submitted.")
+            
+            // Optionally, dismiss this view controller if you want to navigate back
+            self.dismiss(animated: true, completion: nil)
+        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "showWriteFeedbackPage" {
+                // Retrieve the destination view controller
+                if let writeFeedbackVC = segue.destination as? WriteFeedbackViewController {
+                    // Pass the eventID to WriteFeedbackViewController
+                    if let eventID = sender as? String {
+                        writeFeedbackVC.eventID = eventID
+                    }
+                }
+            }
+        }
+        // Call this method to present the WriteFeedbackViewController
+        func presentFeedbackPage(eventID: String) {
+            // Instantiate the WriteFeedbackViewController
+            if let feedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "WriteFeedbackViewController") as? WriteFeedbackViewController {
+                feedbackVC.delegate = self // Set the delegate to self
+                feedbackVC.eventID = eventID  // Pass the eventID to the feedback view controller
+                self.present(feedbackVC, animated: true, completion: nil)
+            }
+        }
+    
     
     // Action triggered when the leave button is pressed
     @IBAction func leaveBtn(_ sender: UIButton) {
