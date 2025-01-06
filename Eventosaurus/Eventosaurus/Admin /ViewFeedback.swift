@@ -27,7 +27,9 @@ class ViewFeedback: UIViewController, UITableViewDelegate, UITableViewDataSource
         // Set delegates and data sources
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.register(UINib(nibName: "DisplayUsersTableViewCell", bundle: nil), forCellReuseIdentifier: "DisplayUsersTableViewCell")
+
+        tableView.rowHeight = 150
         // Fetch feedback data for the specific event using EventID
         if let eventID = eventID {
             fetchFeedback(forEventID: eventID)
@@ -36,28 +38,41 @@ class ViewFeedback: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     // Fetch feedback data based on EventID
     func fetchFeedback(forEventID eventID: String) {
-        let feedbackRef = db.collection("FeedBack").whereField("EventID", isEqualTo: eventID)
-        
+        print("Fetching feedback for EventID: \(eventID)")
+
+        // Create a DocumentReference for the EventID
+        let eventRef = db.document(eventID) // eventID must be the full path: "/Events/3plSFQlyblfBbvkxSGGH"
+
+        let feedbackRef = db.collection("FeedBack").whereField("EventID", isEqualTo: eventRef)
+
         feedbackRef.getDocuments { snapshot, error in
             if let error = error {
                 print("Error fetching feedback: \(error.localizedDescription)")
                 return
             }
-            
-            // Clear previous feedback data
-            self.feedbackData.removeAll()
-            
-            // Parse each document and store feedback and stars in the array
-            for document in snapshot!.documents {
-                let feedbackText = document.get("FeedBack") as? String ?? ""
-                let stars = document.get("Stars") as? Int ?? 0
-                self.feedbackData.append((feedback: feedbackText, stars: stars))
+
+            guard let documents = snapshot?.documents, !documents.isEmpty else {
+                print("No documents found for EventID: \(eventID)")
+                return
             }
-            
-            // Reload the table view to display the fetched data
-            self.tableView.reloadData()
+
+            print("Fetched \(documents.count) documents for EventID: \(eventID)")
+
+            self.feedbackData = documents.compactMap { document in
+                print("Document data: \(document.data())")
+                let feedbackText = document.get("FeedBack") as? String ?? "No feedback"
+                let stars = document.get("Stars") as? Int ?? 0
+                return (feedback: feedbackText, stars: stars)
+            }
+
+            print("Feedback data count: \(self.feedbackData.count)")
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
+
     
     // UITableViewDataSource methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,16 +81,19 @@ class ViewFeedback: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Dequeue the custom cell
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbackCell", for: indexPath) as? FeedbackTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayUsersTableViewCell", for: indexPath) as? DisplayUsersTableViewCell else {
             return UITableViewCell() // Return an empty cell if dequeuing fails
         }
         
         // Get the feedback data for the current row
         let feedback = feedbackData[indexPath.row]
         
-        // Pass the data to the cell's configure method
-        cell.configure(with: feedback.feedback, stars: feedback.stars)
+        // Set the labels to display feedback and stars
+        cell.NameDisplayLbl.text = feedback.feedback // Use NameDisplayLbl for feedback text
+        cell.EmailDisplayLbl.text = "\(feedback.stars) ⭐️" // Use EmailDisplayLbl for star ratings
         
         return cell
+        
+
     }
 }

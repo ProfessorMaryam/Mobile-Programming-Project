@@ -2,63 +2,66 @@
 //  UserEditInterestViewController.swift
 //  Eventosaurus
 //
-//  Created by Noora Qasim on 28/12/2024.
+//  Created by Manaf Mohamed on 05/01/2025.
 //
 
 import UIKit
 import Firebase
 
-class UserEditInterestViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+// View controller to allow users to select and update their interests
+class UserEditInterestViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    // MARK: - UI Outlets
+    @IBOutlet weak var collectionView: UICollectionView! // Collection view to display categories
+    @IBOutlet weak var nextButton: UIButton! // Button to proceed after selecting interests
     
- 
+    // MARK: - Properties
+    var picturesAndLabels: [(String, String)] = [] // Array to hold category names and their corresponding SF Symbols
+    var db = Firestore.firestore() // Firestore database reference
+    var selectedIndexPaths: Set<IndexPath> = [] // Tracks selected index paths in the collection view
+    var selectedCategories: [String] = [] // Stores names of selected categories
+    var userInterests: [DocumentReference] = [] // Holds user's current interest document references
+    var userEmail: String? // Email of the logged-in user to identify their data
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var nextButton: UIButton!
-    
-    var picturesAndLabels: [(String, String)] = []  // Will hold category names and system icon names.
-    var db = Firestore.firestore()  // Firestore database reference
-    var selectedIndexPaths: Set<IndexPath> = []  // To track selected indexPaths
-    var selectedCategories: [String] = []  // Store the selected category names
-    var userInterests: [DocumentReference] = []
-    var userEmail: String?  // We'll use this to identify the user based on their email
-    
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nextButton.isEnabled = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.allowsMultipleSelection = true
-        configureCollectionViewLayout()
+        // Initial UI setup
+        nextButton.isEnabled = false // Disable the button until enough selections are made
+        collectionView.dataSource = self // Set data source
+        collectionView.delegate = self // Set delegate
+        collectionView.allowsMultipleSelection = true // Enable multi-selection in the collection view
+        configureCollectionViewLayout() // Configure the layout of the collection view
         
-        // First fetch all categories, then fetch user's interests
+        // Fetch categories and the user's existing interests
         fetchCategories()
         fetchUserInterests()
-        
-    }
-    // Configure collection view layout
-    func configureCollectionViewLayout() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 130, height: 135)  // Size of each item
-        layout.minimumInteritemSpacing = 5  // Horizontal spacing between items
-        layout.minimumLineSpacing = 15  // Vertical spacing between rows
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)  // Padding around the section
-        collectionView.collectionViewLayout = layout
     }
     
-    // Fetch categories from Firestore
+    // MARK: - Collection View Layout Configuration
+    func configureCollectionViewLayout() {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 130, height: 135) // Set the size of each collection view cell
+        layout.minimumInteritemSpacing = 5 // Set horizontal spacing between items
+        layout.minimumLineSpacing = 15 // Set vertical spacing between rows
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10) // Add padding around the section
+        collectionView.collectionViewLayout = layout // Apply the layout to the collection view
+    }
+    
+    // MARK: - Fetch Categories
+    // Fetch all available categories from Firestore
     func fetchCategories() {
         db.collection("Categories").getDocuments { (snapshot, error) in
             if let error = error {
-                print("Error fetching categories: \(error.localizedDescription)")
+                print("Error fetching categories: \(error.localizedDescription)") // Log error if fetching fails
                 return
             }
             
-            // Clear the existing data
+            // Clear any existing data
             self.picturesAndLabels.removeAll()
             
-            // Populate the data source array with category names and symbols
+            // Populate the array with category names and their symbols
             for document in snapshot!.documents {
                 if let categoryName = document.data()["Category Name"] as? String,
                    let symbolName = document.data()["Symbol"] as? String {
@@ -66,63 +69,57 @@ class UserEditInterestViewController: UIViewController, UICollectionViewDataSour
                 }
             }
             
-            // Reload collection view with fetched data
+            // Reload the collection view to display the fetched data
             self.collectionView.reloadData()
         }
     }
     
-    // MARK: - UICollectionView Data Source
-    
-    // Number of items in the collection view
+    // MARK: - Collection View Data Source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return picturesAndLabels.count
+        return picturesAndLabels.count // Return the number of categories
     }
     
-    // Configure each cell in the collection view
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InterestsCategoriesCollectionViewCell", for: indexPath) as! InterestsCategoriesCollectionViewCell
         
         let category = picturesAndLabels[indexPath.row]
-        cell.InterestsLabel.text = category.0
-        cell.InterestsLabel.textColor = .purple
-        cell.InterestsImage.image = UIImage(systemName: category.1)
-        cell.InterestsImage.contentMode = .scaleAspectFit
-        cell.InterestsImage.tintColor = .purple
-        cell.contentView.layer.cornerRadius = 15
-        cell.contentView.clipsToBounds = true
+        cell.InterestsLabel.text = category.0 // Set the category name
+        cell.InterestsLabel.textColor = .purple // Set label color
+        cell.InterestsImage.image = UIImage(systemName: category.1) // Set category icon
+        cell.InterestsImage.contentMode = .scaleAspectFit // Set image scaling
+        cell.InterestsImage.tintColor = .purple // Set icon color
+        cell.contentView.layer.cornerRadius = 15 // Round cell corners
+        cell.contentView.clipsToBounds = true // Clip content to bounds
         
         return cell
     }
     
-    // MARK: - UICollectionView Delegate
-    
-    // Handle selection of items
+    // MARK: - Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard selectedIndexPaths.count < 4 else { return }  // Allow a maximum of 4 selections
+        guard selectedIndexPaths.count < 4 else { return } // Limit selections to 4
         
         let cell = collectionView.cellForItem(at: indexPath) as! InterestsCategoriesCollectionViewCell
-        cell.contentView.backgroundColor = .purple
-        cell.InterestsLabel.textColor = .white
-        cell.InterestsImage.tintColor = .white
+        cell.contentView.backgroundColor = .purple // Highlight the selected cell
+        cell.InterestsLabel.textColor = .white // Change label color
+        cell.InterestsImage.tintColor = .white // Change icon color
         
-        selectedIndexPaths.insert(indexPath)
-        selectedCategories.append(picturesAndLabels[indexPath.row].0)
+        selectedIndexPaths.insert(indexPath) // Track the selected index path
+        selectedCategories.append(picturesAndLabels[indexPath.row].0) // Add the selected category name
         
-        // Enable the next button once 4 categories are selected
+        // Enable the next button when 4 categories are selected
         if selectedIndexPaths.count == 4 {
             nextButton.isEnabled = true
         }
     }
     
-    // Handle deselection of items
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! InterestsCategoriesCollectionViewCell
-        cell.contentView.backgroundColor = .clear
-        cell.InterestsLabel.textColor = .purple
-        cell.InterestsImage.tintColor = .purple
+        cell.contentView.backgroundColor = .clear // Clear the highlight
+        cell.InterestsLabel.textColor = .purple // Reset label color
+        cell.InterestsImage.tintColor = .purple // Reset icon color
         
-        selectedIndexPaths.remove(indexPath)
-        selectedCategories.removeAll { $0 == picturesAndLabels[indexPath.row].0 }
+        selectedIndexPaths.remove(indexPath) // Remove deselected index path
+        selectedCategories.removeAll { $0 == picturesAndLabels[indexPath.row].0 } // Remove deselected category name
         
         // Disable the next button if fewer than 4 categories are selected
         if selectedIndexPaths.count < 4 {
@@ -131,44 +128,44 @@ class UserEditInterestViewController: UIViewController, UICollectionViewDataSour
     }
     
     // MARK: - Button Action
-    
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        guard selectedCategories.count == 4 else { return }
+        guard selectedCategories.count == 4 else { return } // Ensure 4 categories are selected
         
-        let userEmail = User.loggedInemail
-        var categoryReferences: [DocumentReference] = []
+        let userEmail = User.loggedInemail // Get the logged-in user's email
+        var categoryReferences: [DocumentReference] = [] // Array to hold references to selected categories
         
-        // Convert selected categories to references
-        let group = DispatchGroup()
+        let group = DispatchGroup() // Dispatch group to synchronize multiple Firestore queries
         
+        // For each selected category, fetch its document reference
         for categoryName in selectedCategories {
             group.enter()
             db.collection("Categories")
                 .whereField("Category Name", isEqualTo: categoryName)
                 .getDocuments { (snapshot, error) in
-                    defer { group.leave() }
+                    defer { group.leave() } // Notify the group when the query completes
                     
                     if let document = snapshot?.documents.first {
-                        categoryReferences.append(document.reference)
+                        categoryReferences.append(document.reference) // Add the reference to the array
                     }
                 }
         }
         
+        // Once all references are fetched, update the user's interests
         group.notify(queue: .main) {
             self.updateUserInterests(userEmail: userEmail, categoryReferences: categoryReferences)
         }
     }
     
+    // MARK: - Fetch User Interests
     func fetchUserInterests() {
-        let userEmail = User.loggedInemail // Get current user's email
+        let userEmail = User.loggedInemail // Get the logged-in user's email
         
         db.collection("Users")
             .whereField("Email", isEqualTo: userEmail)
             .getDocuments { [weak self] snapshot, error in
-                guard let self = self,
-                      let document = snapshot?.documents.first else { return }
+                guard let self = self, let document = snapshot?.documents.first else { return }
                 
-                // Get all four interests
+                // Retrieve user's interests and store them as document references
                 if let interest1 = document.get("Interest1") as? DocumentReference {
                     self.userInterests.append(interest1)
                 }
@@ -182,8 +179,8 @@ class UserEditInterestViewController: UIViewController, UICollectionViewDataSour
                     self.userInterests.append(interest4)
                 }
                 
-                // For each interest reference, fetch the category name and select it
-                for (index, interestRef) in self.userInterests.enumerated() {
+                // Pre-select user's existing interests in the collection view
+                for interestRef in self.userInterests {
                     interestRef.getDocument { (document, error) in
                         if let categoryName = document?.get("Category Name") as? String,
                            let categoryIndex = self.picturesAndLabels.firstIndex(where: { $0.0 == categoryName }) {
@@ -192,7 +189,7 @@ class UserEditInterestViewController: UIViewController, UICollectionViewDataSour
                             self.selectedIndexPaths.insert(indexPath)
                             self.selectedCategories.append(categoryName)
                             
-                            // Pre-select the cell
+                            // Highlight the pre-selected cell
                             if let cell = self.collectionView.cellForItem(at: indexPath) as? InterestsCategoriesCollectionViewCell {
                                 cell.contentView.backgroundColor = .purple
                                 cell.InterestsLabel.textColor = .white
@@ -204,16 +201,16 @@ class UserEditInterestViewController: UIViewController, UICollectionViewDataSour
             }
     }
     
+    // MARK: - Update User Interests
     func updateUserInterests(userEmail: String, categoryReferences: [DocumentReference]) {
-        // Find the user document using their email
         db.collection("Users").whereField("Email", isEqualTo: userEmail).getDocuments { (snapshot, error) in
             if let error = error {
-                print("Error fetching user document: \(error.localizedDescription)")
+                print("Error fetching user document: \(error.localizedDescription)") // Log error
                 return
             }
             
             if let document = snapshot?.documents.first {
-                // Update the user's interests with the category references
+                // Update the user's interests in Firestore
                 document.reference.updateData([
                     "Interest1": categoryReferences[0],
                     "Interest2": categoryReferences[1],
@@ -221,7 +218,7 @@ class UserEditInterestViewController: UIViewController, UICollectionViewDataSour
                     "Interest4": categoryReferences[3]
                 ]) { error in
                     if let error = error {
-                        print("Error updating user interests: \(error.localizedDescription)")
+                        print("Error updating user interests: \(error.localizedDescription)") // Log update error
                         // Show error alert
                         DispatchQueue.main.async {
                             let alert = UIAlertController(title: "Error",
@@ -231,7 +228,7 @@ class UserEditInterestViewController: UIViewController, UICollectionViewDataSour
                             self.present(alert, animated: true)
                         }
                     } else {
-                        print("User interests updated successfully!")
+                        print("User interests updated successfully!") // Log success
                         // Show success alert
                         DispatchQueue.main.async {
                             let alert = UIAlertController(title: "Success",
@@ -243,8 +240,8 @@ class UserEditInterestViewController: UIViewController, UICollectionViewDataSour
                     }
                 }
             } else {
-                print("User document not found.")
-                // Show error alert for user not found
+                print("User document not found.") // Log user not found
+                // Show error alert for missing user
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Error",
                                                   message: "User not found. Please try again.",

@@ -115,12 +115,127 @@ class InterestsDisplayPage: UIViewController , UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           // Handle row selection (optional)
-           let selectedCategory = picturesAndLabels[indexPath.row]
-           print("Selected category: \(selectedCategory)")
-           
-           tableView.deselectRow(at: indexPath, animated: true)
-       }
+        // Get the selected category
+        let selectedCategory = picturesAndLabels[indexPath.row]
+        
+        // Create an alert controller with options to Edit or Delete
+        let alertController = UIAlertController(
+            title: "Manage Category",
+            message: "What would you like to do with '\(selectedCategory.0)'?",
+            preferredStyle: .alert
+        )
+        
+        // Add Edit option
+        alertController.addAction(UIAlertAction(title: "Edit", style: .default, handler: { _ in
+            self.editCategory(at: indexPath)
+        }))
+        
+        // Add Delete option
+        alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+            self.deleteCategory(at: indexPath, from: tableView)
+        }))
+        
+        // Add Cancel option
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        // Present the alert
+        self.present(alertController, animated: true, completion: nil)
+        
+        // Deselect the row after the alert is presented
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func editCategory(at indexPath: IndexPath) {
+        let selectedCategory = picturesAndLabels[indexPath.row]
+        
+        // Create an alert with text fields for editing
+        let editAlert = UIAlertController(
+            title: "Edit Category",
+            message: "Update the category details.",
+            preferredStyle: .alert
+        )
+        
+        editAlert.addTextField { textField in
+            textField.text = selectedCategory.0 // Current category name
+            textField.placeholder = "Category Name"
+        }
+        editAlert.addTextField { textField in
+            textField.text = selectedCategory.1 // Current symbol name
+            textField.placeholder = "Symbol Name (SF Symbol)"
+        }
+        
+        editAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
+            guard let newName = editAlert.textFields?[0].text,
+                  let newSymbol = editAlert.textFields?[1].text,
+                  !newName.isEmpty, !newSymbol.isEmpty else {
+                self.showAlert(title: "Invalid Input", message: "Please provide valid inputs for both fields.")
+                return
+            }
+            
+            // Update the Firestore document
+            let db = Firestore.firestore()
+            db.collection("Categories")
+                .whereField("Category Name", isEqualTo: selectedCategory.0)
+                .whereField("Symbol", isEqualTo: selectedCategory.1)
+                .getDocuments { (snapshot, error) in
+                    if let error = error {
+                        print("Error finding document to edit: \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    if let document = snapshot?.documents.first {
+                        document.reference.updateData([
+                            "Category Name": newName,
+                            "Symbol": newSymbol
+                        ]) { error in
+                            if let error = error {
+                                print("Error updating document: \(error.localizedDescription)")
+                                self.showAlert(title: "Error", message: "Failed to update category.")
+                            } else {
+                                print("Document successfully updated!")
+                                // Update local data and reload table
+                                self.picturesAndLabels[indexPath.row] = (newName, newSymbol)
+                                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                            }
+                        }
+                    }
+                }
+        }))
+        
+        editAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(editAlert, animated: true, completion: nil)
+    }
+    
+    func deleteCategory(at indexPath: IndexPath, from tableView: UITableView) {
+        let categoryToDelete = picturesAndLabels[indexPath.row]
+        
+        // Reference Firestore to find and delete the document
+        let db = Firestore.firestore()
+        db.collection("Categories")
+            .whereField("Category Name", isEqualTo: categoryToDelete.0)
+            .whereField("Symbol", isEqualTo: categoryToDelete.1)
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Error finding document to delete: \(error.localizedDescription)")
+                    return
+                }
+                
+                if let document = snapshot?.documents.first {
+                    document.reference.delete { error in
+                        if let error = error {
+                            print("Error deleting document: \(error.localizedDescription)")
+                            self.showAlert(title: "Error", message: "Failed to delete category.")
+                        } else {
+                            print("Document successfully deleted!")
+                            // Update local data and reload table
+                            self.picturesAndLabels.remove(at: indexPath.row)
+                            tableView.deleteRows(at: [indexPath], with: .automatic)
+                        }
+                    }
+                }
+            }
+    }
 
     // Function to show an alert when needed
     func showAlert(title: String, message: String) {
