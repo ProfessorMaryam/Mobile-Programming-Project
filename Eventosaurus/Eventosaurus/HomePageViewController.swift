@@ -55,7 +55,20 @@ class HomePageViewController: UIViewController {
 }
 
 
-
+class MenuPageViewController: UIViewController {
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    
+        
+    }
+   
+    
+    
+    
+}
 
     
 
@@ -882,7 +895,7 @@ class OrganizerSearchViewController: UIViewController, UISearchBarDelegate {
             self.organizers.removeAll()
             
             // Create a dispatch group to synchronize the fetch
-            let group = DispatchGroup()
+//            let group = DispatchGroup()
             
             // This will hold the organizer data temporarily as we fetch
             var organizersData: [(String, String, String)] = []
@@ -969,6 +982,10 @@ class OrganizerSearchViewController: UIViewController, UISearchBarDelegate {
            let brief = selectedOrganizerData.2 // Brief (Third element of the tuple)
 
            // Set the organizer's name, ID, and brief in the shared instance
+           print("Org Name selected: \(name)")
+           print("Org ID selected: \(id)")
+           print("Org Brief selected: \(brief)")
+           
            OrganizerCurrentSelection.shared.setOrgName(name)
            OrganizerCurrentSelection.shared.setOrgID(id)
            OrganizerCurrentSelection.shared.setOrgBrief(brief)

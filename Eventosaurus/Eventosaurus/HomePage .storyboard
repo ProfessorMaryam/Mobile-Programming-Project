@@ -364,7 +364,7 @@
         <!--Menu Bar-->
         <scene sceneID="OkS-bt-LlA">
             <objects>
-                <viewController id="tgS-Qa-nI5" userLabel="Menu Bar" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuPageViewController" id="tgS-Qa-nI5" userLabel="Menu Bar" customClass="MenuPageViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kP3-wt-eyk">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -410,6 +410,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Profile">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="car-NL-YDx" kind="presentation" modalPresentationStyle="fullScreen" id="1wX-GM-3ai"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYA-K8-36x">
                                 <rect key="frame" x="20" y="319.66666666666669" width="205" height="38"/>
@@ -1283,7 +1286,7 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
         <!--Organizer Search View Controller-->
         <scene sceneID="K1v-DK-Ub1">
             <objects>
-                <viewController storyboardIdentifier="OrganizersSearch" id="ax8-YR-T48" customClass="OrganizerSearchViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrganizerSearchViewController" id="ax8-YR-T48" customClass="OrganizerSearchViewController" customModule="Eventosaurus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qJf-0M-Kfu">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1562,6 +1565,14 @@ At EventoSaurus, we are dedicated to creating unforgettable experiences and brin
             </objects>
             <point key="canvasLocation" x="4565.5813953488368" y="-770.60085836909877"/>
         </scene>
+        <!--UserProfileViewController-->
+        <scene sceneID="E3a-hn-79o">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="UserProfileViewController" storyboardName="UserProfile" referencedIdentifier="UserProfileViewController" id="car-NL-YDx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qGK-yj-lVq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2368" y="-1387"/>
+        </scene>
         <!--Calendar-->
         <scene sceneID="fB4-RO-bxS">
             <objects>
@@ -1667,7 +1678,7 @@ Aminatour1@evento.saurus.bh</string>
         <segue reference="uns-kt-Srp"/>
         <segue reference="U3y-aa-01n"/>
         <segue reference="UPm-DE-OTP"/>
-        <segue reference="RZl-8h-KH2"/>
+        <segue reference="DwF-wQ-wJU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
@@ -1692,10 +1703,10 @@ Aminatour1@evento.saurus.bh</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

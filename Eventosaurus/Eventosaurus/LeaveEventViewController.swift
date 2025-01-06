@@ -2,7 +2,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class LeaveEventPageViewController: UIViewController, WriteFeedbackDelegate {
+class LeaveEventPageViewController: UIViewController {
 
     // Create an instance of Firestore for database operations
     let db = Firestore.firestore()
@@ -39,14 +39,14 @@ class LeaveEventPageViewController: UIViewController, WriteFeedbackDelegate {
             }
         }
         // Call this method to present the WriteFeedbackViewController
-        func presentFeedbackPage(eventID: String) {
-            // Instantiate the WriteFeedbackViewController
-            if let feedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "WriteFeedbackViewController") as? WriteFeedbackViewController {
-                feedbackVC.delegate = self // Set the delegate to self
-                feedbackVC.eventID = eventID  // Pass the eventID to the feedback view controller
-                self.present(feedbackVC, animated: true, completion: nil)
-            }
-        }
+//        func presentFeedbackPage(eventID: String) {
+//            // Instantiate the WriteFeedbackViewController
+//            if let feedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "WriteFeedbackViewController") as? WriteFeedbackViewController {
+//                feedbackVC.delegate = self // Set the delegate to self
+//                feedbackVC.eventID = eventID  // Pass the eventID to the feedback view controller
+//                self.present(feedbackVC, animated: true, completion: nil)
+//            }
+//        }
     
     
     // Action triggered when the leave button is pressed
